@@ -1,0 +1,57 @@
+{% extends "server_config.html" %}
+{% block configName %}Comandos{% endblock %}
+{% block configContent %}
+<div style="text-align: center;">
+<p>Aqui você pode desativar comandos desnecessários para o seu servidor!</p>
+{% if serverConfig.debugOptions.enableAllModules == true %}
+<h1 style="color: red;">A opção de "todos os módulos" está ativada!</h1>
+<p style="color: red;">Nada que você mudar aqui terá efeito até você desativar esta opção!</p>
+<p>Para desativar, vá nas opções gerais da Loritta!</p>
+{% endif %}
+</div>
+{% for cmd in cmdOptions.entrySet %}
+<div class="remodal" data-remodal-id="{{ cmd.getKey.getClass.getSimpleName }}Options">
+<button data-remodal-action="close" class="remodal-close"></button>
+<form method="post">
+{% for field in cmd.getValue().getClass.getFields %}
+<input type="checkbox" name="{{ field.getName }}" value="true" {% if field.get(cmd.getValue) == true %}checked{% endif %}> {{ field.getName }}</br>
+{% endfor %}
+<input type="hidden" name="editingCommandOptions" value="{{ cmd.getKey.getClass.getSimpleName }}">
+<button class="button_danger"> Salvar Alterações</button></div>
+</form>
+{% endfor %}
+<form method="post">
+<div class="pure-g">
+{% for cmd in availableCmds %}
+<div class="pure-u-1 pure-u-md-1-4">
+<div class="commandInfoWrapper">
+<input type="checkbox" name="{{ cmd.getClass.getSimpleName }}" value="true" {% if activeCmds contains cmd %}checked{% endif %}> {{ serverConfig.commandPrefix }}{{ cmd.getLabel }}</br>
+<hr class="commandInfoHr">
+{{ cmd.getDescription }}</br>
+<div style="text-align: center;">
+<a href="#{{ cmd.getClass.getSimpleName }}Options"><button type="button" class="button-secondary pure-button"><i class="fa fa-cogs" aria-hidden="true"></i></button></a>
+</div>
+</div></div>
+</br>
+{% endfor %}
+</div>
+<input type="submit" value="Salvar">
+<input type="hidden" name="editingCmds" value="true">
+</form>
+</br>
+<h2>Opções dos comandos</h2>
+<h3>Triste Realidade</h3>
+<form method="post">
+<input type="checkbox" name="mentionEveryone" value="true" {% if commandOptionTristeRealidadeCommand.mentionEveryone == true %}checked{% endif %}> Mencionar todos que apareceram na imagem?</br>
+<input type="checkbox" name="hideDiscordTags" value="true" {% if commandOptionTristeRealidadeCommand.hideDiscordTags == true %}checked{% endif %}> Esconder as tags do Discord na imagem?</br>
+<input type="submit" value="Salvar">
+<input type="hidden" name="editingTristeRealidade" value="true">
+</form>
+<div style="text-align: center;">
+<p>Preguiça de ativar todos os comandos? Então clique neste botão!</p>
+</div>
+<form method="post">
+<input type="submit" value="Ativar TODOS os comandos!">
+<input type="hidden" name="activateAllCommands" value="true">
+</form>
+{% endblock %}

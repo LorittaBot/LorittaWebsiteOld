@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Loritta • Home{% endblock %}</title>
+	<meta name="description" content="Apenas um bot qualquer para o Discord!">
+	<meta name="author" content="MrPowerGamerBR">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+	<link rel="stylesheet" type="text/css" href="{{ websiteUrl }}assets/style.css">
+	<link rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal.css">
+	<link rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal-default-theme.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script src="https://use.fontawesome.com/055e611427.js"></script>
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+  integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+  crossorigin="anonymous"></script>
+<body>
+{# <img class="animated fadeIn" src="{{ websiteUrl }}assets/img/katy_angel_webpage.png"></img> #}
+<div id="header" style="z-index: -9;">
+<div id="katyImage" class="animated slideInUp" style="line-height: 0;">
+<img src="{{ websiteUrl }}assets/img/katy_angel_webpage.png"></img>
+</div>
+  <div class="child animated fadeIn" style="text-align: center;"><span class="text">Conheça a <span style="color: fuchsia;">Loritta</span>
+  <div style="font-size: 0.5em">Apenas um simples bot para o Discord</div></span>
+  
+</div>
+</div>
+<div id="belowHeader">
+<div class="topnav" id="myTopnav">
+  <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+  <a href="{{ websiteUrl }}auth"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+  <a href="https://discord.gg/3rXgN8x"><i class="fa fa-comments-o" aria-hidden="true"></i> Nosso Discord</a>
+  <a href="#contact"><i class="fa fa-terminal" aria-hidden="true"></i> Comandos</a>
+  <a href="#about"><i class="fa fa-gift" aria-hidden="true"></i> Doar</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+<div id="wrapper">
+{% block beforeLeftColumn %}
+<div id="leftColumn">
+{% block leftColumn %}
+<div class="content">
+<div class="smTitleBar">
+Sobre a Loritta
+</div>
+<div class="insideContent">
+<p>A Loritta (ou para amigos próximos, "Lori") é um bot com várias funções, simples, modular, fácil e extremamente customizável para você usar para o seu servidor no Discord!</p>
+<p>Ela foi criada devido a falta de bots para servidores brasileiros, já que a maioria dos bots só "digitam" em inglês, ficando difícil para pessoas que não sabem inglês, sem contar que fica estranho um chat misturado com português e inglês.</p>
+<div style="text-align: center;">
+<p><b>*insira botão para adicionar a Loritta aqui ;)*</b></p>
+<img src="https://i.imgur.com/42wQl5a.png"></img>
+</div>
+</div>
+</div>
+{% endblock %}
+</div>
+{% endblock %}
+{% block beforeRightColumn %}
+<div id="rightColumn">
+{% block rightColumn %}
+<div class="content">
+<div class="smTitleBar">
+Parceiros
+</div>
+<div class="insideContent">
+<a href="http://sparklypower.net/"><img src="https://i.imgur.com/FJkmrCI.png"></img></a>
+<img src="https://i.imgur.com/42wQl5a.png"></img>
+</div>
+</div>
+
+<div class="content">
+<div class="smTitleBar">
+Estatísticas
+</div>
+<div class="insideContent">
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-1-2">
+		<i style="font-size: 5em;" class="fa fa-server" aria-hidden="true"></i>
+		<p><b>{{ totalServers }} servidores</b></p>
+		<p>usando a Loritta</p>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-2">
+		<i style="font-size: 5em;" class="fa fa-users" aria-hidden="true"></i>
+		<p><b>{{ totalUsers }} usuários diferentes</b></p>
+		<p>em servidores que usam a Loritta</p>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-1">
+		<i style="font-size: 5em;" class="fa fa-clock-o" aria-hidden="true"></i>
+		<p><b>{{ uptime }}</b></p>
+		<p>sem reiniciar a JVM (Uptime)</p>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="content">
+<div class="smTitleBar">
+Discord
+</div>
+<div class="insideContent">
+<iframe src="https://discordapp.com/widget?id=297732013006389252&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+</div>
+</div>
+
+<div class="content">
+<div class="smTitleBar">
+Estatísticas
+</div>
+<div class="insideContent">
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-1-2">
+		<i style="font-size: 5em;" class="fa fa-server" aria-hidden="true"></i>
+		<p><b>{{ totalServers }} servidores</b></p>
+		<p>usando a Loritta</p>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-2">
+		<i style="font-size: 5em;" class="fa fa-users" aria-hidden="true"></i>
+		<p><b>{{ totalUsers }} usuários diferentes</b></p>
+		<p>em servidores que usam a Loritta</p>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-1">
+		<i style="font-size: 5em;" class="fa fa-clock-o" aria-hidden="true"></i>
+		<p><b>{{ uptime }}</b></p>
+		<p>sem reiniciar a JVM (Uptime)</p>
+	</div>
+</div>
+</div>
+</div>
+{% endblock %}
+</div>
+{% endblock %}
+</div>
+<br style="clear:both" /> <!-- So dirty! -->
+</div>
+<script src="{{ websiteUrl }}remodal.min.js"></script>
+<script>
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+</body>

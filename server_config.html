@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block beforeLeftColumn %}
+<div id="leftColumnConfig">
+<div class="content">
+<div class="smTitleBar">
+{{ currentServer.getName }}
+</div>
+<div style="text-align: center;">
+<img style="width: 128px; height: auto; border-radius: 100%;" src="https://cdn.discordapp.com/icons/{{ currentServer.id }}/{{ currentServer.icon }}.png"></img>
+</div>
+<div id="verticalNavBar">
+<ul>
+  <li><a {% if whereAmI == "mainPage" %}class="active"{% endif %} href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}"><i {% if whereAmI == "mainPage" %}style="color: rgb(109, 113, 119);"{% endif %} class="fa fa-cube" aria-hidden="true"></i> Configurações Gerais</a></li>
+  <li><a {% if whereAmI == "moduleConfig" %}class="active"{% endif %} href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}/commands"><i {% if whereAmI == "moduleConfig" %}style="color: rgb(109, 113, 119);"{% endif %} class="fa fa-terminal" aria-hidden="true"></i> Comandos</a></li>
+</ul>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block beforeRightColumn %}
+<div id="rightColumnConfig">
+<div class="content">
+<div class="smTitleBar">
+{% block configName %}
+Configuração
+{% endblock %}
+</div>
+<div class="insideContent">
+{% block configContent %}
+<h1>Painel de administração ainda está em desenvolvimento!</h1>
+<form method="post">
+  Prefixo: <input type="text" name="commandPrefix" value="{{ serverConfig.commandPrefix }}">
+  <input type="submit" value="Salvar">
+</form> 
+<form method="post">
+  Explicar Comandos: <input type="checkbox" name="explainOnCommandRun" value="true" {% if serverConfig.explainOnCommandRun == true %}checked{% endif %}></br>
+  Mencionar quem executou o comando: <input type="checkbox" name="mentionOnCommandOutput" value="true" {% if serverConfig.mentionOnCommandOutput == true %}checked{% endif %}></br>
+  Ativar TODOS os módulos? (Apenas para debugging ou se você está com preguiça de ativar tudo manualmente): <input type="checkbox" name="enableAllModules" value="true" {% if serverConfig.debugOptions.enableAllModules == true %}checked{% endif %}></br>
+  <input type="hidden" name="commandMagic" value="true">
+  <input type="submit" value="Salvar">
+</form>
+{% endblock %}
+</div>
+</div>
+{% endblock %}

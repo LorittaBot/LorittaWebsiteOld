@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+{% block leftColumn %}
+<div class="content">
+<div class="smTitleBar">
+Escolha um Servidor
+</div>
+<div class="insideContent">
+<div style="text-align: center; background-color: rgb(30, 33, 36); padding: 5px; border-radius: 7px;">
+{# https://discordapp.com/oauth2/authorize?client_id=297153970613387264&scope=bot&guild_id=297732013006389252&response_type=code&redirect_uri=https://www.dynobot.net/return&permissions=2097176631 #}
+{% for guild in guilds %}
+<a href="https://loritta.website/config/servidor/{{ guild.id }}"><img style="width: 64px; height: 64px; border-radius: 100%;" src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.png"></img></a>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}
+{% block rightColumn %}
+{% include "widgets.html" %}
+{% endblock %}

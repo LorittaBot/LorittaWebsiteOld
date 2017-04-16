@@ -6,12 +6,13 @@
 {{ currentServer.getName }}
 </div>
 <div style="text-align: center;">
-<img style="width: 128px; height: auto; border-radius: 100%;" src="https://cdn.discordapp.com/icons/{{ currentServer.id }}/{{ currentServer.icon }}.png"></img>
+<img style="width: 128px; height: auto; border-radius: 100%;" src="{% if currentServer.icon != null %}https://cdn.discordapp.com/icons/{{ currentServer.id }}/{{ currentServer.icon }}.png{% else %}{{ websiteUrl }}assets/img/unknown.png{% endif %}"></img>
 </div>
 <div id="verticalNavBar">
 <ul>
   <li><a {% if whereAmI == "mainPage" %}class="active"{% endif %} href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}"><i {% if whereAmI == "mainPage" %}style="color: rgb(109, 113, 119);"{% endif %} class="fa fa-cube" aria-hidden="true"></i> Configurações Gerais</a></li>
   <li><a {% if whereAmI == "moduleConfig" %}class="active"{% endif %} href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}/commands"><i {% if whereAmI == "moduleConfig" %}style="color: rgb(109, 113, 119);"{% endif %} class="fa fa-terminal" aria-hidden="true"></i> Comandos</a></li>
+  <li><a {% if whereAmI == "joinConfig" %}class="active"{% endif %} href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}/joinconfig"><i {% if whereAmI == "joinConfig" %}style="color: rgb(109, 113, 119);"{% endif %} class="fa fa-star" aria-hidden="true"></i> Mensagens ao Entrar/Sair</a></li>
 </ul>
 </div>
 </div>

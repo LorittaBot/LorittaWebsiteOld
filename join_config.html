@@ -1,0 +1,26 @@
+{% extends "server_config.html" %}
+{% block configName %}Mensagens ao Entrar/Sair{% endblock %}
+{% block configContent %}
+
+<form method="post">
+<div style="text-align: center;">
+<p>Ativar o módulo?</p>
+<input type="checkbox" name="enableModule" value="true" {% if serverConfig.joinLeaveConfig.isEnabled == true %}checked{% endif %}>
+</div>
+<hr>
+<input type="checkbox" name="tellOnJoin" value="true" {% if serverConfig.joinLeaveConfig.tellOnJoin == true %}checked{% endif %}> Ativar as mensagens quando alguém entrar?
+</br>
+<input type="checkbox" name="tellOnLeave" value="true" {% if serverConfig.joinLeaveConfig.tellOnLeave == true %}checked{% endif %}> Ativar as mensagens quando alguém sair?
+</br>
+Canal para anunciar quando alguém entra: <input type="text" name="canalJoin" value="{{ serverConfig.joinLeaveConfig.canalJoin }}">
+</br>
+Canal para anunciar quando alguém sair: <input type="text" name="canalLeave" value="{{ serverConfig.joinLeaveConfig.canalLeave }}">
+</br>
+Mensagem quando entrar: <input type="text" name="joinMessage" value="{{ serverConfig.joinLeaveConfig.joinMessage }}">
+</br>
+Mensagem quando sair: <input type="text" name="leaveMessage" value="{{ serverConfig.joinLeaveConfig.leaveMessage }}">
+</br>
+<input type="submit" data-inline="true" value="Salvar">
+</form>
+
+{% endblock %}

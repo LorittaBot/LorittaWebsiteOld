@@ -31,6 +31,66 @@ html {
 	font-family: 'Lobster', cursive;
 }
 
+.button_danger {
+    border: 0px none;
+    background: #ff0000 none repeat scroll 0% 0%;
+    border-radius: 4px;
+    box-shadow: 0px 5px 0px #b50000;
+    color: #FFF;
+    cursor: pointer;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-size-adjust: inherit;
+    font-stretch: inherit;
+    font-feature-settings: inherit;
+    font-language-override: inherit;
+    font-kerning: inherit;
+    font-synthesis: inherit;
+    font-variant: inherit;
+    margin: 3px;
+    outline: 0px none;
+    padding: 4px 12px;
+    font-size: 120%;
+    transition: all 0.1s linear 0s;
+}
+
+.button_danger:active {
+  box-shadow: 0 2px 0 #b50000;
+  transform: translateY(3px);
+}
+
+.button_normal {
+    border: 0px none;
+    background: #009CFF none repeat scroll 0% 0%;
+    border-radius: 4px;
+    box-shadow: 0px 5px 0px #006899;
+    color: #FFF;
+    cursor: pointer;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-size-adjust: inherit;
+    font-stretch: inherit;
+    font-feature-settings: inherit;
+    font-language-override: inherit;
+    font-kerning: inherit;
+    font-synthesis: inherit;
+    font-variant: inherit;
+    margin: 3px;
+    outline: 0px none;
+    padding: 4px 12px;
+    font-size: 120%;
+    transition: all 0.1s linear 0s;
+}
+
+.button_normal:active {
+  box-shadow: 0 2px 0 #006599;
+  transform: translateY(3px);
+}
+
 .text {
 	font-size: 4em;
 	color: white;

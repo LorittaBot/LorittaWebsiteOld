@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block leftColumn %}
+<div class="content">
+<div class="smTitleBar">
+Comandos da Loritta
+</div>
+<div class="insideContent" style="text-align: center;">
+<p>A Loritta é um bot que muitos chamam de "faz tudo", já que ela tem vários comandos diferentes para você poder usar e se divertir com eles!</p>
+<p>Você acha que a Loritta tem muitos comandos? Sem problemas, você pode desativar qualquer comando desta lista no seu servidor, não gosta do "+faustão"? Desative ele e seja feliz! A Loritta é modular, você pode alterar e customizar (quase) tudo nela!</p>
+
+<style>
+ /* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tabcontent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+</style>
+
+<div class="tab">
+  {% for category in categories %}
+  <button class="tablinks" onclick="changeCategory(event, '{{ category.name }}')" {% if category.name == "FUN" %}id="defaultOpen"{% endif %}>{{ category.getFancyTitle }}</button>
+  {% endfor %}
+</div>
+
+{% for category in categories %}
+<div id="{{ category.name }}" class="tabcontent">
+{% for command in commandsByCategories.get(category.name) %}
+<hr class="commandInfoHr">
+<div class="insideContent" style="text-align: left; font-size: 2em; font-weight: bold;">
++{{ command.getLabel }} <span style="color: gray; font-weight: initial;">{{ command.getUsage }}</span></div>
+{{ command.getExtendedDescription }}
+{% endfor %}
+</div>
+{% endfor %}
+</div>
+</div>
+<script>
+function changeCategory(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+document.getElementById("defaultOpen").click();
+</script>
+{% endblock %}
+{% block rightColumn %}
+{% include "widgets.html" %}
+{% endblock %}

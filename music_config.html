@@ -1,0 +1,27 @@
+{% extends "server_config.html" %}
+{% block configName %}DJ Loritta{% endblock %}
+{% block configContent %}
+
+<form method="post">
+<div style="text-align: center;">
+<h1>Experimental</h1>
+<h2>Atualmente isto é um módulo experimental, use por conta e risco!</h2>
+<h3>O módulo de música está em fase de testes, pode ser que seja removido no futuro!</h3>
+<p>Ativar o módulo?</p>
+<input type="checkbox" name="enableModule" value="true" {% if serverConfig.musicConfig.isEnabled == true %}checked{% endif %}>
+</div>
+<hr>
+  <select name="musicGuildId">
+    {% for voiceChannel in currentServerJda.getVoiceChannels %}
+    <option value="{{ voiceChannel.getId }}" {% if voiceChannel.getId == serverConfig.musicConfig.musicGuildId %}selected="selected"{% endif %}>{{ voiceChannel.getName }}</option>
+	{% endfor %}
+  </select>
+</br>
+<input type="checkbox" name="maxSecEnabled" value="true" {% if serverConfig.musicConfig.hasMaxSecondRestriction == true %}checked{% endif %}> Limitar músicas grandes?
+</br>
+Quantos segundos uma música poderá ter no máximo: <input type="text" name="maxSec" value="{{ serverConfig.musicConfig.maxSeconds }}">
+</br>
+<input type="submit" data-inline="true" value="Salvar">
+</form>
+
+{% endblock %}

@@ -106,8 +106,9 @@ html {
 }
 
 #header {
-	background: url("img/background.png");
+	background: url("img/servers.png") repeat;
 	position: relative;
+	background-size: 100%;
 }
 
 #belowHeader {

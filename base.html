@@ -5,22 +5,17 @@
 	<meta name="description" content="Apenas um bot qualquer para o Discord!">
 	<meta name="author" content="MrPowerGamerBR">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
-	<link rel="stylesheet" type="text/css" href="{{ websiteUrl }}assets/style.css">
-	<link rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal.css">
-	<link rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal-default-theme.css">
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
-<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<script src="https://use.fontawesome.com/055e611427.js"></script>
+	<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link async rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
+	<link async rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+	<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}assets/style.css">
+	<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal.css">
+	<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal-default-theme.css">
+	<link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+	<link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
+<link async href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
-<script
-			  src="https://code.jquery.com/jquery-3.2.1.min.js"
-			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			  crossorigin="anonymous"></script>
 <body>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -37,7 +32,7 @@
 <div id="katyImage" class="animated slideInUp" style="line-height: 0;">
 <img src="{{ websiteUrl }}assets/img/katy_angel_webpage.png"></img>
 </div>
-  <div class="child animated fadeIn" style="text-align: center;"><span class="text">Conheça a <span style="color: fuchsia;">Loritta</span>
+  <div class="child animated fadeIn" style="text-align: center;"><span class="text">Olá, eu sou a <span style="color: fuchsia;">Loritta</span>!
   <div style="font-size: 0.5em">Apenas um simples bot para o Discord</div></span>
   
 </div>
@@ -148,7 +143,12 @@ Estatísticas
 </div>
 <br style="clear:both" /> <!-- So dirty! -->
 </div>
+<script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
 <script src="{{ websiteUrl }}remodal.min.js"></script>
+<script async src="https://use.fontawesome.com/055e611427.js"></script>
 <script>
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
@@ -159,5 +159,13 @@ function myFunction() {
         x.className = "topnav";
     }
 }
+
+    $(function(){
+        var y = 0;
+        setInterval(function(){
+            y -=1;
+            $('#header').css('background-position', '0' + 'px ' + y + 'px');
+        }, 60);
+    })
 </script>
 </body>

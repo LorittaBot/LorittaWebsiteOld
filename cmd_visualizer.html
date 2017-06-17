@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+{% block subtitle %}Command Visualizer{% endblock %}
+{% block leftColumn %}
+<div class="content">
+<div class="smTitleBar">
+Command Visualizer
+</div>
+<p>Veja em tempo real quem está usando os comandos da Loritta!</p>
+<div class="insideContent">
+<div id="cmdVis" style="text-align: center; background-color: rgb(30, 33, 36); padding: 5px; border-radius: 7px; color: white;">
+
+</div>
+</div>
+</div>
+<script>
+//Establish the WebSocket connection and set up event handlers
+var webSocket = new WebSocket("ws://149.56.107.119:4568/cmdvis");
+webSocket.onmessage = function (msg) { 
+console.log(msg);
+updateMessage(msg);
+};
+webSocket.onclose = function () { alert("WebSocket connection closed") };
+
+//Update the chat-panel, and the list of connected users
+function updateMessage(msg) {
+var data = JSON.parse(msg.data);
+$("#cmdVis").append("[" + data.guild + "] " + data.user + "#" + data.discriminator + " usou \"" + data.cmd + "\"!</br>");
+}
+</script>
+{% endblock %}
+{% block rightColumn %}
+{% include "widgets.html" %}
+{% endblock %}

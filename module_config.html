@@ -50,7 +50,8 @@
 {% for cmd in availableCmds %}
 <div class="pure-u-1 pure-u-md-1-4">
 <div class="commandInfoWrapper">
-<input type="checkbox" name="{{ cmd.getClass.getSimpleName }}" value="true" {% if activeCmds contains cmd %}checked{% endif %}> {{ serverConfig.commandPrefix }}{{ cmd.getLabel }}</br>
+{% set disabled = disabledCmds contains cmd %}
+<input type="checkbox" name="{{ cmd.getClass.getSimpleName }}" value="true" {% if disabled == false %}checked{% endif %}> {{ serverConfig.commandPrefix }}{{ cmd.getLabel }}</br>
 <hr class="commandInfoHr">
 {{ cmd.getDescription }}</br>
 <div style="text-align: center;">

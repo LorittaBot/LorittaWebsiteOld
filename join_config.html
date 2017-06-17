@@ -12,9 +12,19 @@
 </br>
 <input type="checkbox" name="tellOnLeave" value="true" {% if serverConfig.joinLeaveConfig.tellOnLeave == true %}checked{% endif %}> Ativar as mensagens quando alguém sair?
 </br>
-Canal para anunciar quando alguém entra: <input type="text" name="canalJoin" value="{{ serverConfig.joinLeaveConfig.canalJoin }}">
+Canal para anunciar quando alguém entra:
+<select name="canalJoin">
+    {% for textChannel in currentServerJda.getTextChannels %}
+    <option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.joinLeaveConfig.canalJoinId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+	{% endfor %}
+  </select>
 </br>
-Canal para anunciar quando alguém sair: <input type="text" name="canalLeave" value="{{ serverConfig.joinLeaveConfig.canalLeave }}">
+Canal para anunciar quando alguém sair:
+<select name="canalLeave">
+  {% for textChannel in currentServerJda.getTextChannels %}
+  <option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.joinLeaveConfig.canalLeaveId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+  {% endfor %}
+</select>
 </br>
 Mensagem quando entrar: <input type="text" name="joinMessage" value="{{ serverConfig.joinLeaveConfig.joinMessage }}">
 </br>

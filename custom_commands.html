@@ -1,0 +1,26 @@
+{% extends "server_config.html" %}
+{% block configName %}Comandos Personalizados{% endblock %}
+{% block configContent %}
+<div style="text-align: center;">
+<p>Aqui você pode criar comandos simples próprios para o seu servidor no Discord!</p>
+</div>
+<h1>Lista de comandos atuais</h1>
+{% if serverConfig.customCommands|length == 0 %}
+Nenhum comando!
+{% else %}
+{% for cmd in serverConfig.customCommands %}
+<hr class="commandInfoHr">
+<form><input type="hidden" name="deleteCommand" value="{{ cmd.commandName }}"><button type="submit" class="button-secondary pure-button"><i class="fa fa-times" aria-hidden="true"></i></button> {{ serverConfig.commandPrefix }}{{ cmd.commandName }}</form>
+{% endfor %}
+{% endif %}
+<h2>Criar o seu novo comando!</h2>
+<form method="post">
+  Nome do comando:
+  <input type="text" name="commandName" placeholder="regras">
+  <br>
+  Mensagem que a Loritta irá enviar como resposta<br>
+  <textarea rows="4" cols="50" name="commandResponse" placeholder="Seja feliz! 😘"></textarea>
+  <br><br>
+  <input type="submit" value="Criar novo comando">
+</form> 
+{% endblock %}

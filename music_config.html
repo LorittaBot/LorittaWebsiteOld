@@ -21,6 +21,10 @@
 </br>
 Quantos segundos uma música poderá ter no máximo: <input type="text" name="maxSec" value="{{ serverConfig.musicConfig.maxSeconds }}">
 </br>
+<input type="checkbox" name="autoPlayEnabled" value="true" {% if serverConfig.musicConfig.autoPlayWhenEmpty == true %}checked{% endif %}> Tocar automaticamente caso não tenha nenhuma música tocando?
+</br>
+Playlist das quebradas (separe as URLs com ";" (sem aspas)) <input type="text" name="musicUrls" value="{{ playlist }}">
+</br>
 <input type="submit" data-inline="true" value="Salvar">
 </form>
 

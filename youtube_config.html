@@ -1,0 +1,27 @@
+{% extends "server_config.html" %}
+{% block configName %}YouTube{% endblock %}
+{% block configContent %}
+
+<form method="post">
+<div style="text-align: center;">
+<p>Ativar o módulo?</p>
+<input type="checkbox" name="enableModule" value="true" {% if serverConfig.youTubeConfig.isEnabled == true %}checked{% endif %}>
+</div>
+<hr>
+Mensagem para ser enviada ao enviar um novo vídeo: <input type="text" name="videoSentMessage" value="{{ serverConfig.youTubeConfig.videoSentMessage }}">
+</br>
+Canal para anunciar quando receber algum novo post:
+<select name="repostToChannelId">
+    {% for textChannel in currentServerJda.getTextChannels %}
+    <option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.youTubeConfig.repostToChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+	{% endfor %}
+  </select>
+</br>
+Link do seu Canal: <input type="text" name="channelUrl" value="{{ serverConfig.youTubeConfig.channelUrl }}">
+</br>
+ID do Canal (Não edite isto!): <input type="text" value="{{ serverConfig.youTubeConfig.channelId }}">
+</br>
+<input type="submit" data-inline="true" value="Salvar">
+</form>
+
+{% endblock %}

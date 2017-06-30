@@ -2,6 +2,14 @@ html {
 	background-color: white;
 }
 
+body {
+	z-index: 0;
+	position: relative;
+}
+.content img {
+	max-width: 100%;
+}
+
         .button-success,
         .button-error,
         .button-warning,
@@ -241,6 +249,7 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
 	color: #586069;
 	font-size: 14px;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	text-align: center;
 }
 
 .insideContent img {

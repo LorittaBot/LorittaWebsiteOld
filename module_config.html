@@ -9,7 +9,7 @@
 <p>Para desativar, vá nas opções gerais da Loritta!</p>
 {% endif %}
 </div>
-{% for cmd in cmdOptions.entrySet %}
+{% for cmd in cmdOptions %}
 <div class="remodal" data-remodal-id="{{ cmd.getKey.getClass.getSimpleName }}Options">
 <button data-remodal-action="close" class="remodal-close"></button>
 <form method="post">

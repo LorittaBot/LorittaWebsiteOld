@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}{% block subtitle %}Home{% endblock %} • Loritta{% endblock %}</title>
-	<meta name="description" content="Apenas um bot qualquer para o Discord!">
+    <title>{% block title %}{% block subtitle %}Apenas um simples bot brasileiro para o Discord{% endblock %} • Loritta{% endblock %}</title>
+	<meta name="description" content="Olá, eu me chamo Loritta! Sou apenas um simples bot brasileiro para o Discord com várias funções divertidas!">
 	<meta name="author" content="MrPowerGamerBR">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-	<link async rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
-	<link async rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
-	<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}assets/style.css">
-	<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal.css">
-	<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal-default-theme.css">
-	<link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
-	<link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
-<link async href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <meta property="og:site_name" content="Website da Loritta">
+    <meta property="og:description" content="Olá, eu me chamo Loritta! Sou apenas um simples bot brasileiro para o Discord com várias funções divertidas!">
+    <meta property="og:title" content="Página inicial">
+    <meta property="og:image" content="http://loritta.website/assets/img/loritta_guild_v4.png">
+    <meta property="og:ttl" content="600">
+    <meta property="og:image:width" content="320">
+    <meta property="twitter:site" content="loritta">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="Página inicial">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=oLaGW5o4zrX">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=oLaGW5o4zrX">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=oLaGW5o4zrX">
+<link rel="manifest" href="/manifest.json?v=oLaGW5o4zrX">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=oLaGW5o4zrX" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=oLaGW5o4zrX">
+<meta name="theme-color" content="#ffffff">
+<script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
 </head>
 <body>
 <script>
@@ -34,13 +44,13 @@
 </div>
   <div class="child animated fadeIn" style="text-align: center;"><span class="text">Olá, eu sou a <span style="color: fuchsia;">Loritta</span>!
   <div style="font-size: 0.5em">Apenas um simples bot para o Discord</div></span>
-  
+  <div><a href="https://loritta.website/auth"><button style="box-shadow: 0px 5px 0px #006899, 0 0px 30px #000" class="button_normal autoSubmit">Me adicione! 🙋</button></div></a></div>
 </div>
 </div>
 <div id="belowHeader">
 <div class="topnav" id="myTopnav">
   <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-  <a href="{{ websiteUrl }}auth"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+  <a href="{{ websiteUrl }}auth">{% if temmie is null %}<i class="fa fa-sign-in" aria-hidden="true"></i> Login{% else %}<i class="fa fa-wrench" aria-hidden="true"></i> Painel de Administração{% endif %}
   <a href="https://discord.gg/3rXgN8x"><i class="fa fa-comments-o" aria-hidden="true"></i> Nosso Discord</a>
   <a href="{{ websiteUrl }}comandos"><i class="fa fa-terminal" aria-hidden="true"></i> Comandos</a>
   <a href="{{ websiteUrl }}doar"><i class="fa fa-gift" aria-hidden="true"></i> Doar</a>
@@ -75,7 +85,7 @@ Parceiros
 </div>
 <div class="insideContent">
 <a href="http://sparklypower.net/"><img src="https://i.imgur.com/FJkmrCI.png"></img></a>
-<img src="https://i.imgur.com/42wQl5a.png"></img>
+<a href="{{ websiteUrl }}"><img src="{{ websiteUrl }}assets/img/loritta_banner.png"></img></a>
 </div>
 </div>
 
@@ -143,12 +153,18 @@ Estatísticas
 </div>
 <br style="clear:both" /> <!-- So dirty! -->
 </div>
-<script
-			  src="https://code.jquery.com/jquery-3.2.1.min.js"
-			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			  crossorigin="anonymous"></script>
-<script src="{{ websiteUrl }}remodal.min.js"></script>
+<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link async rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
+<link async rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}assets/style.css">
+<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal.css">
+<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal-default-theme.css">
+<link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+<link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
+<link async href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <script async src="https://use.fontawesome.com/055e611427.js"></script>
+<script src="{{ websiteUrl }}remodal.min.js"></script>
 <script>
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {

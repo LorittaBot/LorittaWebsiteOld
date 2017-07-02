@@ -1,0 +1,18 @@
+{% extends "home.html" %}
+{% block leftColumn %}
+<div class="content">
+<div class="smTitleBar">
+Infelizmente...
+</div>
+<div class="insideContent">
+<h1>Você está banido! ??</h1>
+<h2>Motivo:</h2>
+<p>{{ userProfile.banReason }}</p>
+<p>Se você acha que o ban foi injusto (duvido que foi injusto) ou se você se arrependeu, envie uma mensagem privada para MrPowerGamerBR#4185 pedindo para ser desbanido!</p>
+<p>Desculpe pela inconveniência... ??</p>
+</div>
+</div>
+{% endblock %}
+{% block rightColumn %}
+{% include "widgets.html" %}
+{% endblock %}

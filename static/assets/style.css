@@ -384,3 +384,15 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* ===[ FAN ARTS ]=== */
+#fanArts .fanArtWrapper {
+	padding: 15px;
+}
+
+#fanArts .fanArtWrapper img {
+	border-radius: 15px;
+	object-fit: cover;
+	width:230px;
+	height:230px;
+}

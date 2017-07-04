@@ -121,7 +121,7 @@ body {
 
 #belowHeader {
 	z-index: 5;
-	background-color: rgb(46, 49, 54);
+	background-color: rgb(30, 33, 36);
 }
 
 #wrapper {
@@ -129,7 +129,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	z-index: 5;
-	background-color: rgb(46, 49, 54);
+	background-color: rgb(30, 33, 36);
 }
 
 #leftColumn {
@@ -206,7 +206,7 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: rgb(40, 43, 48);
+    background-color: rgb(47, 49, 54);
 	color: rgb(97, 99, 103);
 	font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
@@ -385,6 +385,42 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+/* Line Divisor igual ao Discord */
+hr {
+	box-sizing: content-box;
+	height: 0;
+	background: rgb(234, 235, 236);
+	border: 0;
+	height: 1px;
+}
+
+/* Text Field igual ao Discord */
+input[type=text], select {
+margin: 8px 0;
+border: 1px solid rgb(199, 201, 203);
+border-radius: 4px;
+background-color: rgb(251, 251, 252);
+padding: 8px;
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+input[type=text]:focus {
+	border: 1px solid rgb(114, 137, 218);
+}
+
+input[type=text]:hover {
+	border: 1px solid rgb(185, 187, 190);
+}
+
+.userOptionsWrapper {
+	border: solid 1px;
+	border-radius: 5px;
+	border-color: #dcddde;
+	padding: 20px;
+	margin-bottom: 24px;
+}
 /* ===[ FAN ARTS ]=== */
 #fanArts .fanArtWrapper {
 	padding: 15px;
@@ -395,4 +431,153 @@ input:checked + .slider:before {
 	object-fit: cover;
 	width:230px;
 	height:230px;
+}
+
+/* ===[ CONTROL PANEL ]=== */
+.toggleMainText {
+	text-align: left;
+	color: #4f545c;
+	font-weight: 600;
+	line-height: 24px;
+	font-size: 16px;
+	font-family:Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;margin:0;
+	position: relative;
+	top: 4px;
+}
+
+.toggleSubText {
+	color: hsla(218,5%,47%,.6);
+	text-align: left;
+	font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+	margin: 0;
+	font-weight: 500;
+	font-size: 14px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.flavourText {
+	color: #4f545c;
+	font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 12px;
+}
+/* ===[ DISCORD ]=== */
+@font-face {
+    font-family: WhitneyNew;
+    font-weight: 300;
+    src: url("https://discordapp.com/assets/16801bfdf51ed88e69bc90626a3ea436.woff") format("woff")
+}
+@font-face {
+    font-family: WhitneyNew;
+    font-weight: 400;
+    src: url("https://discordapp.com/assets/d153359b5d87601d2b9c708b7ae2db02.woff") format("woff")
+}
+@font-face {
+    font-family: WhitneyNew;
+    font-weight: 500;
+    src: url("https://discordapp.com/assets/a934ab008c7f6a2274ec441f6be0696a.woff") format("woff")
+}
+@font-face {
+    font-family: WhitneyNew;
+    font-weight: 600;
+    src: url("https://discordapp.com/assets/877ef48bf9fcfee590f0ba64de101b59.woff") format("woff")
+}
+@font-face {
+    font-family: WhitneyNew;
+    font-weight: 700;
+    src: url("https://discordapp.com/assets/2e004dd717cdc58b9ccb361d286ebbce.woff") format("woff")
+}
+@font-face {
+    font-family: Reenie Beanie;
+    src: url("https://discordapp.com/assets/4b861c4f9cb4e4fbec1662f6c6e9186f.woff") format("woff")
+}
+@font-face {
+    font-family: Whitney;
+    font-style: light;
+    font-weight: 300;
+    src: url("https://discordapp.com/assets/16801bfdf51ed88e69bc90626a3ea436.woff") format("woff")
+}
+@font-face {
+    font-family: Whitney;
+    font-style: normal;
+    font-weight: 500;
+    src: url("https://discordapp.com/assets/d153359b5d87601d2b9c708b7ae2db02.woff") format("woff")
+}
+@font-face {
+    font-family: Whitney;
+    font-style: medium;
+    font-weight: 600;
+    src: url("https://discordapp.com/assets/a934ab008c7f6a2274ec441f6be0696a.woff") format("woff")
+}
+@font-face {
+    font-family: Whitney;
+    font-style: semibold;
+    font-weight: 650;
+    src: url("https://discordapp.com/assets/877ef48bf9fcfee590f0ba64de101b59.woff") format("woff")
+}
+@font-face {
+    font-family: Whitney;
+    font-style: bold;
+    font-weight: 700;
+    src: url("https://discordapp.com/assets/2e004dd717cdc58b9ccb361d286ebbce.woff") format("woff")
+}
+@font-face {
+    font-family: SourceCodePro;
+    font-style: normal;
+    font-weight: 500;
+    src: url("https://discordapp.com/assets/748ac49ebe4bf0ddfe85c005be7c64c4.woff") format("woff")
+}
+
+/* ===[ TOGGLES ]=== */
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+input.cmn-toggle-round + label {
+  padding: 2px;
+  width: 44px;
+  height: 24px;
+  border-radius: 60px;
+}
+input.cmn-toggle-round + label:before,
+input.cmn-toggle-round + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: "";
+}
+input.cmn-toggle-round + label:before {
+  right: 1px;
+  background-color: #72767d;
+  border-radius: 60px;
+  transition: background 0.4s;
+}
+input.cmn-toggle-round + label:after {
+  width: 20px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: margin 0.4s;
+  top: 4px;
+  bottom: 4px;
+  margin-left: 3px;
+}
+input.cmn-toggle-round:checked + label:before {
+  background-color: #7289da;
+}
+input.cmn-toggle-round:checked + label:after {
+  margin-left: 22px;
 }

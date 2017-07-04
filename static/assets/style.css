@@ -104,6 +104,7 @@ body {
 	color: white;
 	text-shadow: 2px 2px 2px #000000;
 	font-family: 'Pacifico', cursive;
+	line-height: 1.25em;
 }
 
 .child {
@@ -250,6 +251,7 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
 	font-size: 14px;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	text-align: center;
+	line-height: 1.35em;
 }
 
 .insideContent img {
@@ -266,6 +268,7 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
 	text-shadow: 0 1px #818181;
 	border-radius: 7px;
 	font-size: 1.5em;
+	line-height: 1.5em;
 }
 
  /* Add a black background color to the top navigation */
@@ -401,9 +404,9 @@ border: 1px solid rgb(199, 201, 203);
 border-radius: 4px;
 background-color: rgb(251, 251, 252);
 padding: 8px;
-    -moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    transition: all .2s;
 }
 
 input[type=text]:focus {
@@ -412,6 +415,42 @@ input[type=text]:focus {
 
 input[type=text]:hover {
 	border: 1px solid rgb(185, 187, 190);
+}
+
+textarea {
+margin: 8px 0;
+border: 1px solid rgb(199, 201, 203);
+border-radius: 4px;
+background-color: rgb(251, 251, 252);
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+	width: 100%;
+resize: none !important;
+padding-left: 9px;
+box-sizing: border-box;
+padding-top: 7px;
+min-height: 42px;
+}
+
+textarea:focus {
+	border: 1px solid rgb(114, 137, 218);
+}
+
+textarea:hover {
+	border: 1px solid rgb(185, 187, 190);
+}
+
+.noBlur {
+  filter: blur(0px);
+  pointer-events: inherit;
+  transition: 0.3s;
+}
+
+.blurSection {
+  filter: blur(3px);
+  pointer-events: none;
+  transition: 0.3s;
 }
 
 .userOptionsWrapper {
@@ -462,6 +501,21 @@ input[type=text]:hover {
 	text-transform: uppercase;
 	font-weight: 600;
 	font-size: 12px;
+}
+
+.discordPre {
+	background: #f9f9f9;
+    text-indent: 0;
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    color: #657b83;
+    -webkit-text-size-adjust: none;
+    font-family: Menlo,Consolas,Monaco,monospace;
+    font-size: 14px;
+    line-height: 16px;
+	border-radius: 5px;
+	border: solid 2px #f3f3f3;
 }
 /* ===[ DISCORD ]=== */
 @font-face {

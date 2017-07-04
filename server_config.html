@@ -43,7 +43,7 @@ Configuração
 		<form method="post">
 			<input type="text" name="commandPrefix" value="{{ serverConfig.commandPrefix }}">
 			<div class="toggleSubText">Prefixo é usado antes de qualquer comando da Loritta, por exemplo, "{{ serverConfig.commandPrefix }}ajuda".</div>
-			<input type="submit" value="Salvar">
+			<button class="button-success pure-button">Salvar</button>
 		</form>
 	</div>
 </div>
@@ -92,7 +92,7 @@ Configuração
 </div>
 <hr>
 <input type="hidden" name="commandMagic" value="true">
-<input type="submit" value="Salvar">
+<input class="button-success pure-button" type="submit" value="Salvar">
 </form>
 {% endblock %}
 </div>

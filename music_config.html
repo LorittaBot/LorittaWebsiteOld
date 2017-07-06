@@ -3,29 +3,162 @@
 {% block configContent %}
 
 <form method="post">
-<div style="text-align: center;">
-<h1>Experimental</h1>
-<h2>Atualmente isto é um módulo experimental, use por conta e risco!</h2>
-<h3>O módulo de música está em fase de testes, pode ser que seja removido no futuro!</h3>
-<p>Ativar o módulo?</p>
-<input type="checkbox" name="enableModule" value="true" {% if serverConfig.musicConfig.isEnabled == true %}checked{% endif %}>
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">Ativar o módulo?</p>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+		<div class="switch">
+		  <input type="checkbox" name="enableModule" value="true" {% if serverConfig.musicConfig.isEnabled == true %}checked{% endif %} id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+		  <label for="cmn-toggle-1"></label>
+		</div>
+	</div>
 </div>
 <hr>
-  <select name="musicGuildId">
-    {% for voiceChannel in currentServerJda.getVoiceChannels %}
-    <option value="{{ voiceChannel.getId }}" {% if voiceChannel.getId == serverConfig.musicConfig.musicGuildId %}selected="selected"{% endif %}>{{ voiceChannel.getName }}</option>
-	{% endfor %}
-  </select>
-</br>
-<input type="checkbox" name="maxSecEnabled" value="true" {% if serverConfig.musicConfig.hasMaxSecondRestriction == true %}checked{% endif %}> Limitar músicas grandes?
-</br>
-Quantos segundos uma música poderá ter no máximo: <input type="text" name="maxSec" value="{{ serverConfig.musicConfig.maxSeconds }}">
-</br>
-<input type="checkbox" name="autoPlayEnabled" value="true" {% if serverConfig.musicConfig.autoPlayWhenEmpty == true %}checked{% endif %}> Tocar automaticamente caso não tenha nenhuma música tocando?
-</br>
-Playlist das quebradas (separe as URLs com ";" (sem aspas)) <input type="text" name="musicUrls" value="{{ playlist }}">
-</br>
-<input type="submit" data-inline="true" value="Salvar">
+<div id="hiddenIfDisabled">
+<div class="flavourText">Canal para eu soltar uns batidões</div>
+	<select name="musicGuildId">
+		{% for voiceChannel in currentServerJda.getVoiceChannels %}
+		<option value="{{ voiceChannel.getId }}" {% if voiceChannel.getId == serverConfig.musicConfig.musicGuildId %}selected="selected"{% endif %}>{{ voiceChannel.getName }}</option>
+		{% endfor %}
+    </select>
+<hr>
+	<div class="pure-g" style="text-align: center;">
+		<div class="pure-u-1 pure-u-md-7-8">
+			<p class="toggleMainText">Limitar músicas grandes</p>
+			<div class="toggleSubText">Para evitar usuários colocando músicas grande demais na Lorittta e atrapalhando outros usuários que querem ouvir outras músicas.</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-8">
+			<div class="switch">
+			  <input type="checkbox" name="maxSecEnabled" value="true" {% if serverConfig.musicConfig.hasMaxSecondRestriction == true %}checked{% endif %} id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round" type="checkbox">
+			  <label for="cmn-toggle-2"></label>
+			</div>
+		</div>
+	</div>
+<hr>
+	<div id="hiddenIfDisabledSeconds">
+		<p class="toggleMainText">Máxima duração para uma música (em segundos)</p>
+		<input type="text" name="maxSec" value="{{ serverConfig.musicConfig.maxSeconds }}">
+	</div>
+<hr>
+	<div class="pure-g" style="text-align: center;">
+		<div class="pure-u-1 pure-u-md-7-8">
+			<p class="toggleMainText">Ativar playlist da DJ Loritta</p>
+			<div class="toggleSubText">Caso ninguém esteja pedindo músicas, a Loritta irá automaticamente tocar músicas pré-programadas. Caso alguém quiser tocar uma música, ela irá automaticamente parar as músicas dela.</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-8">
+			<div class="switch">
+			  <input type="checkbox" name="autoPlayEnabled" value="true" {% if serverConfig.musicConfig.autoPlayWhenEmpty == true %}checked{% endif %} id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round" type="checkbox">
+			  <label for="cmn-toggle-3"></label>
+			</div>
+		</div>
+	</div>
+<hr>
+<div id="hiddenIfDisabledPlaylist">
+<div class="flavourText">Músicas na playlist da DJ Loritta</div>
+<input type="text" id="musicLink" placeholder="Link para a música"> <button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
+<div class="toggleSubText">Clique em um link da playlist para remover ela.</div>
+<table id="musicTable">
+  {% for url in serverConfig.musicConfig.urls %}
+  <tr>
+    <td onclick="DL1(this)">{{ url }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<input type="hidden" id="musicUrls" name="musicUrls" value="{{ playlist }}">
+</div>
+</div>
+<hr>
+<input class="button-success pure-button" type="submit" value="Salvar">
 </form>
+<script>
+$("#cmn-toggle-1").click(function(e) {
+	applyBlur()
+});
 
+$("#cmn-toggle-2").click(function(e) {
+	applyBlurSeconds()
+});
+
+$("#cmn-toggle-3").click(function(e) {
+	applyBlurPlaylist()
+});
+
+function applyBlur() {
+  var e = $("#hiddenIfDisabled");
+  if ($('#cmn-toggle-1').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+function applyBlurSeconds() {
+  var e = $("#hiddenIfDisabledSeconds");
+  if ($('#cmn-toggle-2').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+function applyBlurPlaylist() {
+  var e = $("#hiddenIfDisabledPlaylist");
+  if ($('#cmn-toggle-3').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+function addLink() {
+  var e = $("#musicLink");
+  var value = e.val();
+  
+  var table = document.getElementById("musicTable");
+  
+  var row = table.insertRow(-1)
+  
+  var cell = row.insertCell(-1)
+  cell.textContent = value;
+  
+  cell.setAttribute("onclick", "DL1(this)");
+  
+  joinToSeparators();
+}
+
+applyBlur();
+applyBlurSeconds();
+applyBlurPlaylist();
+
+function joinToSeparators() {
+var e = $("#musicUrls");
+
+var text = "";
+$('#musicTable tr').each(function(){
+    $(this).find('td').each(function(){
+        //do your stuff, you can use $(this) to get current cell
+		if (text == "") {
+			text += $(this).text()
+		} else {
+			text += ";" + $(this).text()
+		}
+    })
+})
+
+e.val(text);
+}
+
+function DL1(elem){
+	elem.parentNode.removeChild(elem);
+
+	joinToSeparators();
+}
+</script>
 {% endblock %}

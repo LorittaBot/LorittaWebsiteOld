@@ -9,7 +9,11 @@ body {
 .content img {
 	max-width: 100%;
 }
-
+.pure-button {
+	min-height: 38px;
+	position: relative;
+	bottom: 3px;
+}
         .button-success,
         .button-error,
         .button-warning,

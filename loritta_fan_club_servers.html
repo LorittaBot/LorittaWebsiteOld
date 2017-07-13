@@ -1,0 +1,51 @@
+{% extends "home.html" %}
+{% block subtitle %}Servidores do Fã Clube da Loritta{% endblock %}
+{% block leftColumn %}
+<div class="content">
+<div class="smTitleBar">
+Servidores do Fã Clube da Loritta
+</div>
+<div class="insideContent">
+<p>Servidores criados por pessoas no <span style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.0980392); font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">@Fã Clube da Loritta 😍🎀</span> (ou seja, pessoas que usam e gostam de mim!)</p>
+<p>Esta lista foi criada para <s>mostrar como muita gente me ama</s> ajudar donos de servidores no Discord a conseguir novos membros para seus servidores e, é claro, mostrar como outros servidores me usam!</p>
+<p>Se eu estou no seu servidor e o foco do seu servidor não é coisas obscenas (ou seja, coisas NSFW), então você pode adicionar o seu servidor aqui! Peça para o MrPowerGamerBR#4185 colocar ele aqui caso você queira!</p>
+<p>Não existe muitos requisitos para estar aqui... desde que o seu servidor tenha uma quantidade considerável de membros (e que seu servidor não seja "mais um outro bot collection") então você pode estar aqui!</p>
+<p>Lembrando que, só porque o servidor está aqui não quer dizer que ele recebeu o selo maravilhoso de aprovação perpétua da Loritta (ou seja, garanto nada sobre a qualidade destes servidores!), já que aqui é só uma pequena lista de servidores que usam a Loritta!</p>
+<style>
+.fanClubServerTitle {
+float: left;
+font-size: 1.5em;
+position: relative;
+top: 8px;
+}
+
+.fanClubIcon {
+border-radius: 999999px;
+}
+
+</style>
+{% for server in fanClubServers %}
+<hr id="{{ server.id }}">
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-1-8">
+	<img class="fanClubIcon" src="{{ server.guildIcon }}"></img>
+	</div>
+	<div class="pure-u-1 pure-u-md-7-8">
+	    <div class="fanClubTitleWrapper">
+	    <span class="fanClubServerTitle">
+	    <b>{{ server.getGuild.getName }}</b> <span style="color: rgb(234, 235, 236)">|</span> {{ server.getGuild.getOwner.getUser.getName }}#{{ server.getGuild.getOwner.getUser.getDiscriminator }}
+		</span>
+		<a href="{{ server.getInviteUrl }}"><button style="float: right;" class="button-success pure-button"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar no Servidor</button></a>
+		<br style="clear:both" /> <!-- So dirty! -->
+		</div>
+		{{ server.description | raw }}
+	</div>
+</div>
+{% endfor %}
+<hr>
+</div>
+</div>
+{% endblock %}
+{% block rightColumn %}
+{% include "widgets.html" %}
+{% endblock %}

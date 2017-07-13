@@ -12,8 +12,16 @@
 Nenhum comando!
 {% else %}
 {% for cmd in serverConfig.nashornCommands %}
-<hr class="commandInfoHr">
-<form><input type="hidden" name="deleteCommand" value="{{ cmd.label }}"><button type="submit" class="button-secondary pure-button"><i class="fa fa-times" aria-hidden="true"></i></button> {{ serverConfig.commandPrefix }}{{ cmd.label }}</form>
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">{{ serverConfig.commandPrefix }}{{ cmd.label }}</p>
+		<div class="toggleSubText">{{ cmd.createdDate }}</div>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+	    <form style="display: inline;"><input type="hidden" name="editCommand" value="{{ cmd.getId }}"><button type="submit" class="button-secondary pure-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></form><form style="display: inline;"><input type="hidden" name="deleteCommand" value="{{ cmd.getId }}"><button type="submit" class="button-secondary pure-button"><i class="fa fa-times" aria-hidden="true"></i></button></form>
+	</div>
+</div>
+<hr>
 {% endfor %}
 {% endif %}
 <h2>Criar o seu novo comando!</h2>

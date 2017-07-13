@@ -40,6 +40,19 @@
 		</div>
 	</div>
 	<hr>
+	<div class="pure-g" style="text-align: center;">
+		<div class="pure-u-1 pure-u-md-7-8">
+			<p class="toggleMainText">Ativar as mensagens enviadas nas mensagens diretas do usuário quando alguém entrar?</p>
+			<div class="toggleSubText">Útil caso você queria mostrar informações básicas sobre o servidor para um usuário mas não quer que fique cheio de mensagens inúteis toda hora que alguém entra.</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-8">
+			<div class="switch">
+			  <input type="checkbox" name="tellOnPrivate" value="true" {% if serverConfig.joinLeaveConfig.tellOnPrivate == true %}checked{% endif %} id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round" type="checkbox">
+			  <label for="cmn-toggle-4"></label>
+			</div>
+		</div>
+	</div>
+	<hr>
 	<div class="flavourText">Canal para anunciar quando alguém entrar</div>
 	<select name="canalJoin">
 		{% for textChannel in currentServerJda.getTextChannels %}
@@ -60,6 +73,9 @@
 	<hr>
 	<div class="flavourText">Mensagem quando alguém sair</div>
 	<textarea id="leaveMessage" name="leaveMessage">{{ serverConfig.joinLeaveConfig.leaveMessage }}</textarea>
+	<hr>
+	<div class="flavourText">Mensagem quando alguém entrar (via mensagem direta)</div>
+	<textarea id="privateMessage" name="privateMessage">{{ serverConfig.joinLeaveConfig.joinPrivateMessage }}</textarea>
 	<hr>
 	<div class="flavourText">Varíaveis</div>
 	<pre class="discordPre">{@user} - Menciona o usuário
@@ -91,5 +107,7 @@ applyBlur();
 autosize(document.querySelector('#joinMessage'));
 
 autosize(document.querySelector('#leaveMessage'));
+
+autosize(document.querySelector('#privateMessage'));
 </script>
 {% endblock %}

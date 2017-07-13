@@ -1,0 +1,71 @@
+{% extends "server_config.html" %}
+{% block configName %}RSS/Atom Feeds{% endblock %}
+{% block configContent %}
+
+{% set config = serverConfig.rssFeedConfig %}
+<form method="post">
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">Ativar o módulo?</p>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+		<div class="switch">
+		  <input type="checkbox" name="enableModule" value="true" {% if config.isEnabled == true %}checked{% endif %} id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+		  <label for="cmn-toggle-1"></label>
+		</div>
+	</div>
+</div>
+<hr>
+<div id="hiddenIfDisabled">
+    <div class="flavourText">URL da Feed</div>
+    <input type="text" name="feedUrl" value="{{ feedInfo.feedUrl }}">
+	<hr>
+	<div class="flavourText">Canal para anunciar quando houver novidades</div>
+	<select name="repostToChannelId">
+		{% for textChannel in currentServerJda.getTextChannels %}
+		<option value="{{ textChannel.getId }}" {% if textChannel.getId == feedInfo.repostToChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endfor %}
+	  </select>
+	<hr>
+	<div class="flavourText">Mensagem para anunciar quando houver novidades</div>
+	<textarea id="newMessage" name="newMessage">{{ feedInfo.newMessage }}</textarea>
+	<hr>
+	<div class="flavourText">Varíaveis</div>
+	<pre class="discordPre">
+Variáveis genéricas:
+{título} - Título da notícia
+{descrição} - Descrição da notícia
+{link} - Link para a postagem
+
+Variáveis específicas para esta feed:
+{{ templateTags }}
+</pre>
+</div>
+<hr>
+<input class="button-success pure-button" type="submit" value="Salvar">
+</form>
+<form>
+<input type="hidden" name="testAction" value="true">
+<input class="button-success pure-button" type="submit" value="Testar Feed RSS">
+</form>
+<script>
+$("#cmn-toggle-1").click(function(e) {
+	applyBlur()
+});
+
+function applyBlur() {
+  var e = $("#hiddenIfDisabled");
+  if ($('#cmn-toggle-1').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+applyBlur();
+
+autosize(document.querySelector('#newMessage'));
+</script>
+{% endblock %}

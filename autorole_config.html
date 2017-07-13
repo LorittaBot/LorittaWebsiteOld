@@ -1,0 +1,101 @@
+{% extends "server_config.html" %}
+{% block configName %}Autoroles{% endblock %}
+{% block configContent %}
+
+{% set config = serverConfig.autoroleConfig %}
+<form method="post">
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">Ativar o módulo?</p>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+		<div class="switch">
+		  <input type="checkbox" name="enableModule" value="true" {% if config.isEnabled == true %}checked{% endif %} id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+		  <label for="cmn-toggle-1"></label>
+		</div>
+	</div>
+</div>
+<hr>
+<div id="hiddenIfDisabled">
+<div class="flavourText">Roles para serem dadas ao entrar</div>
+<select name="chooseRole" id="chooseRole">
+	{% for role in currentServerJda.getRoles %}
+	{% if currentServerJda.getSelfMember().canInteract(role) == true %}
+	<option value="{{ role.getId }}">{{ role.getName }}</option>
+	{% endif %}
+	{% endfor %}
+</select>
+<button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
+<div class="toggleSubText">Clique em uma role na lista abaixo para remover ela!</div>
+<table id="musicTable">
+  {% for role in config.roles %}
+  {% set jdaRole = currentServerJda.getRoleById(role) %}
+  <tr>
+    <td data-internalid="{{ role }}" onclick="DL1(this)">{{ jdaRole.getName() }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+<input type="hidden" id="autoroles" name="autoroles" value="{{ currentAutoroles }}">
+<hr>
+<input class="button-success pure-button" type="submit" value="Salvar">
+</form>
+<script>
+$("#cmn-toggle-1").click(function(e) {
+	applyBlur()
+});
+
+function applyBlur() {
+  var e = $("#hiddenIfDisabled");
+  if ($('#cmn-toggle-1').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+function addLink() {
+  var e = $("#chooseRole");
+  var value = e.val();
+  
+  var table = document.getElementById("musicTable");
+  
+  var row = table.insertRow(-1)
+  
+  var cell = row.insertCell(-1)
+  cell.textContent = e.find(":selected").text();
+  
+  cell.setAttribute("onclick", "DL1(this)");
+  cell.setAttribute("data-internalid", value);
+  joinToSeparators();
+}
+
+function joinToSeparators() {
+var e = $("#autoroles");
+
+var text = "";
+$('#musicTable tr').each(function(){
+    $(this).find('td').each(function(){
+        //do your stuff, you can use $(this) to get current cell
+		if (text == "") {
+			text += $(this).attr("data-internalid")
+		} else {
+			text += ";" + $(this).attr("data-internalid")
+		}
+    })
+})
+
+e.val(text);
+}
+
+function DL1(elem){
+	elem.parentNode.removeChild(elem);
+
+	joinToSeparators();
+}
+
+applyBlur();
+</script>
+{% endblock %}

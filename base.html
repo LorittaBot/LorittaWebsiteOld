@@ -2,7 +2,7 @@
 <html>
 <head>
     {% set metaTitle = "Página inicial" %}
-    <title>{% block title %}{% block subtitle %}Apenas um simples bot brasileiro para o Discord{% endblock %} • Loritta{% endblock %}</title>
+    <title>{% block title %}{% block subtitle %}{{ locale.WEBSITE_DEFAULT_TITLE }}{% endblock %} • Loritta{% endblock %}</title>
 	<meta name="description" content="Olá, eu me chamo Loritta! Sou apenas um simples bot brasileiro para o Discord com várias funções divertidas!">
 	<meta name="author" content="MrPowerGamerBR">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,19 +44,19 @@
 <div id="katyImage" class="animated slideInUp" style="line-height: 0;">
 <img src="{{ websiteUrl }}assets/img/katy_angel_webpage.png"></img>
 </div>
-  <div class="child animated fadeIn" style="text-align: center;"><span class="text">Olá, eu sou a <span style="color: fuchsia;">Loritta</span>!
-  <div style="font-size: 0.5em">Apenas um simples bot para o Discord</div></span>
-  <div><a href="https://loritta.website/auth"><button style="box-shadow: 0px 5px 0px #006899, 0 0px 30px #000" class="button_normal autoSubmit">Me adicione! 🙋</button></div></a></div>
+  <div class="child animated fadeIn" style="text-align: center;"><span class="text">{{ locale.WEBSITE_HELLO }} <span style="color: fuchsia;">Loritta</span>!
+  <div style="font-size: 0.5em">{{ locale.WEBSITE_JUST_A_SIMPLE_DISCORD_BOT }}</div></span>
+  <div><a href="https://loritta.website/auth"><button style="box-shadow: 0px 5px 0px #006899, 0 0px 30px #000" class="button_normal autoSubmit">{{ locale.WEBSITE_ADD_ME }}</button></div></a></div>
 </div>
 </div>
 <div id="belowHeader">
 <div class="topnav" id="myTopnav">
-  <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-  <a href="{{ websiteUrl }}auth">{% if temmie is null %}<i class="fa fa-sign-in" aria-hidden="true"></i> Login{% else %}<i class="fa fa-wrench" aria-hidden="true"></i> Painel de Administração{% endif %}
-  <a href="https://discord.gg/3rXgN8x"><i class="fa fa-comments-o" aria-hidden="true"></i> Nosso Discord</a>
-  <a href="{{ websiteUrl }}comandos"><i class="fa fa-terminal" aria-hidden="true"></i> Comandos</a>
-  <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> Fan Arts</a>
-  <a href="{{ websiteUrl }}doar"><i class="fa fa-gift" aria-hidden="true"></i> Doar</a>
+  <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> {{ locale.WEBSITE_HOME }}</a>
+  <a href="{{ websiteUrl }}auth">{% if temmie is null %}<i class="fa fa-sign-in" aria-hidden="true"></i> Login{% else %}<i class="fa fa-wrench" aria-hidden="true"></i> {{ locale.WEBSITE_ADMIN_PANEL }}{% endif %}
+  <a href="https://discord.gg/3rXgN8x"><i class="fa fa-comments-o" aria-hidden="true"></i> {{ locale.WEBSITE_OUR_DISCORD }}</a>
+  <a href="{{ websiteUrl }}comandos"><i class="fa fa-terminal" aria-hidden="true"></i> {{ locale.WEBSITE_COMMANDS }}</a>
+  <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ locale.WEBSITE_FAN_ARTS }}</a>
+  <a href="{{ websiteUrl }}doar"><i class="fa fa-gift" aria-hidden="true"></i> {{ locale.WEBSITE_DONATE }}</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 <div id="wrapper">

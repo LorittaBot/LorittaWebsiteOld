@@ -1,6 +1,6 @@
 <div class="content">
 <div class="smTitleBar">
-Parceiros
+{{ locale.WEBSITE_PARTNERS }}
 </div>
 <div class="insideContent">
 <a href="http://sparklypower.net/"><img src="https://i.imgur.com/FJkmrCI.png"></img></a>
@@ -10,7 +10,7 @@ Parceiros
 
 <div class="content">
 <div class="smTitleBar">
-Meu Servidor No Discord
+{{ locale.WEBSITE_MYSERVER }}
 </div>
 <div class="insideContent" style="text-align: center;">
 <a href="https://discord.gg/3rXgN8x"><img src="https://discordapp.com/api/guilds/297732013006389252/embed.png?style=banner2&t={{ epochMillis }}"></img></a>
@@ -19,7 +19,7 @@ Meu Servidor No Discord
 
 <div class="content">
 <div class="smTitleBar">
-Servidores do Fã Clube da Loritta
+{{ locale.WEBSITE_SERVERFANCLUB }}
 </div>
 <div class="insideContent">
 <div class="pure-g" style="text-align: center;">
@@ -34,24 +34,24 @@ Servidores do Fã Clube da Loritta
 
 <div class="content">
 <div class="smTitleBar">
-Estatísticas
+{{ locale.WEBSITE_STATISTICS }}
 </div>
 <div class="insideContent">
 <div class="pure-g" style="text-align: center;">
     <div class="pure-u-1 pure-u-md-1-2">
 		<i style="font-size: 5em;" class="fa fa-server" aria-hidden="true"></i>
-		<p><b>{{ totalServers }} servidores</b></p>
-		<p>usando a Loritta</p>
+		<p><b>{{ totalServers }}{{ locale.WEBSITE_SERVERS }}</b></p>
+		<p>{{ locale.WEBSITE_USING_LORITTA }}</p>
 	</div>
     <div class="pure-u-1 pure-u-md-1-2">
 		<i style="font-size: 5em;" class="fa fa-users" aria-hidden="true"></i>
-		<p><b>{{ totalUsers }} usuários diferentes</b></p>
-		<p>em servidores que usam a Loritta</p>
+		<p><b>{{ totalUsers }}{{ locale.WEBSITE_DIFFERENT_USERS }}</b></p>
+		<p>{{ locale.WEBSITE_IN_SERVERS_USING_LORITTA }}</p>
 	</div>
     <div class="pure-u-1 pure-u-md-1-1">
 		<i style="font-size: 5em;" class="fa fa-clock-o" aria-hidden="true"></i>
 		<p><b>{{ uptime }}</b></p>
-		<p>sem reiniciar a JVM (Uptime)</p>
+		<p>{{ locale.WEBSITE_WITHOUT_RESTARTING }}</p>
 	</div>
 </div>
 </div>

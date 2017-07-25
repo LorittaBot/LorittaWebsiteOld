@@ -1,0 +1,64 @@
+{% extends "server_config.html" %}
+{% block configName %}Event Log{% endblock %}
+{% block configContent %}
+
+{% set config = serverConfig.eventLogConfig %}
+<form method="post">
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">Ativar o módulo?</p>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+		<div class="switch">
+		  <input type="checkbox" name="isEnabled" value="true" {% if config.isEnabled == true %}checked{% endif %} id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+		  <label for="cmn-toggle-1"></label>
+		</div>
+	</div>
+</div>
+<hr>
+<div id="hiddenIfDisabled">
+    <div class="flavourText">Canal para anunciar as ações realizadas</div>
+	<select name="eventLogChannelId">
+		{% for textChannel in currentServerJda.getTextChannels %}
+		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.eventLogChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endfor %}
+	  </select>
+	  <hr>
+    {% set idx = 2 %}
+    {% for option in options %}
+	<div class="pure-g" style="text-align: center;">
+		<div class="pure-u-1 pure-u-md-7-8">
+			<p class="toggleMainText">{{ option.getDescription }}</p>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-8">
+			<div class="switch">
+			  <input type="checkbox" name="{{ option.getId }}" value="true" {% if option.result == true %}checked{% endif %} id="cmn-toggle-{{ idx }}" class="cmn-toggle cmn-toggle-round" type="checkbox">
+			  <label for="cmn-toggle-{{ idx }}"></label>
+			  {% set idx = idx + 1 %}
+			</div>
+		</div>
+	</div>
+	<hr>
+	{% endfor %}
+</div>
+<input class="button-success pure-button" type="submit" value="Salvar">
+</form>
+<script>
+$("#cmn-toggle-1").click(function(e) {
+	applyBlur()
+});
+
+function applyBlur() {
+  var e = $("#hiddenIfDisabled");
+  if ($('#cmn-toggle-1').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+applyBlur();
+</script>
+{% endblock %}

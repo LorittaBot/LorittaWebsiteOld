@@ -20,8 +20,10 @@
 <div class="flavourText">Roles para serem dadas ao entrar</div>
 <select name="chooseRole" id="chooseRole">
 	{% for role in currentServerJda.getRoles %}
+	{% if role.isPublic() == false %}
 	{% if currentServerJda.getSelfMember().canInteract(role) == true %}
 	<option value="{{ role.getId }}">{{ role.getName }}</option>
+	{% endif %}
 	{% endif %}
 	{% endfor %}
 </select>

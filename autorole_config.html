@@ -21,8 +21,10 @@
 <select name="chooseRole" id="chooseRole">
 	{% for role in currentServerJda.getRoles %}
 	{% if role.isPublicRole() == false %}
+	{% if role.isManaged() == false %}
 	{% if currentServerJda.getSelfMember().canInteract(role) == true %}
 	<option value="{{ role.getId }}">{{ role.getName }}</option>
+	{% endif %}
 	{% endif %}
 	{% endif %}
 	{% endfor %}

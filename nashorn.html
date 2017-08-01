@@ -30,9 +30,32 @@ Nenhum comando!
   <input type="text" name="commandName" placeholder="regras">
   <br>
   Código:<br>
-  <textarea rows="4" cols="50" name="commandResponse" placeholder='responder("Loritta 😘");'></textarea>
+<pre id="editor">responder("Loritta 😘");</pre>
+<input type="hidden" id="commandResponse" name="commandResponse" value='responder("Loritta 😘");'>
   <br><br>
   <input type="submit" value="Criar novo comando">
+  
+<style>
+    #editor {
+        position: relative !important;
+        border: 1px solid lightgray;
+        margin: auto;
+        height: 300px;
+        width: 100%;
+    }
+	</style>
+	
+<script src="{{ websiteUrl }}assets/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+
+    var input = $('#editor');
+        editor.getSession().on("change", function () {
+		document.getElementById("commandResponse").value = editor.getSession().getValue();
+    });  
+</script>
 </form> 
 <h2>API da Loritta</h2>
 <p>A Loritta tem uma API básica para você poder criar seus próprios comandos!</p>

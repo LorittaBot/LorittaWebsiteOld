@@ -95,6 +95,67 @@ Configuração
 	</div>
 </div>
 <hr>
+{# Canais bloqueados #}
+<div class="flavourText">Canais em que não podem ser usados comandos</div>
+<div class="toggleSubText">Nestes canais eu irei simplesmente ignorar comandos, como se eu nem estivesse lá! (mesmo que eu esteja observando suas mensagens para dar XP 👀)</div>
+<select name="chooseRole" id="chooseRole">
+	{% for channel in currentServerJda.getTextChannels() %}
+	<option value="{{ channel.getId }}">{{ channel.getName }}</option>
+	{% endfor %}
+</select>
+<button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
+<div class="toggleSubText">Clique em um canal de texto na lista abaixo para remover ela!</div>
+<table id="musicTable">
+  {% for channel in config.blacklistedChannels %}
+  {% set jdaChannel = currentServerJda.getTextChannelById(channel) %}
+  <tr>
+    <td data-internalid="{{ channel }}" onclick="DL1(this)">{{ jdaChannel.getName() }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<input type="hidden" id="blacklistedChannels" name="blacklistedChannels" value="{{ blacklistedChannels }}">
+<script>
+function addLink() {
+  var e = $("#chooseRole");
+  var value = e.val();
+  
+  var table = document.getElementById("musicTable");
+  
+  var row = table.insertRow(-1)
+  
+  var cell = row.insertCell(-1)
+  cell.textContent = e.find(":selected").text();
+  
+  cell.setAttribute("onclick", "DL1(this)");
+  cell.setAttribute("data-internalid", value);
+  joinToSeparators();
+}
+
+function joinToSeparators() {
+var e = $("#blacklistedChannels");
+
+var text = "";
+$('#musicTable tr').each(function(){
+    $(this).find('td').each(function(){
+        //do your stuff, you can use $(this) to get current cell
+		if (text == "") {
+			text += $(this).attr("data-internalid")
+		} else {
+			text += ";" + $(this).attr("data-internalid")
+		}
+    })
+})
+
+e.val(text);
+}
+
+function DL1(elem){
+	elem.parentNode.removeChild(elem);
+
+	joinToSeparators();
+}
+</script>
+<hr>
 <input type="hidden" name="commandMagic" value="true">
 <input class="button-success pure-button" type="submit" value="Salvar">
 </form>

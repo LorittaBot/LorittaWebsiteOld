@@ -52,7 +52,7 @@
 <div class="commandInfoWrapper">
 {% set disabled = disabledCmds contains cmd %}
 <input type="checkbox" name="{{ cmd.getClass.getSimpleName }}" value="true" {% if disabled == false %}checked{% endif %}> {{ serverConfig.commandPrefix }}{{ cmd.getLabel }}</br>
-<hr class="commandInfoHr">
+<hr>
 {{ cmd.getDescription }}</br>
 <div style="text-align: center;">
 <a href="#{{ cmd.getClass.getSimpleName }}Options"><button type="button" class="button-secondary pure-button"><i class="fa fa-cogs" aria-hidden="true"></i></button></a>

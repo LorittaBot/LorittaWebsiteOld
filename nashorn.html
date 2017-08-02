@@ -2,9 +2,6 @@
 {% block configName %}Comandos em JavaScript{% endblock %}
 {% block configContent %}
 <div style="text-align: center;">
-<h1>Experimental</h1>
-<h2>Atualmente isto é um módulo experimental, use por conta e risco!</h2>
-<h3>O módulo de comandos personalizados está em fase de testes, pode ser que seja removido no futuro!</h3>
 <p>Querendo criar alguns comandos "avançados" demais para o sistema básico de comandos? Sem problemas! Você pode criar seus próprios comandos usando JavaScript!</p>
 </div>
 <h1>Lista de comandos atuais</h1>
@@ -18,63 +15,11 @@ Nenhum comando!
 		<div class="toggleSubText">{{ cmd.createdDate }}</div>
 	</div>
     <div class="pure-u-1 pure-u-md-1-8">
-	    <form style="display: inline;"><input type="hidden" name="editCommand" value="{{ cmd.getId }}"><button type="submit" class="button-secondary pure-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></form><form style="display: inline;"><input type="hidden" name="deleteCommand" value="{{ cmd.getId }}"><button type="submit" class="button-secondary pure-button"><i class="fa fa-times" aria-hidden="true"></i></button></form>
+	    <a href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}/nashorn/editor/{{ cmd.getId.toString }}"><button type="button" class="button-secondary pure-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a><form style="display: inline;"><input type="hidden" name="deleteCommand" value="{{ cmd.getId }}"><button type="submit" class="button-secondary pure-button"><i class="fa fa-times" aria-hidden="true"></i></button></form>
 	</div>
 </div>
 <hr>
 {% endfor %}
 {% endif %}
-<h2>Criar o seu novo comando!</h2>
-<form method="post">
-  Nome do comando:
-  <input type="text" name="commandName" placeholder="regras">
-  <br>
-  Código:<br>
-<pre id="editor">responder("Loritta 😘");</pre>
-<input type="hidden" id="commandResponse" name="commandResponse" value='responder("Loritta 😘");'>
-  <br><br>
-  <input type="submit" value="Criar novo comando">
-  
-<style>
-    #editor {
-        position: relative !important;
-        border: 1px solid lightgray;
-        margin: auto;
-        height: 300px;
-        width: 100%;
-    }
-	</style>
-	
-<script src="{{ websiteUrl }}assets/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.session.setMode("ace/mode/javascript");
-
-    var input = $('#editor');
-        editor.getSession().on("change", function () {
-		document.getElementById("commandResponse").value = editor.getSession().getValue();
-    });  
-</script>
-</form> 
-<h2>API da Loritta</h2>
-<p>A Loritta tem uma API básica para você poder criar seus próprios comandos!</p>
-<hr class="commandInfoHr">
-<div class="insideContent" style="text-align: left; font-size: 1.25em; font-weight: bold;">
-responder(texto) <span style="color: gray; font-weight: initial;">Envia uma mensagem "@Usuário texto"</span></div>
-<hr class="commandInfoHr">
-<div class="insideContent" style="text-align: left; font-size: 1.25em; font-weight: bold;">
-enviarMensagem(texto) <span style="color: gray; font-weight: initial;">Envia uma mensagem "texto"</span></div>
-<hr class="commandInfoHr">
-<div class="insideContent" style="text-align: left; font-size: 1.25em; font-weight: bold;">
-loritta() <span style="color: gray; font-weight: initial;">Retorna "Loritta!"</span></div>
-<hr class="commandInfoHr">
-<div class="insideContent" style="text-align: left; font-size: 1.25em; font-weight: bold;">
-pegarConteúdoDeUmaURL(url) <span style="color: gray; font-weight: initial;">Retorna o conteúdo de uma URL</span></div>
-<hr class="commandInfoHr">
-<div class="insideContent" style="text-align: left; font-size: 1.25em; font-weight: bold;">
-pegarArgumento(index) <span style="color: gray; font-weight: initial;">Pega o argumento na index selecionada</span></div>
-<hr class="commandInfoHr">
-<div class="insideContent" style="text-align: left; font-size: 1.25em; font-weight: bold;">
-argumento(index, texto) <span style="color: gray; font-weight: initial;">Retorna se o argumento na index selecionada é igual ao texto</span></div>
+<a class="button-success pure-button" href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}/nashorn/editor"><i class="fa fa-plus-circle" aria-hidden="true"></i> Criar novo comando</a>
 {% endblock %}

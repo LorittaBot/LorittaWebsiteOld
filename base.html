@@ -39,7 +39,7 @@
   ga('send', 'pageview');
 
 </script>
-{# <img class="animated fadeIn" src="{{ websiteUrl }}assets/img/katy_angel_webpage.png"></img> #}
+{% block body %}
 <div id="header" style="z-index: -9;">
 <div id="katyImage" class="animated slideInUp" style="line-height: 0;">
 <img src="{{ websiteUrl }}assets/img/katy_angel_webpage.png"></img>
@@ -116,4 +116,5 @@ function myFunction() {
         }, 60);
     })
 </script>
+{% endblock %}
 </body>

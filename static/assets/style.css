@@ -636,5 +636,4 @@ input.cmn-toggle-round:checked + label:after {
 input[type="text" i] {
     text-align: left;
     padding: 8px;
-    font-size: 5px;
 }

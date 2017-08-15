@@ -56,6 +56,25 @@
 <hr>
 	<div class="pure-g" style="text-align: center;">
 		<div class="pure-u-1 pure-u-md-7-8">
+			<p class="toggleMainText">Avisar músicas tocando em um canal de texto</p>
+			<div class="toggleSubText">Se você quiser avisar a música que está tocando em um canal, ative esta opção!</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-8">
+			<div class="switch">
+			  <input type="checkbox" name="logToChannel" value="true" {% if serverConfig.musicConfig.logToChannel == true %}checked{% endif %} id="cmn-toggle-5" class="cmn-toggle cmn-toggle-round" type="checkbox">
+			  <label for="cmn-toggle-5"></label>
+			</div>
+		</div>
+	</div>
+<hr>
+<div class="flavourText">Avisar músicas tocando no canal</div>
+	<select name="channelId">
+		{% for textChannel in currentServerJda.getTextChannels %}
+		<option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.musicConfig.channelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endfor %}
+    </select>
+	<div class="pure-g" style="text-align: center;">
+		<div class="pure-u-1 pure-u-md-7-8">
 			<p class="toggleMainText">Ativar playlist da DJ Loritta</p>
 			<div class="toggleSubText">Caso ninguém esteja pedindo músicas, a Loritta irá automaticamente tocar músicas pré-programadas. Caso alguém quiser tocar uma música, ela irá automaticamente parar as músicas dela.</div>
 		</div>

@@ -104,7 +104,7 @@ Configuração
 	{% endfor %}
 </select>
 <button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
-<div class="toggleSubText">Clique em um canal de texto na lista abaixo para remover ela!</div>
+<div class="toggleSubText">Clique em um canal de texto na lista abaixo para remover ele!</div>
 <table id="musicTable">
   {% for channel in config.blacklistedChannels %}
   {% set jdaChannel = currentServerJda.getTextChannelById(channel) %}

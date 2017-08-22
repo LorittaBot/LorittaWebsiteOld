@@ -75,22 +75,12 @@ body {
 
 .button_normal {
     border: 0px none;
-    background: #009CFF none repeat scroll 0% 0%;
+    background: fuchsia;
     border-radius: 4px;
-    box-shadow: 0px 5px 0px #006899;
+    box-shadow: 0px 5px 0px #bb009b;
     color: #FFF;
     cursor: pointer;
-    font-family: inherit;
-    font-style: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    font-size-adjust: inherit;
-    font-stretch: inherit;
-    font-feature-settings: inherit;
-    font-language-override: inherit;
-    font-kerning: inherit;
-    font-synthesis: inherit;
-    font-variant: inherit;
+    font-family: Oswald;
     margin: 3px;
     outline: 0px none;
     padding: 4px 12px;
@@ -293,15 +283,19 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
     display: inline-block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 15px 16px;
     text-decoration: none;
     font-size: 17px;
-	transition: background 0.5s linear;
+    transition: all 250ms cubic-bezier(0.29, 0.35, 0.39, 0.9);
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
     background-color: rgb(108, 130, 204);
+    font-size: 17px;
+    letter-spacing: 1.2px;
+    padding: 15px 20px;
+    font-weight: bold;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -638,4 +632,8 @@ input.cmn-toggle-round:checked + label:before {
 }
 input.cmn-toggle-round:checked + label:after {
   margin-left: 22px;
+}
+input[type="text" i] {
+    text-align: left;
+    padding: 8px;
 }

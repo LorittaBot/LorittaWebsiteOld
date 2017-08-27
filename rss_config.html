@@ -4,68 +4,25 @@
 
 {% set config = serverConfig.rssFeedConfig %}
 <form method="post">
+<h1>Lista de RSS feeds atuais</h1>
+{% if serverConfig.rssFeedConfig.feeds|length == 0 %}
+Nenhuma feed RSS!
+{% else %}
+{% set idx = 0 %}
+{% for feed in serverConfig.rssFeedConfig.feeds %}
 <div class="pure-g" style="text-align: center;">
     <div class="pure-u-1 pure-u-md-7-8">
-		<p class="toggleMainText">Ativar o módulo?</p>
+		<p class="toggleMainText">{{ feed.feedUrl }}</p>
+		<div class="toggleSubText">#{{ feed.repostToChannelId }}</div>
 	</div>
     <div class="pure-u-1 pure-u-md-1-8">
-		<div class="switch">
-		  <input type="checkbox" name="enableModule" value="true" {% if config.isEnabled == true %}checked{% endif %} id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
-		  <label for="cmn-toggle-1"></label>
-		</div>
+	    <a href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}/rss/editor/{{ idx }}"><button type="button" class="button-secondary pure-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a><form style="display: inline;"><input type="hidden" name="deleteCommand" value="{{ idx }}"><button type="submit" class="button-secondary pure-button"><i class="fa fa-times" aria-hidden="true"></i></button></form>
 	</div>
 </div>
+{% set idx = idx + 1 %}
+{% endfor %}
+{% endif %}
 <hr>
-<div id="hiddenIfDisabled">
-    <div class="flavourText">URL da Feed</div>
-    <input type="text" name="feedUrl" value="{{ feedInfo.feedUrl }}">
-	<hr>
-	<div class="flavourText">Canal para anunciar quando houver novidades</div>
-	<select name="repostToChannelId">
-		{% for textChannel in currentServerJda.getTextChannels %}
-		<option value="{{ textChannel.getId }}" {% if textChannel.getId == feedInfo.repostToChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
-		{% endfor %}
-	  </select>
-	<hr>
-	<div class="flavourText">Mensagem para anunciar quando houver novidades</div>
-	<textarea id="newMessage" name="newMessage">{{ feedInfo.newMessage }}</textarea>
-	<hr>
-	<div class="flavourText">Varíaveis</div>
-	<pre class="discordPre">
-Variáveis genéricas:
-{título} - Título da notícia
-{descrição} - Descrição da notícia
-{link} - Link para a postagem
-
-Variáveis específicas para esta feed:
-{{ templateTags }}
-</pre>
-</div>
-<hr>
-<input class="button-success pure-button" type="submit" value="Salvar">
+<a class="button-success pure-button" href="{{ websiteUrl }}config/servidor/{{ serverConfig.guildId }}/rss/editor"><i class="fa fa-plus-circle" aria-hidden="true"></i> Criar novo RSS Feed tracker</a>
 </form>
-<form>
-<input type="hidden" name="testAction" value="true">
-<input class="button-success pure-button" type="submit" value="Testar Feed RSS">
-</form>
-<script>
-$("#cmn-toggle-1").click(function(e) {
-	applyBlur()
-});
-
-function applyBlur() {
-  var e = $("#hiddenIfDisabled");
-  if ($('#cmn-toggle-1').is(':checked')) {
-	e.removeClass();
-	e.addClass("noBlur");
-  } else {
-    e.removeClass();
-	e.addClass("blurSection");
-  }
-}
-
-applyBlur();
-
-autosize(document.querySelector('#newMessage'));
-</script>
 {% endblock %}

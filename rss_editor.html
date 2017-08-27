@@ -1,0 +1,40 @@
+{% extends "server_config.html" %}
+{% block configName %}RSS/Atom Feeds{% endblock %}
+{% block configContent %}
+
+{% set config = serverConfig.rssFeedConfig %}
+<form method="post">
+    <div class="flavourText">URL da Feed</div>
+    <input type="text" name="feedUrl" value="{{ feedInfo.feedUrl }}">
+	<hr>
+	<div class="flavourText">Canal para anunciar quando houver novidades</div>
+	<select name="repostToChannelId">
+		{% for textChannel in currentServerJda.getTextChannels %}
+		<option value="{{ textChannel.getId }}" {% if textChannel.getId == feedInfo.repostToChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endfor %}
+	  </select>
+	<hr>
+	<div class="flavourText">Mensagem para anunciar quando houver novidades</div>
+	<textarea id="newMessage" name="newMessage">{{ feedInfo.newMessage }}</textarea>
+	<hr>
+	<div class="flavourText">Varíaveis</div>
+	<pre class="discordPre">
+Variáveis genéricas:
+{título} - Título da notícia
+{descrição} - Descrição da notícia
+{link} - Link para a postagem
+
+Variáveis específicas para esta feed:
+{{ templateTags }}
+</pre>
+<hr>
+<input class="button-success pure-button" type="submit" value="Salvar">
+</form>
+<form>
+<input type="hidden" name="testAction" value="true">
+<input class="button-success pure-button" type="submit" value="Testar Feed RSS">
+</form>
+<script>
+autosize(document.querySelector('#newMessage'));
+</script>
+{% endblock %}

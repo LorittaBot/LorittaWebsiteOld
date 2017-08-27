@@ -637,3 +637,28 @@ input[type="text" i] {
     text-align: left;
     padding: 8px;
 }
+
+/* ===[ HEADER LINE ]=== */
+.headerLine {
+    overflow: hidden;
+    text-align: center;
+	line-height: 2em;
+}
+.headerLine:before,
+.headerLine:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+.headerLine:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+.headerLine:after {
+    left: 0.5em;
+    margin-right: -50%;
+}

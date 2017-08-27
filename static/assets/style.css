@@ -260,7 +260,7 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
 	text-transform: uppercase;
 	color: white;
 	text-shadow: 0 1px #818181;
-	border-radius: 7px;
+	border-radius: 7px 7px 0px 0px;
 	font-size: 1.5em;
 	line-height: 1.5em;
 }
@@ -661,4 +661,18 @@ input[type="text" i] {
 .headerLine:after {
     left: 0.5em;
     margin-right: -50%;
+}
+
+img#money {
+	animation: money 2s linear infinite;
+}
+
+@-webkit-keyframes money {
+	0% {
+		transform: rotate(0deg);
+	}
+	
+	100% {
+		transform: rotate(360deg);
+	}
 }

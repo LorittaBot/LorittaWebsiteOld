@@ -1,11 +1,21 @@
 {% extends "home.html" %}
 {% block leftColumn %}
+<style>
+img#im-lost-inside { animation: owo 2s infinite ease-in-out;}
+
+@keyframes owo {
+  0%   {transform: translate3d(-100px,0,0) scale3d(-1,1,1);}
+  50%  {transform: translate3d(150px,0%,100px) scale3d(1,1,0);}
+  100% {transform: translate3d(-100px,0,0) scale3d(-1,1,1);}
+}
+</style>
 <div class="content">
 <div class="smTitleBar">
 Mas cadê essa página?
 </div>
 <div class="insideContent">
-<img src="http://vignette2.wikia.nocookie.net/parappatherapper/images/c/ca/Line_Sticker_Sunny_20.png/revision/latest?cb=20160625144855"></img>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/nPF7voj2Qgo?autoplay=1" frameborder="0" allowfullscreen=""></iframe>
+<img id="im-lost-inside" src="http://vignette2.wikia.nocookie.net/parappatherapper/images/c/ca/Line_Sticker_Sunny_20.png/revision/latest?cb=20160625144855"></img>
 <h1>Página não encontrada!</h1>
 <h2>Desculpe... :(</h2>
 </div>

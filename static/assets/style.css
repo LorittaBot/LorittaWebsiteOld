@@ -1,7 +1,14 @@
+@font-face {
+    font-family: "NotoColorEmoji";
+    src: url("fonts/NotoColorEmoji.ttf") format("truetype");
+}
+
+p {
+   font-family: arial,"NotoColorEmoji";
+}
 html {
 	background-color: white;
 }
-
 body {
 	z-index: 0;
 	position: relative;

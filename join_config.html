@@ -68,7 +68,9 @@
 	<div class="flavourText">Canal para anunciar quando alguém entrar</div>
 	<select name="canalJoin">
 		{% for textChannel in currentServerJda.getTextChannels %}
+		{% if textChannel.canTalk %}
 		<option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.joinLeaveConfig.canalJoinId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endif %}
 		{% endfor %}
 	  </select>
 	<hr>
@@ -76,7 +78,9 @@
 	<div class="flavourText">Canal para anunciar quando alguém sair</div>
 	<select name="canalLeave">
 	  {% for textChannel in currentServerJda.getTextChannels %}
+	  {% if textChannel.canTalk %}
 	  <option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.joinLeaveConfig.canalLeaveId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+	  {% endif %}
 	  {% endfor %}
 	</select>
 	<hr>

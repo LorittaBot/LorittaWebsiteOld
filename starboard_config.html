@@ -19,7 +19,9 @@
 <div class="flavourText">Canal para anunciar as mensagens que receberam <i class="fa fa-star" aria-hidden="true"></i></div>
 	<select name="starboardId">
 		{% for textChannel in currentServerJda.getTextChannels %}
+		{% if textChannel.canTalk %}
 		<option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.starboardConfig.starboardId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endif %}
 		{% endfor %}
 	</select>
 <hr>

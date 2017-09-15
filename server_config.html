@@ -81,6 +81,20 @@ Configuração
 	</div>
 </div>
 <hr>
+{# Deletar Mensagem #}
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">Deletar mensagem ao executar um comando.</p>
+		<div class="toggleSubText">Ao executar um comando, eu irei remover a mensagem.</div>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+		<div class="switch">
+		  <input type="checkbox" name="deleteMessageAfterCommand" value="true" {% if serverConfig.deleteMessageAfterCommand == true %}checked{% endif %} id="cmn-toggle-5" class="cmn-toggle cmn-toggle-round" type="checkbox">
+		  <label for="cmn-toggle-5"></label>
+		</div>
+	</div>
+</div>
+<hr>
 {# Avisar #}
 <div class="pure-g" style="text-align: center;">
     <div class="pure-u-1 pure-u-md-7-8">

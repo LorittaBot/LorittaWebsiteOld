@@ -20,7 +20,9 @@
     <div class="flavourText">Canal para anunciar as ações realizadas</div>
 	<select name="eventLogChannelId">
 		{% for textChannel in currentServerJda.getTextChannels %}
+		{% if textChannel.canTalk %}
 		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.eventLogChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endif %}
 		{% endfor %}
 	  </select>
 	  <hr>

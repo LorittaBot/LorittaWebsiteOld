@@ -10,7 +10,9 @@
 	<div class="flavourText">Canal para anunciar quando houver novidades</div>
 	<select name="repostToChannelId">
 		{% for textChannel in currentServerJda.getTextChannels %}
+		{% if textChannel.canTalk %}
 		<option value="{{ textChannel.getId }}" {% if textChannel.getId == feedInfo.repostToChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endif %}
 		{% endfor %}
 	  </select>
 	<hr>

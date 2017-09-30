@@ -1,0 +1,43 @@
+<head>
+<title>owo</title>
+</head>
+<body>
+<style>
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+text-align: center;
+font-size: 3em;
+color: white;
+text-shadow: 2px 2px 2px #000000;
+font-family: 'Pacifico', cursive;
+line-height: 1em;
+}
+
+html { 
+  background: url({{ websiteUrl }}assets/img/shantae_bg.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+<div class="centered">
+<img src="{{ websiteUrl }}assets/img/te_moido.png"></img>
+<link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<p>i luv u <3 believe in your dreams!</p>
+
+ <audio autoplay id="audioPlayer">
+  <source src="{{ websiteUrl }}assets/atrie - Between Calmness And Passion.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio> 
+
+<script>
+var vid = document.getElementById("audioPlayer");
+vid.volume = 0.2; 
+</script>
+</div>
+</body>

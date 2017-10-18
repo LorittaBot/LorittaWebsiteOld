@@ -13,15 +13,16 @@
 Canal para anunciar quando receber algum novo post:
 <select name="repostToChannelId">
     {% for textChannel in currentServerJda.getTextChannels %}
-    <option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.aminoConfig.repostToChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+    <option value="{{ textChannel.getId }}">{{ textChannel.getName }}</option>
 	{% endfor %}
   </select>
 </br>
-Convite para a sua comunidade (Sim, é necessário! A Loritta precisa entrar na sua comunidade para pegar os novos posts!): <input type="text" name="inviteUrl" value="{{ serverConfig.aminoConfig.inviteUrl }}">
+Convite para a sua comunidade (Sim, é necessário! A Loritta precisa entrar na sua comunidade para pegar os novos posts!): <input type="text" name="inviteUrl">
 </br>
-ID da Comunidade (Não edite isto!) <input type="text" value="{{ serverConfig.aminoConfig.communityId }}">
+ID da Comunidade (Não edite isto!) <input type="text">
 </br>
 <input type="submit" data-inline="true" value="Salvar">
 </form>
+Somente no novo painel de administração: <a href="https://beta.loritta.website/dashboard">https://beta.loritta.website/dashboard</a>
 
 {% endblock %}

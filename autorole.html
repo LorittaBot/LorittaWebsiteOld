@@ -1,0 +1,96 @@
+{% extends 'configure_server.html' %}
+{% block rightSidebarContents %}
+{% set config = serverConfig.autoroleConfig %}
+<div class="category-name">
+Autorole
+</div>
+{{ generateCheckbox(1, "isEnabled", DASHBOARD_ACTIVATE_MODULE, "", serverConfig.autoroleConfig.isEnabled, true) }}
+<hr>
+<div id="hiddenIfDisabled">
+<div class="flavourText">{{ WEBSITE_AUTOROLE_GIVE_ROLE_UPON_JOIN }}</div>
+<div class="toggleSubText">{{ WEBSITE_AUTOROLE_ROLE_ATTENTION }}</div>
+<select name="chooseRole" id="chooseRole">
+	{% for role in guild.getRoles %}
+	{% if role.isPublicRole() == false %}
+	{% if role.isManaged() == false %}
+	{% if guild.getSelfMember().canInteract(role) == true %}
+	<option value="{{ role.getId }}">{{ role.getName }}</option>
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+</select>
+<button type="button" onclick="addLink2()" class="button-success pure-button">{{ WEBSITE_ADD_IT }}</button>
+<div class="toggleSubText">{{ WEBSITE_AUTOROLE_CLICK_TO_REMOVE_ROLE }}</div>
+<table id="musicTable">
+  {% for role in config.roles %}
+  {% set jdaRole = guild.getRoleById(role) %}
+  <tr>
+    <td data-internalid="{{ role }}" onclick="DL2(this)">{{ jdaRole.getName() }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<input type="hidden" id="autoroles" data-send-on-save="true" data-convert-to-list="true" data-internal-name="roles" value="{{ currentAutoroles }}">
+</div>
+<hr>
+<script>
+$("#cmn-toggle-1").click(function(e) {
+	applyBlur()
+});
+
+function applyBlur() {
+  var e = $("#hiddenIfDisabled");
+  if ($('#cmn-toggle-1').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+function addLink2() {
+  var e = $("#chooseRole");
+  var value = e.val();
+  
+  var table = document.getElementById("musicTable");
+  
+  var row = table.insertRow(-1)
+  
+  var cell = row.insertCell(-1)
+  cell.textContent = e.find(":selected").text();
+  
+  cell.setAttribute("onclick", "DL1(this)");
+  cell.setAttribute("data-internalid", value);
+  joinToSeparators2();
+}
+
+function joinToSeparators2() {
+var e = $("#autoroles");
+
+var text = "";
+$('#musicTable tr').each(function(){
+    $(this).find('td').each(function(){
+        //do your stuff, you can use $(this) to get current cell
+		if (text == "") {
+			text += $(this).attr("data-internalid")
+		} else {
+			text += ";" + $(this).attr("data-internalid")
+		}
+    })
+})
+
+e.val(text);
+}
+
+function DL2(elem){
+	elem.parentNode.removeChild(elem);
+
+	joinToSeparators2();
+}
+
+applyBlur();
+</script>
+<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<br style="clear: both" /> <!-- So dirty! -->
+{% endblock %}

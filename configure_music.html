@@ -1,0 +1,72 @@
+{% extends 'configure_server.html' %}
+{% block rightSidebarContents %}
+{% set config = serverConfig.musicConfig %}
+<div class="category-name">
+DJ Loritta
+</div>
+{{ generateCheckbox(1, "isEnabled", DASHBOARD_ACTIVATE_MODULE, "", config.isEnabled, true) }}
+<hr>
+<div id="hiddenIfDisabled">
+<div class="flavourText">Canal para eu soltar uns batidões</div>
+	<select data-send-on-save="true" data-internal-name="musicGuildId">
+		{% for voiceChannel in guild.getVoiceChannels %}
+		<option value="{{ voiceChannel.getId }}" {% if voiceChannel.getId == config.musicGuildId %}selected="selected"{% endif %}>{{ voiceChannel.getName }}</option>
+		{% endfor %}
+    </select>
+<hr>
+{{ generateCheckbox(2, "hasMaxSecondRestriction", "Limitar músicas grandes", "Para evitar usuários colocando músicas grande demais na Loritta e atrapalhando outros usuários que querem ouvir outras músicas.", config.hasMaxSecondRestriction, true) }}
+<hr>
+	<div id="hiddenIfDisabledSeconds">
+		<p class="toggleMainText">Máxima duração para uma música (em segundos)</p>
+		<input data-send-on-save="true" data-internal-name="maxSeconds" type="number" value="{{ config.maxSeconds }}" min="0" step="1"/>
+	</div>
+<hr>
+{{ generateCheckbox(3, "allowPlaylists", "Permitir playlists do YouTube", "Se alguém colocar uma playlist do YouTube, ela irá adicionar todas as músicas da playlist na fila, caso contrário ela só irá adicionar a primeira música da playlist.", config.allowPlaylists, true) }}
+<hr>
+{{ generateCheckbox(4, "logToChannel", "Avisar músicas tocando em um canal de texto", "Se você quiser avisar a música que está tocando em um canal, ative esta opção!", config.logToChannel, true) }}
+<hr>
+<div class="flavourText">Avisar músicas tocando no canal</div>
+	<select data-send-on-save="true" data-internal-name="channelId">
+		{% for textChannel in guild.getTextChannels %}
+		{% if textChannel.canTalk %}
+		<option value="{{ textChannel.getId }}" {% if textChannel.getId == serverConfig.musicConfig.channelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endif %}
+		{% endfor %}
+    </select>
+<hr>
+{{ generateCheckbox(5, "autoPlayWhenEmpty", "Ativar playlist da DJ Loritta", "Caso ninguém esteja pedindo músicas, a Loritta irá automaticamente tocar músicas pré-programadas. Caso alguém quiser tocar uma música, ela irá automaticamente parar as músicas dela.", config.autoPlayWhenEmpty, true) }}
+<hr>
+<div class="flavourText">Músicas na playlist da DJ Loritta</div>
+<input type="text" id="musicLink" placeholder="Link para a música"> <button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
+<div class="toggleSubText">Clique em um link da playlist para remover ela.</div>
+<table id="musicTable">
+  {% for url in config.urls %}
+  <tr>
+    <td onclick="DL1(this)">{{ url }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<input type="hidden" data-send-on-save="true" data-convert-to-list="true" data-internal-name="urls" value="{{ playlist }}">
+</div>
+<hr>
+<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<br style="clear: both" /> <!-- So dirty! -->
+<script>
+$("#cmn-toggle-1").click(function(e) {
+	applyBlur()
+});
+
+function applyBlur() {
+  var e = $("#hiddenIfDisabled");
+  if ($('#cmn-toggle-1').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+applyBlur();
+</script>
+{% endblock %}

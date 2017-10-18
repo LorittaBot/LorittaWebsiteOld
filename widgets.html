@@ -1,26 +1,15 @@
 <div class="content">
 <div class="smTitleBar">
-{{ locale.WEBSITE_PARTNERS }}
-</div>
-<div class="insideContent">
-<a href="https://mrpowergamerbr.com/"><img src="https://mrpowergamerbr.com/assets/img/mrpowergamerbr_banner.png"></img></a>
-{# <a href="http://sparklypower.net/"><img src="https://i.imgur.com/FJkmrCI.png"></img></a> #}
-<a href="https://vespertine.mrpowergamerbr.com/"><img src="https://vespertine.mrpowergamerbr.com/assets/img/vespertine_banner.png"></img></a>
-</div>
-</div>
-
-<div class="content">
-<div class="smTitleBar">
-{{ locale.WEBSITE_MYSERVER }}
+{{ WEBSITE_MYSERVER }}
 </div>
 <div class="insideContent" style="text-align: center;">
-<a href="https://discord.gg/V7Kbh4z"><img src="https://discordapp.com/api/guilds/297732013006389252/embed.png?style=banner2&t={{ epochMillis }}"></img></a>
+<a href="https://discord.gg/3rXgN8x"><img src="https://discordapp.com/api/guilds/297732013006389252/embed.png?style=banner2&t=0"></img></a>
 </div>
 </div>
-
+{#
 <div class="content">
 <div class="smTitleBar">
-{{ locale.WEBSITE_SERVERFANCLUB }}
+{{ WEBSITE_SERVERFANCLUB }}
 </div>
 <div class="insideContent">
 <div class="pure-g" style="text-align: center;">
@@ -35,14 +24,14 @@
 
 <div class="content">
 <div class="smTitleBar">
-{{ locale.WEBSITE_STATISTICS }}
+{{ WEBSITE_STATISTICS }}
 </div>
 <div class="insideContent">
 <div class="pure-g" style="text-align: center;">
     <div class="pure-u-1 pure-u-md-1-2">
 		<i style="font-size: 5em;" class="fa fa-server" aria-hidden="true"></i>
-		<p><b>{{ totalServers }}{{ locale.WEBSITE_SERVERS }}</b></p>
-		<p>{{ locale.WEBSITE_USING_LORITTA }}</p>
+		<p><b>{{ totalServers }}{{ WEBSITE_SERVERS }}</b></p>
+		<p>{{ WEBSITE_USING_LORITTA }}</p>
 	</div>
     <div class="pure-u-1 pure-u-md-1-2">
 		<i style="font-size: 5em;" class="fa fa-users" aria-hidden="true"></i>
@@ -57,7 +46,8 @@
 </div>
 </div>
 </div>
-
+ #}
+ {#
 <div class="content">
 <div class="smTitleBar">
 Servidores mais Famosos
@@ -85,3 +75,4 @@ Servidores mais Famosos
 {% endfor %}
 </div>
 </div> 
+#}

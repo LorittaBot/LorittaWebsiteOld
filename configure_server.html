@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+{% block subtitle %}
+Painel de Controle
+{% endblock %}
+{% block afterNavbar %}
+{% macro generateCheckbox(index, internalName, mainText, subText, isEnabled, needsToBeSaved) %}
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">{{ mainText }}</p>
+		{% if subText|length > 0 %}<div class="toggleSubText">{{ subText }}</div>{% endif %}
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+		<div class="switch">
+		  <input type="checkbox" data-internal-name="{{ internalName }}" value="true" {% if needsToBeSaved == true %}data-send-on-save="true"{% endif %} {% if isEnabled == true %}checked{% endif %} id="cmn-toggle-{{ index }}" class="cmn-toggle cmn-toggle-round" type="checkbox">
+		  <label for="cmn-toggle-{{ index }}"></label>
+		</div>
+	</div>
+</div>
+{% endmacro %}
+
+<div style="height: 50.05px"></div>
+<div id="server-configuration">
+<div id="left-sidebar">
+<div id="left-sidebar-contents" style="margin-left: 48%; margin-right: 4%;">
+	<div class="server-name">
+	{{ guild.getName }}
+	</div>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}"><div class="item {% if saveType == "default" %}selected-item{% endif %}">
+	<i class="fa fa-cogs" aria-hidden="true"></i>  {{ DASHBOARD_CONFIG_OVERVIEW }}
+	</div></a>
+	{# <a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/commands"><div class="item">
+	Comandos
+	</div></a> #}
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/permissions"><div class="item {% if saveType == "permissions" %}selected-item{% endif %}">
+	<i class="fa fa-address-card" aria-hidden="true"></i> {{ DASHBOARD_PERMISSIONS }}
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/welcomer"><div class="item {% if saveType == "welcomer" %}selected-item{% endif %}">
+	<i class="fa fa-sign-in" aria-hidden="true"></i> {{ DASHBOARD_WELCOMER }}
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/autorole"><div class="item {% if saveType == "autorole" %}selected-item{% endif %}">
+	<i class="fa fa-briefcase"></i> Autorole
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/inviteblocker"><div class="item {% if saveType == "invite_blocker" %}selected-item{% endif %}">
+	<i class="fa fa-ban"></i> {{ DASHBOARD_INVITE_BLOCKER }}
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/music"><div class="item {% if saveType == "music" %}selected-item{% endif %}">
+	<i class="fa fa-music" aria-hidden="true"></i> DJ Loritta
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/youtube"><div class="item {% if saveType == "youtube" %}selected-item{% endif %}">
+	<i class="fa fa-youtube-play" aria-hidden="true"></i> YouTube
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/feeds"><div class="item {% if saveType == "feeds" %}selected-item{% endif %}">
+	<i class="fa fa-rss-square" aria-hidden="true"></i> RSS/Atom Feeds
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/eventlog"><div class="item {% if saveType == "event_log" %}selected-item{% endif %}">
+	<i class="fa fa-eye" aria-hidden="true"></i> Event Log
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/amino"><div class="item {% if saveType == "amino" %}selected-item{% endif %}">
+	<i class="fa fa-refresh" aria-hidden="true"></i> Amino & Loritta
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/nashorn"><div class="item {% if saveType == "nashorn_commands" %}selected-item{% endif %}">
+	<i class="fa fa-file-code-o" aria-hidden="true"></i> Comandos em JavaScript
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/starboard"><div class="item {% if saveType == "starboard" %}selected-item{% endif %}">
+	<i class="fa fa-star" aria-hidden="true"></i> Starboard
+	</div></a>
+</div>
+</div>
+<div id="right-sidebar">
+<div id="right-sidebar-contents" style="margin-left: 4%; margin-right: 19%;">
+{% block rightSidebarContents %}
+<div class="category-name">
+{{ DASHBOARD_CONFIG_OVERVIEW }}
+</div>
+<div class="userOptionsWrapper" style="background-color: #f8f9f9;">
+<div class="pure-g">
+	<div class="pure-u-1 pure-u-md-1-6">
+		<img style="border-radius: 99999px; height: 100px;" src="https://loritta.website/assets/img/loritta_discord_avatar.png">
+	</div>
+	<div class="pure-u-1 pure-u-md-2-3">
+		<div class="flavourText">{{ DASHBOARD_PREFIX }}</div>
+		<form method="post">
+			<input data-send-on-save="true" data-internal-name="commandPrefix" id="commandPrefix" value="{{ serverConfig.commandPrefix }}" type="text">
+			<div class="toggleSubText">{{ DASHBOARD_PREFIX_INFO }}</div>
+		</form>
+		{% set userIdentification = discordAuth.getUserIdentification %}
+		<div class="discord-message-helper">
+		<div class="discord-message" style="margin-bottom: 20px;">
+			<span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px;">
+			<span style="position: relative;">
+				<span class="discord-username">{{ userIdentification.getUsername }}</span>
+				<span class="discord-message-content"><span id="exampleMessagePrefix">{{ serverConfig.commandPrefix }}</span>ping</span>
+				<br style="clear: both" /> <!-- So dirty! -->
+			</span>
+		</div>
+		<hr>
+		<div class="discord-message" style="margin-top: 20px;">
+			<span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/297153970613387264/001d05d3ebc6bc305c9edf2d90f2e37d.png?size=256" style="height: 40px; border-radius: 99999px;">
+			<span style="position: relative;">
+				<span class="discord-username">Loritta</span>
+				<span class="discord-message-content">🏓 <b>Pong!</b> 43ms (🌎 Shard 0/4)</span>
+				<br style="clear: both" /> <!-- So dirty! -->
+			</span>
+		</div>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="user-option-bottom">
+<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<br style="clear: both" /> <!-- So dirty! -->
+</div>
+</div>
+{{ generateCheckbox(1, 
+"explainOnCommandRun", 
+DASHBOARD_EXPLAIN_ON_COMMAND_RUN, 
+DASHBOARD_EXPLAIN_ON_COMMAND_RUN_SUB, 
+serverConfig.explainOnCommandRun, 
+true) }}
+<hr>
+{{ generateCheckbox(2, 
+"mentionOnCommandOutput", 
+"mentionOnCommandOutput", 
+"mentionOnCommandOutput", 
+serverConfig.mentionOnCommandOutput, 
+true) }}
+<hr>
+{{ generateCheckbox(3, 
+"deleteMessageAfterCommand", 
+"deleteMessageAfterCommand", 
+"deleteMessageAfterCommand", 
+serverConfig.deleteMessageAfterCommand, 
+true) }}
+<hr>
+{{ generateCheckbox(4, 
+"warnOnMissingPermission", 
+"warnOnMissingPermission", 
+"warnOnMissingPermission", 
+serverConfig.warnOnMissingPermission, 
+true) }}
+<hr>
+{{ generateCheckbox(4, 
+"warnOnUnknownCommand", 
+"warnOnUnknownCommand", 
+"warnOnUnknownCommand", 
+serverConfig.warnOnUnknownCommand, 
+true) }}
+<hr>
+<div class="flavourText">Canais em que não podem ser usados comandos</div>
+<div class="toggleSubText">Nestes canais eu irei simplesmente ignorar comandos, como se eu nem estivesse lá (mesmo que eu esteja observando suas mensagens para dar XP 👀)</div>
+<select name="chooseRole" id="chooseRole">
+	{% for channel in guild.getTextChannels() %}
+	<option value="{{ channel.getId }}">{{ channel.getName }}</option>
+	{% endfor %}
+</select>
+<button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
+<div class="toggleSubText">Clique em um canal de texto na lista abaixo para remover ele!</div>
+<table id="musicTable">
+{% if serverConfig.blacklistedChannels|length > 0 %}
+  {% for channel in serverConfig.blacklistedChannels %}
+  {% set jdaChannel = guild.getTextChannelById(channel) %}
+  <tr>
+    <td data-internalid="{{ channel }}" onclick="DL1(this)">{{ jdaChannel.getName() }}</td>
+  </tr>
+  {% endfor %}
+  {% endif %}
+</table>
+<input type="hidden" id="blacklistedChannels" data-send-on-save="true" data-convert-to-list="true" data-internal-name="blacklistedChannels" value="{{ blacklistedChannels }}">
+{% endblock %}
+<script>
+function addLink() {
+  var e = $("#chooseRole");
+  var value = e.val();
+  
+  var table = document.getElementById("musicTable");
+  
+  var row = table.insertRow(-1)
+  
+  var cell = row.insertCell(-1)
+  cell.textContent = e.find(":selected").text();
+  
+  cell.setAttribute("onclick", "DL1(this)");
+  cell.setAttribute("data-internalid", value);
+  joinToSeparators();
+}
+
+function joinToSeparators() {
+var e = $("#blacklistedChannels");
+
+var text = "";
+$('#musicTable tr').each(function(){
+    $(this).find('td').each(function(){
+        //do your stuff, you can use $(this) to get current cell
+		if (text == "") {
+			text += $(this).attr("data-internalid")
+		} else {
+			text += ";" + $(this).attr("data-internalid")
+		}
+    })
+})
+
+e.val(text);
+}
+
+function DL1(elem){
+	elem.parentNode.removeChild(elem);
+
+	joinToSeparators();
+}
+</script>
+<hr>
+<!-- Loritta Teste -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="6236021665"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+</div>
+</div>
+<script>
+$('#commandPrefix').on('input', function() {
+    // do something
+	$("#exampleMessagePrefix").text($('#commandPrefix').val());
+});
+
+function prepareSave() {
+	var configAttr = {"type":"{{ saveType }}"}
+	
+	$('[data-send-on-save]').each(function( index ) {
+		var value = $(this).val();
+		if ($(this).attr("type") == "checkbox") {
+			value = $(this).is(':checked')
+		}
+		if ($(this).attr("type") == "number") {
+			value = parseInt(value)
+		}
+		
+		if ($(this).data("convert-to-list") == true) {
+			var list = []
+			if (value.length > 0) {
+				var str = value.split(";");
+				for (i in str) {
+					var element = str[i];
+					console.log("Adicionado " + element);
+					list.push(element);
+				}
+			}
+			value = list;
+		}
+		configAttr[$(this).data("internal-name")] = value
+	});
+	
+	console.log(configAttr);
+	
+	var json = JSON.stringify(configAttr);
+	
+	sendJsonToServer(json);
+}
+
+function sendJsonToServer(json) {
+	console.log("Sending...")
+	console.log(json);
+	
+	// construct an HTTP request
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "{{ websiteUrl }}dashboard/configure/{{ guild.getId }}/save", true);
+	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+	// send the collected data as JSON
+	xhr.send(json);
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == XMLHttpRequest.DONE) {
+			alert("Adicionado no servidor ~ " + xhr.responseText);
+		}
+	}
+}
+</script>	
+{% endblock %}

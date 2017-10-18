@@ -1,110 +1,153 @@
 <!DOCTYPE html>
-<html>
 <head>
-    {% set metaTitle = "Página inicial" %}
-    <title>{% block title %}{% block subtitle %}{{ locale.WEBSITE_DEFAULT_TITLE }}{% endblock %} • Loritta{% endblock %}</title>
-	<meta name="description" content="Olá, eu me chamo Loritta! Sou apenas um simples bot brasileiro para o Discord com várias funções divertidas!">
-	<meta name="author" content="MrPowerGamerBR">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:site_name" content="Website da Loritta">
-    <meta property="og:description" content="Olá, eu me chamo Loritta! Sou apenas um simples bot brasileiro para o Discord com várias funções divertidas!">
-    <meta property="og:title" content="Meu Website!">
-    <meta property="og:image" content="http://loritta.website/assets/img/loritta_guild_v4.png">
-    <meta property="og:ttl" content="600">
-    <meta property="og:image:width" content="320">
-    <meta property="twitter:site" content="loritta">
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="Página inicial">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=oLaGW5o4zrX">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=oLaGW5o4zrX">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=oLaGW5o4zrX">
-<link rel="manifest" href="/manifest.json?v=oLaGW5o4zrX">
-<link rel="mask-icon" href="/safari-pinned-tab.svg?v=oLaGW5o4zrX" color="#5bbad5">
-<link rel="shortcut icon" href="/favicon.ico?v=oLaGW5o4zrX">
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css">
-<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
-<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
-<link rel="stylesheet" type="text/css" href="{{ websiteUrl }}assets/style.css?v=1.5">
-<meta name="theme-color" content="#ffffff">
-<script
-			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+<title>{% block title %}{% block subtitle %}{{ WEBSITE_DEFAULT_TITLE }}{% endblock %} • Loritta{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 			  crossorigin="anonymous"></script>
-<script src="{{ websiteUrl }}assets/js/autosize.min.js"></script>
+<script async src="{{ websiteUrl }}assets/js/countUp.min.js"></script>
+<script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.6/dist/showdown.min.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9989170954243288",
-    enable_page_level_ads: true
-  });
-</script>
+<script async src="{{ websiteUrl }}assets/js/tingle.min.js"></script>
 </head>
-<body>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-53518408-9', 'auto');
-  ga('send', 'pageview');
-
-</script>
+<body class="light">
 {% block body %}
-<div id="header" style="z-index: -9;">
-<div id="katyImage" class="animated fadeInUp" style="line-height: 0;">
-<img src="{{ websiteUrl }}assets/img/katy_angel_webpage.png"></img>
+<div id="container">
+{% block container %}
+<div class="topnav navbar-fixed-top" id="myTopnav">
+<div class="topnavWrapper">
+<div class="topnavLeft">
+  <a style="font-family: 'Pacifico', cursive; text-transform: none;">Loritta</a>
+  <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> {{ WEBSITE_HOME }}</a>
+  <a id="themeChanger" onclick="changeTheme(this)"><i class="fa fa-moon-o" aria-hidden="true"></i></a>
 </div>
-  <div class="child animated fadeIn" style="text-align: center;"><span class="text">{{ locale.WEBSITE_HELLO }} <span style="color: fuchsia;">Loritta</span>!
-  <div style="font-size: 0.5em">{{ locale.WEBSITE_JUST_A_SIMPLE_DISCORD_BOT }}</div></span>
-  <div><a href="https://loritta.website/auth"><button style="box-shadow: 0px 5px 0px #a407cc, 0 0px 30px #000" class="button_normal autoSubmit">{{ locale.WEBSITE_ADD_ME }}</button></div></a></div>
+<div class="topnavRight">
+  <div class="rightEntries">
+  <a href="{{ websiteUrl }}dashboard">
+  {% if discordAuth != null %}
+  {% set userIdentification = discordAuth.getUserIdentification %}
+  <span style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</span>
+  {% else %}
+  <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+  {% endif %}
+  </a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+</div>
+</div>
+{% block afterNavbar %}
+<div id="header" style="overflow: hidden; z-index: 0; position: relative;">
+<img class="is-invisible" id="loritta" src="{{ websiteUrl }}assets/img/loritta.png"></img>
+<img style="width: 0px; height: 0px;" src="{{ websiteUrl }}assets/img/loritta_blinking.png"></img>
+  <div id="rightSideText">
+  <div style="position: relative;" class="is-invisible" id="animate_myNameIs" style="text-align: center;"><span class="text">Olá, meu nome é</span></div>
+  <div style="position: relative;" class="is-invisible" id="animate_myName" style="text-align: center;"><span style="font-size: 7.5em; color: #00d7ff; text-shadow: 0px 0.05em 0px #00b4d5;" class="text">Loritta</span></div>
+  <div id="animate_subtext" style="position: relative;" class="is-invisible"><span style="font-size: 2em" class="text">Apenas um simples bot para o Discord</span></div>
+  <div class="swingimage" style="text-align: center;"><a class="is-invisible" id="animate_textbutton" href="https://loritta.website/auth"><button class="button_normal autoSubmit">Me adicione! 🙋</button></div></a></div>
+
+<div class="arrowBottom arrowAnimated arrowBounce">
+  <img width="40" height="40" alt="" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyDQoJbDE4OS45OTktMTkwYzIwLjE3OC0yMC4xNzgsNTMuMTY0LTE5LjkxMyw3My42NzIsMC41OTVsMCwwYzIwLjUwOCwyMC41MDksMjAuNzcyLDUzLjQ5MiwwLjU5NSw3My42NzFMMjkzLjc1MSw0NTUuODY4eiIvPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIyMC4yNDksNDU1Ljg2OGMyMC4xOCwyMC4xNzksNTMuMTY0LDE5LjkxMyw3My42NzItMC41OTVsMCwwYzIwLjUwOS0yMC41MDgsMjAuNzc0LTUzLjQ5MywwLjU5Ni03My42NzINCglsLTE5MC0xOTBjLTIwLjE3OC0yMC4xNzgtNTMuMTY0LTE5LjkxMy03My42NzEsMC41OTVsMCwwYy0yMC41MDgsMjAuNTA5LTIwLjc3Miw1My40OTItMC41OTUsNzMuNjcxTDIyMC4yNDksNDU1Ljg2OHoiLz4NCjwvc3ZnPg0K" />
 </div>
 </div>
 <div id="belowHeader">
-<div class="topnav" id="myTopnav">
-  <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> {{ locale.WEBSITE_HOME }}</a>
-  <a href="{{ websiteUrl }}auth">{% if temmie is null %}<i class="fa fa-sign-in" aria-hidden="true"></i> Login{% else %}<i class="fa fa-wrench" aria-hidden="true"></i> {{ locale.WEBSITE_ADMIN_PANEL }}{% endif %}
-  <a href="https://discord.gg/3rXgN8x"><i class="fa fa-comments-o" aria-hidden="true"></i> {{ locale.WEBSITE_OUR_DISCORD }}</a>
-  <a href="{{ websiteUrl }}comandos"><i class="fa fa-terminal" aria-hidden="true"></i> {{ locale.WEBSITE_COMMANDS }}</a>
-  <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ locale.WEBSITE_FAN_ARTS }}</a>
-  <a href="{{ websiteUrl }}doar"><i class="fa fa-gift" aria-hidden="true"></i> {{ locale.WEBSITE_DONATE }}</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-</div>
 <div id="wrapper">
-{% block beforeLeftColumn %}
-<div id="leftColumn">
-{% block leftColumn %}
-<div class="content">
-<div class="smTitleBar">
-Olá Mundo!
-</div>
-<div class="insideContent">
-<p>Isto é uma página temporária!</p>
-</div>
+{% block wrapper %}
+{% endblock %}
 </div>
 </div>
 {% endblock %}
-</div>
-{% endblock %}
-{% block beforeRightColumn %}
-<div id="rightColumn">
-{% block rightColumn %}
 {% endblock %}
 </div>
-{% endblock %}
-</div>
-<br style="clear:both" /> <!-- So dirty! -->
-</div>
-<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal.css">
-<link async rel="stylesheet" type="text/css" href="{{ websiteUrl }}remodal-default-theme.css">
-<link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
-<link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
-<link async href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<script async src="https://use.fontawesome.com/055e611427.js"></script>
-<script src="{{ websiteUrl }}remodal.min.js"></script>
 <script>
+function createCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name,"",-1);
+}
+
+function applyChanges(obj, classes, delay) {
+	setTimeout(function(){
+		obj.removeClass("is-invisible");
+		obj.addClass("animated " + classes);
+	}, delay);
+}
+
+function unblink() {
+	$("#loritta").attr("src", "{{ websiteUrl }}assets/img/loritta.png");
+	setTimeout(function(){
+		blink()
+	}, 10000);
+}
+
+function blink() {
+	$("#loritta").attr("src", "{{ websiteUrl }}assets/img/loritta_blinking.png");
+	setTimeout(function(){
+		unblink()
+	}, 140);
+}
+
+$(document).ready(function () {
+
+  $('#loritta').click(function(e) {
+    var offset = $(this).offset();
+	var x = (e.pageX - offset.left) / $(this).width()
+	var y = (e.pageY - offset.top) / $(this).height()
+	
+	if (x >= 0.6 && y >= 0.36 && 0.7 >= x && 0.41 >= y) {
+		$("#loritta").attr("src", "{{ websiteUrl }}assets/img/loritta_blush.png");
+	}
+  });
+	
+applyChanges($("#animate_myNameIs"), "fadeInRight", 1000)
+applyChanges($("#animate_myName"), "fadeInRight", 1650)
+applyChanges($("#loritta"), "fadeInLeft", 2350)
+applyChanges($("#animate_subtext"), "fadeInRight", 3200)
+applyChanges($("#animate_textbutton"), "fadeInRight", 3300)
+unblink();
+});
+
+$('#dummyNavbar').css("height", $('#myTopnav').height())
+
+if (readCookie("darkTheme") == 'true') {
+    $("html").removeClass("light");
+	$("html").addClass("dark");
+	$("#themeChanger").html("<i class=\"fa fa-sun-o\" aria-hidden=\"true\"></i>");
+}
+
+function changeTheme() {
+if($("html").hasClass('dark')) {
+    $("html").removeClass("dark");
+    $("html").addClass("light");
+	createCookie("darkTheme", false)
+	$("#themeChanger").html("<i class=\"fa fa-moon-o\" aria-hidden=\"true\"></i>");
+}else{
+    $("html").removeClass("light");
+	$("html").addClass("dark");
+	createCookie("darkTheme", true)
+	$("#themeChanger").html("<i class=\"fa fa-sun-o\" aria-hidden=\"true\"></i>");
+}
+}
+
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
     var x = document.getElementById("myTopnav");
@@ -115,13 +158,72 @@ function myFunction() {
     }
 }
 
-    $(function(){
-        var y = 0;
-        setInterval(function(){
-            y -=1;
-            $('#header').css('background-position', '0' + 'px ' + y + 'px');
-        }, 60);
-    })
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function toggleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function onViewport(el, elClass, offset, callback) {
+  /*** Based on http://ejohn.org/blog/learning-from-twitter/ ***/
+  var didScroll = false;
+  var this_top;
+  var height;
+  var top;
+  
+  if(!offset) { var offset = 0; }
+ 
+  $(window).scroll(function() {
+      didScroll = true;
+  });
+ 
+  setInterval(function() {
+    if (didScroll) {
+      didScroll = false;
+      top = $(this).scrollTop();
+ 
+      $(el).each(function(i){
+        height   = $(this).height();
+		this_top = $(this).offset().top - offset - window.innerHeight + height;
+ 
+        // Scrolled within current section
+        if (top >= this_top && !$(this).hasClass(elClass)) {
+          $(this).addClass(elClass);
+ 
+          if (typeof callback == "function") callback($(this));
+        }
+      });
+    }
+  }, 100);
+}
 </script>
+{% block afterScripts %}
 {% endblock %}
+{% endblock %}
+<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css"></link>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2"></link>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/tingle.min.css"></link>
+<link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+<link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
+<link async href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<script async src="https://use.fontawesome.com/055e611427.js"></script>
 </body>

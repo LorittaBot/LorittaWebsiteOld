@@ -1,12 +1,225 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% block wrapper %}
+<div class="oddWrapper">
+<!-- Loritta Teste -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="6236021665"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<div class="contentWrapper">
+<div class="vertically-centered-content">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-1-4">
+		<img class="animate-on-scroll-left is-invisible" src="https://loritta.website/assets/img/loritta_tophalf.png" alt="Foto da Loritta" style="width: 100%;">
+	</div>
+    <div class="pure-u-1 pure-u-md-3-4">
+		<div class="sectionText">
+		<div class="sectionHeader">
+		Quem sou eu?
+		</div>
+		<p>Olá, eu me chamo Loritta (ou, como meus amigos próximos me chamam, "Lori") e sou apenas um simples bot brasileiro para o Discord com várias funções jamais vistas!</p>
+		<p>Eu tenho várias funções para entretenimento (como comandos engraçados e memes), funções sociais (sistema de perfil com XP e reputação), extremamente customizável (você pode ativar/desativar qualquer comando meu, alterar meu prefixo para o que você quiser e muito mais!) e com um simples foco: Ser o melhor bot brasileiro para o Discord!</p>
+		<p>Um dos motivos que me fizeram me tornar o que eu sou hoje é a falta de bots brasileiros para o Discord, já que muitos servidores brasileiros no Discord usam bots "de baixa qualidade" em português ou usam bots que falam (na verdade escrevem) em inglês... e convenhamos, nenhuma dessas opções parece agradável para os usuários... e por isto que eu prometo mudar isto!</p>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="evenWrapper">
+<div style="width: 100%;">
+<div style="overflow: hidden;">
+<div class="handle" style="width: 100vw; white-space: nowrap; overflow: hidden; padding-top: 32px; padding-bottom: 32px;">
+{% set i = 0 %}
+{% for guild in randomFamousGuilds %}
+<img src="{{ guild.getIconUrl }}" class="server-icon-circle {% if i == 0 %}server-icon-top{% elseif i == 1 %}server-icon-middle{% else %}server-icon-bottom{% endif %}"></img>
+{% set i = i + 1 %}
+{% if i == 3 %}
+{% set i = 0 %}
+{% endif %}
+{% endfor %}
+</div>
+</div>
+<hr>
+<div class="contentWrapper">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-3-4">
+		<div class="sectionText">
+		<div class="sectionHeader" style="text-align: center;">
+		Status
+		</div>
+		<div class="pure-g vertically-centered-content" style="text-align: center;">
+		<div class="pure-u-1 pure-u-md-1-3">
+			<div class="stat-name"><i class="fa fa-map-pin" aria-hidden="true"></i> Servidores</div>
+			<div class="stat-value" id="serverCount">0</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-3">
+			<div class="stat-name"><i class="fa fa-users" aria-hidden="true"></i> Usuários</div>
+			<div class="stat-value" id="userCount">0</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-3">
+			<div class="stat-name"><i class="fa fa-clock-o" aria-hidden="true"></i> Estou acordada por</div>
+			<div class="stat-value"><span id="dayCount">0</span>d, <span id="hourCount">0</span>h, <span id="minuteCount">0</span>m, <span id="secondCount">0</span>s</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-3">
+			<div class="stat-name"><i class="fa fa-terminal" aria-hidden="true"></i> Comandos disponíveis</div>
+			<div class="stat-value" id="availableCommandsCount">0</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-3">
+			<div class="stat-name"><i class="fa fa-heart" aria-hidden="true"></i> Amor</div>
+			<div class="stat-value">∞</div>
+		</div>
+		<div class="pure-u-1 pure-u-md-1-3">
+			<div class="stat-name"><i class="fa fa-rocket" aria-hidden="true"></i> Comandos executados</div>
+			<div class="stat-value" id="executedCommandsCount">0</div>
+		</div>
+		</div>
+	</div>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-4">
+		<img class="animate-on-scroll-right is-invisible" src="https://loritta.website/assets/img/loritta_tophalf.png" alt="Foto da Loritta" style="width: 100%;">
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="oddWrapper">
+<div class="contentWrapper">
+<div class="vertically-centered-content">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-1-4" style="text-align: center;">
+		<img class="animate-on-scroll-left is-invisible" src="https://loritta.website/assets/img/loritta_tophalf.png" alt="Foto da Loritta" style="width: 100%;">
+	</div>
+    <div class="pure-u-1 pure-u-md-3-4">
+		<div class="sectionText">
+		<div class="sectionHeader">
+		Variedade e Qualidade
+		</div>
+		<p>Criatividade é a palavra que mais me descreve: com minhas funções inovadoras, é impossível não haver entretenimento! Valorizo a qualidade, a genialidade da ideia e a variedade de funções, sendo uma verdadeira bot all-in-one que não deixará nada a faltar.</p>
+		<p>Tenho mais de 100 comandos diferentes, de várias categorias distintas, como administração, utilitários, entretenimento, montagem de imagem — ou "Photoshop", jogos, integração com YouTube, Feeds RSS, Atom e Amino, reação a eventos (como entrada e saída de pessoas, autorole e log de eventos), e muitos outros que, sempre priorizando a qualidade, não te deixará na mão!</p>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="evenWrapper">
+<div class="contentWrapper">
+<div class="vertically-centered-content">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-3-4">
+		<div class="sectionText">
+		<div class="sectionHeader">
+		Customização
+		</div>
+		<p>Sempre há diferenças, e nem sempre elas podem agradar. Por isto, tenho um painel de customização bem intuitivo em que você poderá modificar uma enorme variadade de funcionalidades ao seu gosto. Modifique-me como queira, adequando-me às suas preferências e necessidades!</p>
+		</div>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-4" style="text-align: center;">
+		<img class="animate-on-scroll-right is-invisible" src="https://loritta.website/assets/img/loritta_tophalf.png" alt="Foto da Loritta" style="width: 100%;">
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="oddWrapper">
+<div class="contentWrapper">
+<div class="vertically-centered-content">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-1-4" style="text-align: center;">
+		<img class="animate-on-scroll-left is-invisible" src="https://loritta.website/assets/img/loritta_tophalf.png" alt="Foto da Loritta" style="width: 100%;">
+	</div>
+    <div class="pure-u-1 pure-u-md-3-4">
+		<div class="sectionText">
+		<div class="sectionHeader">
+		Entretenimento
+		</div>
+		<p>Um dos meus maiores objetivos é conseguir deixar você (e os membros do seu servidor) mais felizes, mesmo que seja apenas um pequeno sorriso do seu rosto.</p>
+		<p>Por isto eu possuo vários comandos diferentes e engraçados para você se divertir e ter gargalhadas com eles! Como o avaliarwaifu, que dá nota a sua waifu; faustão, que invoca o nosso querido Faustão no seu servidor para relembrar as clássicas frases dele; ship, que permite shippar dois usuários do seu servidor; cepo, para destruir alguém no estilo Gugu Gaiteiro; tretanews, para você criar um vídeo "não clickbait"™ com membros do seu servidor e vários outros comandos divertidos e engraçados!</p>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="evenWrapper">
+<div class="contentWrapper">
+<div class="vertically-centered-content">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-3-4">
+		<div class="sectionText">
+		<div class="sectionHeader">
+		Música
+		</div>
+		<p>Música é algo extraordinário, e, as vezes, você quer compartilhar a sua favorita com os membros do seu servidor, afinal, quem não quer compartilhar o último batidão do MC Hariel?</p><p>Com um sistema de música customizável, você poderá divertir-se a ouvir sua música preferida, com muita qualidade de áudio e de gerenciamento!</p>
+		</div>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-4" style="text-align: center;">
+		<img class="animate-on-scroll-right is-invisible" src="https://i.imgur.com/C9idIUF.png" alt="Foto da Loritta" style="width: 100%;">
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="oddWrapper">
+<div class="contentWrapper">
+<div class="vertically-centered-content">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-1-4" style="text-align: center;">
+		<a href="https://discord.gg/V7Kbh4z"><img class="animate-on-scroll-left is-invisible" src="https://discordapp.com/api/guilds/297732013006389252/embed.png?style=banner4&t={{ epochMillis }}" alt="Foto da Loritta" style="width: 100%;"></a>
+	</div>
+    <div class="pure-u-1 pure-u-md-3-4">
+		<div class="sectionText">
+		<div class="sectionHeader">
+		Comunidade
+		</div>
+		<p>Você sabe o que pessoas que gostam bastante de algo fazem? Elas começam a conversar mais e mais, unidas por um denominador comum.</p>
+		<p>E é claro que existe o Fã Clube da Loritta... que por algum motivo resolveram montar esse fã clube bem no meu apartamento... Quem teve a ideia de criar isto justamente no meu apartamento? As vezes gosto de ficar sozinha, sabia?</p>
+		<p>Brincadeiras a parte, todos são bem-vindos no meu servidor no Discord! Se você quiser falar sobre mim, falar sobre bugs que devem ser corrigidos, sugestões incríveis e maravilhosas para mim ou até mesmo falar como foi o seu dia então você veio ao lugar certo!</p>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="evenWrapper">
+<div class="contentWrapper">
+<div class="vertically-centered-content">
+<div class="pure-g vertically-centered-content" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-4-4">
+		<div class="sectionText">
+		<div class="sectionHeader">
+		Servidores do Fã Clube da Loritta
+		</div>
+		<p>Servidores criados por pessoas no <span style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.0980392); font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">@😍🎀 Fã Clube da Loritta</span> (ou seja, pessoas que usam e gostam de mim!)</p>
+		<p>Esta lista foi criada para <s>mostrar como muita gente me ama</s> ajudar donos de servidores no Discord a conseguir novos membros para seus servidores e, é claro, mostrar como outros servidores me usam!</p>
+		{% for server in serversFanClub %}
+		<div class="pure-u-1 pure-u-md-1-12">
+			<a href="https://loritta.website/serversfanclub#{{ server.id }}"><img style="border-radius: 999999px; width: 100%; background-color: rgb(47, 49, 54);" src="{{ server.guildIcon }}" class="fanclub-server-icon is-invisible"></img></a>
+		</div>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="oddWrapper">
+<div class="contentWrapper">
+wow
+</div>
+</div>
+{% endblock %}
 {% block leftColumn %}
 <div class="content">
 <div class="smTitleBar">
-{% set WEBSITE_ABOUT = "WEBSITE_ABOUT" %}
-{{ locale.WEBSITE_ABOUT }}
+{{ WEBSITE_ABOUT }}
 </div>
 <div class="insideContent">
-<div>
 <div style="width: 100%; max-width: 100%;">
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Loritta Teste -->
@@ -19,8 +232,9 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
+<div>
 <img src="{{ websiteUrl }}assets/img/loritta_tophalf.png" alt="Foto da Loritta" style="float: left;" width="358"></img>
-{{ locale.WEBSITE_INTRO | raw }}
+{{ WEBSITE_INTRO | raw }}
 <div style="text-align: center;">
 <h1 class="headerLine">Porque VOCÊ deveria me adicionar?</h1>
 <div class="pure-g">
@@ -89,7 +303,7 @@
 <div class="pure-g">
     <div class="pure-u-1 pure-u-md-3-4">
 		<h2 style="font-family:Oswald;">Comunidade</h2>
-		<p>Você sabe o que pessoas que gostam bastante de algo fazem? Elas começam a conversar mais e mais, unidas por um denominador comum.</p><p>E é claro que existe o Fã Clube da Loritta... que por algum motivo resolveram montar esse fã clube bem no meu apartamento... Quem teve a ideia de criar isto justamente no meu apartamento? As vezes gosto de ficar sozinha, sabia?</p><p>Brincadeiras a parte, todos são bem-vindos no meu servidor no Discord! Se você quiser falar sobre mim, falar sobre bugs que devem ser corrigidos, sugestões incríveis e maravilhosas para mim ou até mesmo falar como foi o seu dia então você veio ao lugar certo!</p><p><a href="https://discord.gg/V7Kbh4z"><img src="https://discordapp.com/api/guilds/297732013006389252/embed.png?style=banner2&t={{ epochMillis }}"></img></a><p>
+		<p>Você sabe o que pessoas que gostam bastante de algo fazem? Elas começam a conversar mais e mais, unidas por um denominador comum.</p><p>E é claro que existe o Fã Clube da Loritta... que por algum motivo resolveram montar esse fã clube bem no meu apartamento... Quem teve a ideia de criar isto justamente no meu apartamento? As vezes gosto de ficar sozinha, sabia?</p><p>Brincadeiras a parte, todos são bem-vindos no meu servidor no Discord! Se você quiser falar sobre mim, falar sobre bugs que devem ser corrigidos, sugestões incríveis e maravilhosas para mim ou até mesmo falar como foi o seu dia então você veio ao lugar certo!</p><p><a href="https://discord.gg/3rXgN8x"><img src="https://discordapp.com/api/guilds/297732013006389252/embed.png?style=banner2&t=0"></img></a><p>
 	</div>
     <div class="pure-u-1 pure-u-md-1-4">
 		<img src="https://via.placeholder.com/256x256"></img>
@@ -119,7 +333,122 @@ Faça login clicando <a href="https://loritta.website/auth">aqui</a>, depois esc
 </div>
 </div>
 </div>
+</div>
 {% endblock %}
 {% block rightColumn %}
 {% include "widgets.html" %}
+{% endblock %}
+{% block afterScripts %}
+<script>
+// Example:
+onViewport(".animate-on-scroll-left", "animated fadeInLeft", 0, function(el) {
+  el.removeClass("is-invisible");
+});
+
+onViewport(".animate-on-scroll-right", "animated fadeInRight", 0, function(el) {
+  el.removeClass("is-invisible");
+});
+
+onViewport(".fanclub-server-icon", "animated fadeInUp", 0, function(el) {
+  el.removeClass("is-invisible");
+});
+
+var startedServerCountdown = false;
+var startedUserCountdown = false;
+var startedUptimeCountdown = false;
+var startedAvailableCommandsCountdown = false;
+var startedExecutedCommandsCountdown = false;
+
+var options = {
+useEasing: true,
+useGrouping: true,
+separator: '.',
+decimal: ',',
+};
+
+onViewport("#serverCount", "teste teste teste", 0, function(el) {
+if (startedServerCountdown) { return; }
+startedServerCountdown = true;
+var demo = new CountUp('serverCount', 0, {{ guilds|length }}, 0, 5.5, options);
+if (!demo.error) {
+  demo.start();
+} else {
+  console.error(demo.error);
+}
+});
+
+onViewport("#userCount", "teste teste teste", 0, function(el) {
+if (startedUserCountdown) { return; }
+startedUserCountdown = true;
+
+var demo = new CountUp('userCount', 0, {{ userCount }}, 0, 5.5, options);
+if (!demo.error) {
+  demo.start();
+} else {
+  console.error(demo.error);
+}
+});
+
+onViewport("#dayCount", "teste teste teste", 0, function(el) {
+if (startedUptimeCountdown) { return; }
+startedUptimeCountdown = true;
+
+{
+	var demo = new CountUp('dayCount', 0, {{ uptimeDays }}, 0, 5.5, options);
+	if (!demo.error) {
+	  demo.start();
+	} else {
+	  console.error(demo.error);
+	}
+}
+{
+	var demo = new CountUp('hourCount', 0, {{ uptimeHours }}, 0, 5.5, options);
+	if (!demo.error) {
+	  demo.start();
+	} else {
+	  console.error(demo.error);
+	}
+}
+{
+	var demo = new CountUp('minuteCount', 0, {{ uptimeMinutes }}, 0, 5.5, options);
+	if (!demo.error) {
+	  demo.start();
+	} else {
+	  console.error(demo.error);
+	}
+}
+{
+	var demo = new CountUp('secondCount', 0, {{ uptimeSeconds }}, 0, 5.5, options);
+	if (!demo.error) {
+	  demo.start();
+	} else {
+	  console.error(demo.error);
+	}
+}
+});
+
+onViewport("#availableCommandsCount", "teste teste teste", 0, function(el) {
+if (startedAvailableCommandsCountdown) { return; }
+startedAvailableCommandsCountdown = true;
+
+var demo = new CountUp('availableCommandsCount', 0, {{ availableCommandsCount }}, 0, 5.5, options);
+if (!demo.error) {
+  demo.start();
+} else {
+  console.error(demo.error);
+}
+});
+
+onViewport("#executedCommandsCount", "teste teste teste", 0, function(el) {
+if (startedExecutedCommandsCountdown) { return; }
+startedExecutedCommandsCountdown = true;
+
+var demo = new CountUp('executedCommandsCount', 0, {{ executedCommandsCount }}, 0, 5.5, options);
+if (!demo.error) {
+  demo.start();
+} else {
+  console.error(demo.error);
+}
+});
+</script>
 {% endblock %}

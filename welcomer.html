@@ -1,0 +1,69 @@
+{% extends 'configure_server.html' %}
+{% block rightSidebarContents %}
+{% set config = serverConfig.joinLeaveConfig %}
+<div class="category-name">
+{{ DASHBOARD_WELCOMER }}
+</div>
+{{ generateCheckbox(1, "isEnabled", DASHBOARD_ACTIVATE_MODULE, "", config.isEnabled, true) }}
+<hr>
+<div id="hiddenIfDisabled">
+{{ generateCheckbox(1, "tellOnJoin", DASHBOARD_ENABLE_JOIN, "", config.tellOnJoin, true) }}
+<hr>
+{{ generateCheckbox(2, "tellOnLeave", DASHBOARD_ENABLE_LEAVE, "", config.tellOnLeave, true) }}
+<hr>
+{{ generateCheckbox(3, "tellOnBan", DASHBOARD_ENABLE_BAN, "", config.tellOnBan, true) }}
+<hr>
+{{ generateCheckbox(4, "tellOnPrivate", DASHBOARD_ENABLE_PRIVATE, DASHBOARD_ENABLE_PRIVATE_SUB, config.tellOnPrivate, true) }}
+<hr>
+    <div class="flavourText">{{ DASHBOARD_JOIN_CHANNEL }}</div>
+	<select data-send-on-save="true" data-internal-name="canalJoinId">
+		{% for textChannel in guild.getTextChannels %}
+		{% if textChannel.canTalk %}
+		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.canalJoinId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endif %}
+		{% endfor %}
+	</select>
+	<hr>
+    <div class="flavourText">{{ DASHBOARD_LEAVE_CHANNEL }}</div>
+	<select data-send-on-save="true" data-internal-name="canalLeaveId">
+		{% for textChannel in guild.getTextChannels %}
+		{% if textChannel.canTalk %}
+		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.canalLeaveId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endif %}
+		{% endfor %}
+	</select>
+	<hr>
+<div class="flavourText">{{ DASHBOARD_JOIN_MESSAGE }}</div>
+<textarea data-send-on-save="true" data-internal-name="joinMessage" id="joinMessage" name="joinMessage">{{ serverConfig.joinLeaveConfig.joinMessage }}</textarea>
+<hr>
+<div class="flavourText">{{ DASHBOARD_LEAVE_MESSAGE }}</div>
+<textarea data-send-on-save="true" data-internal-name="leaveMessage" id="leaveMessage" name="leaveMessage">{{ serverConfig.joinLeaveConfig.leaveMessage }}</textarea>
+<hr>
+<div class="flavourText">{{ DASHBOARD_PRIVATE_MESSAGE }}</div>
+<textarea data-send-on-save="true" data-internal-name="joinPrivateMessage" id="privateMessage" name="privateMessage">{{ serverConfig.joinLeaveConfig.joinPrivateMessage }}</textarea>
+<hr>
+<div class="flavourText">{{ DASHBOARD_LEAVE_BAN_MESSAGE }}</div>
+<textarea data-send-on-save="true" data-internal-name="banMessage" id="banMessage" name="banMessage">{{ serverConfig.joinLeaveConfig.banMessage }}</textarea>
+</div>
+<hr>
+<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<br style="clear: both" /> <!-- So dirty! -->
+<script>
+$("#cmn-toggle-1").click(function(e) {
+	applyBlur()
+});
+
+function applyBlur() {
+  var e = $("#hiddenIfDisabled");
+  if ($('#cmn-toggle-1').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+applyBlur();
+</script>
+{% endblock %}

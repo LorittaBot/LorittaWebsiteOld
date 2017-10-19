@@ -3,12 +3,23 @@ html {
 	font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
 	color: #4f545c;
 	font-weight: 500;
+	overflow-x: hidden;
 }
 
 body {
 	z-index: 0;
 	position: relative;
 	margin: 0;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:visited {
+	color: #00b0f4;
+}
+a {
+	color: #00b0f4;
+    text-decoration: none;
 }
 
 .discordEmbed {
@@ -526,6 +537,14 @@ border-radius: 3px;
     border-color: #202225;
 }
 
+.discord-like-entry {
+	background-color: rgb(248, 249, 249); width: 100%; border-radius: 5px; border: solid 1px rgb(220, 221, 222);
+}
+
+.dark .discord-like-entry {
+	background: rgba(32,34,37,.6);
+    border-color: #202225;
+}
 
 #wrapper {
 	width: 100%;
@@ -883,12 +902,15 @@ border-color: #dcddde;
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {position: fixed;}
   .topnav.responsive a.icon {
     position: absolute;
     right: 0;
     top: 0;
   }
+  .topnav.responsive .rightEntries { display: inherit; }
+  .topnav.responsive .topnavLeft { float: inherit; }
+  .topnav.responsive .topnavRight { float: inherit; }
   .topnav.responsive a {
     float: none;
     display: block;
@@ -1239,6 +1261,17 @@ input[type="text" i] {
 
 img#money {
 	animation: money 2s linear infinite;
+}
+
+code.inline {
+	background: #f9f9f9;
+    border-radius: 3px;
+    font-family: Consolas,Liberation Mono,Menlo,Courier,monospace;
+    font-size: 85%;
+    height: auto;
+    padding: .2em;
+    text-indent: 0;
+    width: auto;
 }
 
 @-webkit-keyframes money {

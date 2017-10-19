@@ -37,7 +37,7 @@ DJ Loritta
 {{ generateCheckbox(5, "autoPlayWhenEmpty", "Ativar playlist da DJ Loritta", "Caso ninguém esteja pedindo músicas, a Loritta irá automaticamente tocar músicas pré-programadas. Caso alguém quiser tocar uma música, ela irá automaticamente parar as músicas dela.", config.autoPlayWhenEmpty, true) }}
 <hr>
 <div class="flavourText">Músicas na playlist da DJ Loritta</div>
-<input type="text" id="musicLink" placeholder="Link para a música"> <button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
+<input type="text" id="musicLink" placeholder="Link para a música"> <button type="button" onclick="addLink2()" class="button-success pure-button">Adicionar</button>
 <div class="toggleSubText">Clique em um link da playlist para remover ela.</div>
 <table id="musicTable">
   {% for url in config.urls %}
@@ -46,7 +46,7 @@ DJ Loritta
   </tr>
   {% endfor %}
 </table>
-<input type="hidden" data-send-on-save="true" data-convert-to-list="true" data-internal-name="urls" value="{{ playlist }}">
+<input type="hidden" data-send-on-save="true" data-convert-to-list="true" data-internal-name="urls" id="musicUrls" value="{{ playlist }}">
 </div>
 <hr>
 <button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
@@ -68,5 +68,45 @@ function applyBlur() {
 }
 
 applyBlur();
+
+function addLink2() {
+  var e = $("#musicLink");
+  var value = e.val();
+  
+  var table = document.getElementById("musicTable");
+  
+  var row = table.insertRow(-1)
+  
+  var cell = row.insertCell(-1)
+  cell.textContent = value;
+  
+  cell.setAttribute("onclick", "DL1(this)");
+  
+  joinToSeparators2();
+}
+
+function joinToSeparators2() {
+var e = $("#musicUrls");
+
+var text = "";
+$('#musicTable tr').each(function(){
+    $(this).find('td').each(function(){
+        //do your stuff, you can use $(this) to get current cell
+		if (text == "") {
+			text += $(this).text()
+		} else {
+			text += ";" + $(this).text()
+		}
+    })
+})
+
+e.val(text);
+}
+
+function DL2(elem){
+	elem.parentNode.removeChild(elem);
+
+	joinToSeparators();
+}
 </script>
 {% endblock %}

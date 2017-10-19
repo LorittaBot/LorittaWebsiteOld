@@ -9,6 +9,18 @@
 <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.6/dist/showdown.min.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script async src="{{ websiteUrl }}assets/js/tingle.min.js"></script>
+<meta name="description" content="Olá, eu me chamo Loritta, Apenas um simples bot para o Discord!">
+<meta name="author" content="MrPowerGamerBR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:site_name" content="Website da Loritta">
+<meta property="og:description" content="Olá, eu me chamo Loritta! Apenas um simples bot para o Discord!">
+<meta property="og:title" content="Meu Website!">
+<meta property="og:image" content="http://loritta.website/assets/img/loritta_guild_v4.png">
+<meta property="og:ttl" content="600">
+<meta property="og:image:width" content="320">
+<meta property="twitter:site" content="loritta">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:title" content="Página inicial">
 </head>
 <body class="light">
 {% block body %}
@@ -17,8 +29,11 @@
 <div class="topnav navbar-fixed-top" id="myTopnav">
 <div class="topnavWrapper">
 <div class="topnavLeft">
-  <a style="font-family: 'Pacifico', cursive; text-transform: none;">Loritta</a>
+  <a style="font-family: 'Pacifico', cursive; text-transform: none;">Loritta<sup style="font-family: 'Arial', cursive; text-transform: none;">beta</sup></a>
   <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> {{ WEBSITE_HOME }}</a>
+  <a href="https://discord.gg/V7Kbh4z" target="_blank"><i class="fa fa-comments-o" aria-hidden="true"></i> {{ WEBSITE_MY_DISCORD }}</a>
+  <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ WEBSITE_FAN_ARTS }}</a>
+  <a href="{{ websiteUrl }}donate"><i class="fa fa-gift" aria-hidden="true"></i> {{ WEBSITE_DONATE }}</a>
   <a id="themeChanger" onclick="changeTheme(this)"><i class="fa fa-moon-o" aria-hidden="true"></i></a>
 </div>
 <div class="topnavRight">
@@ -150,12 +165,12 @@ if($("html").hasClass('dark')) {
 
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
+	var element = $("#myTopnav");
+	if (!element.hasClass("responsive")) {
+		element.addClass("responsive")
+	} else {
+	element.removeClass("responsive")
+	}
 }
 
 /* When the user clicks on the button, 

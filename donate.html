@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block subtitle %}
-Doar
+{{ WEBSITE_DONATE }}
 {% endblock %}
 {% block wrapper %}
 <div class="oddWrapper">
@@ -22,11 +22,9 @@ Doar
     <div class="pure-u-1 pure-u-md-3-4">
 		<div class="sectionText">
 		<div class="sectionHeader">
-		Doar
+		{{ WEBSITE_DONATE }}
 		</div>
-<p>Para manter a Loritta online 24/7 (bem que as vezes ela fica offline para ir tomar água, ir almoçar no Outback e as vezes tomar um frappuccino sem café no Starbucks) é necessário pagar mensalmente uma hospedagem para ela!</p>
-<p>Atualmente a Loritta está hospedada em um dedicado de 32GBs/4.00GHz na SoYouStart! Isso custa mais ou menos uns <b>260R$</b> por mês!</p>
-<p>Por isto, se você tiver alguma grana de sobrando porque você resolveu não comprar aquele pão de queijo que parecia estar meio mofado lá no Barzinho do Vieirinha, que tal doar para a Loritta?</p>
+{{ WEBSITE_DONATE_EXPLAIN|raw }}
 		</div>
 	</div>
 </div>
@@ -40,22 +38,14 @@ Doar
     <div class="pure-u-1 pure-u-md-3-4">
 		<div class="sectionText">
 		<div class="sectionHeader">
-		Como ajudar?
+		{{ WEBSITE_DONATE_HowToHelp|raw }}
 		</div>
-<p>Obrigada por demonstrar interesse em querer me ajudar a ficar online! <img src="https://loritta.website/assets/img/blobCouple.png" style="height: 1.5em; vertical-align: -.4em;"></img> Isto significa muito para mim (afinal, sem dinheiro = sem hospedagem para eu ficar online 😭)</p>
-<p>Existem várias formas de você poder me ajudar, escolha a que você preferir e, novamente, muito obrigada por querer me ajudar! <img src="https://loritta.website/assets/img/blobBlush.png" style="height: 1.5em; vertical-align: -.4em;"></img></p>
-<p>Se você está em dúvida de qual forma de pagamento você deve usar...</p>
-<p><b>Patreon:</b> Se você tiver um cartão internacional, quiser ajudar de uma forma recorrente (ou seja, a cada mês) e quiser que o seu nome apareça no <code class="inline">+patreon</code>, então pague via Patreon! <i>Esta é a melhor forma de me ajudar!</i></p>
-<p><b>PayPal:</b> Se você tiver um cartão internacional ou tiver saldo no PayPal.</p>
-<p><b>MercadoPago:</b> Se você tiver um cartão nacional, boleto bancário ou saldo no MercadoPago.</p>
-<p><b>Bitcoin:</b> Se você tem Bitcoin. (meio óbvio isso né, nem sei porque precisei explicar)</p>
+{{ WEBSITE_DONATE_HelpExplain|raw }}
 <a href="https://patreon.com/mrpowergamerbr" target="_blank"><div class="button-discord button-discord-info pure-button">Patreon</div></a>
 <a><div class="button-discord button-discord-info pure-button" onclick="openMercadoPagoModal()">MercadoPago</div></a>
-<a href="https://www.paypal.com/br/cgi-bin/webscr?cmd=_flow&SESSION=LzlJQI8jCQybecL22Bs4somm3zJKC_FACG8YS44Utx5e3PtEVUcMKkFyYvO&dispatch=5885d80a13c0db1f8e263663d3faee8dc3f308debf7330dd8d0b0a9f21afd7d3&rapidsState=Donation__DonationFlow___StateDonationLogin&rapidsStateSignature=e2cd808390c1a1c24b74fccdd4d045988a24c58e" target="_blank"><div class="button-discord button-discord-info pure-button">PayPal</div></a>
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JMDNYD8X3UXVS" target="_blank"><div class="button-discord button-discord-info pure-button">PayPal</div></a>
 <div class="button-discord button-discord-info pure-button" onclick="openBitcoinModal()">Bitcoin</div>
-<p>Se você pagar via Patreon, você irá receber o cargo <span style="color: rgb(155, 89, 182); background-color: rgba(155, 89, 182, 0.298039);  font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">@💵🌆 Pagadores do Aluguel (Patreons)</span> no meu servidor, e ainda terá o seu nome no <code class="inline">+patreon</code>!</p>
-<p>Se você pagar via PayPal/MercadoPago/Bitcoin, você irá receber o cargo <span style="color: rgb(113, 54, 138); background-color: rgba(113, 54, 138, 0.298039); font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">@😎🆒 Super Fã Clube da Loritta (Doadores)</span> no meu servidor!</p>
-<p>Caso você pague via PayPal/MercadoPago/Bitcoin, envie uma mensagem para <code class="inline">MrPowerGamerBR#4185</code> comprovando que você pagou! 😉</p>
+{{ WEBSITE_DONATE_Rewards|raw }}
 		</div>
 	</div>
     <div class="pure-u-1 pure-u-md-1-4">
@@ -94,7 +84,7 @@ Doar
     <div class="pure-u-1 pure-u-md-4-4">
 		<div class="sectionText">
 		<div class="sectionHeader">
-		Doadores
+		{{ WEBSITE_DONATE_Donators }}
 		</div>
 		<p><span style="color: rgb(113, 54, 138); background-color: rgba(113, 54, 138, 0.298039); font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">@😎🆒 Super Fã Clube da Loritta (Doadores)</span></p>
 		{% for member in donators %}
@@ -117,7 +107,7 @@ Doar
 <div class="pure-g vertically-centered-content" style="text-align: center;">
 <div class="sectionText">
 <div class="sectionHeader">
-Obrigada a todos que me ajudaram!
+{{ WEBSITE_DONATE_ThanksToEveryone }}
 </div>
 <div>
 <img height="300" class="animate-on-scroll-up is-invisible" src="https://loritta.website/assets/img/loritta_pudim.png" alt="Loritta com um pudim na mão">
@@ -130,16 +120,16 @@ Obrigada a todos que me ajudaram!
 <div class="totallyHidden">		
 <div class="tingle-demo bitcoin-modal">
 <div class="test">
-<div class="category-name">Endereço Bitcoin</div>
+<div class="category-name">{{ WEBSITE_DONATE_BitcoinAddress }}</div>
 <code class="inline">1Ei2Gs6QZzYqGEvGHw422JkshFWTZ9SbQH</code>
 </div>
 </div>
 <div class="tingle-demo mercadopago-modal">
 <div class="test">
 <div class="category-name">MercadoPago</div>
-<form method="post">
+<form class="mercadopago-payment-form" method="post">
   <div class="flavourText">Doação de...</div>
-  <input style="width: 100%;" type="text" name="whodonated" {% if discordAuth != null %}{% if userIdentification != null %}value="{{ userIdentification.username }}#{{ userIdentification.discriminator }}"{% endif %}{% endif %} placeholder="{% if discordAuth != null %}{% if userIdentification != null %}
+  <input style="width: 100%;" type="text" name="who-donated" {% if discordAuth != null %}{% if userIdentification != null %}value="{{ userIdentification.username }}#{{ userIdentification.discriminator }}"{% endif %}{% endif %} placeholder="{% if discordAuth != null %}{% if userIdentification != null %}
 {{ userIdentification.username }}#{{ userIdentification.discriminator }}
 {% endif %}
 {% else %}
@@ -175,9 +165,11 @@ function openMercadoPagoModal() {
         closeMethods: [],
         footer: true
 		});
-		
+	
+	var guid = uuidv4();
     modal.addFooterBtn('Pagar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
-		modal.close();
+		$("#" + guid).find(".mercadopago-payment-form").submit();
+		// modal.close();
     });
 	
     modal.addFooterBtn('Fechar', "button-discord button-discord-info pure-button button-discord-modal-secondary-action", function(){	
@@ -186,6 +178,7 @@ function openMercadoPagoModal() {
 	
 	var cloned = $(".mercadopago-modal").clone()
 	
+	cloned.children().attr("id", guid); 
     modal.setContent(cloned.html());
 	modal.open();
 }
@@ -205,5 +198,11 @@ onViewport(".animate-on-scroll-up", "animated fadeInUp", 0, function(el) {
 onViewport(".fanclub-server-icon", "animated fadeInUp", 250, function(el) {
   el.removeClass("is-invisible");
 });
+
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  )
+}
 </script>
 {% endblock %}

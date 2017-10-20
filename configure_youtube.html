@@ -72,6 +72,9 @@ Alguma coisa super topperson aqui
 	Você tem certeza que você deseja fazer isto?
 </div>
 </div>
+<script id="entry-hidden-data" type="text/template">
+{{ channels|raw }}
+</script>
 </div>
 <script>
 var typingTimer;
@@ -325,10 +328,13 @@ function uuidv4() {
   )
 }
 
-{% for channel in config.channels %}
+var jsonFeed = JSON.parse($('#entry-hidden-data').html())
+console.log(jsonFeed);
+jQuery.each(jsonFeed, function() {
 var guid = uuidv4();
-addNewConfigEntry("{{ channel.channelUrl }}", "{{ channel.channelId }}", "#{{ guild.getTextChannelById(channel.repostToChannelId).getName }}", "{{ channel.repostToChannelId }}", "{{ channel.videoSentMessage }}", guid);
-{% endfor %}
+console.log(this);
+addNewConfigEntry(this["channelUrl"], this["channelId"], "#" + this["textChannelName"], this["repostToChannelId"], this["videoSentMessage"], guid);
+});
 
 $("#cmn-toggle-1").click(function(e) {
 	applyBlur()

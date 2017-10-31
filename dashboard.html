@@ -24,7 +24,7 @@ Dashboard
 		<div class="server-entry">
 		<div style="position: relative;">
 		<div class="pure-u-1 pure-u-md-1-6" style="line-height: 0;">
-		<img style="border-radius: 999999px; background-color: rgb(47, 49, 54); width: 100%;" src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}"></img>
+		<img style="border-radius: 999999px; background-color: rgb(47, 49, 54); width: 100%;" src="{% if guild.icon|length != 0 %}https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}{% else %}{{ websiteUrl }}assets/img/unknown.png{% endif %}"></img>
 		</div>
 		<div class="pure-u-1 pure-u-md-5-6">
 		<div style="font-size: 1.25em;">

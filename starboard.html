@@ -7,7 +7,7 @@ Starboard
 {{ generateCheckbox(1, "isEnabled", DASHBOARD_ACTIVATE_MODULE, "", config.isEnabled, true) }}
 <hr>
 <div id="hiddenIfDisabled">
-<div class="flavourText">Canal para anunciar as mensagens que receberam <i class="fa fa-star" aria-hidden="true"></i></div>
+<div class="flavourText">{{ DASHBOARD_StarboardChannel }} <i class="fa fa-star" aria-hidden="true"></i></div>
 	<select data-send-on-save="true" data-internal-name="starboardId">
 		{% for textChannel in guild.getTextChannels %}
 		{% if textChannel.canTalk %}
@@ -16,7 +16,7 @@ Starboard
 		{% endfor %}
 	</select>
 <hr>
-<div class="flavourText">Número mínimo de <i class="fa fa-star" aria-hidden="true"></i></div>
+<div class="flavourText">{{ DASHBOARD_MinimumStars }} <i class="fa fa-star" aria-hidden="true"></i></div>
 <input data-send-on-save="true" data-internal-name="requiredStars" type="number" value="{{ config.requiredStars }}" min="1" step="1"/>
 </div>
 <hr>

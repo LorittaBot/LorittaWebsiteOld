@@ -1,7 +1,11 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}{% block subtitle %}{{ WEBSITE_DEFAULT_TITLE }}{% endblock %} • Loritta{% endblock %}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Olá, eu me chamo Loritta, Apenas um simples bot para o Discord!">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
 			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 			  crossorigin="anonymous"></script>
@@ -9,9 +13,8 @@
 <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.6/dist/showdown.min.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script async src="{{ websiteUrl }}assets/js/tingle.min.js"></script>
-<meta name="description" content="Olá, eu me chamo Loritta, Apenas um simples bot para o Discord!">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <meta name="author" content="MrPowerGamerBR">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta property="og:site_name" content="Website da Loritta">
 <meta property="og:description" content="Olá, eu me chamo Loritta! Apenas um simples bot para o Discord!">
 <meta property="og:title" content="Meu Website!">
@@ -35,6 +38,7 @@
   <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ WEBSITE_FAN_ARTS }}</a>
   <a href="{{ websiteUrl }}donate"><i class="fa fa-gift" aria-hidden="true"></i> {{ WEBSITE_DONATE }}</a>
   <a id="themeChanger" onclick="changeTheme(this)"><i class="fa fa-moon-o" aria-hidden="true"></i></a>
+  <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
 </div>
 <div class="topnavRight">
   <div class="rightEntries">
@@ -73,6 +77,15 @@
 </div>
 {% endblock %}
 {% endblock %}
+</div>
+<div class="totallyHidden">	
+<div class="tingle-demo locale-changer-modal">
+<div class="test">
+<div class="category-name">Escolha sua linguagem</div>
+<a class="button-discord button-discord-info pure-button" href="{{ currentUrl }}?force_locale=default">Português (Brasil)</a>
+<a class="button-discord button-discord-info pure-button" href="{{ currentUrl }}?force_locale=en-us">English (United States)</a>
+</div>
+</div>
 </div>
 <script>
 function createCookie(name,value,days) {
@@ -163,6 +176,21 @@ if($("html").hasClass('dark')) {
 }
 }
 
+function openLocaleChanger() {
+    var modal = new tingle.modal({
+        closeMethods: [],
+        footer: true
+		});
+		
+    modal.addFooterBtn('Fechar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
+		modal.close();
+    });
+
+	var cloned = $(".locale-changer-modal").clone()	
+    modal.setContent(cloned.html());
+	modal.open();
+}
+
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
 	var element = $("#myTopnav");
@@ -233,8 +261,9 @@ function onViewport(el, elClass, offset, callback) {
 <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
 <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></link>
 <link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css"></link>
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2"></link>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.5"></link>
 <link rel="stylesheet" href="{{ websiteUrl }}assets/css/tingle.min.css"></link>
 <link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
 <link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
@@ -242,3 +271,4 @@ function onViewport(el, elClass, offset, callback) {
 <link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <script async src="https://use.fontawesome.com/055e611427.js"></script>
 </body>
+</html>

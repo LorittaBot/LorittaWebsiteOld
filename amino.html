@@ -7,13 +7,13 @@ Amino & Loritta
 {{ generateCheckbox(1, "isEnabled", DASHBOARD_ACTIVATE_MODULE, "", config.isEnabled, true) }}
 <hr>
 <div id="hiddenIfDisabled">
-{{ generateCheckbox(2, "fixAminoImages", "Transformar imagens \".Amino\" em imagens normais no Discord", "", config.fixAminoImages, true) }}
+{{ generateCheckbox(2, "fixAminoImages", DASHBOARD_TransformAminoImages, "", config.fixAminoImages, true) }}
 <hr>
-{{ generateCheckbox(3, "syncAmino", "Sincronizar posts de comunidades do Amino", "", config.syncAmino, true) }}
+{{ generateCheckbox(3, "syncAmino", DASHBOARD_SyncAminoCommunities, "", config.syncAmino, true) }}
 <hr>
 <div id="hiddenIfDisabled2">
 <div class="category-name">
-Comunidades do Amino
+{{ DASHBOARD_AminoCommunities }}
 </div>
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-3-4">
@@ -22,25 +22,25 @@ Alguma coisa super topperson aqui
 </div>
 </div>
 <div class="pure-u-1 pure-u-md-1-4">
-<button onclick="addCommunity()" style="float: right;" class="button-discord button-discord-info pure-button">Adicionar Comunidade</button>
+<button onclick="addCommunity()" style="float: right;" class="button-discord button-discord-info pure-button">{{ DASHBOARD_AddCommunity }}</button>
 </div>
 </div>
 <hr>
 <div id="amino-communities">
 {% for community in config.aminos %}
 <div id="{{ community.communityId }}" class="amino-community" data-repost-id="{{ community.repostToChannelId }}" data-community-id="{{ community.communityId }}" data-community-url="{{ community.inviteUrl }}">
-<div style="background-color: hsla(240,6%,97%,.6); border-color: #dcddde; padding: 20px; border-radius: 5px; border-style: solid; border-width: 1px;     margin-bottom: 8px;">
+<div class="discord-generic-entry">
 <img class="amino-small-image" style="width: 6%; height: auto; border-radius: 999999px; float: left;">
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-18-24">
 <div style="margin-left: 10px; margin-right: 10px;">
-<div class="amino-title" style="font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;">...</div>
+<div class="amino-title entry-title" style="font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;">...</div>
 <div class="amino-channel toggleSubText">...</div>
 </div>
 </div>
 <div class="pure-u-1 pure-u-md-6-24 vertically-centered-content">
 <button class="button-discord button-discord-edit pure-button" style="margin-right: 8px; min-width: 0px;" onclick="deleteCommunity('{{ community.communityId }}')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-<button class="button-discord button-discord-edit pure-button" onclick="editCommunity('{{ community.communityId }}')">Editar</button>
+<button class="button-discord button-discord-edit pure-button" onclick="editCommunity('{{ community.communityId }}')">{{ DASHBOARD_EditButton }}</button>
 </div>
 </div>
 </div>
@@ -55,37 +55,37 @@ Alguma coisa super topperson aqui
 <br style="clear: both" /> <!-- So dirty! -->
 <div class="totallyHidden">		
 <div id="amino-community-template" class="amino-community">
-<div style="background-color: hsla(240,6%,97%,.6); border-color: #dcddde; padding: 20px; border-radius: 5px; border-style: solid; border-width: 1px;     margin-bottom: 8px;">
+<div class="discord-generic-entry">
 <img class="amino-small-image" style="width: 6%; height: auto; border-radius: 999999px; float: left;">
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-18-24">
 <div style="margin-left: 10px; margin-right: 10px;">
-<div class="amino-title" style="font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;">A Loritta é muito fofa! <3</div>
+<div class="amino-title entry-title" style="font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;">A Loritta é muito fofa! <3</div>
 <div class="amino-channel toggleSubText">eu te moido</div>
 </div>
 </div>
 <div class="pure-u-1 pure-u-md-6-24 vertically-centered-content">
 <button class="amino-delete button-discord button-discord-edit pure-button" style="margin-right: 8px; min-width: 0px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-<button class="amino-edit button-discord button-discord-edit pure-button">Editar</button>
+<button class="amino-edit button-discord button-discord-edit pure-button">{{ DASHBOARD_EditButton }}</button>
 </div>
 </div>
 </div>
 </div>
 <div class="tingle-demo tingle-demo-big">
 <div class="test">
-<div class="category-name">Adicionar comunidade</div>
+<div class="category-name">{{ DASHBOARD_AddCommunity }}</div>
 	<div style="width: 25%">
 		<img style="width: 100%; height: auto; float: left; border-radius: 999999px;" class="community-icon" src="https://i.imgur.com/s4dTtBy.jpg"></img>
 	</div>
 	<div style="width: 73%; float: right;">
-		<div class="flavourText">Link da comunidade</div> <div class="community-error flavourText totallyHidden" style="color: #f04747;">Erro ao pegar informações sobre a comunidade</div>
+		<div class="flavourText">{{ DASHBOARD_CommunityLink }}</div> <div class="community-error flavourText totallyHidden" style="color: #f04747;">{{ DASHBOARD_CommunityError }}</div>
 		<input style="width: 100%;" class="community-invite-url" data-internal-id="inviteUrl" placeholder="http://aminoapps.com/c/undertale-brasil/" type="text">
 		<div class="blurSection community-info">
-		<div class="flavourText">Título da comunidade</div>
+		<div class="flavourText">{{ DASHBOARD_CommunityTitle }}</div>
 		<div class="toggleSubText community-title">A Loritta é muito fofa! <3</div>
-		<div class="flavourText">Descrição da comunidade</div>
+		<div class="flavourText">{{ DASHBOARD_CommunityDescription }}</div>
 		<div class="toggleSubText community-description">eu te moido :3</div>
-		<div class="flavourText">Canal para anunciar novos posts</div>
+		<div class="flavourText">{{ DASHBOARD_CommunityChannel }}</div>
 		<select class="community-channel-id">
 			{% for textChannel in guild.getTextChannels %}
 			<option value="{{ textChannel.getId }}">{{ textChannel.getName }}</option>
@@ -98,8 +98,8 @@ Alguma coisa super topperson aqui
 </div>
 <div class="tingle-demo delete-community-modal">
 <div class="test">
-<div class="category-name">Deletar comunidade</div>
-	Você tem certeza que você deseja fazer isto?
+<div class="category-name">{{ DASHBOARD_DeleteCommunity }}</div>
+	{{ DASHBOARD_DeleteAreYouSure }}
 </div>
 </div>
 </div>

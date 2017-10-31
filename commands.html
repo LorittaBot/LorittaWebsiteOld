@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block subtitle %}
+Comandos
+{% endblock %}
+{% block wrapper %}
+<div class="oddWrapper">
+<!-- Loritta Teste -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="6236021665"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<div class="contentWrapper">
+<div>
+{% for command in commandMap %}
+<p><b>+{{ command.getLabel }}</b></p>
+<p>{{ command.getDescription }}</p>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

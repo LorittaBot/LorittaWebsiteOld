@@ -25,7 +25,7 @@ Alguma coisa super topperson aqui
 <br style="clear: both" /> <!-- So dirty! -->
 <div class="totallyHidden">		
 <div id="custom-config-entry-template" class="config-entry">
-<div style="background-color: hsla(240,6%,97%,.6); border-color: #dcddde; padding: 20px; border-radius: 5px; border-style: solid; border-width: 1px;     margin-bottom: 8px;">
+<div class="discord-generic-entry">
 <img class="entry-icon" style="width: 6%; height: auto; border-radius: 999999px; float: left;">
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-18-24">
@@ -36,7 +36,7 @@ Alguma coisa super topperson aqui
 </div>
 <div class="pure-u-1 pure-u-md-6-24 vertically-centered-content">
 <button class="entry-delete button-discord button-discord-edit pure-button" style="margin-right: 8px; min-width: 0px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-<button class="entry-edit button-discord button-discord-edit pure-button">Editar</button>
+<button class="entry-edit button-discord button-discord-edit pure-button">{{ DASHBOARD_EditButton }}</button>
 </div>
 </div>
 </div>
@@ -44,10 +44,10 @@ Alguma coisa super topperson aqui
 <div class="tingle-demo add-new-entry-modal">
 <div class="test">
 <div class="category-name">Adicionar feed</div>
-	<div class="flavourText">Link do feed</div> <div class="entry-error flavourText totallyHidden" style="color: #f04747;">Erro ao pegar informações sobre a feed</div>
+	<div class="flavourText">Link da feed</div> <div class="entry-error flavourText totallyHidden" style="color: #f04747;">Erro ao pegar informações sobre a feed</div>
 	<input style="width: 100%;" class="entry-url" data-internal-id="inviteUrl" placeholder="https://news.google.com/news/rss/headlines/section/topic/NATION.pt-BR_br/Brasil?ned=pt-br_br&hl=pt-br" type="text">
 	<div class="blurSection entry-info">
-	<div class="flavourText">Nome do feed</div>
+	<div class="flavourText">Nome da feed</div>
 	<div class="toggleSubText entry-title">A Loritta é muito fofa! <3</div>
 	<div class="flavourText">Canal para anunciar novos posts</div>
 	<select class="entry-repost-id">

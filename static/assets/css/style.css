@@ -29,6 +29,11 @@ a {
 	padding: 5px;
 }
 
+.discord-generic-entry {
+	background-color: hsla(240,6%,97%,.6); border-color: #dcddde; padding: 20px; border-radius: 5px; border-style: solid; border-width: 1px;margin-bottom: 8px;
+}
+
+
 .dark .contentWrapper {
 	color: #FAFAFA;
 }
@@ -112,6 +117,16 @@ a {
 	color: #4f545c;
 	font-weight: 600;
 }
+
+.dark .discord-generic-entry {
+	border-color: #202225;
+	background: rgba(32,34,37,.3);
+}
+
+.dark .discord-generic-entry .entry-title {
+	color: #f6f6f7;
+}
+
 .contentWrapper {
 	width: 70%;
 	display: inline-block;
@@ -373,6 +388,14 @@ margin: 2%;
 	font-size: 14px;
 }
 
+.button-discord:hover {
+	text-decoration: none;
+}
+
+.button-discord:visited {
+	color: white;
+}
+
 .button-discord-success {
 	background: rgb(67, 181, 129);
 }
@@ -412,6 +435,11 @@ background-color: rgb(0, 0, 0, 0);
 border-style: solid;
 border-width: 1px;
 border-radius: 3px;
+}
+
+.dark .button-discord-edit {
+	border-color: hsla(0,0%,100%,.3);
+    color: #fff;
 }
 
 .hello {
@@ -811,9 +839,21 @@ border-radius: 5px;
 border: solid 1px;
 border-radius: 5px;
 border-color: #dcddde;
-
 }
 
+.dark .discord-message-content {
+	color: hsla(0,0%,100%,.7);
+}
+
+.dark .discord-username {
+	color: #fff;
+}
+
+.dark .discord-message-helper {
+	background-color: rgb(54, 57, 62);
+	border-color: #202225;
+	
+}
 .insideContent img {
 	max-width: 100%;
 }
@@ -986,6 +1026,15 @@ hr {
 	height: 1px;
 }
 
+/* ===[ DARK EMBEDS ]=== */
+.dark .tingle-modal-box__content {
+	background-color: rgb(54, 57, 63);
+}
+
+.dark .tingle-modal-box__footer {
+	background-color: rgb(47, 49, 54);
+}
+
 /* Text Field igual ao Discord */
 input[type=text], select {
 margin: 8px 0;
@@ -1035,6 +1084,18 @@ textarea:disabled {
 background-color: rgb(243, 243, 243);
 }
 
+.dark input[type=text], .dark select {
+	background-color: rgb(48, 51, 56);
+	border-color: #040405;
+	color: #f6f6f7;
+}
+
+.dark textarea {
+	background-color: rgb(48, 51, 56);
+	border-color: #040405;
+	color: #f6f6f7;
+}
+
 .noBlur {
   filter: blur(0px);
   pointer-events: inherit;
@@ -1053,7 +1114,14 @@ background-color: rgb(243, 243, 243);
 	border-color: #dcddde;
 	padding: 20px;
 	margin-bottom: 24px;
+	background-color: #f8f9f9;
 }
+
+.dark .userOptionsWrapper {
+	background: rgba(32,34,37,.6);
+    border-color: #202225;
+}
+
 /* ===[ FAN ARTS ]=== */
 #fanArts .fanArtWrapper {
 	padding: 15px;

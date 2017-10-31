@@ -1,12 +1,22 @@
 {% extends 'configure_server.html' %}
 {% block rightSidebarContents %}
-{% set config = serverConfig.youTubeConfig %}
+{% set config = serverConfig.rssFeedConfig %}
+<style>
+    .command-editor {
+        position: relative !important;
+        border: 1px solid lightgray;
+        margin: auto;
+        height: 300px;
+        width: 100%;
+    }
+</style>
+<script src="{{ websiteUrl }}assets/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 <div class="category-name">
-YouTube
+{{ DASHBOARD_JavaScriptCommands }}
 </div>
-<div class="category-name">
-Canais do YouTube
-</div>
+{# <div class="category-name">
+Comandos em JavaScript
+</div> #}
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-3-4">
 <div id="communityTitle" class="toggleSubText">
@@ -14,7 +24,7 @@ Alguma coisa super topperson aqui
 </div>
 </div>
 <div class="pure-u-1 pure-u-md-1-4">
-<button onclick="addEntryWithModal()" style="float: right;" class="button-discord button-discord-info pure-button">Adicionar Canal</button>
+<button onclick="addEntryWithModal()" style="float: right;" class="button-discord button-discord-info pure-button">{{ DASHBOARD_AddCommand }}</button>
 </div>
 </div>
 <hr>
@@ -25,8 +35,8 @@ Alguma coisa super topperson aqui
 <br style="clear: both" /> <!-- So dirty! -->
 <div class="totallyHidden">		
 <div id="custom-config-entry-template" class="config-entry">
-<div  class="discord-generic-entry">
-<img class="entry-icon" style="width: 6%; height: auto; border-radius: 999999px; float: left;">
+<div class="discord-generic-entry">
+<img class="entry-icon" src="{{ websiteUrl }}assets/img/file_code.png" style="width: 6%; height: auto; float: left;">
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-18-24">
 <div style="margin-left: 10px; margin-right: 10px;">
@@ -36,48 +46,41 @@ Alguma coisa super topperson aqui
 </div>
 <div class="pure-u-1 pure-u-md-6-24 vertically-centered-content">
 <button class="entry-delete button-discord button-discord-edit pure-button" style="margin-right: 8px; min-width: 0px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-<button class="entry-edit button-discord button-discord-edit pure-button">Editar</button>
+<button class="entry-edit button-discord button-discord-edit pure-button">{{ DASHBOARD_EditButton }}</button>
 </div>
 </div>
 </div>
 </div>
 <div class="tingle-demo add-new-entry-modal">
 <div class="test">
-<div class="category-name">Adicionar canal</div>
-	<div style="width: 25%">
-		<img style="width: 100%; height: auto; float: left; border-radius: 999999px;" class="entry-icon" src="https://i.imgur.com/s4dTtBy.jpg"></img>
+<div class="category-name">{{ DASHBOARD_AddCommand }}</div>
+	<div class="flavourText">{{ DASHBOARD_Command }}</div>
+	<input style="width: 100%;" class="entry-command-label" data-internal-id="inviteUrl" placeholder="loritta" type="text">
+	<div class="entry-info">
+	<div class="flavourText">{{ DASHBOARD_Code }}</div>
+	<pre class="command-editor">
+if (getArgument(0) == "fofa") { // Se o argumento 0 (ou seja, o primeiro argumento) for "fofa"...
+	reply("ownt~ 😊");
+	return;
+}
+reply("Olá, eu me chamo Loritta! 😘");
+	</pre>
 	</div>
-	<div style="width: 73%; float: right;">
-		<div class="flavourText">Link do canal</div> <div class="entry-error flavourText totallyHidden" style="color: #f04747;">Erro ao pegar informações sobre o canal</div>
-		<input style="width: 100%;" class="entry-url" data-internal-id="inviteUrl" placeholder="https://www.youtube.com/user/ZordTv" type="text">
-		<div class="blurSection entry-info">
-		<div class="flavourText">Nome do canal</div>
-		<div class="toggleSubText entry-title">A Loritta é muito fofa! <3</div>
-		<div class="flavourText">Canal para anunciar novos posts</div>
-		<select class="entry-repost-id">
-			{% for textChannel in guild.getTextChannels %}
-			<option value="{{ textChannel.getId }}">{{ textChannel.getName }}</option>
-			{% endfor %}
-		  </select>
-		<div class="flavourText">Mensagem para ser enviada ao enviar um novo vídeo</div>
-		<textarea class="entry-description">Novo vídeo no canal: {link}</textarea>
-		</div>
-	</div>
-	<br style="clear: both" /> <!-- So dirty! -->
 </div>
 </div>
 <div class="tingle-demo delete-entry-modal">
 <div class="test">
-<div class="category-name">Deletar canal</div>
-	Você tem certeza que você deseja fazer isto?
+<div class="category-name">{{ DASHBOARD_DeleteCommand }}</div>
+	{{ DASHBOARD_DeleteAreYouSure }}
 </div>
 </div>
 <script id="entry-hidden-data" type="text/template">
-{{ channels|raw }}
+{{ eventHandlers|raw }}
 </script>
 </div>
 <script>
 var typingTimer;
+var currentEditor;
 
 function transformEntriesToJson() {
 	var configAttr = {"type":"{{ saveType }}"}
@@ -95,10 +98,8 @@ function transformEntriesToJson() {
 		var entry = {};
 		
 		if ($(this).attr("id") !== "custom-config-entry-template") {
-			entry["repostToChannelId"] = $(this).attr("data-entry-repost-id");
-			entry["channelUrl"] = $(this).attr("data-entry-url");
-			entry["channelId"] = $(this).attr("data-entry-channel-id");
-			entry["videoSentMessage"] = htmldecode($(this).attr("data-entry-description"));
+			entry["jsLabel"] = $(this).attr("data-command-label");
+			entry["javaScript"] = $(this).attr("data-command-code");
 			entries.push(entry);
 		}
 	});
@@ -138,18 +139,9 @@ function addEntryWithModal() {
 		
     modal.addFooterBtn('Salvar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
 		var element = $("#editing-" + guid);
-		if (element.attr("data-is-ready") == "false") { return; }
-		var iconUrl = element.attr("data-entry-icon");
-		var channelId = element.attr("data-entry-channel-id");
-		var channelUrl = element.attr("data-entry-url");
-		console.log("addEntryWithModal ~ cId " + channelId);
-		console.log("addEntryWithModal ~ cUrl " + channelUrl);
-		var title = element.attr("data-entry-title");
-		var description = element.find(".entry-description").val()
-		var textChannelName = element.find(".entry-repost-id").find('option:selected').text()
-		var textChannelId = element.find(".entry-repost-id").find('option:selected').val()
-		console.log("addEntryWithModal ~ " + textChannelName);
-		addNewConfigEntryData(title, iconUrl, channelUrl, channelId, textChannelName, textChannelId, description, guid)
+		var newCode = currentEditor.getSession().getValue()
+		var commandLabel = element.find(".entry-command-label").val();
+		addNewConfigEntryData(commandLabel, newCode, guid)
 		modal.close();
     });
 
@@ -163,6 +155,14 @@ function addEntryWithModal() {
 	
     modal.setContent(cloned.html());
 	modal.open();
+	
+	$("#editing-" + guid).find(".command-editor").attr("id", "command-" + guid)
+    var editor = ace.edit("command-" + guid);
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+	// editor.setValue($("#editing-" + guid).attr("data-command-code"))
+    var input = $("#editing-" + guid).find(".command-editor");
+	currentEditor = editor;
 	
 	addInputEvent($("#editing-" + guid));
 }
@@ -178,16 +178,9 @@ function editEntry(guid) {
 		
     modal.addFooterBtn('Salvar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
 		var element = $("#editing-" + guid);
-		if (element.attr("data-is-ready") == "false") { return; }
-		var iconUrl = element.attr("data-entry-icon");
-		var channelId = element.attr("data-entry-channel-id");
-		var title = element.attr("data-entry-title");
-		var channelUrl = element.attr("data-entry-url");
-		var description = element.find(".entry-description").val()
-		var textChannelName = element.find(".entry-repost-id").find('option:selected').text()
-		var textChannelId = element.find(".entry-repost-id").find('option:selected').val()
-		setChannelData($("#" + guid), title, iconUrl, channelUrl, channelId, textChannelName, textChannelId, description, guid)
-		// addNewConfigEntryData(title, iconUrl, channelId, textChannelName, textChannelId, description, guid)
+		var newCode = editor.getSession().getValue()
+		var commandLabel = element.find(".entry-command-label").val();
+		setChannelData($("#" + guid), commandLabel, newCode, guid)
 		modal.close();
     });
 
@@ -199,14 +192,19 @@ function editEntry(guid) {
 	var cloned = $(".add-new-entry-modal").clone()
 	cloned.children().attr("id", "editing-" + guid);
 	cloned.children().attr("data-guid", guid);
-	cloned.find(".entry-info").removeClass("blurSection");
-	cloned.find(".entry-icon").attr("src", entry.attr("data-entry-icon"))
-	cloned.find(".entry-title").html(entry.attr("data-entry-title"))
+	var code = entry.attr("data-command-code");
     modal.setContent(cloned.html());
 	modal.open();
-	$("#editing-" + guid).find(".entry-url").val(entry.attr("data-entry-url"))
-	$("#editing-" + guid).find(".entry-description").val(htmldecode(entry.attr("data-entry-description")))
-	$("#editing-" + guid).find(".entry-repost-id").val(entry.attr("data-entry-repost-id")).change();
+
+	var modalElement = $("#editing-" + guid)
+	modalElement.find(".entry-command-label").val(entry.attr("data-command-label"))
+	$("#editing-" + guid).find(".command-editor").attr("id", "command-" + guid)
+    var editor = ace.edit("command-" + guid);
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+	editor.setValue(entry.attr("data-command-code"))
+    var input = $("#editing-" + guid).find(".command-editor");
+	currentEditor = editor;
 	
 	addInputEvent($("#editing-" + guid));
 }
@@ -242,7 +240,7 @@ function addInputEvent(element) {
 function doneTyping(element) {
 	element.attr("data-is-ready", false)
 	element.find(".entry-error").addClass("totallyHidden");
-	var json = getContentAsJson("{{ websiteUrl }}api/v1/get_channel_info?channelLink=" + encodeURI(element.find(".entry-url").val()), function(json) {
+	var json = getContentAsJson("{{ websiteUrl }}api/v1/get_feed_title?feedLink=" + encodeURI(element.find(".entry-url").val()), function(json) {
 		if (json["raw"] != null || json["error"] != null) {
 			element.find(".entry-info").removeClass("noBlur")
 			element.find(".entry-info").addClass("blurSection")
@@ -253,72 +251,48 @@ function doneTyping(element) {
 		element.find(".entry-info").removeClass("blurSection")
 		element.find(".entry-info").addClass("noBlur")
 		element.find(".entry-title").text(json["title"])
-		element.find(".entry-icon").attr("src", json["avatarUrl"])
+		// element.find(".entry-icon").attr("src", json["avatarUrl"])
 		element.attr("data-entry-title", json["title"])
-		element.attr("data-entry-icon", json["avatarUrl"])
-		element.attr("data-entry-channel-id", json["channelId"])
+		// element.attr("data-entry-icon", json["avatarUrl"])
+		// element.attr("data-entry-channel-id", json["channelId"])
 		element.attr("data-entry-url", element.find(".entry-url").val())
 		element.attr("data-is-ready", true)
 	});
 }
 
-function addNewConfigEntry(channelUrl, channelId, channelName, textChannelId, description, guid) {
-	console.log(channelUrl + " ~ " + guid);
+function addNewConfigEntry(commandName, json, guid) {
+	console.log(commandName + " ~ " + guid);
 	var cloned = $("#custom-config-entry-template").clone();
-	cloned.find(".entry-channel").text(channelName);
+	// cloned.find(".entry-channel").text(channelName);
 	cloned.attr("id", guid);
-	cloned.attr("data-entry-description", description);
-	cloned.attr("data-entry-url", channelUrl);
-	cloned.attr("data-entry-channel-id", channelId);
-	cloned.attr("data-entry-repost-id", textChannelId);
-	cloned.attr("data-entry-title", channelName);
-	cloned.attr("data-is-ready", false)
+	// cloned.attr("data-entry-description", description);
+	// cloned.attr("data-entry-url", commandName);
+	// cloned.attr("data-entry-repost-id", textChannelId);
+	cloned.attr("data-command-code", json["javaScript"])
+	cloned.attr("data-command-label", json["jsLabel"])
+	cloned.attr("data-is-ready", true)
 	cloned.find(".entry-edit").attr("onclick", "editEntry('" + guid + "');")
 	cloned.find(".entry-delete").attr("onclick", "deleteEntry('" + guid + "');")
+	cloned.find(".entry-title").html(commandName)
 	$("#custom-config-entries").append(cloned);
-
-	var json = getContentAsJson("{{ websiteUrl }}api/v1/get_channel_info?channelLink=" + encodeURI(channelUrl), function(json) {
-		console.log("callback!");
-		if (json["error"] != null) {
-			$("#custom-config-entries").find("#" + guid).remove();
-			return;
-		}
-		cloned.attr("data-is-ready", true)
-		cloned.attr("data-entry-icon", json["avatarUrl"])
-		cloned.attr("data-entry-title", json["title"])
-		cloned.attr("data-entry-channel-url", channelUrl)
-		cloned.find(".entry-title").text(json["title"])
-		cloned.find(".entry-icon").attr("src", json["avatarUrl"])
-	});
 }
 
-function addNewConfigEntryData(channelName, channelIcon, channelUrl, channelId, textChannelName, textChannelId, description, guid) {
-	console.log("addNewConfigEntryData ~ " + textChannelName);
-		console.log("addNewConfigEntryData ~ cId " + channelId);
-		console.log("addNewConfigEntryData ~ cUrl " + channelUrl);
+function addNewConfigEntryData(commandLabel, commandCode, guid) {
 	var cloned = $("#custom-config-entry-template").clone();
 	cloned.attr("id", guid);
-	setChannelData(cloned, channelName, channelIcon, channelUrl, channelId, textChannelName, textChannelId, description, guid);
+	setChannelData(cloned, commandLabel, commandCode, guid);
 	
 	$("#custom-config-entries").append(cloned);
 }
 
-function setChannelData(cloned, channelName, channelIcon, channelUrl, channelId, textChannelName, textChannelId, description, guid) {
-	console.log("setChannelData ~ " + textChannelName);
-	cloned.find(".entry-channel").text("#" + textChannelName);
-	cloned.find(".entry-title").text(channelName)
-	cloned.find(".entry-icon").attr("src", channelIcon)
-	cloned.find(".entry-edit").attr("onclick", "editEntry('" + guid + "');");
-	cloned.find(".entry-delete").attr("onclick", "deleteEntry('" + guid + "');");
-	
-	cloned.attr("data-entry-channel-name", channelName);
-	cloned.attr("data-entry-icon", channelIcon);
-	cloned.attr("data-entry-description", description);
-	cloned.attr("data-entry-channel-id", channelId)
-	cloned.attr("data-entry-url", channelUrl)
-	cloned.attr("data-entry-repost-id", textChannelId)
-		console.log("setChannelData ~ cId " + channelId);
-		console.log("setChannelData ~ cUrl " + channelUrl);
+function setChannelData(cloned, commandLabel, commandCode, guid) {
+	console.log(commandLabel);
+	cloned.attr("id", guid);
+	cloned.attr("data-command-code", commandCode)
+	cloned.attr("data-command-label", commandLabel)
+	cloned.find(".entry-title").html("{{ serverConfig.commandPrefix }}" + commandLabel)
+	cloned.find(".entry-edit").attr("onclick", "editEntry('" + guid + "');")
+	cloned.find(".entry-delete").attr("onclick", "deleteEntry('" + guid + "');")
 	cloned.attr("data-is-ready", true)
 }
 
@@ -333,8 +307,9 @@ console.log(jsonFeed);
 jQuery.each(jsonFeed, function() {
 var guid = uuidv4();
 console.log(this);
-addNewConfigEntry(this["channelUrl"], this["channelId"], "#" + this["textChannelName"], this["repostToChannelId"], this["videoSentMessage"], guid);
+addNewConfigEntry("{{ serverConfig.commandPrefix }}" + this["jsLabel"], this, guid);
 });
+
 
 $("#cmn-toggle-1").click(function(e) {
 	applyBlur()

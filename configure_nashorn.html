@@ -12,11 +12,11 @@
 </style>
 <script src="{{ websiteUrl }}assets/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 <div class="category-name">
-Comandos em JavaScript
+{{ DASHBOARD_JavaScriptCommands }}
 </div>
-<div class="category-name">
+{# <div class="category-name">
 Comandos em JavaScript
-</div>
+</div> #}
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-3-4">
 <div id="communityTitle" class="toggleSubText">
@@ -24,7 +24,7 @@ Alguma coisa super topperson aqui
 </div>
 </div>
 <div class="pure-u-1 pure-u-md-1-4">
-<button onclick="addEntryWithModal()" style="float: right;" class="button-discord button-discord-info pure-button">Adicionar Comando</button>
+<button onclick="addEntryWithModal()" style="float: right;" class="button-discord button-discord-info pure-button">{{ DASHBOARD_AddCommand }}</button>
 </div>
 </div>
 <hr>
@@ -35,7 +35,7 @@ Alguma coisa super topperson aqui
 <br style="clear: both" /> <!-- So dirty! -->
 <div class="totallyHidden">		
 <div id="custom-config-entry-template" class="config-entry">
-<div style="background-color: hsla(240,6%,97%,.6); border-color: #dcddde; padding: 20px; border-radius: 5px; border-style: solid; border-width: 1px;     margin-bottom: 8px;">
+<div class="discord-generic-entry">
 <img class="entry-icon" src="{{ websiteUrl }}assets/img/file_code.png" style="width: 6%; height: auto; float: left;">
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-18-24">
@@ -46,18 +46,18 @@ Alguma coisa super topperson aqui
 </div>
 <div class="pure-u-1 pure-u-md-6-24 vertically-centered-content">
 <button class="entry-delete button-discord button-discord-edit pure-button" style="margin-right: 8px; min-width: 0px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-<button class="entry-edit button-discord button-discord-edit pure-button">Editar</button>
+<button class="entry-edit button-discord button-discord-edit pure-button">{{ DASHBOARD_EditButton }}</button>
 </div>
 </div>
 </div>
 </div>
 <div class="tingle-demo add-new-entry-modal">
 <div class="test">
-<div class="category-name">Adicionar comando</div>
-	<div class="flavourText">Comando</div>
+<div class="category-name">{{ DASHBOARD_AddCommand }}</div>
+	<div class="flavourText">{{ DASHBOARD_Command }}</div>
 	<input style="width: 100%;" class="entry-command-label" data-internal-id="inviteUrl" placeholder="loritta" type="text">
 	<div class="entry-info">
-	<div class="flavourText">Código</div>
+	<div class="flavourText">{{ DASHBOARD_Code }}</div>
 	<pre class="command-editor">
 if (getArgument(0) == "fofa") { // Se o argumento 0 (ou seja, o primeiro argumento) for "fofa"...
 	reply("ownt~ 😊");
@@ -70,8 +70,8 @@ reply("Olá, eu me chamo Loritta! 😘");
 </div>
 <div class="tingle-demo delete-entry-modal">
 <div class="test">
-<div class="category-name">Deletar comando</div>
-	Você tem certeza que você deseja fazer isto?
+<div class="category-name">{{ DASHBOARD_DeleteCommand }}</div>
+	{{ DASHBOARD_DeleteAreYouSure }}
 </div>
 </div>
 <script id="entry-hidden-data" type="text/template">
@@ -179,7 +179,7 @@ function editEntry(guid) {
     modal.addFooterBtn('Salvar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
 		var element = $("#editing-" + guid);
 		var newCode = editor.getSession().getValue()
-		var commandLabel = element.find("entry-command-label").val();
+		var commandLabel = element.find(".entry-command-label").val();
 		setChannelData($("#" + guid), commandLabel, newCode, guid)
 		modal.close();
     });

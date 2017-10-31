@@ -72,7 +72,7 @@ Painel de Controle
 <div class="category-name">
 {{ DASHBOARD_CONFIG_OVERVIEW }}
 </div>
-<div class="userOptionsWrapper" style="background-color: #f8f9f9;">
+<div class="userOptionsWrapper">
 <div class="pure-g">
 	<div class="pure-u-1 pure-u-md-1-6">
 		<img style="border-radius: 99999px; height: 100px;" src="https://loritta.website/assets/img/loritta_discord_avatar.png">
@@ -107,7 +107,6 @@ Painel de Controle
 </div>
 <hr>
 <div class="user-option-bottom">
-<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
 <br style="clear: both" /> <!-- So dirty! -->
 </div>
 </div>
@@ -120,29 +119,29 @@ true) }}
 <hr>
 {{ generateCheckbox(2, 
 "mentionOnCommandOutput", 
-"mentionOnCommandOutput", 
-"mentionOnCommandOutput", 
+DASHBOARD_MentionOnCommandOutput, 
+DASHBOARD_MentionOnCommandOutputSub, 
 serverConfig.mentionOnCommandOutput, 
 true) }}
 <hr>
 {{ generateCheckbox(3, 
 "deleteMessageAfterCommand", 
-"deleteMessageAfterCommand", 
-"deleteMessageAfterCommand", 
+DASHBOARD_DeleteMessageAfterCommand, 
+DASHBOARD_DeleteMessageAfterCommandSub, 
 serverConfig.deleteMessageAfterCommand, 
 true) }}
 <hr>
 {{ generateCheckbox(4, 
 "warnOnMissingPermission", 
-"warnOnMissingPermission", 
-"warnOnMissingPermission", 
+DASHBOARD_WarnOnMissingPermission, 
+DASHBOARD_WarnOnMissingPermissionSub, 
 serverConfig.warnOnMissingPermission, 
 true) }}
 <hr>
-{{ generateCheckbox(4, 
+{{ generateCheckbox(5, 
 "warnOnUnknownCommand", 
-"warnOnUnknownCommand", 
-"warnOnUnknownCommand", 
+DASHBOARD_WarnOnUnknownCommand, 
+DASHBOARD_WarnOnUnknownCommandSub, 
 serverConfig.warnOnUnknownCommand, 
 true) }}
 <hr>
@@ -166,6 +165,39 @@ true) }}
   {% endif %}
 </table>
 <input type="hidden" id="blacklistedChannels" data-send-on-save="true" data-convert-to-list="true" data-internal-name="blacklistedChannels" value="{{ blacklistedChannels }}">
+<hr>
+{{ generateCheckbox(6, 
+"warnIfBlacklisted", 
+DASHBOARD_WarnIfBlacklisted, 
+DASHBOARD_WarnIfBlacklistedSub, 
+serverConfig.warnIfBlacklisted, 
+true) }}
+<hr>
+<div id="hiddenIfDisabledBlacklist">
+<div class="flavourText">{{ DASHBOARD_BlacklistWarning }}</div>
+<textarea data-send-on-save="true" data-internal-name="blacklistWarning" id="blacklistWarning" name="blacklistWarning">{{ serverConfig.blacklistWarning }}</textarea>
+</div>
+<script>
+$("#cmn-toggle-6").click(function(e) {
+	applyBlurBlacklist()
+});
+
+function applyBlurBlacklist() {
+  var e = $("#hiddenIfDisabledBlacklist");
+  if ($('#cmn-toggle-6').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+applyBlurBlacklist();
+</script>
+<hr>
+<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<br style="clear: both" /> <!-- So dirty! -->
 {% endblock %}
 <script>
 function addLink() {
@@ -223,6 +255,8 @@ function DL1(elem){
 </div>
 </div>
 <script>
+var toast = null;
+
 $('#commandPrefix').on('input', function() {
     // do something
 	$("#exampleMessagePrefix").text($('#commandPrefix').val());
@@ -265,7 +299,25 @@ function prepareSave() {
 function sendJsonToServer(json) {
 	console.log("Sending...")
 	console.log(json);
-	
+	toastr.options = {
+		"closeButton": false,
+		 "debug": false,
+	    "newestOnTop": false,
+			  "progressBar": false,
+			  "positionClass": "toast-bottom-center",
+			  "preventDuplicates": true,
+			  "onclick": null,
+			  "showDuration": "300",
+			  "hideDuration": "1000",
+			  "timeOut": "1000",
+			  "extendedTimeOut": "1000",
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut"
+			}
+			
+	toastr.info('Salvando...', toastr)
 	// construct an HTTP request
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "{{ websiteUrl }}dashboard/configure/{{ guild.getId }}/save", true);
@@ -276,7 +328,28 @@ function sendJsonToServer(json) {
 
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == XMLHttpRequest.DONE) {
-			alert("Adicionado no servidor ~ " + xhr.responseText);
+			toastr.clear()
+			// alert("Adicionado no servidor ~ " + xhr.responseText);
+			toastr.options = {
+			  "closeButton": false,
+			  "debug": false,
+			  "newestOnTop": false,
+			  "progressBar": true,
+			  "positionClass": "toast-bottom-center",
+			  "preventDuplicates": true,
+			  "onclick": null,
+			  "showDuration": "300",
+			  "hideDuration": "1000",
+			  "timeOut": "4000",
+			  "extendedTimeOut": "1000",
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut"
+			}
+
+			console.log(xhr.responseText);
+			toastr.success('Configurações salvas com sucesso!', toastr)
 		}
 	}
 }

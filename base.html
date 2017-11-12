@@ -37,11 +37,11 @@
   <a href="https://discord.gg/V7Kbh4z" target="_blank"><i class="fa fa-comments-o" aria-hidden="true"></i> {{ WEBSITE_MY_DISCORD }}</a>
   <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ WEBSITE_FAN_ARTS }}</a>
   <a href="{{ websiteUrl }}donate"><i class="fa fa-gift" aria-hidden="true"></i> {{ WEBSITE_DONATE }}</a>
-  <a id="themeChanger" onclick="changeTheme(this)"><i class="fa fa-moon-o" aria-hidden="true"></i></a>
-  <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
 </div>
 <div class="topnavRight">
   <div class="rightEntries">
+  <a id="themeChanger" onclick="changeTheme(this)"><i class="fa fa-moon-o" aria-hidden="true"></i></a>
+  <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
   <a href="{{ websiteUrl }}dashboard">
   {% if discordAuth != null %}
   {% set userIdentification = discordAuth.getUserIdentification %}

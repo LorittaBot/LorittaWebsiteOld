@@ -27,9 +27,11 @@
 {% if serverConfig.inviteBlockerConfig.whitelistedChannels|length > 0 %}
   {% for channel in serverConfig.inviteBlockerConfig.whitelistedChannels %}
   {% set jdaChannel = guild.getTextChannelById(channel) %}
+  {% if jdaChannel != null %}
   <tr>
     <td data-internalid="{{ channel }}" onclick="DL1(this)">{{ jdaChannel.getName() }}</td>
   </tr>
+  {% endif %}
   {% endfor %}
   {% endif %}
 </table>

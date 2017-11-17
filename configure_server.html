@@ -28,9 +28,9 @@ Painel de Controle
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}"><div class="item {% if saveType == "default" %}selected-item{% endif %}">
 	<i class="fa fa-cogs" aria-hidden="true"></i>  {{ DASHBOARD_CONFIG_OVERVIEW }}
 	</div></a>
-	{# <a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/commands"><div class="item">
-	Comandos
-	</div></a> #}
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/commands"><div class="item {% if saveType == "vanilla_commands" %}selected-item{% endif %}">
+	<i class="fa fa-terminal" aria-hidden="true"></i> Comandos
+	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/permissions"><div class="item {% if saveType == "permissions" %}selected-item{% endif %}">
 	<i class="fa fa-address-card" aria-hidden="true"></i> {{ DASHBOARD_PERMISSIONS }}
 	</div></a>
@@ -252,7 +252,7 @@ function DL1(elem){
 </script>
 </div>
 </div>
-</div>
+<br style="clear: both" />
 </div>
 <script>
 var toast = null;

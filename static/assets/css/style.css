@@ -724,6 +724,8 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
 
 #left-sidebar {
 	width: 28.5%; padding-top: 2%; background-color: rgb(243, 243, 244); float: left;
+	position: fixed;
+	height: 100%;
 }
 
 #right-sidebar {

@@ -21,7 +21,7 @@ Painel de Controle
 <div style="height: 50.05px"></div>
 <div id="server-configuration">
 <div id="left-sidebar">
-<div id="left-sidebar-contents" style="margin-left: 48%; margin-right: 4%;">
+<div id="left-sidebar-contents">
 	<div class="server-name">
 	{{ guild.getName }}
 	</div>
@@ -67,7 +67,7 @@ Painel de Controle
 </div>
 </div>
 <div id="right-sidebar">
-<div id="right-sidebar-contents" style="margin-left: 4%; margin-right: 19%;">
+<div id="right-sidebar-contents">
 {% block rightSidebarContents %}
 <div class="category-name">
 {{ DASHBOARD_CONFIG_OVERVIEW }}
@@ -149,7 +149,7 @@ true) }}
 <div class="toggleSubText">Nestes canais eu irei simplesmente ignorar comandos, como se eu nem estivesse lá (mesmo que eu esteja observando suas mensagens para dar XP 👀)</div>
 <select name="chooseRole" id="chooseRole">
 	{% for channel in guild.getTextChannels() %}
-	<option value="{{ channel.getId }}">{{ channel.getName }}</option>
+	<option value="{{ channel.getId }}">#{{ channel.getName }}</option>
 	{% endfor %}
 </select>
 <button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
@@ -159,7 +159,7 @@ true) }}
   {% for channel in serverConfig.blacklistedChannels %}
   {% set jdaChannel = guild.getTextChannelById(channel) %}
   <tr>
-    <td data-internalid="{{ channel }}" onclick="DL1(this)">{{ jdaChannel.getName() }}</td>
+    <td data-internalid="{{ channel }}" onclick="DL1(this)"><div style="margin-bottom: 2px; display: inline-block; padding: 2px 0px 2px 0px;" class="discord-mention">#{{ jdaChannel.getName() }}</span></td>
   </tr>
   {% endfor %}
   {% endif %}
@@ -209,7 +209,7 @@ function addLink() {
   var row = table.insertRow(-1)
   
   var cell = row.insertCell(-1)
-  cell.textContent = e.find(":selected").text();
+  cell.innerHTML = '<div style="margin-bottom: 2px; display: inline-block; padding: 2px 0px 2px 0px;" class="discord-mention">' + e.find(":selected").text() + '</span>'
   
   cell.setAttribute("onclick", "DL1(this)");
   cell.setAttribute("data-internalid", value);

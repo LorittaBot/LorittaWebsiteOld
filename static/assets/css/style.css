@@ -80,6 +80,13 @@ a {
 
 @-webkit-keyframes float-partner-server-circles{0%{-webkit-transform:translate3d(0,-8px,0);transform:translate3d(0,-8px,0)}to{-webkit-transform:translate3d(0,8px,0);transform:translate3d(0,8px,0)}}@keyframes float-partner-server-circles{0%{-webkit-transform:translate3d(0,-8px,0);transform:translate3d(0,-8px,0)}to{-webkit-transform:translate3d(0,8px,0);transform:translate3d(0,8px,0)}}
 
+.discord-mention {
+	background-color: rgba(115,139,215,.1);
+    color: #7289da;
+    font-weight: 600;
+    transition: background-color .05s,color .05s;
+}
+
 .server-icon-circle {
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -768,6 +775,7 @@ font-size: 12px;
     text-overflow: ellipsis;
     white-space: nowrap;
 	font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+	margin-left: 48%; margin-right: 4%;
 }
 
 #left-sidebar-contents .item {
@@ -801,6 +809,31 @@ font-size: 12px;
 #left-sidebar-contents .selected-item {
 background-color: #7289da;
 color: #fff !important;
+}
+
+#right-sidebar-contents {
+	margin-left: 4%; margin-right: 19%;
+}
+
+@media screen and (max-width: 600px) {
+  #left-sidebar {
+	  width: 100%;
+	  margin-left: 0%; margin-right: 0%;
+	  position: initial;
+  }
+  
+  #right-sidebar {
+	  width: 100%;
+  }
+  
+#right-sidebar-contents {
+	margin-left: 5%; margin-right: 5%;
+}
+
+#left-sidebar-contents .server-name {
+	margin-left: 0%;
+margin-right: 0%;
+text-align: center;
 }
 
 .category-name {

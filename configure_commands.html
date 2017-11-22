@@ -17,28 +17,38 @@ shrug
 <input type="text" id="filterBox" placeholder="Filtrar por nome...">
 <script>
 $('#filterBox').on('input', function() {
-var text = $(this).val()
+	var text = $(this).val()
 
-console.log(text)
+	console.log(text)
 
-$("#availableCommands").children().each(function() {
-	$(this).css('display', '')
+	filter(text)
 });
 
-$("#availableCommands").children().each(function() {
-var commandName = $(this).text()
-
-if (commandName.indexOf(text) == -1) {
-	$(this).css('display', 'none')
+function getFilterText() {
+return $("#filterBox").val()
 }
-});
-});
+
+function filter(text) {
+	$("#availableCommands").children().each(function() {
+		$(this).css('display', '')
+	});
+
+	$("#availableCommands").children().each(function() {
+	var commandName = $(this).text()
+
+	if (commandName.indexOf(text) == -1) {
+		$(this).css('display', 'none')
+	}
+	});
+}
 
 function moveSelectedAllRight() {
 	$("#availableCommands").children().each(function() {
 		$(this).prop("selected", false)
 		$(this).prependTo("#disabledCommands");
 	});
+	
+	filter(getFilterText());
 }
 
 function moveSelectedOneRight() {
@@ -48,6 +58,8 @@ function moveSelectedOneRight() {
 			$(this).prependTo("#disabledCommands");
 		}
 	});
+	
+	filter(getFilterText());
 }
 
 function moveSelectedAllLeft() {
@@ -55,6 +67,8 @@ function moveSelectedAllLeft() {
 		$(this).prop("selected", false)
 		$(this).prependTo("#availableCommands");
 	});
+	
+	filter(getFilterText());
 }
 
 function moveSelectedOneLeft() {
@@ -64,6 +78,8 @@ function moveSelectedOneLeft() {
 			$(this).prependTo("#availableCommands");
 		}
 	});
+	
+	filter(getFilterText());
 }
 
 function transformBlockedCommandsToJson() {

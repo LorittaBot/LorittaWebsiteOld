@@ -13,10 +13,12 @@
 <hr>
 {{ generateCheckbox(3, "tellOnBan", DASHBOARD_ENABLE_BAN, "", config.tellOnBan, true) }}
 <hr>
+{{ generateCheckbox(5, "tellOnKick", "Mostrar mensagem diferenciada ao ser expulso", "", config.tellOnKick, true) }}
+<hr>
 {{ generateCheckbox(4, "tellOnPrivate", DASHBOARD_ENABLE_PRIVATE, DASHBOARD_ENABLE_PRIVATE_SUB, config.tellOnPrivate, true) }}
 <hr>
     <div class="flavourText">{{ DASHBOARD_JOIN_CHANNEL }}</div>
-	<select data-send-on-save="true" data-internal-name="canalJoinId">
+	<select data-send-on-save="true" data-internal-name="canalJoinId" id="canalJoinId">
 		{% for textChannel in guild.getTextChannels %}
 		{% if textChannel.canTalk %}
 		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.canalJoinId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
@@ -25,7 +27,7 @@
 	</select>
 	<hr>
     <div class="flavourText">{{ DASHBOARD_LEAVE_CHANNEL }}</div>
-	<select data-send-on-save="true" data-internal-name="canalLeaveId">
+	<select data-send-on-save="true" data-internal-name="canalLeaveId" id="canalLeaveId">
 		{% for textChannel in guild.getTextChannels %}
 		{% if textChannel.canTalk %}
 		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.canalLeaveId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
@@ -35,15 +37,23 @@
 	<hr>
 <div class="flavourText">{{ DASHBOARD_JOIN_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="joinMessage" id="joinMessage" name="joinMessage">{{ serverConfig.joinLeaveConfig.joinMessage }}</textarea>
+<button onclick="sendMessage('joinMessage', 'canalJoinId')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
 <hr>
 <div class="flavourText">{{ DASHBOARD_LEAVE_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="leaveMessage" id="leaveMessage" name="leaveMessage">{{ serverConfig.joinLeaveConfig.leaveMessage }}</textarea>
+<button onclick="sendMessage('leaveMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
 <hr>
 <div class="flavourText">{{ DASHBOARD_PRIVATE_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="joinPrivateMessage" id="privateMessage" name="privateMessage">{{ serverConfig.joinLeaveConfig.joinPrivateMessage }}</textarea>
+<button onclick="sendMessage('privateMessage', 'privateChannel')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
 <hr>
 <div class="flavourText">{{ DASHBOARD_LEAVE_BAN_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="banMessage" id="banMessage" name="banMessage">{{ serverConfig.joinLeaveConfig.banMessage }}</textarea>
+<button onclick="sendMessage('banMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
+<hr>
+<div class="flavourText">Mensagem quando alguém for expulso</div>
+<textarea data-send-on-save="true" data-internal-name="kickMessage" id="kickMessage" name="kickMessage">{{ serverConfig.joinLeaveConfig.kickMessage }}</textarea>
+<button onclick="sendMessage('kickMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
 </div>
 <hr>
 <button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
@@ -65,5 +75,73 @@ function applyBlur() {
 }
 
 applyBlur();
+
+function sendMessage(type, elementId) {
+	var payload = {}
+	
+	payload["type"] = type
+	payload["content"] = $("#" + type).val()
+	payload["textChannelId"] = $('#' + elementId + ' option:selected').val()
+	
+	console.log("Element ID: " + elementId);
+	
+	console.log(payload)
+	toastr.options = {
+		"closeButton": false,
+		 "debug": false,
+	    "newestOnTop": false,
+			  "progressBar": false,
+			  "positionClass": "toast-bottom-center",
+			  "preventDuplicates": true,
+			  "onclick": null,
+			  "showDuration": "300",
+			  "hideDuration": "1000",
+			  "timeOut": "1000",
+			  "extendedTimeOut": "1000",
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut"
+			}
+			
+	toastr.info('Enviando mensagem...', toastr)
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "{{ websiteUrl }}dashboard/configure/{{ guild.getId }}/testmessage", true);
+	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');	
+	// send the collected data as JSON
+	xhr.send(JSON.stringify(payload));
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == XMLHttpRequest.DONE) {
+			toastr.clear()
+			var response = JSON.stringify(xhr.responseText)
+			// alert("Adicionado no servidor ~ " + xhr.responseText);
+			toastr.options = {
+			  "closeButton": false,
+			  "debug": false,
+			  "newestOnTop": false,
+			  "progressBar": true,
+			  "positionClass": "toast-bottom-center",
+			  "preventDuplicates": true,
+			  "onclick": null,
+			  "showDuration": "300",
+			  "hideDuration": "1000",
+			  "timeOut": "4000",
+			  "extendedTimeOut": "1000",
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut"
+			}
+
+			if (response["error"] != null) {
+				toastr.error(response["error"], toastr)
+			} else {
+				toastr.success('Mensagem enviada!', toastr)
+			}
+		}
+	}
+}
 </script>
 {% endblock %}

@@ -763,7 +763,11 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
 	color: #72767d;
 }
 
-#left-sidebar-contents .server-name {
+#left-sidebar-contents {
+	margin-left: 48%; margin-right: 4%;
+}
+
+.discord-scroller .server-name {
 font-size: 12px;
     font-weight: 700;
     line-height: 16px;
@@ -775,10 +779,9 @@ font-size: 12px;
     text-overflow: ellipsis;
     white-space: nowrap;
 	font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
-	margin-left: 48%; margin-right: 4%;
 }
 
-#left-sidebar-contents .item {
+.discord-scroller .item {
     padding: 6px 10px;
 	margin-bottom: 2px;
     padding-bottom: 6px;
@@ -792,21 +795,21 @@ font-size: 12px;
 	color: #72767d;
 }
 
-#left-sidebar-contents .item:hover {
+.discord-scroller .item:hover {
     background-color: rgba(79,84,92,.1);
     color: #4f545c;
 }
 	
-#left-sidebar-contents .selected-item:hover {
+.discord-scroller .selected-item:hover {
 	background-color: #7289da;
 	color: #fff;
 }
 
-#left-sidebar-contents a {
+.discord-scroller a {
 	text-decoration: none;
 }
 
-#left-sidebar-contents .selected-item {
+.discord-scroller .selected-item {
 background-color: #7289da;
 color: #fff !important;
 }
@@ -829,12 +832,18 @@ color: #fff !important;
 #right-sidebar-contents {
 	margin-left: 5%; margin-right: 5%;
 }
+
+#left-sidebar-contents {
+	margin-left: 0%;
+margin-right: 0%;
+text-align: center;
 }
 
 #left-sidebar-contents .server-name {
 	margin-left: 0%;
 margin-right: 0%;
 text-align: center;
+}
 }
 
 .category-name {

@@ -37,23 +37,23 @@
 	<hr>
 <div class="flavourText">{{ DASHBOARD_JOIN_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="joinMessage" id="joinMessage" name="joinMessage">{{ serverConfig.joinLeaveConfig.joinMessage }}</textarea>
-<button onclick="sendMessage('joinMessage', 'canalJoinId')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
+<button onclick="sendMessage('joinMessage', 'canalJoinId')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 <hr>
 <div class="flavourText">{{ DASHBOARD_LEAVE_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="leaveMessage" id="leaveMessage" name="leaveMessage">{{ serverConfig.joinLeaveConfig.leaveMessage }}</textarea>
-<button onclick="sendMessage('leaveMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
+<button onclick="sendMessage('leaveMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 <hr>
 <div class="flavourText">{{ DASHBOARD_PRIVATE_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="joinPrivateMessage" id="privateMessage" name="privateMessage">{{ serverConfig.joinLeaveConfig.joinPrivateMessage }}</textarea>
-<button onclick="sendMessage('privateMessage', 'privateChannel')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
+<button onclick="sendMessage('privateMessage', 'privateChannel')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 <hr>
 <div class="flavourText">{{ DASHBOARD_LEAVE_BAN_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="banMessage" id="banMessage" name="banMessage">{{ serverConfig.joinLeaveConfig.banMessage }}</textarea>
-<button onclick="sendMessage('banMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
+<button onclick="sendMessage('banMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 <hr>
 <div class="flavourText">Mensagem quando alguém for expulso</div>
 <textarea data-send-on-save="true" data-internal-name="kickMessage" id="kickMessage" name="kickMessage">{{ serverConfig.joinLeaveConfig.kickMessage }}</textarea>
-<button onclick="sendMessage('kickMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">Testar Mensagem</button>
+<button onclick="sendMessage('kickMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 </div>
 <hr>
 <button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>

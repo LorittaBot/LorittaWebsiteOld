@@ -42,14 +42,16 @@
   <div class="rightEntries">
   <a id="themeChanger" onclick="changeTheme(this)"><i class="fa fa-moon-o" aria-hidden="true"></i></a>
   <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
-  <a href="{{ websiteUrl }}dashboard">
   {% if discordAuth != null %}
+  <a href="{{ websiteUrl }}?logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
   {% set userIdentification = discordAuth.getUserIdentification %}
+  <a href="{{ websiteUrl }}dashboard">
   <span style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</span>
+  </a>
   {% else %}
+  <a href="{{ websiteUrl }}dashboard">
   <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
   {% endif %}
-  </a>
   </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
@@ -263,7 +265,7 @@ function onViewport(el, elClass, offset, callback) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></link>
 <link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css"></link>
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.10"></link>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.11"></link>
 <link rel="stylesheet" href="{{ websiteUrl }}assets/css/tingle.min.css"></link>
 <link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
 <link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 

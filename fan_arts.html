@@ -13,6 +13,15 @@ Fan Arts
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<!-- Loritta Teste 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="8369584507"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <div class="contentWrapper">
 <div class="vertically-centered-content">
 <div class="pure-g vertically-centered-content" style="text-align: left;">
@@ -34,7 +43,20 @@ Fan Arts
 <div class="evenWrapper">
 <div class="contentWrapper" id="fanArts">
 <div class="pure-g" style="text-align: center;" id="fanArtDisplay">
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
+    {% for fanArt in fanArts %}
+	<div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
+	    <div class="fanArtWrapper">
+			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}' target="_blank"><img src="https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}"></img></a>
+			<p><b>{{ DASHBOARD_FanArtBy }} {% if fanArt.fancyName != null %}{{ fanArt.fancyName }}{% else %}{{ fanArtsUsers[fanArt.artistId].getName }}{% endif %}</b></p>
+			<p>Discord: {{ fanArtsUsers[fanArt.artistId].getName }}#{{ fanArtsUsers[fanArt.artistId].getDiscriminator }}
+			{% if fanArt.additionalInfo != null %}
+			</br>
+			{{ fanArt.additionalInfo | raw }}
+			{% endif %}</p>
+		</div>
+	</div>
+	{% endfor %}
+    {# <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
 	    <div class="fanArtWrapper">
 			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/loritta_fixed_final_cropped.png' target="_blank"><img src="https://loritta.website/assets/img/loritta_fixed_final_cropped.png"></img></a>
 			<p><b>{{ DASHBOARD_FanArtBy }} Gabriela Giulian</b></p>
@@ -78,9 +100,9 @@ Fan Arts
 	</div>
     <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
 		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Juna_Black-chan.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Juna_Black-chan.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Juna Black-chan</b></p>
-			<p>Discord: ⎝⧹Juna Black-chan👻✓⧸⎠#7685</p>
+			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Mari_Kobayashi.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Mari_Kobayashi.png"></img></a>
+			<p><b>{{ DASHBOARD_FanArtBy }} Mari Kobayashi</b></p>
+			<p>Discord: Mari Kobayashi#8967</p>
 		</div>
 	</div>
     <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
@@ -139,6 +161,34 @@ Fan Arts
 			<p>Discord: StarlineBR#9748</p>
 		</div>
 	</div>
+    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
+		<div class="fanArtWrapper">
+			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Katori.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Katori.png"></img></a>
+			<p><b>{{ DASHBOARD_FanArtBy }} Katori</b></p>
+			<p>Discord: CielKatori#4037</p>
+		</div>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
+		<div class="fanArtWrapper">
+			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_2_-_Mari_Kobayashi.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_2_-_Mari_Kobayashi.png"></img></a>
+			<p><b>{{ DASHBOARD_FanArtBy }} Mari Kobayashi</b></p>
+			<p>Discord: Mari Kobayashi#8967</p>
+		</div>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
+		<div class="fanArtWrapper">
+			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Land.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Land.png"></img></a>
+			<p><b>{{ DASHBOARD_FanArtBy }} Land</b></p>
+			<p>Discord: Land#9559</p>
+		</div>
+	</div>
+    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
+		<div class="fanArtWrapper">
+			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_ThirdOPPAI.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_ThirdOPPAI.png"></img></a>
+			<p><b>{{ DASHBOARD_FanArtBy }} ThirdOPPAI</b></p>
+			<p>Discord: ThirdOPPAI#5135</p>
+		</div>
+	</div> #}
 </div>
 </div>
 </div>

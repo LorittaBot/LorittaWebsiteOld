@@ -8,7 +8,7 @@ var converter = new showdown.Converter()
 <div class="topnavLeft">
   <a style="font-family: 'Pacifico', cursive; text-transform: none;">Loritta</a>
 	{% if discordAuth != null %}
-	{% if discordAuth.getUserIdentification().getId() == "123170274651668480" %}
+	{% if userIdentification.getId() == "123170274651668480" %}
 	 <a title="Salvar JSON" onclick="saveJsonInServer();"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
 	{% endif %}
 	{% endif %}
@@ -28,7 +28,6 @@ var converter = new showdown.Converter()
 <div class="topnavRight">
   <div class="rightEntries">
   {% if discordAuth != null %}
-  {% set userIdentification = discordAuth.getUserIdentification %}
   <a style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</a>
   {% else %}
   <a href="{{ websiteUrl }}dashboard"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>

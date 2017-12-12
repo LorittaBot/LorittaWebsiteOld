@@ -86,7 +86,6 @@ Painel de Controle
 			<input data-send-on-save="true" data-internal-name="commandPrefix" id="commandPrefix" value="{{ serverConfig.commandPrefix }}" type="text">
 			<div class="toggleSubText">{{ DASHBOARD_PREFIX_INFO }}</div>
 		</form>
-		{% set userIdentification = discordAuth.getUserIdentification %}
 		<div class="discord-message-helper">
 		<div class="discord-message" style="margin-bottom: 20px;">
 			<span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px;">

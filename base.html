@@ -44,7 +44,6 @@
   <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
   {% if discordAuth != null %}
   <a href="{{ websiteUrl }}?logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-  {% set userIdentification = discordAuth.getUserIdentification %}
   <a href="{{ websiteUrl }}dashboard">
   <span style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</span>
   </a>

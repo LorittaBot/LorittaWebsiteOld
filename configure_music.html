@@ -42,7 +42,7 @@ DJ Loritta
 <table id="musicTable">
   {% for url in config.urls %}
   <tr>
-    <td onclick="DL1(this)">{{ url }}</td>
+    <td onclick="DL2(this)">{{ url }}</td>
   </tr>
   {% endfor %}
 </table>
@@ -106,7 +106,7 @@ e.val(text);
 function DL2(elem){
 	elem.parentNode.removeChild(elem);
 
-	joinToSeparators();
+	joinToSeparators2();
 }
 </script>
 {% endblock %}

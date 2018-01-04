@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Website da Loritta">
 <meta property="og:description" content="Olá, eu me chamo Loritta! Apenas um simples bot para o Discord!">
 <meta property="og:title" content="Meu Website!">
-<meta property="og:image" content="http://loritta.website/assets/img/loritta_guild_v4.png">
+<meta property="og:image" content="http://loritta.website/assets/img/loritta_gabizinha_v1.png">
 <meta property="og:ttl" content="600">
 <meta property="og:image:width" content="320">
 <meta property="twitter:site" content="loritta">
@@ -34,16 +34,16 @@
 <div class="topnavLeft">
   <a style="font-family: 'Pacifico', cursive; text-transform: none;">Loritta<sup style="font-family: 'Arial', cursive; text-transform: none;">beta</sup></a>
   <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> {{ WEBSITE_HOME }}</a>
-  <a href="https://discord.gg/V7Kbh4z" target="_blank"><i class="fa fa-comments-o" aria-hidden="true"></i> {{ WEBSITE_MY_DISCORD }}</a>
+  <a href="https://discord.gg/V7Kbh4z" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i> {{ WEBSITE_MY_DISCORD }}</a>
   <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ WEBSITE_FAN_ARTS }}</a>
   <a href="{{ websiteUrl }}donate"><i class="fa fa-gift" aria-hidden="true"></i> {{ WEBSITE_DONATE }}</a>
 </div>
 <div class="topnavRight">
   <div class="rightEntries">
-  <a id="themeChanger" onclick="changeTheme(this)"><i class="fa fa-moon-o" aria-hidden="true"></i></a>
+  <a id="themeChanger" onclick="changeTheme(this)"><i class="fas fa-moon" aria-hidden="true"></i></a>
   <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
   {% if discordAuth != null %}
-  <a href="{{ websiteUrl }}?logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+  <a href="{{ websiteUrl }}?logout"><i class="fa fa-sign-out-alt" aria-hidden="true"></i></a>
   <a href="{{ websiteUrl }}dashboard">
   <span style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</span>
   </a>
@@ -160,7 +160,7 @@ $('#dummyNavbar').css("height", $('#myTopnav').height())
 if (readCookie("darkTheme") == 'true') {
     $("html").removeClass("light");
 	$("html").addClass("dark");
-	$("#themeChanger").html("<i class=\"fa fa-sun-o\" aria-hidden=\"true\"></i>");
+	$("#themeChanger").html("<i class=\"fas fa-sun\" aria-hidden=\"true\"></i>");
 }
 
 function changeTheme() {
@@ -168,12 +168,12 @@ if($("html").hasClass('dark')) {
     $("html").removeClass("dark");
     $("html").addClass("light");
 	createCookie("darkTheme", false)
-	$("#themeChanger").html("<i class=\"fa fa-moon-o\" aria-hidden=\"true\"></i>");
+	$("#themeChanger").html("<i class=\"fas fa-moon\" aria-hidden=\"true\"></i>");
 }else{
     $("html").removeClass("light");
 	$("html").addClass("dark");
 	createCookie("darkTheme", true)
-	$("#themeChanger").html("<i class=\"fa fa-sun-o\" aria-hidden=\"true\"></i>");
+	$("#themeChanger").html("<i class=\"fas fa-sun\" aria-hidden=\"true\"></i>");
 }
 }
 
@@ -264,12 +264,33 @@ function onViewport(el, elClass, offset, callback) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></link>
 <link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css"></link>
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.11"></link>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.13"></link>
 <link rel="stylesheet" href="{{ websiteUrl }}assets/css/tingle.min.css"></link>
 <link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
 <link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
 <link async href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<script async src="https://use.fontawesome.com/055e611427.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+<script src="{{ websiteUrl }}adsbygoogle.js"></script>
+<script>
+if( window.canRunAds === undefined ){
+    console.log("I'm sad... why are you blocking my ads? :(");
+	var rand = Math.random().toString().replace(".", "")
+	$(".adsbygoogle").each(function( index ) {
+		$("<div class='lori" + rand + "-helpplz'><img src='{{ websiteUrl }}assets/img/lori_helpplz.png'></img></div>").insertAfter(this);
+	})
+	setTimeout(function(){ console.log("owo whats this???");
+	$(".lori" + rand + "-helpplz img").each(function( index ) {
+		if ($(this).css("display") == "none") {
+		$("body").empty()
+		$("<img src='https://i.imgur.com/MZWtUzB.png'></img>").insertAfter($("body"))
+		return;
+		}
+	})
+	}, 4000)
+} else {
+	console.log("Thanks for keeping my ads! You are helping me to stay online, i luv u ^-^");
+}
+</script>
 </body>
 </html>

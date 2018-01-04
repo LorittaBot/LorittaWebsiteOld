@@ -730,9 +730,10 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
 }
 
 #left-sidebar {
-	width: 28.5%; padding-top: 2%; background-color: rgb(243, 243, 244); float: left;
+	width: 28.5%; background-color: rgb(243, 243, 244); float: left;
 	position: fixed;
-	height: 100%;
+	height: calc(100% - 50.05px);
+	overflow: auto;
 }
 
 #right-sidebar {
@@ -765,6 +766,7 @@ hr.commandInfoHr { border: 0; height: 1px; background-image: linear-gradient(to 
 
 #left-sidebar-contents {
 	margin-left: 48%; margin-right: 4%;
+	padding-top: 30px;
 }
 
 .discord-scroller .server-name {

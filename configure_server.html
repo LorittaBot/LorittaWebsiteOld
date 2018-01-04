@@ -7,7 +7,7 @@ Painel de Controle
 <div class="pure-g" style="text-align: center;">
     <div class="pure-u-1 pure-u-md-7-8">
 		<p class="toggleMainText">{{ mainText }}</p>
-		{% if subText|length > 0 %}<div class="toggleSubText">{{ subText }}</div>{% endif %}
+		{% if subText|length > 0 %}<div class="toggleSubText">{{ subText | raw }}</div>{% endif %}
 	</div>
     <div class="pure-u-1 pure-u-md-1-8">
 		<div class="switch">
@@ -16,15 +16,17 @@ Painel de Controle
 		</div>
 	</div>
 </div>
+<br style="clear: both" /> <!-- So dirty! -->
 {% endmacro %}
 
 <div style="height: 50.05px"></div>
 <div id="server-configuration">
 <div id="left-sidebar">
-<div class="discord-scroller" id="left-sidebar-contents">
+<div class="discord-scroller" id="left-sidebar-contents"> 
 	<div class="server-name">
 	{{ guild.getName }}
 	</div>
+	<div id="left-sidebar-entries">
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}"><div class="item {% if saveType == "default" %}selected-item{% endif %}">
 	<i class="fa fa-cogs" aria-hidden="true"></i>  {{ DASHBOARD_CONFIG_OVERVIEW }}
 	</div></a>
@@ -34,8 +36,19 @@ Painel de Controle
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/permissions"><div class="item {% if saveType == "permissions" %}selected-item{% endif %}">
 	<i class="fa fa-address-card" aria-hidden="true"></i> {{ DASHBOARD_PERMISSIONS }}
 	</div></a>
+	{% if userIdentification.id == "123170274651668480" %}
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/textchannels"><div class="item {% if saveType == "text_channels" %}selected-item{% endif %}">
+	<i class="fa fa-hashtag" aria-hidden="true"></i> Canais de Texto
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/voicechannels"><div class="item {% if saveType == "voice_channels" %}selected-item{% endif %}">
+	<i class="fa fa-microphone" aria-hidden="true"></i> Canais de Voz
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/moderation"><div class="item {% if saveType == "moderation" %}selected-item{% endif %}">
+	<i class="fas fa-exclamation-circle" aria-hidden="true"></i> Moderação
+	</div></a>
+	{% endif %}
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/welcomer"><div class="item {% if saveType == "welcomer" %}selected-item{% endif %}">
-	<i class="fa fa-sign-in" aria-hidden="true"></i> {{ DASHBOARD_WELCOMER }}
+	<i class="fa fa-sign-in-alt" aria-hidden="true"></i> {{ DASHBOARD_WELCOMER }}
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/autorole"><div class="item {% if saveType == "autorole" %}selected-item{% endif %}">
 	<i class="fa fa-briefcase"></i> Autorole
@@ -47,10 +60,10 @@ Painel de Controle
 	<i class="fa fa-music" aria-hidden="true"></i> DJ Loritta
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/youtube"><div class="item {% if saveType == "youtube" %}selected-item{% endif %}">
-	<i class="fa fa-youtube-play" aria-hidden="true"></i> YouTube
+	<i class="fab fa-youtube" aria-hidden="true"></i> YouTube
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/livestream"><div class="item {% if saveType == "livestream" %}selected-item{% endif %}">
-	<i class="fa fa-twitch" aria-hidden="true"></i> Twitch
+	<i class="fab fa-twitch" aria-hidden="true"></i> Twitch
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/feeds"><div class="item {% if saveType == "feeds" %}selected-item{% endif %}">
 	<i class="fa fa-rss-square" aria-hidden="true"></i> RSS/Atom Feeds
@@ -59,14 +72,15 @@ Painel de Controle
 	<i class="fa fa-eye" aria-hidden="true"></i> Event Log
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/amino"><div class="item {% if saveType == "amino" %}selected-item{% endif %}">
-	<i class="fa fa-refresh" aria-hidden="true"></i> Amino & Loritta
+	<i class="fa fa-sync-alt" aria-hidden="true"></i> Amino & Loritta
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/nashorn"><div class="item {% if saveType == "nashorn_commands" %}selected-item{% endif %}">
-	<i class="fa fa-file-code-o" aria-hidden="true"></i> Comandos em JavaScript
+	<i class="fab fa-js-square" aria-hidden="true"></i> Comandos em JavaScript
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/starboard"><div class="item {% if saveType == "starboard" %}selected-item{% endif %}">
 	<i class="fa fa-star" aria-hidden="true"></i> Starboard
 	</div></a>
+	</div>
 </div>
 </div>
 <div id="right-sidebar">
@@ -97,7 +111,7 @@ Painel de Controle
 		</div>
 		<hr>
 		<div class="discord-message" style="margin-top: 20px;">
-			<span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/297153970613387264/001d05d3ebc6bc305c9edf2d90f2e37d.png?size=256" style="height: 40px; border-radius: 99999px;">
+			<span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/297153970613387264/98b04ffd1797b49ab98162a6a47ac4bd.png?size=256" style="height: 40px; border-radius: 99999px;">
 			<span style="position: relative;">
 				<span class="discord-username">Loritta</span>
 				<span class="discord-message-content">🏓 <b>Pong!</b> 43ms (🌎 Shard 0/4)</span>
@@ -264,6 +278,8 @@ function DL1(elem){
 </div>
 </div>
 <br style="clear: both" />
+</div>
+</div>
 </div>
 <script>
 var toast = null;

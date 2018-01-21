@@ -18,7 +18,7 @@
 <div class="flavourText">{{ DASHBOARD_WHITELISTED_CHANNELS_INVITE }}</div>
 <select name="chooseRole" id="chooseRole">
 	{% for channel in guild.getTextChannels() %}
-	<option value="{{ channel.getId }}">{{ channel.getName }}</option>
+	<option value="{{ channel.getId }}">#{{ channel.getName }}</option>
 	{% endfor %}
 </select>
 <button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
@@ -29,7 +29,7 @@
   {% set jdaChannel = guild.getTextChannelById(channel) %}
   {% if jdaChannel != null %}
   <tr>
-    <td data-internalid="{{ channel }}" onclick="DL1(this)">{{ jdaChannel.getName() }}</td>
+    <td data-internalid="{{ channel }}" onclick="DL1(this)"><div style="margin-bottom: 2px; display: inline-block; padding: 2px 0px 2px 0px;" class="discord-mention">#{{ jdaChannel.getName() }}</div></td>
   </tr>
   {% endif %}
   {% endfor %}

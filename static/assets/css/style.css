@@ -929,18 +929,18 @@ border-color: #dcddde;
 	line-height: 1.5em;
 }
 
- /* Add a black background color to the top navigation */
+/* Add a black background color to the top navigation */
 .topnav {
     background-color: rgb(114, 137, 218);
     overflow: hidden;
 	z-index: 2;
 	text-transform: uppercase;
-	text-shadow: 0 1px #818181;
+	text-shadow: 0 1px #0000004d;
 	font-family: "Oswald",Arial,sans-serif;
 	font-size: 20px;
-	border-bottom: solid 2px rgb(98, 119, 192);
 	text-align: center;
 	font-size: 0px;
+	box-shadow: 0px 0px 15px #0006;
 }
 
 .topnavWrapper {
@@ -963,16 +963,21 @@ border-color: #dcddde;
     padding: 15px 16px;
     text-decoration: none;
     font-size: 17px;
-    transform: skewX(-3deg);
     transition: all 250ms cubic-bezier(0.29,0.35,0.39,0.9);
+	border-right: 1px dashed #6b80ce;
+}
+
+.topnav .left-border {
+	border-left: 1px dashed #6b80ce;
+}
+
+.topnav svg {
+	position: relative;
+	top: -1px;
 }
 
 .topnav a:hover {
     background-color: rgb(108,130,204);
-    font-size: 17px;
-    letter-spacing: 1.2px;
-    padding: 15px 25px;
-    font-weight: bold;
     cursor: pointer;
 }
 

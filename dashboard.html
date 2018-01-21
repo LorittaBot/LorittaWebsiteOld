@@ -57,4 +57,58 @@ Dashboard
 </div>
 </div>
 </div>
+<div class="evenWrapper">
+<div class="contentWrapper" id="privacy-stuff" style="text-align: center;">
+<div class="sectionHeader">
+Privacidade
+</div>
+{% macro generateCheckbox(index, internalName, mainText, subText, isEnabled, needsToBeSaved) %}
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">{{ mainText }}</p>
+		{% if subText|length > 0 %}<div class="toggleSubText">{{ subText | raw }}</div>{% endif %}
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+		<div class="switch">
+		  <input type="checkbox" data-internal-name="{{ internalName }}" value="true" {% if needsToBeSaved == true %}data-send-on-save="true"{% endif %} {% if isEnabled == true %}checked{% endif %} id="cmn-toggle-{{ index }}" class="cmn-toggle cmn-toggle-round" type="checkbox">
+		  <label for="cmn-toggle-{{ index }}"></label>
+		</div>
+	</div>
+</div>
+<br style="clear: both" /> <!-- So dirty! -->
+{% endmacro %}
+<hr>
+{{ generateCheckbox(1, 
+"hideSharedServers", 
+"Esconder servidores compartilhados", 
+"", 
+lorittaProfile.hideSharedServers, 
+true) }}
+<hr>
+{{ generateCheckbox(2, 
+"hidePreviousUsernames", 
+"Esconder usernames antigos", 
+"", 
+lorittaProfile.hidePreviousUsernames, 
+true) }}
+<hr>
+<a class="button-discord button-discord-success pure-button" onclick="saveDashboardStuff()">{{ DASHBOARD_SAVE }}</a></div>
+<script>
+function saveDashboardStuff() {
+		var hideSharedServers = $("#privacy-stuff #cmn-toggle-1").is(":checked")
+		var hidePreviousUsernames = $("#privacy-stuff #cmn-toggle-2").is(":checked")
+		
+		$.post("{{ websiteUrl }}dashboard", {
+			"hideSharedServers" : hideSharedServers,
+			"hidePreviousUsernames" : hidePreviousUsernames
+		}, function(data) {
+			var obj = JSON.parse(data);
+
+			console.log(obj);
+			// location.reload()
+        });
+}
+</script>
+</div>
+</div>
 {% endblock %}

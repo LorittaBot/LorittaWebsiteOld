@@ -30,9 +30,9 @@ true) }}
 automodConfig.automodCaps.isEnabled, 
 true) }}
 <hr>
-	Deletar mensagem caso <input type="number" name="quantity" class="autocaps-quantity" min="0" max="100" value="{{ automodConfig.automodCaps.capsThreshold }}">% dela esteja em caixa alta
+	Deletar mensagem caso <input data-internal-name="capsThreshold" type="number" name="quantity" class="autocaps-quantity" min="0" max="100" value="{{ automodConfig.automodCaps.capsThreshold }}">% dela esteja em caixa alta
 	</br>
-	Apenas verificar caixa alta caso a mensagem tenha mais de <input type="number" name="quantity" class="autocaps-length" min="0" value="{{ automodConfig.automodCaps.lengthThreshold }}"> caracteres
+	Apenas verificar caixa alta caso a mensagem tenha mais de <input data-internal-name="lengthThreshold" type="number" name="quantity" class="autocaps-length" min="0" value="{{ automodConfig.automodCaps.lengthThreshold }}"> caracteres
 	<div class="flavourText">Testar</div>
 	<textarea class="autocaps-testarea">Olá, eu me chamo Loritta!</textarea>
 	<div class="flavourText autocaps-info">oao</div>
@@ -44,14 +44,14 @@ automodConfig.automodCaps.deleteMessage,
 true) }}
 <hr>
 {{ generateCheckbox(id + 3 + "autocaps", 
-"sendMessage", 
+"replyToUser", 
 "Enviar mensagem para o usuário ao exceder o limite", 
 "", 
 automodConfig.automodCaps.replyToUser, 
 true) }}
 <hr>
 	<div class="flavourText">Mensagem ao exceder o limite</div>
-	<textarea class="autocaps-replymessage">{{ automodConfig.automodCaps.replyMessage }}</textarea>
+	<textarea class="autocaps-replymessage" data-internal-name="replyMessage">{{ automodConfig.automodCaps.replyMessage }}</textarea>
 	<br style="clear: both" /> <!-- So dirty! -->
 </div>
 </div>

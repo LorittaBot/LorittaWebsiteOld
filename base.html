@@ -6,9 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}{% block subtitle %}{{ WEBSITE_DEFAULT_TITLE }}{% endblock %} • Loritta{% endblock %}</title>
 <meta name="description" content="Olá, eu me chamo Loritta, Apenas um simples bot para o Discord!">
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 <script async src="{{ websiteUrl }}assets/js/countUp.min.js"></script>
 <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.6/dist/showdown.min.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -32,7 +30,7 @@
 <div class="topnav navbar-fixed-top" id="myTopnav">
 <div class="topnavWrapper">
 <div class="topnavLeft">
-  <a style="font-family: 'Pacifico', cursive; text-transform: none;">Loritta<sup style="font-family: 'Arial', cursive; text-transform: none;">beta</sup></a>
+  <a style="font-family: 'Pacifico', cursive; text-transform: none;" class="left-border">Loritta<sup style="font-family: 'Arial', cursive; text-transform: none;">beta</sup></a>
   <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> {{ WEBSITE_HOME }}</a>
   <a href="https://discord.gg/V7Kbh4z" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i> {{ WEBSITE_MY_DISCORD }}</a>
   <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ WEBSITE_FAN_ARTS }}</a>
@@ -40,7 +38,7 @@
 </div>
 <div class="topnavRight">
   <div class="rightEntries">
-  <a id="themeChanger" onclick="changeTheme(this)"><i class="fas fa-moon" aria-hidden="true"></i></a>
+  <a id="themeChanger" class="left-border" onclick="changeTheme(this)"><i class="fas fa-moon" aria-hidden="true"></i></a>
   <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
   {% if discordAuth != null %}
   <a href="{{ websiteUrl }}?logout"><i class="fa fa-sign-out-alt" aria-hidden="true"></i></a>
@@ -49,7 +47,7 @@
   </a>
   {% else %}
   <a href="{{ websiteUrl }}dashboard">
-  <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+  <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Login</a>
   {% endif %}
   </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
@@ -264,12 +262,9 @@ function onViewport(el, elClass, offset, callback) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></link>
 <link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css"></link>
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.13"></link>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.14"></link>
 <link rel="stylesheet" href="{{ websiteUrl }}assets/css/tingle.min.css"></link>
-<link async href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
 <link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
-<link async href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link async href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 <script src="{{ websiteUrl }}adsbygoogle.js"></script>
 <script>

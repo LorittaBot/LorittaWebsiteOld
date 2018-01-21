@@ -35,7 +35,7 @@ Alguma coisa super topperson aqui
 </div>
 </div>
 <div class="pure-u-1 pure-u-md-6-24 vertically-centered-content">
-<button class="entry-delete button-discord button-discord-edit pure-button" style="margin-right: 8px; min-width: 0px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+<button class="entry-delete button-discord button-discord-edit pure-button" style="margin-right: 8px; min-width: 0px;"><i class="fas fa-trash" aria-hidden="true"></i></button>
 <button class="entry-edit button-discord button-discord-edit pure-button">Editar</button>
 </div>
 </div>
@@ -242,6 +242,7 @@ function addInputEvent(element) {
 function doneTyping(element) {
 	element.attr("data-is-ready", false)
 	element.find(".entry-error").addClass("totallyHidden");
+	element.find(".entry-error").text("Erro ao pegar informações sobre o canal")
 	var json = getContentAsJson("{{ websiteUrl }}api/v1/get_channel_info?channelLink=" + encodeURI(element.find(".entry-url").val()), function(json) {
 		if (json["raw"] != null || json["error"] != null) {
 			element.find(".entry-info").removeClass("noBlur")
@@ -249,6 +250,12 @@ function doneTyping(element) {
 			element.find(".entry-error").removeClass("totallyHidden");
 			element.attr("data-is-ready", false)
 			return;
+		}
+		if (json["public_uploads_playlist"] == false) {
+			// element.find(".entry-info").removeClass("noBlur")
+			// element.find(".entry-info").addClass("blurSection")
+			element.find(".entry-error").text("Observação: Vídeos deste canal demoraram mais tempo (ou talvez nunca) para serem avisados já que a playlist de envios do canal está privada! Para corrigir, peça para o dono do canal alterar a playlist para pública!")
+			// return;
 		}
 		element.find(".entry-info").removeClass("blurSection")
 		element.find(".entry-info").addClass("noBlur")

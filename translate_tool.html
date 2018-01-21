@@ -12,15 +12,15 @@ var converter = new showdown.Converter()
 	 <a title="Salvar JSON" onclick="saveJsonInServer();"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
 	{% endif %}
 	{% endif %}
-  <a title="Carregar JSON" onclick="loadJson();"><i class="fa fa-file-text" aria-hidden="true"></i></a>
+  <a title="Carregar JSON" onclick="loadJson();"><i class="fa fa-file-alt" aria-hidden="true"></i></a>
   <a title="Baixar JSON" onclick="downloadJson()"><i class="fa fa-download" aria-hidden="true"></i></a>
-  <a title="Gerar JSON" onclick="generateJson();"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></a>
+  <a title="Gerar JSON" onclick="generateJson();"><i class="fas fa-envelope" aria-hidden="true"></i></a>
   {% if localeId == "default" %}
-  <a title="Criar nova linguagem" onclick="createNewLanguage()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+  <a title="Criar nova linguagem" onclick="createNewLanguage()"><i class="fas fa-plus-circle" aria-hidden="true"></i></a>
   {% endif %}
-  <a title="Adicionar nova chave" onclick="generateNewKey()"><i class="fa fa-keyboard-o" aria-hidden="true"></i></a>
+  <a title="Adicionar nova chave" onclick="generateNewKey()"><i class="fas fa-keyboard" aria-hidden="true"></i></a>
   {% if localeId != "default" %}
-  <a title="Mostrar chaves não traduzidas" onclick="showOnlyNonTranslated()"><i class="fa fa-warning" aria-hidden="true"></i></a>
+  <a title="Mostrar chaves não traduzidas" onclick="showOnlyNonTranslated()"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></a>
   <a title="Mostrar todos" onclick="showAll()"><i class="fa fa-eye" aria-hidden="true"></i></a>
   {% endif %}
   <a><input type="text" id="searchInput" style="padding: 0px; margin: 0px; line-height: 0px; color: black;"></input></a>

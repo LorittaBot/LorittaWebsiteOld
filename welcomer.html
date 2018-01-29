@@ -115,8 +115,8 @@ function sendMessage(type, elementId) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == XMLHttpRequest.DONE) {
 			toastr.clear()
-			var response = JSON.stringify(xhr.responseText)
-			// alert("Adicionado no servidor ~ " + xhr.responseText);
+			var response = JSON.parse(xhr.responseText)
+
 			toastr.options = {
 			  "closeButton": false,
 			  "debug": false,
@@ -135,8 +135,10 @@ function sendMessage(type, elementId) {
 			  "hideMethod": "fadeOut"
 			}
 
-			if (response["error"] != null) {
+			if (response.hasOwnProperty("error")) { // deprecated
 				toastr.error(response["error"], toastr)
+			} else if (response.hasOwnProperty("api:message")) {
+				toastr.error(response["api:message"], toastr)
 			} else {
 				toastr.success('Mensagem enviada!', toastr)
 			}

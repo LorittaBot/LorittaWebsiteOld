@@ -38,6 +38,7 @@
 </div>
 </div>
 <div class="evenWrapper">
+{#
 <div style="width: 100%;">
 <div style="overflow: hidden;">
 <div class="handle" style="width: 100vw; white-space: nowrap; overflow: hidden; padding-top: 32px; padding-bottom: 32px;">
@@ -52,6 +53,7 @@
 </div>
 </div>
 <hr>
+#}
 <div class="contentWrapper">
 <div class="pure-g vertically-centered-content" style="text-align: left;">
     <div class="pure-u-1 pure-u-md-3-4">
@@ -69,7 +71,7 @@
 			<div class="stat-value" id="userCount">0</div>
 		</div>
 		<div class="pure-u-1 pure-u-md-1-3">
-			<div class="stat-name"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ DASHBOARD_AwakeFor }}</div>
+			<div class="stat-name"><i class="far fa-clock"></i> {{ DASHBOARD_AwakeFor }}</div>
 			<div class="stat-value"><span id="dayCount">0</span>d, <span id="hourCount">0</span>h, <span id="minuteCount">0</span>m, <span id="secondCount">0</span>s</div>
 		</div>
 		<div class="pure-u-1 pure-u-md-1-3">
@@ -92,7 +94,7 @@
 	</div>
 </div>
 </div>
-</div>
+{# </div> #}
 </div>
 <div class="oddWrapper">
 <div class="contentWrapper">
@@ -366,7 +368,7 @@ decimal: ',',
 onViewport("#serverCount", "teste teste teste", 0, function(el) {
 if (startedServerCountdown) { return; }
 startedServerCountdown = true;
-var demo = new CountUp('serverCount', 0, {{ guilds|length }}, 0, 5.5, options);
+var demo = new CountUp('serverCount', 0, {{ guildCount }}, 0, 5.5, options);
 if (!demo.error) {
   demo.start();
 } else {
@@ -378,7 +380,7 @@ onViewport("#userCount", "teste teste teste", 0, function(el) {
 if (startedUserCountdown) { return; }
 startedUserCountdown = true;
 
-var demo = new CountUp('userCount', 0, {{ userCount|length }}, 0, 5.5, options);
+var demo = new CountUp('userCount', 0, {{ userCount }}, 0, 5.5, options);
 if (!demo.error) {
   demo.start();
 } else {

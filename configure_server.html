@@ -43,10 +43,10 @@ Painel de Controle
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/voicechannels"><div class="item {% if saveType == "voice_channels" %}selected-item{% endif %}">
 	<i class="fa fa-microphone" aria-hidden="true"></i> Canais de Voz
 	</div></a>
+	{% endif %}
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/moderation"><div class="item {% if saveType == "moderation" %}selected-item{% endif %}">
 	<i class="fas fa-exclamation-circle" aria-hidden="true"></i> Moderação
 	</div></a>
-	{% endif %}
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/welcomer"><div class="item {% if saveType == "welcomer" %}selected-item{% endif %}">
 	<i class="fa fa-sign-in-alt" aria-hidden="true"></i> {{ DASHBOARD_WELCOMER }}
 	</div></a>
@@ -376,6 +376,7 @@ function sendJsonToServer(json) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == XMLHttpRequest.DONE) {
 			toastr.clear()
+			
 			// alert("Adicionado no servidor ~ " + xhr.responseText);
 			toastr.options = {
 			  "closeButton": false,
@@ -396,7 +397,16 @@ function sendJsonToServer(json) {
 			}
 
 			console.log(xhr.responseText);
-			toastr.success('Configurações salvas com sucesso!', toastr)
+			try { // deprecated, a API da Loritta precisa retornar tudo em JSON e não em plain text!
+				var response = JSON.parse(xhr.responseText)
+				if (response["api:code"] != 0) {
+					toastr.error(response["api:message"], toastr)
+				} else {
+					toastr.success('Configurações salvas com sucesso!', toastr)
+				}
+			} catch(err) {
+				toastr.success('Configurações salvas com sucesso!', toastr) // shrug
+			}
 		}
 	}
 }

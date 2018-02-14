@@ -1,0 +1,45 @@
+{% extends 'configure_server.html' %}
+{% block rightSidebarContents %}
+{% set config = serverConfig.moderationConfig %}
+<div class="category-name">
+Moderação
+</div>
+{{ generateCheckbox(1, "sendPunishmentViaDm", "Enviar punição via mensagem direta?", "Quando o usuário for punido, ele receberá uma mensagem direta (caso esteja ativado) com o motivo da punição", config.sendPunishmentViaDm, true) }}
+<hr>
+{{ generateCheckbox(2, "sendToPunishLog", "Enviar punição para um canal de punições?", "Quando o usuário for punido, uma mensagem será enviada em um canal mostrando o motivo da punição", config.sendToPunishLog, true) }}
+<hr>
+<div id="hiddenIfDisabled">
+<div class="flavourText">Canal de punições</div>
+	<select data-send-on-save="true" data-internal-name="punishmentLogChannelId">
+		{% for textChannel in guild.getTextChannels %}
+		{% if textChannel.canTalk %}
+		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.punishmentLogChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
+		{% endif %}
+		{% endfor %}
+	</select>
+<hr>
+<div class="flavourText">Mensagem que será mostrada ao ser punido</div>
+<textarea data-send-on-save="true" data-internal-name="punishmentLogMessage">{{ config.punishmentLogMessage }}</textarea>
+<hr>
+</div>
+<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<br style="clear: both" /> <!-- So dirty! -->
+<script>
+$("#cmn-toggle-2").click(function(e) {
+	applyBlur()
+});
+
+function applyBlur() {
+  var e = $("#hiddenIfDisabled");
+  if ($('#cmn-toggle-2').is(':checked')) {
+	e.removeClass();
+	e.addClass("noBlur");
+  } else {
+    e.removeClass();
+	e.addClass("blurSection");
+  }
+}
+
+applyBlur();
+</script>
+{% endblock %}

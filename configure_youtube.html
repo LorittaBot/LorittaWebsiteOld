@@ -235,7 +235,7 @@ function addInputEvent(element) {
 	element.find(".entry-url").on('input', function() {
 		element.find(".entry-info").addClass("blurSection");
 		clearTimeout(typingTimer);
-		typingTimer = setTimeout(function() { doneTyping(element) }, 1500);
+		typingTimer = setTimeout(function() { doneTyping(element) }, 2500);
 	});
 }
 

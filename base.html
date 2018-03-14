@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53518408-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-53518408-9');
+</script>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}{% block subtitle %}{{ WEBSITE_DEFAULT_TITLE }}{% endblock %} • Loritta{% endblock %}</title>
-<meta name="description" content="Olá, eu me chamo Loritta, Apenas um simples bot para o Discord!">
+<meta name="description" content="{{ WEBSITE_MetaDescription }}">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 <script async src="{{ websiteUrl }}assets/js/countUp.min.js"></script>
 <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.6/dist/showdown.min.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script async src="{{ websiteUrl }}assets/js/tingle.min.js"></script>
+<script src="{{ websiteUrl }}assets/js/tingle.min.js"></script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/phaser.min.js"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/kotlin.min.js"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/kotlinx-html-js.min.js"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriJS.js"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/moment-with-locales.min.js"></script>
 <meta name="author" content="MrPowerGamerBR">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+{% block metaproperty %}
 <meta property="og:site_name" content="Website da Loritta">
-<meta property="og:description" content="Olá, eu me chamo Loritta! Apenas um simples bot para o Discord!">
+<meta property="og:description" content="{{ WEBSITE_MetaDescription }}">
 <meta property="og:title" content="Meu Website!">
 <meta property="og:image" content="http://loritta.website/assets/img/loritta_gabizinha_v1.png">
 <meta property="og:ttl" content="600">
@@ -22,8 +39,28 @@
 <meta property="twitter:site" content="loritta">
 <meta property="twitter:card" content="summary">
 <meta property="twitter:title" content="Página inicial">
+<meta name="theme-color" content="#00c1df"> 
+{% endblock %}
+<script src='https://www.google.com/recaptcha/api.js?render=explicit'></script>
+<link rel="alternate" hreflang="en" href="https://loritta.website/us{{ pathNL }}" />
+<link rel="alternate" hreflang="pt" href="https://loritta.website/pt{{ pathNL }}" />
+<link rel="alternate" hreflang="pt-BR" href="https://loritta.website/br{{ pathNL }}" />
+<link rel="alternate" hreflang="es" href="https://loritta.website/es{{ pathNL }}" />
+<style> <!-- CRITICAL CSS -->
+html{background-color:rgb(243,243,244);font-family:Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;color:#4f545c;font-weight:500;overflow-x:hidden}@keyframes rotateflip{0%{transform:rotateY(0deg)}50%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}#loading-screen{font-family:Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;color:white;font-size:1.5em;font-weight:600;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000}#loading-screen img{animation-name:rotateflip;animation-duration:8s;animation-iteration-count:infinite;animation-timing-function:linear}body{z-index:0;position:relative;margin:0}a:visited{color:#00b0f4}a{color:#00b0f4;text-decoration:none}.arrowBottom{position:absolute;bottom:0;left:50%;margin-left:-20px}.arrowBounce{-webkit-animation-name:bounce;-moz-animation-name:bounce;-o-animation-name:bounce;animation-name:bounce}.arrowAnimated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-webkit-animation-iteration-count:infinite;animation-fill-mode:both;-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s}@-webkit-keyframes swinging{0%{-webkit-transform:rotate(0deg);animation-timing-function:ease-out}25%{-webkit-transform:rotate(2deg);animation-timing-function:ease-in}50%{-webkit-transform:rotate(0deg);animation-timing-function:ease-out}75%{-webkit-transform:rotate(-2deg);animation-timing-function:ease-in}100%{-webkit-transform:rotate(0deg);animation-timing-function:ease-out}}@keyframes swinging{0%{transform:rotate(0deg);animation-timing-function:ease-out}25%{transform:rotate(2deg);animation-timing-function:ease-in}50%{transform:rotate(0deg);animation-timing-function:ease-out}75%{transform:rotate(-2deg);animation-timing-function:ease-in}100%{transform:rotate(0deg);animation-timing-function:ease-out}}.swingimage{-webkit-animation:swinging 7s linear forwards infinite;animation:swinging 7s linear forwards infinite;margin:2%}.navbar-fixed-top{top:0;z-index:100;position:fixed;width:100%}.is-invisible{visibility:hidden}#loritta{position:absolute;bottom:0;left:3.5vw;height:92.5vh;z-index:1}.pure-button{position:relative;bottom:3px}.button-discord{font-family:Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;color:white;font-size:14px;font-weight:600;line-height:16px;font-size:14px}.button-discord:visited{color:white}.button-discord-info{background:rgb(114,137,218)}.button_normal{border:0px none;background:fuchsia;border-radius:4px;box-shadow:0px 5px 0px #bb009b;color:#FFF;font-family:Oswald;margin:3px;outline:0px none;padding:4px 12px;font-size:120%}.text{font-size:4em;color:white;text-shadow:0px 0.05em 0px #d4d4d4;font-family:'Pacifico',cursive;line-height:1.25em}#container{background:url("../assets/img/discord_bg.png") repeat;position:relative;animation:slide infinite linear 180s}@-webkit-keyframes slide{from{background-position:left 0%}to{background-position:left 100%}}#header{position:relative;min-height:100vh}#rightSideText{position:absolute;right:3.5vw;transform:translateY(-50%);top:50%;text-align:right}@media screen and (max-width:830px){ #loritta{visibility:hidden!important}#rightSideText{text-align:center!important;right:0!important;width:100%}}.category-name{font-family:Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;text-rendering:optimizeLegibility;color:#4f545c;margin-bottom:20px;font-weight:600;line-height:20px;font-size:16px;outline:0;padding:0;vertical-align:baseline}.totallyHidden{display:none}.topnav{background-color:rgb(114,137,218);overflow:hidden;z-index:2;text-transform:uppercase;text-shadow:0 1px #0000004d;font-family:"Oswald",Arial,sans-serif;font-size:20px;text-align:center;font-size:0px;box-shadow:0px 0px 15px #0006}.topnavWrapper{min-width:85%;margin:auto;display:inline-block}.topnavLeft{float:left}.topnavRight{float:right}.topnav a{display:inline-block;color:#f2f2f2;padding:15px 16px;text-decoration:none;font-size:17px;border-right:1px dashed #6b80ce}.topnav .left-border{border-left:1px dashed #6b80ce}.topnav .icon{display:none}@media screen and (max-width:600px){.topnav a:not(:first-child){display:none}.topnav a.icon{float:right;display:block}.rightEntries{display:none}}@font-face{font-family:Whitney;font-style:light;font-weight:300;src:url("https://discordapp.com/assets/16801bfdf51ed88e69bc90626a3ea436.woff") format("woff")}@font-face{font-family:Whitney;font-style:normal;font-weight:500;src:url("https://discordapp.com/assets/d153359b5d87601d2b9c708b7ae2db02.woff") format("woff")}@font-face{font-family:Whitney;font-style:medium;font-weight:600;src:url("https://discordapp.com/assets/a934ab008c7f6a2274ec441f6be0696a.woff") format("woff")}@font-face{font-family:Whitney;font-style:semibold;font-weight:650;src:url("https://discordapp.com/assets/877ef48bf9fcfee590f0ba64de101b59.woff") format("woff")}@font-face{font-family:Whitney;font-style:bold;font-weight:700;src:url("https://discordapp.com/assets/2e004dd717cdc58b9ccb361d286ebbce.woff") format("woff")} @keyframes rotateflip{0%{transform:rotateY(0)}50%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}#loading-screen{font-family:Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;color:#fff;font-size:1.5em;font-weight:600;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000}#loading-screen img{animation-name:rotateflip;animation-duration:8s;animation-iteration-count:infinite;animation-timing-function:linear}
+</style>
 </head>
 <body class="light">
+<div class="totallyHidden">
+</div>
+<div id="loading-screen" style="position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+z-index: 100000; text-align: center; display: none; pointer-events: none;">
+<img src="{{ websiteUrl }}assets/img/loritta_loading.png">
+<div id="loading-screen-text">Salvando...</div>
+</div>
 {% block body %}
 <div id="container">
 {% block container %}
@@ -31,10 +68,23 @@
 <div class="topnavWrapper">
 <div class="topnavLeft">
   <a style="font-family: 'Pacifico', cursive; text-transform: none;" class="left-border">Loritta<sup style="font-family: 'Arial', cursive; text-transform: none;">beta</sup></a>
-  <a href="{{ websiteUrl }}"><i class="fa fa-home" aria-hidden="true"></i> {{ WEBSITE_HOME }}</a>
-  <a href="https://discord.gg/V7Kbh4z" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i> {{ WEBSITE_MY_DISCORD }}</a>
-  <a href="{{ websiteUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ WEBSITE_FAN_ARTS }}</a>
-  <a href="{{ websiteUrl }}donate"><i class="fa fa-gift" aria-hidden="true"></i> {{ WEBSITE_DONATE }}</a>
+  <a href="{{ loriUrl }}"><i class="fa fa-home" aria-hidden="true"></i></a>
+  <a href="{{ loriUrl }}support"><i class="fab fa-discord" aria-hidden="true"></i> {{ WEBSITE_MY_DISCORD }}</a>
+  <a href="{{ loriUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ WEBSITE_FAN_ARTS }}</a>
+  <a href="{{ loriUrl }}donate"><i class="fa fa-gift" aria-hidden="true"></i> {{ WEBSITE_DONATE }}</a>
+  <a href="{{ loriUrl }}servers" style="position: relative;"><i class="fas fa-comments"></i> Servers<span style="background-color: rgb(223, 0, 241);
+color: white;
+font-weight: 600;
+text-transform: uppercase;
+border-radius: 3px;
+padding: 3px;
+font-size: 0.75em;
+margin: 1px;
+position: absolute;
+display: block;
+right: 0px;
+transform: rotate(-10deg);
+bottom: 5px;">beta</span></a>
 </div>
 <div class="topnavRight">
   <div class="rightEntries">
@@ -42,11 +92,11 @@
   <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
   {% if discordAuth != null %}
   <a href="{{ websiteUrl }}?logout"><i class="fa fa-sign-out-alt" aria-hidden="true"></i></a>
-  <a href="{{ websiteUrl }}dashboard">
+  <a href="{{ loriUrl }}dashboard">
   <span style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</span>
   </a>
   {% else %}
-  <a href="{{ websiteUrl }}dashboard">
+  <a href="{{ loriUrl }}dashboard">
   <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Login</a>
   {% endif %}
   </div>
@@ -55,6 +105,7 @@
 </div>
 </div>
 {% block afterNavbar %}
+{% block header %}
 <div id="header" style="overflow: hidden; z-index: 0; position: relative;">
 <img class="is-invisible" id="loritta" src="{{ websiteUrl }}assets/img/loritta.png"></img>
 <img style="width: 0px; height: 0px;" src="{{ websiteUrl }}assets/img/loritta_blinking.png"></img>
@@ -68,10 +119,13 @@
   <img width="40" height="40" alt="" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyDQoJbDE4OS45OTktMTkwYzIwLjE3OC0yMC4xNzgsNTMuMTY0LTE5LjkxMyw3My42NzIsMC41OTVsMCwwYzIwLjUwOCwyMC41MDksMjAuNzcyLDUzLjQ5MiwwLjU5NSw3My42NzFMMjkzLjc1MSw0NTUuODY4eiIvPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIyMC4yNDksNDU1Ljg2OGMyMC4xOCwyMC4xNzksNTMuMTY0LDE5LjkxMyw3My42NzItMC41OTVsMCwwYzIwLjUwOS0yMC41MDgsMjAuNzc0LTUzLjQ5MywwLjU5Ni03My42NzINCglsLTE5MC0xOTBjLTIwLjE3OC0yMC4xNzgtNTMuMTY0LTE5LjkxMy03My42NzEsMC41OTVsMCwwYy0yMC41MDgsMjAuNTA5LTIwLjc3Miw1My40OTItMC41OTUsNzMuNjcxTDIyMC4yNDksNDU1Ljg2OHoiLz4NCjwvc3ZnPg0K" />
 </div>
 </div>
+{% endblock %}
 <div id="belowHeader">
-<div id="wrapper">
+<div id="wrapper" style="min-height: 100vh; background-color: rgb(243, 243, 243);">
+<div id="wrapperBlur">
 {% block wrapper %}
 {% endblock %}
+</div>
 </div>
 </div>
 {% endblock %}
@@ -81,8 +135,10 @@
 <div class="tingle-demo locale-changer-modal">
 <div class="test">
 <div class="category-name">Escolha sua linguagem</div>
-<a class="button-discord button-discord-info pure-button" href="{{ currentUrl }}?force_locale=default">Português (Brasil)</a>
-<a class="button-discord button-discord-info pure-button" href="{{ currentUrl }}?force_locale=en-us">English (United States)</a>
+<a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}br{{ pathNL }}">Português (Brasil)</a>
+<a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}pt{{ pathNL }}">Português (Portugal)</a>
+<a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}us{{ pathNL }}">English (United States)</a>
+<a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}es{{ pathNL }}">Espanõl</a>
 </div>
 </div>
 </div>
@@ -257,16 +313,7 @@ function onViewport(el, elClass, offset, callback) {
 {% block afterScripts %}
 {% endblock %}
 {% endblock %}
-<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
-<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></link>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></link>
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css"></link>
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.14"></link>
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/tingle.min.css"></link>
-<link async href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
-<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+<script data-cfasync="false" defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 <script src="{{ websiteUrl }}adsbygoogle.js"></script>
 <script>
 if( window.canRunAds === undefined ){
@@ -288,5 +335,14 @@ if( window.canRunAds === undefined ){
 	console.log("Thanks for keeping my ads! You are helping me to stay online, i luv u ^-^");
 }
 </script>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.24">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/tingle.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico"> 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald"> 
 </body>
 </html>

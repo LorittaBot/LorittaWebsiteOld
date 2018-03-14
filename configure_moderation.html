@@ -22,24 +22,13 @@ Moderação
 <textarea data-send-on-save="true" data-internal-name="punishmentLogMessage">{{ config.punishmentLogMessage }}</textarea>
 <hr>
 </div>
-<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<div class="flavourText">Avisos</div>
+<div id="warnActions"></div>
+<div><button class="button-discord button-discord-info pure-button add-new-action"><i class="fas fa-plus"></i></button></div>
+<hr>
+<button onclick="LoriDashboard.ConfigureModerationView.prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
 <br style="clear: both" /> <!-- So dirty! -->
 <script>
-$("#cmn-toggle-2").click(function(e) {
-	applyBlur()
-});
-
-function applyBlur() {
-  var e = $("#hiddenIfDisabled");
-  if ($('#cmn-toggle-2').is(':checked')) {
-	e.removeClass();
-	e.addClass("noBlur");
-  } else {
-    e.removeClass();
-	e.addClass("blurSection");
-  }
-}
-
-applyBlur();
+LoriDashboard.ConfigureModerationView.start();
 </script>
 {% endblock %}

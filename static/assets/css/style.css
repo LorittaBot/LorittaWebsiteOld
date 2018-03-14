@@ -6,6 +6,168 @@ html {
 	overflow-x: hidden;
 }
 
+.tingle-modal-box__content {
+    padding: 1.2rem;
+}
+
+.tingle-modal {
+	color: #72767d;
+}
+
+.tingle-enabled {
+	overflow: initial !important; /* Isto corrige o reCAPTCHA no Chrome/Edge */
+}
+
+.tingle-modal * {
+	box-sizing: initial !important;
+}
+
+.server-sample {
+margin: 6px;
+box-shadow: 0px 0px 3px #0006;
+border-radius: 5px;
+overflow: hidden;
+color: white;
+transition: 0.3s;
+}
+
+.server-sample:hover {
+box-shadow: 0px 0px 3px #0003;
+}
+
+.server-sample-upper {
+padding: 5px;
+}
+
+.server-sample-bottom {
+}
+
+.server-sample-upper .server-button {
+padding-right: 6px;
+cursor: pointer;
+text-align: center;
+width: 76px;
+}
+
+.server-sample-upper .discord-logo {
+font-size: 2em;
+}
+
+.server-sample-upper .click-here {
+font-size: 0.75em;
+font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+font-weight: 600;
+line-height: 0.75em;
+}
+
+.server-sponsor .server-sample-upper {
+background-color: rgb(183, 29, 28);
+border-bottom: solid 1px rgb(156, 25, 24);
+}
+
+.server-sponsor .server-sample-bottom {
+background-color: rgb(203, 33, 32);
+}
+
+.server-partner .server-sample-upper {
+background-color: rgb(80, 48, 134);
+border-bottom: solid 1px rgb(68, 41, 114);
+}
+
+.server-partner .server-sample-bottom {
+background-color: rgb(89, 54, 149);
+}
+
+.server-normal .server-sample-upper {
+background-color: rgb(47, 72, 123);
+border-bottom: solid 1px rgb(40, 61, 105);
+}
+
+.server-normal .server-sample-bottom {
+background-color: rgb(53, 80, 137);
+}
+
+.server-sample-icon {
+border-radius: 999999px;
+height: 48px;
+vertical-align: middle;
+float: left;
+}
+
+.server-name {
+color: white;
+font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+font-weight: 600;
+font-size: 1.1em;
+line-height: 1.1em;
+}
+
+.server-author {
+font-size: 0.9em;
+line-height: 0.9em;
+color: #ffffffb3;
+
+font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+
+font-weight: 600;
+}
+.server-info {
+
+}
+
+.server-tagline {
+color: white;
+font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+font-weight: 600;
+height: 24px;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+}
+
+.server-keywords {
+color: white;
+font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+font-weight: 600;
+height: 24px;
+}
+
+.sample-keyword {
+background-color: rgba(0, 0, 0, 0.10);
+
+color: white;
+
+font-weight: 600;
+
+text-transform: uppercase;
+
+border-radius: 3px;
+
+padding: 3px;
+
+font-size: 0.6em;
+
+display: inline;
+
+position: relative;
+
+bottom: 4px;
+}
+
+.splash-text {
+    color: white;
+    font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: 600;
+    font-size: 3.5em;
+    position: relative;
+    position: absolute;
+    right: -75px;
+    transform: rotate(-15deg);
+    bottom: 4%;
+    color: #FFFF55;
+    text-shadow: 0px 0.1em 0px #3F3F15, 0px 0px 0.5em #000;
+}
+
 body {
 	z-index: 0;
 	position: relative;
@@ -165,6 +327,7 @@ font-weight: 500;
 letter-spacing: .025em;
 line-height: 1.2em;
 font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+margin: 0;
 }
 
 .stat-name {
@@ -411,6 +574,11 @@ margin: 2%;
 	background: rgb(114, 137, 218);
 }
 
+.button-discord-disabled {
+	background: rgb(95, 95, 95);
+	color: #cbcbcb;
+}
+
 .button-discord-modal {
 	min-height: 38px;
     min-width: 96px;
@@ -516,12 +684,6 @@ border-radius: 3px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-#container {
-    background: url("../img/discord_bg.png") repeat;
-    position: relative;
-    animation: slide infinite linear 180s;
 }
 
 @-webkit-keyframes slide {

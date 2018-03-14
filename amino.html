@@ -383,7 +383,7 @@ applyBlur();
 applyBlur2();
 
 {% for community in config.aminos %}
-downloadInfoAndApply("{{ community.inviteUrl }}", "#{{ guild.getTextChannelById(community.repostToChannelId).getName }}", $("#{{ community.communityId }}"));
+downloadInfoAndApply("{{ community.inviteUrl }}", "#{{ guild.getTextChannelById(community.repostToChannelId) }}", $("#{{ community.communityId }}"));
 {% endfor %}
 </script>
 {% endblock %}

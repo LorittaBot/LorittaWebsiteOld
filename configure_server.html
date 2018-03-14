@@ -3,6 +3,20 @@
 Painel de Controle
 {% endblock %}
 {% block afterNavbar %}
+<style>
+#left-sidebar {
+transition: 0.3s;
+}
+
+#right-sidebar {
+transition: 0.3s;
+}
+</style>
+<script>
+var guildId = "{{ serverConfig.guildId }}"
+</script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriUtils.js?v={{ epochMillis }}"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriDashboard.js?v={{ epochMillis }}"></script>
 {% macro generateCheckbox(index, internalName, mainText, subText, isEnabled, needsToBeSaved) %}
 <div class="pure-g" style="text-align: center;">
     <div class="pure-u-1 pure-u-md-7-8">
@@ -79,6 +93,9 @@ Painel de Controle
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/starboard"><div class="item {% if saveType == "starboard" %}selected-item{% endif %}">
 	<i class="fa fa-star" aria-hidden="true"></i> Starboard
+	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/serverlist"><div class="item {% if saveType == "partner" %}selected-item{% endif %}">
+	<i class="fas fa-share-square"></i> Loritta Server List
 	</div></a>
 	</div>
 </div>

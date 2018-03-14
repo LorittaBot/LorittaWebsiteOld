@@ -41,6 +41,20 @@ true) }}
 roleConfigs[role].bypassSlowMode, 
 true) }}
 <hr>
+{{ generateCheckbox(role.getId + 7, 
+"allowUsingMusicCommands", 
+"dj", 
+"dj", 
+roleConfigs[role].allowUsingMusicCommands, 
+true) }}
+<hr>
+{{ generateCheckbox(role.getId + 8, 
+"allowAccessToDashboard", 
+"Permitir acessar a configuração deste servidor", 
+"Caso esteja ativado, usuários com esta permissão poderão acessar e manipular a configuração deste servidor no meu painel. Essa é uma permissão perigosa para conceder.", 
+roleConfigs[role].allowAccessToDashboard, 
+true) }}
+<hr>
 {% if userIdentification.id == "123170274651668480" %}
 {{ generateCheckbox(role.getId + 5, 
 "bypassAutoMod", 

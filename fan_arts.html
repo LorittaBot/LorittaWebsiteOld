@@ -30,9 +30,9 @@ Fan Arts
 	</div>
     <div class="pure-u-1 pure-u-md-3-4">
 		<div class="sectionText">
-		<div class="sectionHeader">
+		<h2 class="sectionHeader">
 		Fan Arts
-		</div>
+		</h2>
 {{ DASHBOARD_FanArtInfo|raw }}
 		</div>
 	</div>
@@ -42,11 +42,20 @@ Fan Arts
 </div>
 <div class="evenWrapper">
 <div class="contentWrapper" id="fanArts">
+<!-- Loritta Fan Arts 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="8312330754"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <div class="pure-g" style="text-align: center;" id="fanArtDisplay">
     {% for fanArt in fanArts %}
 	<div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
 	    <div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}' target="_blank"><img src="https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}"></img></a>
+			<a href='https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}' target="_blank"><img alt="Fan Art da Loritta — Feita por {{ fanArtsUsers[fanArt.artistId].getName }}" src="https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}"></img></a>
 			<p><b>{{ DASHBOARD_FanArtBy }} {% if fanArt.fancyName != null %}{{ fanArt.fancyName }}{% else %}{{ fanArtsUsers[fanArt.artistId].getName }}{% endif %}</b></p>
 			<p>Discord: {{ fanArtsUsers[fanArt.artistId].getName }}#{{ fanArtsUsers[fanArt.artistId].getDiscriminator }}
 			{% if fanArt.additionalInfo != null %}

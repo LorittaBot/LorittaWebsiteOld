@@ -228,7 +228,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   }
   function LoriServerList$start$lambda$lambda(this$LoriServerList) {
     return function (payload, b, c) {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
       println('owo payload: ' + toString(payload));
       var payload_0 = toJson(payload);
       println('Sponsored Count: ' + toString(payload_0.sponsoredCount));
@@ -251,19 +251,30 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       }
       tmp$_3 = withIndex(payload_0.top).iterator();
       while (tmp$_3.hasNext()) {
-        var tmp$_6 = tmp$_3.next();
-        var index = tmp$_6.component1()
-        , serverSample_1 = tmp$_6.component2();
-        if (index % 10 === 5) {
+        var tmp$_7 = tmp$_3.next();
+        var index = tmp$_7.component1()
+        , serverSample_1 = tmp$_7.component2();
+        if (index % 5 === 0) {
           this$LoriServerList.addAdvertisement_yp3tk2$(allServersSampleDiv);
           this$LoriServerList.injectAdvertisements_yp3tk2$(allServersSampleDiv);
         }
         this$LoriServerList.addServerSample_bewp0m$(serverSample_1, allServersSampleDiv);
       }
-      tmp$_4 = payload_0.random;
-      for (tmp$_5 = 0; tmp$_5 !== tmp$_4.length; ++tmp$_5) {
-        var serverSample_2 = tmp$_4[tmp$_5];
-        this$LoriServerList.addServerSample_bewp0m$(serverSample_2, randomServersSampleDiv);
+      tmp$_4 = withIndex(payload_0.recentlyBumped).iterator();
+      while (tmp$_4.hasNext()) {
+        var tmp$_8 = tmp$_4.next();
+        var index_0 = tmp$_8.component1()
+        , serverSample_2 = tmp$_8.component2();
+        if (index_0 % 5 === 0) {
+          this$LoriServerList.addAdvertisement_yp3tk2$(recentlyBumpedServersSampleDiv);
+          this$LoriServerList.injectAdvertisements_yp3tk2$(recentlyBumpedServersSampleDiv);
+        }
+        this$LoriServerList.addServerSample_bewp0m$(serverSample_2, recentlyBumpedServersSampleDiv);
+      }
+      tmp$_5 = payload_0.random;
+      for (tmp$_6 = 0; tmp$_6 !== tmp$_5.length; ++tmp$_6) {
+        var serverSample_3 = tmp$_5[tmp$_6];
+        this$LoriServerList.addServerSample_bewp0m$(serverSample_3, randomServersSampleDiv, 'pure-u-1 pure-u-md-1-2');
       }
       jq('.view-more-servers').click(LoriServerList$start$lambda$lambda$lambda(this$LoriServerList));
       jq('.view-more-recently-bumped-servers').click(LoriServerList$start$lambda$lambda$lambda_0(this$LoriServerList));
@@ -282,13 +293,14 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       var arg1 = getOrNull(args, 1);
       var arg2 = getOrNull(args, 2);
       var arg3 = getOrNull(args, 3);
-      if (equals(arg2, 'page') && arg3 != null) {
-        var skip = ((tmp$ = toIntOrNull(arg3)) != null ? tmp$ : 1) - 1 | 0;
+      var arg4 = getOrNull(args, 4);
+      if (equals(arg3, 'page') && arg4 != null) {
+        var skip = ((tmp$ = toIntOrNull(arg4)) != null ? tmp$ : 1) - 1 | 0;
         skip = skip * 50 | 0;
         return this$LoriServerList.showTopRankServers_vux9f0$(50, skip), Unit;
       }
-       else if (equals(arg2, 'bumped') && arg3 != null) {
-        var skip_0 = ((tmp$_0 = toIntOrNull(arg3)) != null ? tmp$_0 : 1) - 1 | 0;
+       else if (equals(arg3, 'bumped') && arg4 != null) {
+        var skip_0 = ((tmp$_0 = toIntOrNull(arg4)) != null ? tmp$_0 : 1) - 1 | 0;
         skip_0 = skip_0 * 50 | 0;
         return this$LoriServerList.showRecentlyBumpedRankServers_vux9f0$(50, skip_0), Unit;
       }
@@ -342,6 +354,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   }
   var Math_0 = Math;
   LoriServerList.prototype.showTopRankServers_vux9f0$ = function (size, skip) {
+    jq('#rank-list-sample-buttons').remove();
     jq('#listWrapper').empty();
     jq('#rank-list-sample-buttons').empty();
     jq('#listWrapper').html('\n\t\t\t\t\t<div class="oddWrapper">\n<div class="contentWrapper" style="text-align: center; width: 80%;">\n<div class="sectionHeader">\n<i class="far fa-heart"><\/i> owo whats this???\n<\/div>\n<div class="rank-list-sample pure-g"><\/div>\n<\/div>\n<\/div>');

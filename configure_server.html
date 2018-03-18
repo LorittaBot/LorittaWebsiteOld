@@ -44,22 +44,25 @@ var guildId = "{{ serverConfig.guildId }}"
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}"><div class="item {% if saveType == "default" %}selected-item{% endif %}">
 	<i class="fa fa-cogs" aria-hidden="true"></i>  {{ DASHBOARD_CONFIG_OVERVIEW }}
 	</div></a>
+	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/serverlist"><div class="item {% if saveType == "partner" %}selected-item{% endif %}">
+	<i class="fas fa-share-square"></i> Lori's Server List
+	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/commands"><div class="item {% if saveType == "vanilla_commands" %}selected-item{% endif %}">
-	<i class="fa fa-terminal" aria-hidden="true"></i> Comandos
+	<i class="fa fa-terminal" aria-hidden="true"></i> {{ WEBSITE_COMMANDS }}
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/permissions"><div class="item {% if saveType == "permissions" %}selected-item{% endif %}">
 	<i class="fa fa-address-card" aria-hidden="true"></i> {{ DASHBOARD_PERMISSIONS }}
 	</div></a>
 	{% if userIdentification.id == "123170274651668480" %}
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/textchannels"><div class="item {% if saveType == "text_channels" %}selected-item{% endif %}">
-	<i class="fa fa-hashtag" aria-hidden="true"></i> Canais de Texto
+	<i class="fa fa-hashtag" aria-hidden="true"></i> {{ DASHBOARD_TextChannels }}
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/voicechannels"><div class="item {% if saveType == "voice_channels" %}selected-item{% endif %}">
-	<i class="fa fa-microphone" aria-hidden="true"></i> Canais de Voz
+	<i class="fa fa-microphone" aria-hidden="true"></i> {{ DASHBOARD_VoiceChannels }}
 	</div></a>
 	{% endif %}
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/moderation"><div class="item {% if saveType == "moderation" %}selected-item{% endif %}">
-	<i class="fas fa-exclamation-circle" aria-hidden="true"></i> Moderação
+	<i class="fas fa-exclamation-circle" aria-hidden="true"></i> {{ DASHBOARD_Moderation }}
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/welcomer"><div class="item {% if saveType == "welcomer" %}selected-item{% endif %}">
 	<i class="fa fa-sign-in-alt" aria-hidden="true"></i> {{ DASHBOARD_WELCOMER }}
@@ -89,13 +92,10 @@ var guildId = "{{ serverConfig.guildId }}"
 	<i class="fa fa-sync-alt" aria-hidden="true"></i> Amino & Loritta
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/nashorn"><div class="item {% if saveType == "nashorn_commands" %}selected-item{% endif %}">
-	<i class="fab fa-js-square" aria-hidden="true"></i> Comandos em JavaScript
+	<i class="fab fa-js-square" aria-hidden="true"></i> {{ DASHBOARD_JavaScriptCommands }}
 	</div></a>
 	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/starboard"><div class="item {% if saveType == "starboard" %}selected-item{% endif %}">
 	<i class="fa fa-star" aria-hidden="true"></i> Starboard
-	</div></a>
-	<a href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}/serverlist"><div class="item {% if saveType == "partner" %}selected-item{% endif %}">
-	<i class="fas fa-share-square"></i> Loritta Server List
 	</div></a>
 	</div>
 </div>
@@ -198,15 +198,15 @@ DASHBOARD_WarnOnUnknownCommandSub,
 serverConfig.warnOnUnknownCommand, 
 true) }}
 <hr>
-<div class="flavourText">Canais em que não podem ser usados comandos</div>
-<div class="toggleSubText">Nestes canais eu irei simplesmente ignorar comandos, como se eu nem estivesse lá (mesmo que eu esteja observando suas mensagens para dar XP 👀)</div>
+<div class="flavourText">{{ DASHBOARD_CommandChannelBlacklist }}</div>
+<div class="toggleSubText">{{ DASHBOARD_CommandChannelBlacklist_Description }}</div>
 <select name="chooseRole" id="chooseRole">
 	{% for channel in guild.getTextChannels() %}
 	<option value="{{ channel.getId }}">#{{ channel.getName }}</option>
 	{% endfor %}
 </select>
-<button type="button" onclick="addLink()" class="button-success pure-button">Adicionar</button>
-<div class="toggleSubText">Clique em um canal de texto na lista abaixo para remover ele!</div>
+<button type="button" onclick="addLink()" class="button-success pure-button">{{ WEBSITE_ADD_IT }}</button>
+<div class="toggleSubText">{{ DASHBOARD_ClickToRemoveTextChannel }}</div>
 <table id="musicTable">
 {% if serverConfig.blacklistedChannels|length > 0 %}
   {% for channel in serverConfig.blacklistedChannels %}

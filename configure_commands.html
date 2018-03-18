@@ -1,12 +1,12 @@
 {% extends 'configure_server.html' %}
 {% block rightSidebarContents %}
 <div class="category-name">
-Comandos
+{{ WEBSITE_COMMANDS }}
 </div>
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-3-4">
 <div id="communityTitle" class="toggleSubText">
-Precisando ativar/desativar comandos? Então você veio ao lugar certo!
+{{ DASHBOARD_ManageCommands }}
 </div>
 </div>
 <div class="pure-u-1 pure-u-md-1-4">
@@ -14,7 +14,7 @@ Precisando ativar/desativar comandos? Então você veio ao lugar certo!
 </div>
 </div>
 <hr>
-<input type="text" id="filterBox" placeholder="Filtrar por nome...">
+<input type="text" id="filterBox" placeholder="{{ DASHBOARD_FilterByName }}">
 <script>
 $('#filterBox').on('input', function() {
 	var text = $(this).val()
@@ -102,7 +102,7 @@ sendJsonToServer(json);
 </script>
 <div class="pure-g">
 <div class="pure-u-1 pure-u-md-1-2">
-<div class="flavourText">Comandos ativados</div>
+<div class="flavourText">{{ DASHBOARD_EnabledCommands }}</div>
 <div style="margin: 5px">
 <select id="availableCommands" multiple style="width: 100%; height: 35vh;">
   {% for command in enabledCommands %}
@@ -113,7 +113,7 @@ sendJsonToServer(json);
 </div>
 <div class="pure-u-1 pure-u-md-1-2">
 <div style="margin: 5px">
-<div class="flavourText">Comandos desativados</div>
+<div class="flavourText">{{ DASHBOARD_DisabledCommands }}</div>
 <select id="disabledCommands" multiple style="width: 100%; height: 35vh;">
   {% for command in disabledCommands %}
   <option value="{{ command.getClass.getSimpleName }}">{{ serverConfig.commandPrefix }}{{ command.getLabel }}</option>
@@ -128,27 +128,6 @@ sendJsonToServer(json);
 <button onclick="moveSelectedOneLeft()" class="button-discord button-discord-info pure-button"><i class="fas fa-angle-left"></i></button>
 <button onclick="moveSelectedAllLeft()" class="button-discord button-discord-info pure-button"><i class="fas fa-angle-double-left"></i></button>
 </div>
-{#
-<div id="left-sidebar-contents" style="width: 25.5%; float: left;">
-	<div class="server-name">
-	Comandos
-	</div>
-	{% for command in commands %}
-	<div data-clickable-role="true" onclick="displayRoleStuff(this, '{{ command.getClass.getSimpleName }}');" class="item" style="font-weight: 600; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-	{{ serverConfig.commandPrefix }}{{ command.getLabel }}
-	</div>
-	{% endfor %}
-</div>
-<div style="padding: 0px 0px 80px 20px;">
-{% for command in commands %}
-<div id="role-{{ command.getClass.getSimpleName }}" data-internal-id="{{ command.getClass.getSimpleName }}" style="width: 74.5%; float: right;" class="totallyHidden">
-teste
-<hr>
-<br style="clear: both" /> <!-- So dirty! -->
-</div>
-{% endfor %}
-</div>
-#}
 <hr>
 <button onclick="transformBlockedCommandsToJson()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
 <br style="clear: both" /> <!-- So dirty! -->

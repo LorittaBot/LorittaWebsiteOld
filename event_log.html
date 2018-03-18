@@ -42,8 +42,6 @@ Event Log
 {{ generateCheckbox(24, "voiceChannelJoins", ADMINP_EVENTLOG_VOICE_JOIN, "", serverConfig.eventLogConfig.voiceChannelJoins, true) }}
 <hr>
 {{ generateCheckbox(25, "voiceChannelLeaves", ADMINP_EVENTLOG_VOICE_LEAVE, "", serverConfig.eventLogConfig.voiceChannelLeaves, true) }}
-<hr>
-{{ generateCheckbox(26, "voiceChannelMoves", "Quando alguém move um usuário de um canal de voz", "", serverConfig.eventLogConfig.voiceChannelMoves, true) }}
 </div>
 <hr>
 <button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>

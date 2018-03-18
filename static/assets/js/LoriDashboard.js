@@ -4,34 +4,466 @@ if (typeof kotlin === 'undefined') {
 if (typeof LoriUtils === 'undefined') {
   throw new Error("Error loading module 'LoriDashboard'. Its dependency 'LoriUtils' was not found. Please, check whether 'LoriUtils' is loaded prior to 'LoriDashboard'.");
 }
-var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
+if (typeof this['kotlinx-html-js'] === 'undefined') {
+  throw new Error("Error loading module 'LoriDashboard'. Its dependency 'kotlinx-html-js' was not found. Please, check whether 'kotlinx-html-js' is loaded prior to 'LoriDashboard'.");
+}
+var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html_js) {
   'use strict';
   var throwUPAE = Kotlin.throwUPAE;
-  var stringify = $module$LoriUtils.stringify_s8jyvk$;
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var BaseLocale = $module$LoriUtils.utils.BaseLocale;
-  var toJson = $module$LoriUtils.toJson_s8jyvk$;
-  var toString = Kotlin.toString;
-  var jq = $module$LoriUtils.jq_61zpoe$;
-  var Unit = Kotlin.kotlin.Unit;
-  var replace = Kotlin.kotlin.text.replace_680rmw$;
+  var withIndex = Kotlin.kotlin.collections.withIndex_us0mfu$;
   var equals = Kotlin.equals;
-  var json = Kotlin.kotlin.js.json_pyyo18$;
-  var Kind_OBJECT = Kotlin.Kind.OBJECT;
-  var PropertyMetadata = Kotlin.PropertyMetadata;
+  var StringBuilder = Kotlin.kotlin.text.StringBuilder;
+  var appendHTML = $module$kotlinx_html_js.kotlinx.html.stream.appendHTML_9kwp7w$;
+  var Unit = Kotlin.kotlin.Unit;
+  var h2 = $module$kotlinx_html_js.kotlinx.html.h2_eh5gi3$;
+  var p = $module$kotlinx_html_js.kotlinx.html.p_8pggrc$;
+  var div = $module$kotlinx_html_js.kotlinx.html.div_ri36nr$;
+  var set_style = $module$kotlinx_html_js.kotlinx.html.set_style_ueiko3$;
+  var ins = $module$kotlinx_html_js.kotlinx.html.ins_g1dqgd$;
+  var script = $module$kotlinx_html_js.kotlinx.html.script_fglb7v$;
+  var img = $module$kotlinx_html_js.kotlinx.html.img_evw26v$;
+  var hr = $module$kotlinx_html_js.kotlinx.html.hr_17yvwq$;
   var joinToString = Kotlin.kotlin.collections.joinToString_cgipc5$;
+  var div_0 = $module$kotlinx_html_js.kotlinx.html.div_59el9d$;
+  var println = Kotlin.kotlin.io.println_s8jyv4$;
+  var jq = $module$LoriUtils.jq_61zpoe$;
+  var Kind_OBJECT = Kotlin.Kind.OBJECT;
+  var toString = Kotlin.toString;
+  var contains = Kotlin.kotlin.collections.contains_mjy6jw$;
+  var replace = Kotlin.kotlin.text.replace_680rmw$;
+  var json = Kotlin.kotlin.js.json_pyyo18$;
+  var PropertyMetadata = Kotlin.PropertyMetadata;
   var lazy = Kotlin.kotlin.lazy_klfg04$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
   ModerationConfig$PunishmentAction.prototype = Object.create(Enum.prototype);
   ModerationConfig$PunishmentAction.prototype.constructor = ModerationConfig$PunishmentAction;
+  CommandCategory.prototype = Object.create(Enum.prototype);
+  CommandCategory.prototype.constructor = CommandCategory;
   LorittaPartner$Keyword.prototype = Object.create(Enum.prototype);
   LorittaPartner$Keyword.prototype.constructor = LorittaPartner$Keyword;
   LorittaPartner$Language.prototype = Object.create(Enum.prototype);
   LorittaPartner$Language.prototype.constructor = LorittaPartner$Language;
   LorittaPartner$Type.prototype = Object.create(Enum.prototype);
   LorittaPartner$Type.prototype.constructor = LorittaPartner$Type;
+  function CommandsView() {
+    CommandsView_instance = this;
+    this.locale_nten5$_0 = this.locale_nten5$_0;
+  }
+  Object.defineProperty(CommandsView.prototype, 'locale', {
+    get: function () {
+      if (this.locale_nten5$_0 == null)
+        return throwUPAE('locale');
+      return this.locale_nten5$_0;
+    },
+    set: function (locale) {
+      this.locale_nten5$_0 = locale;
+    }
+  });
+  function CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda$lambda(this$CommandsView, closure$category) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(this$CommandsView.locale.get_25kzsl$(closure$category.fancyTitle, []));
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda$lambda_0(this$CommandsView, closure$category) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(this$CommandsView.locale.get_25kzsl$(closure$category.description, []));
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda(this$CommandsView, closure$category) {
+    return function ($receiver) {
+      h2($receiver, 'sectionHeader', CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda$lambda(this$CommandsView, closure$category));
+      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda$lambda_0(this$CommandsView, closure$category));
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$addCommandInformation(this$CommandsView, closure$category, this$) {
+    return function () {
+      div(this$, 'sectionText', CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda(this$CommandsView, closure$category));
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda($receiver) {
+    set_style($receiver, 'display:block');
+    $receiver.attributes.put_xwzc9p$('data-ad-client', 'ca-pub-9989170954243288');
+    $receiver.attributes.put_xwzc9p$('data-ad-slot', '4611100335');
+    $receiver.attributes.put_xwzc9p$('data-ad-format', 'auto');
+    return Unit;
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_0($receiver) {
+    $receiver.unaryPlus_pdl1vz$('(adsbygoogle = window.adsbygoogle || []).push({});');
+    return Unit;
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda($receiver) {
+    set_style($receiver, 'width: 100%;');
+    return Unit;
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$image) {
+    return function ($receiver) {
+      img($receiver, null, closure$image.v, 'animate-on-scroll-left is-invisible', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda);
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$addCommandInformation) {
+    return function ($receiver) {
+      closure$addCommandInformation();
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$addCommandInformation) {
+    return function ($receiver) {
+      closure$addCommandInformation();
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0($receiver) {
+    set_style($receiver, 'width: 100%;');
+    return Unit;
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$image) {
+    return function ($receiver) {
+      img($receiver, null, closure$image.v, 'animate-on-scroll-right is-invisible', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0);
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation) {
+    return function ($receiver) {
+      if (closure$index % 2 === 0) {
+        div($receiver, 'pure-u-1 pure-u-md-1-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$image));
+        div($receiver, 'pure-u-1 pure-u-md-3-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$addCommandInformation));
+      }
+       else {
+        div($receiver, 'pure-u-1 pure-u-md-3-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$addCommandInformation));
+        div($receiver, 'pure-u-1 pure-u-md-1-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$image));
+      }
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_1(closure$index, closure$image, closure$addCommandInformation) {
+    return function ($receiver) {
+      div($receiver, 'pure-g vertically-centered-content', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation));
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_2($receiver) {
+    set_style($receiver, 'display:block');
+    $receiver.attributes.put_xwzc9p$('data-ad-client', 'ca-pub-9989170954243288');
+    $receiver.attributes.put_xwzc9p$('data-ad-slot', '4611100335');
+    $receiver.attributes.put_xwzc9p$('data-ad-format', 'auto');
+    return Unit;
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_3($receiver) {
+    $receiver.unaryPlus_pdl1vz$('(adsbygoogle = window.adsbygoogle || []).push({});');
+    return Unit;
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_4($receiver) {
+    return Unit;
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$command, closure$usage) {
+    return function ($receiver) {
+      set_style($receiver, 'font-weight: bold; font-size: 1.1em;');
+      $receiver.unaryPlus_pdl1vz$('+' + closure$command.label + ' ' + closure$usage.v);
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(it) {
+    return '+' + it;
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$command) {
+    return function ($receiver) {
+      set_style($receiver, 'opacity: 0.6;');
+      $receiver.unaryPlus_pdl1vz$(joinToString(closure$command.aliases, ', ', void 0, void 0, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1));
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_5(closure$command) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$command.description);
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$command) {
+    return function ($receiver) {
+      var tmp$;
+      var usage = {v: (tmp$ = closure$command.usage) != null ? tmp$ : ''};
+      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$command, usage));
+      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$command));
+      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_5(closure$command));
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_5(closure$filteredCommands) {
+    return function ($receiver) {
+      var tmp$;
+      tmp$ = closure$filteredCommands.iterator();
+      while (tmp$.hasNext()) {
+        var command = tmp$.next();
+        div($receiver, 'pure-u-1 pure-u-md-1-2', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_0(command));
+      }
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation, closure$filteredCommands) {
+    return function ($receiver) {
+      ins($receiver, 'adsbygoogle', CommandsView$start$lambda$lambda$lambda$lambda$lambda);
+      script($receiver, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda_0);
+      div($receiver, 'vertically-centered-content', CommandsView$start$lambda$lambda$lambda$lambda$lambda_1(closure$index, closure$image, closure$addCommandInformation));
+      ins($receiver, 'adsbygoogle', CommandsView$start$lambda$lambda$lambda$lambda$lambda_2);
+      script($receiver, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda_3);
+      hr($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda_4);
+      div($receiver, 'pure-g', CommandsView$start$lambda$lambda$lambda$lambda$lambda_5(closure$filteredCommands));
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda$lambda$lambda(this$CommandsView, closure$category, closure$index, closure$image, closure$filteredCommands) {
+    return function ($receiver) {
+      var addCommandInformation = CommandsView$start$lambda$lambda$lambda$addCommandInformation(this$CommandsView, closure$category, $receiver);
+      div($receiver, 'contentWrapper', CommandsView$start$lambda$lambda$lambda$lambda(closure$index, closure$image, addCommandInformation, closure$filteredCommands));
+      return Unit;
+    };
+  }
+  var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
+  function CommandsView$start$lambda$lambda(this$CommandsView) {
+    return function (data, b, c) {
+      var tmp$, tmp$_0, tmp$_1;
+      LoriDashboard_getInstance().hideLoadingBar();
+      var commands = toJson(data);
+      tmp$ = withIndex(CommandCategory$values()).iterator();
+      while (tmp$.hasNext()) {
+        var tmp$_2 = tmp$.next();
+        var index = tmp$_2.component1()
+        , category = tmp$_2.component2();
+        var destination = ArrayList_init();
+        var tmp$_3;
+        for (tmp$_3 = 0; tmp$_3 !== commands.length; ++tmp$_3) {
+          var element = commands[tmp$_3];
+          if (equals(element.category.toString(), category.toString()))
+            destination.add_11rb$(element);
+        }
+        var filteredCommands = destination;
+        var stringBuilder = new StringBuilder();
+        if (equals(category, CommandCategory$SOCIAL_getInstance()))
+          tmp$_0 = 'https://loritta.website/assets/img/social.png';
+        else if (equals(category, CommandCategory$POKEMON_getInstance()))
+          tmp$_0 = 'https://loritta.website/assets/img/pokemon.png';
+        else if (equals(category, CommandCategory$MINECRAFT_getInstance()))
+          tmp$_0 = 'https://loritta.website/assets/img/loritta_pudim.png';
+        else if (equals(category, CommandCategory$FUN_getInstance()))
+          tmp$_0 = 'https://loritta.website/assets/img/vieirinha.png';
+        else if (equals(category, CommandCategory$UTILS_getInstance()))
+          tmp$_0 = 'https://loritta.website/assets/img/utils.png';
+        else if (equals(category, CommandCategory$MUSIC_getInstance()))
+          tmp$_0 = 'https://loritta.website/assets/img/loritta_headset.png';
+        else if (equals(category, CommandCategory$ANIME_getInstance()))
+          tmp$_0 = 'https://loritta.website/assets/img/loritta_anime.png';
+        else
+          tmp$_0 = 'https://loritta.website/assets/img/loritta_gabizinha_v1.png';
+        var image = {v: tmp$_0};
+        div_0(appendHTML(stringBuilder), index % 2 === 0 ? 'evenWrapper' : 'oddWrapper', CommandsView$start$lambda$lambda$lambda(this$CommandsView, category, index, image, filteredCommands));
+        tmp$_1 = filteredCommands.iterator();
+        while (tmp$_1.hasNext()) {
+          var cmd = tmp$_1.next();
+        }
+        println(category);
+        jq('#wrapper').append(stringBuilder.toString());
+      }
+      return Unit;
+    };
+  }
+  function CommandsView$start$lambda(this$CommandsView) {
+    return function (data, b, c) {
+      this$CommandsView.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
+      return jQuery.post('https://loritta.website/api/v1/misc/get-commands', CommandsView$start$lambda$lambda(this$CommandsView));
+    };
+  }
+  CommandsView.prototype.start = function () {
+    LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Carregando...');
+    jQuery.post('https://loritta.website/api/v1/misc/get-locale', CommandsView$start$lambda(this));
+  };
+  CommandsView.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'CommandsView',
+    interfaces: []
+  };
+  var CommandsView_instance = null;
+  function CommandsView_getInstance() {
+    if (CommandsView_instance === null) {
+      new CommandsView();
+    }
+    return CommandsView_instance;
+  }
+  function ConfigureAutoroleView() {
+    ConfigureAutoroleView_instance = this;
+    this.locale_o4f2f6$_0 = this.locale_o4f2f6$_0;
+    this.serverConfig_jibg2x$_0 = this.serverConfig_jibg2x$_0;
+  }
+  Object.defineProperty(ConfigureAutoroleView.prototype, 'locale', {
+    get: function () {
+      if (this.locale_o4f2f6$_0 == null)
+        return throwUPAE('locale');
+      return this.locale_o4f2f6$_0;
+    },
+    set: function (locale) {
+      this.locale_o4f2f6$_0 = locale;
+    }
+  });
+  Object.defineProperty(ConfigureAutoroleView.prototype, 'serverConfig', {
+    get: function () {
+      if (this.serverConfig_jibg2x$_0 == null)
+        return throwUPAE('serverConfig');
+      return this.serverConfig_jibg2x$_0;
+    },
+    set: function (serverConfig) {
+      this.serverConfig_jibg2x$_0 = serverConfig;
+    }
+  });
+  var wrapFunction = Kotlin.wrapFunction;
+  var mapNotNullTo$lambda = wrapFunction(function () {
+    return function (closure$transform, closure$destination) {
+      return function (element) {
+        var tmp$;
+        if ((tmp$ = closure$transform(element)) != null) {
+          closure$destination.add_11rb$(tmp$);
+        }
+        return Unit;
+      };
+    };
+  });
+  function ConfigureAutoroleView$start$lambda$lambda(this$ConfigureAutoroleView) {
+    return function (data, b, c) {
+      LoriDashboard_getInstance().hideLoadingBar();
+      println('Data: ' + toString(data));
+      this$ConfigureAutoroleView.serverConfig = JSON.parse(data);
+      var $receiver = this$ConfigureAutoroleView.serverConfig.roles;
+      var destination = ArrayList_init();
+      var tmp$;
+      for (tmp$ = 0; tmp$ !== $receiver.length; ++tmp$) {
+        var element = $receiver[tmp$];
+        if (!element.isPublicRole)
+          destination.add_11rb$(element);
+      }
+      var tmp$_0;
+      tmp$_0 = destination.iterator();
+      while (tmp$_0.hasNext()) {
+        var element_0 = tmp$_0.next();
+        var this$ConfigureAutoroleView_0 = this$ConfigureAutoroleView;
+        var option = jq('<option>').attr('value', element_0.id).text(element_0.name);
+        if (!element_0.canInteract || element_0.isManaged || contains(this$ConfigureAutoroleView_0.serverConfig.autoroleConfig.roles, element_0.id)) {
+          option.attr('disabled', 'disabled');
+        }
+        jq('#chooseRole').append(option);
+      }
+      var $receiver_0 = this$ConfigureAutoroleView.serverConfig.autoroleConfig.roles;
+      var destination_0 = ArrayList_init();
+      var tmp$_1;
+      for (tmp$_1 = 0; tmp$_1 !== $receiver_0.length; ++tmp$_1) {
+        var element_1 = $receiver_0[tmp$_1];
+        var tmp$_0_0;
+        var $receiver_1 = this$ConfigureAutoroleView.serverConfig.roles;
+        var firstOrNull$result;
+        firstOrNull$break: do {
+          var tmp$_2;
+          for (tmp$_2 = 0; tmp$_2 !== $receiver_1.length; ++tmp$_2) {
+            var element_2 = $receiver_1[tmp$_2];
+            if (equals(element_2.id, element_1)) {
+              firstOrNull$result = element_2;
+              break firstOrNull$break;
+            }
+          }
+          firstOrNull$result = null;
+        }
+         while (false);
+        if ((tmp$_0_0 = firstOrNull$result) != null) {
+          destination_0.add_11rb$(tmp$_0_0);
+        }
+      }
+      var roleList = destination_0;
+      var tmp$_3;
+      tmp$_3 = roleList.iterator();
+      while (tmp$_3.hasNext()) {
+        var element_3 = tmp$_3.next();
+        this$ConfigureAutoroleView.addRoleToAutoroleList_xat1sd$(element_3);
+      }
+      LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled', '#cmn-toggle-1');
+      return Unit;
+    };
+  }
+  function ConfigureAutoroleView$start$lambda(this$ConfigureAutoroleView) {
+    return function (data, b, c) {
+      println('Received locale: ' + stringify(data));
+      this$ConfigureAutoroleView.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
+      return jQuery.post('https://loritta.website/api/v1/config/get-server-config?guildId=' + guildId, ConfigureAutoroleView$start$lambda$lambda(this$ConfigureAutoroleView));
+    };
+  }
+  ConfigureAutoroleView.prototype.start = function () {
+    LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Carregando...');
+    jQuery.post('https://loritta.website/api/v1/misc/get-locale', ConfigureAutoroleView$start$lambda(this));
+  };
+  function ConfigureAutoroleView$addRoleToAutoroleList$lambda(closure$tr) {
+    return function (it) {
+      closure$tr.remove();
+      return Unit;
+    };
+  }
+  ConfigureAutoroleView.prototype.addRoleToAutoroleList_xat1sd$ = function (role) {
+    var tr = jq('<tr>').append(jq('<td>').text(role.name).attr('role-id', role.id).addClass('role-entry'));
+    tr.click(ConfigureAutoroleView$addRoleToAutoroleList$lambda(tr));
+    jq('#roleTable').append(tr);
+  };
+  ConfigureAutoroleView.prototype.addRoleFromSelection = function () {
+    var roleId = jq('#chooseRole').val();
+    var $receiver = this.serverConfig.roles;
+    var firstOrNull$result;
+    firstOrNull$break: do {
+      var tmp$;
+      for (tmp$ = 0; tmp$ !== $receiver.length; ++tmp$) {
+        var element = $receiver[tmp$];
+        if (equals(element.id, roleId)) {
+          firstOrNull$result = element;
+          break firstOrNull$break;
+        }
+      }
+      firstOrNull$result = null;
+    }
+     while (false);
+    var role = firstOrNull$result;
+    if (role != null) {
+      this.addRoleToAutoroleList_xat1sd$(role);
+    }
+  };
+  function ConfigureAutoroleView$prepareSave$lambda$lambda(closure$roles) {
+    return function (index, elem) {
+      var el = jQuery(elem);
+      var entry = el.find('.role-entry');
+      return closure$roles.add_11rb$(entry.attr('role-id'));
+    };
+  }
+  function ConfigureAutoroleView$prepareSave$lambda(payload) {
+    var roles = ArrayList_init();
+    var rolesVoteRewards = ArrayList_init();
+    jq('#roleTable').children().each(ConfigureAutoroleView$prepareSave$lambda$lambda(roles));
+    payload['roles'] = roles;
+    payload['rolesVoteRewards'] = rolesVoteRewards;
+    return Unit;
+  }
+  ConfigureAutoroleView.prototype.prepareSave = function () {
+    SaveStuff_getInstance().prepareSave('autorole', ConfigureAutoroleView$prepareSave$lambda);
+  };
+  ConfigureAutoroleView.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'ConfigureAutoroleView',
+    interfaces: []
+  };
+  var ConfigureAutoroleView_instance = null;
+  function ConfigureAutoroleView_getInstance() {
+    if (ConfigureAutoroleView_instance === null) {
+      new ConfigureAutoroleView();
+    }
+    return ConfigureAutoroleView_instance;
+  }
   function ConfigureModerationView() {
     ConfigureModerationView_instance = this;
     this.locale_wine6b$_0 = this.locale_wine6b$_0;
@@ -48,7 +480,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
   });
   function ConfigureModerationView$start$lambda$lambda$lambda(this$ConfigureModerationView) {
     return function (it) {
-      this$ConfigureModerationView.addPunishment_a3smtl$(new ModerationConfig$WarnAction(1, ModerationConfig$PunishmentAction$BAN_getInstance()));
+      this$ConfigureModerationView.addPunishment_a3smtl$(new ModerationConfig$WarnAction(1, ModerationConfig$PunishmentAction$BAN_getInstance(), null));
       return Unit;
     };
   }
@@ -70,7 +502,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
   function ConfigureModerationView$start$lambda(this$ConfigureModerationView) {
     return function (data, b, c) {
       println('Received locale: ' + stringify(data));
-      this$ConfigureModerationView.locale = BaseLocale.Companion.create_qk3xy8$(toJson(data));
+      this$ConfigureModerationView.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
       return jQuery.post('https://loritta.website/api/v1/config/get-server-config?guildId=' + guildId, ConfigureModerationView$start$lambda$lambda(this$ConfigureModerationView));
     };
   }
@@ -84,9 +516,24 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
       return Unit;
     };
   }
+  function ConfigureModerationView$addPunishment$lambda_0(closure$action) {
+    return function (it) {
+      var punishmentAction = ModerationConfig$PunishmentAction$valueOf(closure$action.find('.apply-punishment').val());
+      if (equals(punishmentAction.toString(), ModerationConfig$PunishmentAction$MUTE_getInstance().toString())) {
+        closure$action.find('.customMetadata').css('height', '48px');
+      }
+       else {
+        closure$action.find('.customMetadata').css('height', '0px');
+      }
+      return Unit;
+    };
+  }
   ConfigureModerationView.prototype.addPunishment_a3smtl$ = function (warnAction) {
     var tmp$, tmp$_0;
-    var action = jq('<div>').append(jq('<button>').attr('class', 'button-discord button-discord-info pure-button remove-action').html('<i class="fas fa-trash"><\/i>')).append(' Ao chegar em ').append(jq('<input>').attr('type', 'number').attr('min', 1).val(warnAction.warnCount).attr('class', 'warnCount')).append(' avisos, ').append("<select class='apply-punishment'>").append(' o usu\xE1rio');
+    var action = jq('<div>').append(jq('<button>').attr('class', 'button-discord button-discord-info pure-button remove-action').html('<i class="fas fa-trash"><\/i>')).append(' Ao chegar em ').append(jq('<input>').attr('type', 'number').attr('min', 1).val(warnAction.warnCount).attr('class', 'warnCount')).append(' avisos, ').append("<select class='apply-punishment'>").append(' o usu\xE1rio').append(jq('<div>').css('height', '0px').css('overflow', 'hidden').css('transition', '2s').addClass('customMetadata').append('O usu\xE1rio dever\xE1 ser silenciado por ').append(jq('<input>').attr('type', 'text').attr('placeholder', '30 minutos').val(warnAction.customMetadata0).attr('class', 'customMetadata0')));
+    if (equals(warnAction.punishmentAction.toString(), ModerationConfig$PunishmentAction$MUTE_getInstance().toString())) {
+      action.find('.customMetadata').css('height', '48px');
+    }
     jq('#warnActions').append(action);
     action.find('.remove-action').click(ConfigureModerationView$addPunishment$lambda(action));
     var applyPunishment = action.find('.apply-punishment');
@@ -99,17 +546,21 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
       }
       applyPunishment.append(option);
     }
+    jq('.apply-punishment').click(ConfigureModerationView$addPunishment$lambda_0(action));
   };
   function ConfigureModerationView$prepareSave$lambda$lambda(closure$actions) {
     return function (index, elem) {
       var el = jQuery(elem);
       var json_0 = json([]);
-      json_0['punishmentAction'] = ModerationConfig$PunishmentAction$valueOf(el.find('.apply-punishment').val()).toString();
+      var punishmentAction = ModerationConfig$PunishmentAction$valueOf(el.find('.apply-punishment').val());
+      json_0['punishmentAction'] = punishmentAction.toString();
       json_0['warnCount'] = el.find('.warnCount').val();
+      if (equals(punishmentAction.toString(), ModerationConfig$PunishmentAction$MUTE_getInstance().toString())) {
+        json_0['customMetadata0'] = el.find('.customMetadata0').val();
+      }
       return closure$actions.add_11rb$(json_0);
     };
   }
-  var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   function ConfigureModerationView$prepareSave$lambda(payload) {
     var actions = ArrayList_init();
     var warnActions = jq('#warnActions');
@@ -273,7 +724,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
   function ConfigurePartnerView$start$lambda(this$ConfigurePartnerView) {
     return function (data, b, c) {
       println('Received locale: ' + stringify(data));
-      this$ConfigurePartnerView.locale = BaseLocale.Companion.create_qk3xy8$(toJson(data));
+      this$ConfigurePartnerView.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
       return jQuery.post('https://loritta.website/api/v1/config/get-server-config?guildId=' + guildId, ConfigurePartnerView$start$lambda$lambda(this$ConfigurePartnerView));
     };
   }
@@ -459,6 +910,15 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     }
     return LoriDashboard_instance;
   }
+  function toJson($receiver) {
+    return JSON.parse(JSON.stringify($receiver));
+  }
+  function toJson_0($receiver) {
+    return JSON.parse(JSON.stringify($receiver));
+  }
+  function stringify($receiver) {
+    return JSON.stringify($receiver);
+  }
   function SaveStuff() {
     SaveStuff_instance = this;
   }
@@ -513,6 +973,25 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     }
     return SaveStuff_instance;
   }
+  function AutoroleConfig() {
+    this.isEnabled = false;
+    this.roles = [];
+    this.rolesVoteRewards = [];
+  }
+  function AutoroleConfig$RoleVoteReward(voteCount, roles) {
+    this.voteCount = voteCount;
+    this.roles = roles;
+  }
+  AutoroleConfig$RoleVoteReward.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'RoleVoteReward',
+    interfaces: []
+  };
+  AutoroleConfig.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'AutoroleConfig',
+    interfaces: []
+  };
   function ModerationConfig() {
     this.sendPunishmentViaDm = false;
     this.sendToPunishLog = false;
@@ -521,9 +1000,10 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     this.punishmentActions = [];
     this.warnExpiresIn = null;
   }
-  function ModerationConfig$WarnAction(warnCount, punishmentAction) {
+  function ModerationConfig$WarnAction(warnCount, punishmentAction, customMetadata0) {
     this.warnCount = warnCount;
     this.punishmentAction = punishmentAction;
+    this.customMetadata0 = customMetadata0;
   }
   ModerationConfig$WarnAction.$metadata$ = {
     kind: Kind_CLASS,
@@ -551,6 +1031,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     ModerationConfig$PunishmentAction$BAN_instance = new ModerationConfig$PunishmentAction('BAN', 0);
     ModerationConfig$PunishmentAction$SOFT_BAN_instance = new ModerationConfig$PunishmentAction('SOFT_BAN', 1);
     ModerationConfig$PunishmentAction$KICK_instance = new ModerationConfig$PunishmentAction('KICK', 2);
+    ModerationConfig$PunishmentAction$MUTE_instance = new ModerationConfig$PunishmentAction('MUTE', 3);
   }
   var ModerationConfig$PunishmentAction$BAN_instance;
   function ModerationConfig$PunishmentAction$BAN_getInstance() {
@@ -567,13 +1048,18 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     ModerationConfig$PunishmentAction_initFields();
     return ModerationConfig$PunishmentAction$KICK_instance;
   }
+  var ModerationConfig$PunishmentAction$MUTE_instance;
+  function ModerationConfig$PunishmentAction$MUTE_getInstance() {
+    ModerationConfig$PunishmentAction_initFields();
+    return ModerationConfig$PunishmentAction$MUTE_instance;
+  }
   ModerationConfig$PunishmentAction.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'PunishmentAction',
     interfaces: [Enum]
   };
   function ModerationConfig$PunishmentAction$values() {
-    return [ModerationConfig$PunishmentAction$BAN_getInstance(), ModerationConfig$PunishmentAction$SOFT_BAN_getInstance(), ModerationConfig$PunishmentAction$KICK_getInstance()];
+    return [ModerationConfig$PunishmentAction$BAN_getInstance(), ModerationConfig$PunishmentAction$SOFT_BAN_getInstance(), ModerationConfig$PunishmentAction$KICK_getInstance(), ModerationConfig$PunishmentAction$MUTE_getInstance()];
   }
   ModerationConfig$PunishmentAction.values = ModerationConfig$PunishmentAction$values;
   function ModerationConfig$PunishmentAction$valueOf(name) {
@@ -584,6 +1070,8 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
         return ModerationConfig$PunishmentAction$SOFT_BAN_getInstance();
       case 'KICK':
         return ModerationConfig$PunishmentAction$KICK_getInstance();
+      case 'MUTE':
+        return ModerationConfig$PunishmentAction$MUTE_getInstance();
       default:throwISE('No enum constant userdata.ModerationConfig.PunishmentAction.' + name);
     }
   }
@@ -610,6 +1098,170 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     simpleName: 'PartnerConfig',
     interfaces: []
   };
+  function AbstractCommand(name, label, aliases, category, description, usage, detailedUsage, example, extendedExamples, requiredUserPermissions, requiredBotPermissions) {
+    this.name = name;
+    this.label = label;
+    this.aliases = aliases;
+    this.category = category;
+    this.description = description;
+    this.usage = usage;
+    this.detailedUsage = detailedUsage;
+    this.example = example;
+    this.extendedExamples = extendedExamples;
+    this.requiredUserPermissions = requiredUserPermissions;
+    this.requiredBotPermissions = requiredBotPermissions;
+  }
+  AbstractCommand.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'AbstractCommand',
+    interfaces: []
+  };
+  function CommandCategory(name, ordinal, fancyTitle, description) {
+    Enum.call(this);
+    this.fancyTitle = fancyTitle;
+    this.description = description;
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function CommandCategory_initFields() {
+    CommandCategory_initFields = function () {
+    };
+    CommandCategory$FUN_instance = new CommandCategory('FUN', 0, 'CommandCategory_FUN_Name', 'CommandCategory_FUN_Description');
+    CommandCategory$IMAGES_instance = new CommandCategory('IMAGES', 1, 'CommandCategory_IMAGES_Name', 'CommandCategory_IMAGES_Description');
+    CommandCategory$MINECRAFT_instance = new CommandCategory('MINECRAFT', 2, 'CommandCategory_MINECRAFT_Name', 'CommandCategory_MINECRAFT_Description');
+    CommandCategory$POKEMON_instance = new CommandCategory('POKEMON', 3, 'CommandCategory_POKEMON_Name', 'CommandCategory_POKEMON_Description');
+    CommandCategory$UNDERTALE_instance = new CommandCategory('UNDERTALE', 4, 'CommandCategory_UNDERTALE_Name', 'CommandCategory_UNDERTALE_Description');
+    CommandCategory$ROBLOX_instance = new CommandCategory('ROBLOX', 5, 'CommandCategory_ROBLOX_Name', 'CommandCategory_ROBLOX_Description');
+    CommandCategory$ANIME_instance = new CommandCategory('ANIME', 6, 'CommandCategory_ANIME_Name', 'CommandCategory_ANIME_Description');
+    CommandCategory$DISCORD_instance = new CommandCategory('DISCORD', 7, 'CommandCategory_DISCORD_Name', 'CommandCategory_DISCORD_Description');
+    CommandCategory$MISC_instance = new CommandCategory('MISC', 8, 'CommandCategory_MISC_Name', 'CommandCategory_MISC_Description');
+    CommandCategory$ADMIN_instance = new CommandCategory('ADMIN', 9, 'CommandCategory_ADMIN_Name', 'CommandCategory_ADMIN_Description');
+    CommandCategory$UTILS_instance = new CommandCategory('UTILS', 10, 'CommandCategory_UTILS_Name', 'CommandCategory_UTILS_Description');
+    CommandCategory$SOCIAL_instance = new CommandCategory('SOCIAL', 11, 'CommandCategory_SOCIAL_Name', 'CommandCategory_SOCIAL_Description');
+    CommandCategory$ECONOMY_instance = new CommandCategory('ECONOMY', 12, 'CommandCategory_ECONOMY_Name', 'CommandCategory_ECONOMY_Description');
+    CommandCategory$MUSIC_instance = new CommandCategory('MUSIC', 13, 'CommandCategory_MUSIC_Name', 'CommandCategory_MUSIC_Description');
+    CommandCategory$MAGIC_instance = new CommandCategory('MAGIC', 14, 'CommandCategory_MAGIC_Name', 'CommandCategory_MAGIC_Description');
+  }
+  var CommandCategory$FUN_instance;
+  function CommandCategory$FUN_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$FUN_instance;
+  }
+  var CommandCategory$IMAGES_instance;
+  function CommandCategory$IMAGES_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$IMAGES_instance;
+  }
+  var CommandCategory$MINECRAFT_instance;
+  function CommandCategory$MINECRAFT_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$MINECRAFT_instance;
+  }
+  var CommandCategory$POKEMON_instance;
+  function CommandCategory$POKEMON_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$POKEMON_instance;
+  }
+  var CommandCategory$UNDERTALE_instance;
+  function CommandCategory$UNDERTALE_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$UNDERTALE_instance;
+  }
+  var CommandCategory$ROBLOX_instance;
+  function CommandCategory$ROBLOX_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$ROBLOX_instance;
+  }
+  var CommandCategory$ANIME_instance;
+  function CommandCategory$ANIME_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$ANIME_instance;
+  }
+  var CommandCategory$DISCORD_instance;
+  function CommandCategory$DISCORD_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$DISCORD_instance;
+  }
+  var CommandCategory$MISC_instance;
+  function CommandCategory$MISC_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$MISC_instance;
+  }
+  var CommandCategory$ADMIN_instance;
+  function CommandCategory$ADMIN_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$ADMIN_instance;
+  }
+  var CommandCategory$UTILS_instance;
+  function CommandCategory$UTILS_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$UTILS_instance;
+  }
+  var CommandCategory$SOCIAL_instance;
+  function CommandCategory$SOCIAL_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$SOCIAL_instance;
+  }
+  var CommandCategory$ECONOMY_instance;
+  function CommandCategory$ECONOMY_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$ECONOMY_instance;
+  }
+  var CommandCategory$MUSIC_instance;
+  function CommandCategory$MUSIC_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$MUSIC_instance;
+  }
+  var CommandCategory$MAGIC_instance;
+  function CommandCategory$MAGIC_getInstance() {
+    CommandCategory_initFields();
+    return CommandCategory$MAGIC_instance;
+  }
+  CommandCategory.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'CommandCategory',
+    interfaces: [Enum]
+  };
+  function CommandCategory$values() {
+    return [CommandCategory$FUN_getInstance(), CommandCategory$IMAGES_getInstance(), CommandCategory$MINECRAFT_getInstance(), CommandCategory$POKEMON_getInstance(), CommandCategory$UNDERTALE_getInstance(), CommandCategory$ROBLOX_getInstance(), CommandCategory$ANIME_getInstance(), CommandCategory$DISCORD_getInstance(), CommandCategory$MISC_getInstance(), CommandCategory$ADMIN_getInstance(), CommandCategory$UTILS_getInstance(), CommandCategory$SOCIAL_getInstance(), CommandCategory$ECONOMY_getInstance(), CommandCategory$MUSIC_getInstance(), CommandCategory$MAGIC_getInstance()];
+  }
+  CommandCategory.values = CommandCategory$values;
+  function CommandCategory$valueOf(name) {
+    switch (name) {
+      case 'FUN':
+        return CommandCategory$FUN_getInstance();
+      case 'IMAGES':
+        return CommandCategory$IMAGES_getInstance();
+      case 'MINECRAFT':
+        return CommandCategory$MINECRAFT_getInstance();
+      case 'POKEMON':
+        return CommandCategory$POKEMON_getInstance();
+      case 'UNDERTALE':
+        return CommandCategory$UNDERTALE_getInstance();
+      case 'ROBLOX':
+        return CommandCategory$ROBLOX_getInstance();
+      case 'ANIME':
+        return CommandCategory$ANIME_getInstance();
+      case 'DISCORD':
+        return CommandCategory$DISCORD_getInstance();
+      case 'MISC':
+        return CommandCategory$MISC_getInstance();
+      case 'ADMIN':
+        return CommandCategory$ADMIN_getInstance();
+      case 'UTILS':
+        return CommandCategory$UTILS_getInstance();
+      case 'SOCIAL':
+        return CommandCategory$SOCIAL_getInstance();
+      case 'ECONOMY':
+        return CommandCategory$ECONOMY_getInstance();
+      case 'MUSIC':
+        return CommandCategory$MUSIC_getInstance();
+      case 'MAGIC':
+        return CommandCategory$MAGIC_getInstance();
+      default:throwISE('No enum constant utils.CommandCategory.' + name);
+    }
+  }
+  CommandCategory.valueOf_61zpoe$ = CommandCategory$valueOf;
   function LorittaPartner() {
     LorittaPartner_instance = this;
   }
@@ -1015,10 +1667,24 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     }
     return LorittaPartner_instance;
   }
-  function ServerConfig(serverListConfig, moderationConfig, textChannels) {
+  function Role(id, name, isPublicRole, isManaged, canInteract) {
+    this.id = id;
+    this.name = name;
+    this.isPublicRole = isPublicRole;
+    this.isManaged = isManaged;
+    this.canInteract = canInteract;
+  }
+  Role.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Role',
+    interfaces: []
+  };
+  function ServerConfig(serverListConfig, moderationConfig, autoroleConfig, textChannels, roles) {
     this.serverListConfig = serverListConfig;
     this.moderationConfig = moderationConfig;
+    this.autoroleConfig = autoroleConfig;
     this.textChannels = textChannels;
+    this.roles = roles;
   }
   ServerConfig.$metadata$ = {
     kind: Kind_CLASS,
@@ -1035,6 +1701,12 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     simpleName: 'TextChannel',
     interfaces: []
   };
+  Object.defineProperty(_, 'CommandsView', {
+    get: CommandsView_getInstance
+  });
+  Object.defineProperty(_, 'ConfigureAutoroleView', {
+    get: ConfigureAutoroleView_getInstance
+  });
   Object.defineProperty(_, 'ConfigureModerationView', {
     get: ConfigureModerationView_getInstance
   });
@@ -1044,9 +1716,15 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
   Object.defineProperty(_, 'LoriDashboard', {
     get: LoriDashboard_getInstance
   });
+  _.toJson_th5c7u$ = toJson;
+  _.toJson_s8jyvk$ = toJson_0;
+  _.stringify_s8jyvk$ = stringify;
   Object.defineProperty(_, 'SaveStuff', {
     get: SaveStuff_getInstance
   });
+  AutoroleConfig.RoleVoteReward = AutoroleConfig$RoleVoteReward;
+  var package$userdata = _.userdata || (_.userdata = {});
+  package$userdata.AutoroleConfig = AutoroleConfig;
   ModerationConfig.WarnAction = ModerationConfig$WarnAction;
   ModerationConfig.Warn = ModerationConfig$Warn;
   Object.defineProperty(ModerationConfig$PunishmentAction, 'BAN', {
@@ -1058,10 +1736,60 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
   Object.defineProperty(ModerationConfig$PunishmentAction, 'KICK', {
     get: ModerationConfig$PunishmentAction$KICK_getInstance
   });
+  Object.defineProperty(ModerationConfig$PunishmentAction, 'MUTE', {
+    get: ModerationConfig$PunishmentAction$MUTE_getInstance
+  });
   ModerationConfig.PunishmentAction = ModerationConfig$PunishmentAction;
-  var package$userdata = _.userdata || (_.userdata = {});
   package$userdata.ModerationConfig = ModerationConfig;
   package$userdata.PartnerConfig = PartnerConfig;
+  var package$utils = _.utils || (_.utils = {});
+  package$utils.AbstractCommand = AbstractCommand;
+  Object.defineProperty(CommandCategory, 'FUN', {
+    get: CommandCategory$FUN_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'IMAGES', {
+    get: CommandCategory$IMAGES_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'MINECRAFT', {
+    get: CommandCategory$MINECRAFT_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'POKEMON', {
+    get: CommandCategory$POKEMON_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'UNDERTALE', {
+    get: CommandCategory$UNDERTALE_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'ROBLOX', {
+    get: CommandCategory$ROBLOX_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'ANIME', {
+    get: CommandCategory$ANIME_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'DISCORD', {
+    get: CommandCategory$DISCORD_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'MISC', {
+    get: CommandCategory$MISC_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'ADMIN', {
+    get: CommandCategory$ADMIN_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'UTILS', {
+    get: CommandCategory$UTILS_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'SOCIAL', {
+    get: CommandCategory$SOCIAL_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'ECONOMY', {
+    get: CommandCategory$ECONOMY_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'MUSIC', {
+    get: CommandCategory$MUSIC_getInstance
+  });
+  Object.defineProperty(CommandCategory, 'MAGIC', {
+    get: CommandCategory$MAGIC_getInstance
+  });
+  package$utils.CommandCategory = CommandCategory;
   Object.defineProperty(LorittaPartner$Keyword, 'GAMING', {
     get: LorittaPartner$Keyword$GAMING_getInstance
   });
@@ -1185,12 +1913,12 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils) {
     get: LorittaPartner$Type$NORMAL_getInstance
   });
   LorittaPartner.prototype.Type = LorittaPartner$Type;
-  var package$utils = _.utils || (_.utils = {});
   Object.defineProperty(package$utils, 'LorittaPartner', {
     get: LorittaPartner_getInstance
   });
+  package$utils.Role = Role;
   package$utils.ServerConfig = ServerConfig;
   package$utils.TextChannel = TextChannel;
   Kotlin.defineModule('LoriDashboard', _);
   return _;
-}(typeof LoriDashboard === 'undefined' ? {} : LoriDashboard, kotlin, LoriUtils);
+}(typeof LoriDashboard === 'undefined' ? {} : LoriDashboard, kotlin, LoriUtils, this['kotlinx-html-js']);

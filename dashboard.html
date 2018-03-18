@@ -64,7 +64,7 @@ Dashboard
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 <div class="sectionHeader">
-Privacidade
+{{ DASHBOARD_Privacy }}
 </div>
 {% macro generateCheckbox(index, internalName, mainText, subText, isEnabled, needsToBeSaved) %}
 <div class="pure-g" style="text-align: center;">
@@ -84,14 +84,14 @@ Privacidade
 <hr>
 {{ generateCheckbox(1, 
 "hideSharedServers", 
-"Esconder servidores compartilhados", 
+DASHBOARD_HideSharedServers, 
 "", 
 lorittaProfile.hideSharedServers, 
 true) }}
 <hr>
 {{ generateCheckbox(2, 
 "hidePreviousUsernames", 
-"Esconder usernames antigos", 
+DASHBOARD_HidePreviousUsernames, 
 "", 
 lorittaProfile.hidePreviousUsernames, 
 true) }}

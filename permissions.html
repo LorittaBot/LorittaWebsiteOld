@@ -2,7 +2,7 @@
 {% block rightSidebarContents %}
 <div class="discord-scroller" style="width: 25.5%; float: left;">
 	<div class="server-name">
-	Cargos
+	{{ USERINFO_ROLES }}
 	</div>
 	{% for role in guild.getRoles %}
 	<div data-clickable-role="true" onclick="displayRoleStuff(this, '{{ role.getId }}');" class="item" style="font-weight: 600; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;{% if role.getColor != null %}color: rgb({{ role.getColor.getRed }}, {{ role.getColor.getGreen }}, {{ role.getColor.getBlue }});{% endif %}">
@@ -15,15 +15,15 @@
 <div id="role-{{ role.getId }}" data-internal-id="{{ role.getId }}" style="width: 74.5%; float: right;" class="totallyHidden">
 {{ generateCheckbox(role.getId + 1, 
 "allowInvites", 
-"Permitir enviar convites", 
+DASHBOARD_AllowSendingInvites, 
 "", 
 roleConfigs[role].allowInvites, 
 true) }}
 <hr>
 {{ generateCheckbox(role.getId + 2, 
 "ignoreCommands", 
-"Ignorar Comandos", 
-"Caso esteja ativado, eu irei ignorar qualquer comando enviado por este usuário.", 
+DASHBOARD_IgnoreCommands, 
+DASHBOARD_IgnoreCommands_Description, 
 roleConfigs[role].ignoreCommands, 
 true) }}
 <hr>

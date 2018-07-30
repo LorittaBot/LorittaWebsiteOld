@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block subtitle %}
+Extras
+{% endblock %}
+{% block afterNavbar %}
+<style>
+#left-sidebar {
+transition: 0.3s;
+}
+
+#right-sidebar {
+transition: 0.3s;
+}
+
+.fancy-table td {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.fancy-table tr {
+	height: 40px;
+}
+
+.fancy-table tbody {
+	border-top: 1px solid #e7e9ea;
+}
+
+.fancy-table th {
+	font-weight: 600;
+	color: #7289da;
+}
+</style>
+<div style="height: 50.05px"></div>
+<div id="server-configuration">
+<div id="left-sidebar">
+<div class="discord-scroller" id="left-sidebar-contents"> 
+	<div id="left-sidebar-entries">
+	<div class="server-name">
+	Extras
+	</div>
+	<a href="{{ loriUrl }}extras"><div class="item {% if extraType == "default" %}selected-item{% endif %}">
+	<i class="fas fa-star"></i> Extras 
+	</div></a>
+	<div class="server-name">
+	FAQs
+	</div>
+	<a href="{{ loriUrl }}extras/about-loritta-bot"><div class="item {% if extraType == "about-loritta-bot" %}selected-item{% endif %}">
+	<i class="fas fa-magic"></i> Sobre a Loritta (Bot)
+	</div></a>
+	<a href="{{ loriUrl }}extras/about-loritta-character"><div class="item {% if extraType == "about-loritta-character" %}selected-item{% endif %}">
+	<i class="fas fa-kiss-wink-heart"></i> Sobre a Loritta (Personagem)
+	</div></a>
+	<a href="{{ loriUrl }}extras/about-discord"><div class="item {% if extraType == "about-discord" %}selected-item{% endif %}">
+	<i class="fab fa-discord"></i> Sobre o Discord
+	</div></a>
+	<div class="server-name">
+	Loritta
+	</div>
+	<a href="{{ loriUrl }}extras/placeholders"><div class="item {% if extraType == "placeholders" %}selected-item{% endif %}">
+	<i class="fas fa-pencil-alt"></i> Placeholders & Variáveis
+	</div></a>
+	<a href="{{ loriUrl }}extras/embeds"><div class="item {% if extraType == "embeds" %}selected-item{% endif %}">
+	<i class="far fa-edit"></i> Embeds
+	</div></a>
+	<a href="{{ loriUrl }}daily"><div class="item {% if extraType == "daily" %}selected-item{% endif %}">
+	<i class="fas fa-money-check-alt"></i> Daily
+	</div></a>
+	<div class="server-name">
+	Miscelânea
+	</div>
+	<a href="{{ loriUrl }}extras/banned-users"><div class="item {% if extraType == "banned-users" %}selected-item{% endif %}">
+	<i class="fas fa-ban"></i> Usuários banidos
+	</div></a>
+	</div>
+</div>
+</div>
+<div id="right-sidebar">
+<div id="right-sidebar-contents">
+{% block rightSidebarContents %}
+<div class="category-name">
+Extras
+</div>
+<div style="text-align: center;">
+<img src="https://loritta.website/assets/img/loritta_star.png" height="350">
+</div>
+<p>Wow, extras! Aqui você irá encontrar várias coisas "extras" relacionadas a Loritta, como FAQs (perguntas frequentemente respondidas), tutoriais, curiosidade, coisas especiais e muito mais!</p>
+<p>Não sabe por onde começar? Se você ainda não conhece como funciona a plataforma de chat Discord, recomendamos que você <a href="{{ loriUrl }}extras/about-discord">leia sobre ele</a> primeiro. Após ler e entender o que é Discord, você poderá ler nosso <a href="{{ loriUrl }}extras/about-loritta-bot">FAQ sobre a Loritta (Bot)</a>, para você tirar algumas dúvidas que você pode ter sobre ela. Ficou interessado e quer saber mais sobre a Loritta? Então leia o nosso <a href="{{ loriUrl }}extras/about-loritta-character">FAQ sobre a Loritta (Personagem)</a>!
+<br style="clear: both" /> <!-- So dirty! -->
+{% endblock %}
+</div>
+</div>
+<br style="clear: both" />
+</div>
+</div>
+</div>	
+{% endblock %}

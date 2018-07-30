@@ -17,13 +17,20 @@
 <script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriServerList.js?v={{ epochMillis }}"></script>
 <div class="totallyHidden">
 {% include 'entities/guild-template.html' %}
+<div id="self-profile-json">{{ selfProfile|raw }}</div>
+<div id="server-information-json">{{ serverInformation|raw }}</div>
 </div>
 <style>
 .tingle-modal {
 background-color: inherit !important;
 }
-</style>
 
+html {
+background: url("https://loritta.website/assets/img/discord_bg.png") repeat;
+}
+</style>
+{% endblock %}
+{% block afterlocale %}
 <script>
 console.log("owo whats this");
 function recaptchaCallback(response) {

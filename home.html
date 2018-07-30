@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
+{% block header %}
+<div id="header" style="overflow: hidden; z-index: 0; position: relative;">
+<img alt="Loritta Morenitta" class="is-invisible" id="loritta" src="{{ websiteUrl }}assets/img/loritta.png">
+<img alt="Loritta Morenitta" style="width: 0px; height: 0px;" src="{{ websiteUrl }}assets/img/loritta_blinking.png">
+  <div id="rightSideText">
+  <div style="position: relative;" class="is-invisible" id="animate_myNameIs"><span class="text">{{ WEBSITE_HELLO }}</span></div>
+  <div style="position: relative;" class="is-invisible" id="animate_myName"><span style="font-size: 7.5em; color: #00d7ff;" class="text">Loritta</span></div>
+  <div id="animate_subtext" style="position: relative;" class="is-invisible"><span style="font-size: 2em; margin-bottom: 0.55em; display: block;" class="text">{{ WEBSITE_JUST_A_SIMPLE_DISCORD_BOT }}</span></div>
+  <div style="text-align: center;"><span class="swingimage" style="display: inline-block;"><div id="animate_textbutton" style="font-size: 1.25em;background: fuchsia;border-radius: 6px;box-shadow: 0 0 14px #f0f9;" class="is-invisible button-discord button-discord-info pure-button"><a href="{{ addBotUrl }}" style="color: white;"><i class="fab fa-discord"></i> {{ WEBSITE_ADD_ME }}</a></div></span> <span class="swingimage" style="display: inline-block;"><div id="animate_textbutton2" style="font-size: 1.25em;background: #00b7f2;border-radius: 6px;box-shadow: 0 0 14px #00b7f2;" class="is-invisible button-discord button-discord-info pure-button"><a href="#belowHeader" style="color: white;"><i class="fas fa-plus"></i> {{ LORITTA_LearnMore }}</a></div></span></div>
+</div>
+<div class="arrowBottom arrowAnimated arrowBounce">
+  <img width="40" height="40" alt="" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyDQoJbDE4OS45OTktMTkwYzIwLjE3OC0yMC4xNzgsNTMuMTY0LTE5LjkxMyw3My42NzIsMC41OTVsMCwwYzIwLjUwOCwyMC41MDksMjAuNzcyLDUzLjQ5MiwwLjU5NSw3My42NzFMMjkzLjc1MSw0NTUuODY4eiIvPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIyMC4yNDksNDU1Ljg2OGMyMC4xOCwyMC4xNzksNTMuMTY0LDE5LjkxMyw3My42NzItMC41OTVsMCwwYzIwLjUwOS0yMC41MDgsMjAuNzc0LTUzLjQ5MywwLjU5Ni03My42NzINCglsLTE5MC0xOTBjLTIwLjE3OC0yMC4xNzgtNTMuMTY0LTE5LjkxMy03My42NzEsMC41OTVsMCwwYy0yMC41MDgsMjAuNTA5LTIwLjc3Miw1My40OTItMC41OTUsNzMuNjcxTDIyMC4yNDksNDU1Ljg2OHoiLz4NCjwvc3ZnPg0K" />
+</div>
+</div>
+{% endblock %}
 {% block wrapper %}
 <div class="oddWrapper">
 <!-- Loritta Teste -->
@@ -90,7 +105,7 @@
 	</div>
 	</div>
     <div class="pure-u-1 pure-u-md-1-4">
-		<img class="animate-on-scroll-right is-invisible" src="https://loritta.website/assets/img/loritta_tophalf.png" alt="Foto da Loritta" style="width: 100%;">
+		<img class="animate-on-scroll-right is-invisible" src="https://loritta.website/assets/img/loritta_mendigagem_300w.png" sizes="(max-width: 768px) 100vw, 25vw" srcset="https://loritta.website/assets/img/loritta_mendigagem_300w.png 300w, https://loritta.website/assets/img/loritta_mendigagem_400w.png 400w, https://loritta.website/assets/img/loritta_mendigagem_500w.png 500w, https://loritta.website/assets/img/loritta_mendigagem.png 1259w" alt="Foto da Loritta" style="width: 100%;">
 	</div>
 </div>
 </div>
@@ -184,7 +199,7 @@
 		</div>
 	</div>
     <div class="pure-u-1 pure-u-md-1-4" style="text-align: center;">
-		<img class="animate-on-scroll-right is-invisible" src="https://loritta.website/assets/img/loritta_headset.png" alt="Loritta escutando música" style="width: 100%;">
+		<img class="animate-on-scroll-right is-invisible" src="https://loritta.website/assets/img/loritta_headset_300w.png" sizes="(max-width: 768px) 100vw, 25vw" srcset="https://loritta.website/assets/img/loritta_mendigagem_300w.png 300w, https://loritta.website/assets/img/loritta_headset_400w.png 400w, https://loritta.website/assets/img/loritta_headset_500w.png 500w, https://loritta.website/assets/img/loritta_headset.png 512w" alt="Loritta escutando música" style="width: 100%;">
 	</div>
 </div>
 </div>

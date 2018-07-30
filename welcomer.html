@@ -4,6 +4,50 @@
 <div class="category-name">
 {{ DASHBOARD_WELCOMER }}
 </div>
+<div style="text-align: center;">
+<div  style="height: 300px; position: relative; display: inline-block;">
+<img src="{{ websiteUrl }}assets/img/lori_welcomer.png?v2" style="border-radius: 7px; height: 300px;">
+<div class="message-shake" style="bottom: 90px; left: -25px; position: absolute; background-color: white; padding: 2px; box-shadow: 0px 0px 3px #0000001a;">Welcome, <a target="_blank" href="https://pollux.fun/"><span class="discord-mention">@Pollux</span></a>! <img class="inline-emoji" src="https://cdn.discordapp.com/emojis/417813932380520448.png?v=1"></div>
+</div>
+<style>
+@-webkit-keyframes welcome-pollux {
+	0% { transform: rotate(-3deg); }
+	50% { transform: rotate(3deg); }
+  100% { transform: rotate(-3deg); }
+}
+
+.message-shake {
+	-webkit-animation-name: welcome-pollux;
+	-webkit-animation-duration: 1.6s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: ease;
+}
+</style>
+<h2>{{ DASHBOARD_WELCOMER }}</h2>
+<p>Anuncie quem está entrando e saindo do seu servidor da maneira que você queria! Envie mensagens para novatos via mensagem direta com informações sobre o seu servidor para não encher o chat com informações repetidas e muito mais!</p>
+<div id="requiresPermission" class="entry-error flavourText" style="color: #f04747;"></div>
+<hr>
+<!-- Loritta Dashboard 1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="2080512288"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- Loritta Dashboard 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="9739510458"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<hr>
 {{ generateCheckbox(1, "isEnabled", DASHBOARD_ACTIVATE_MODULE, "", config.isEnabled, true) }}
 <hr>
 <div id="hiddenIfDisabled">
@@ -19,131 +63,31 @@
 <hr>
     <div class="flavourText">{{ DASHBOARD_JOIN_CHANNEL }}</div>
 	<select data-send-on-save="true" data-internal-name="canalJoinId" id="canalJoinId">
-		{% for textChannel in guild.getTextChannels %}
-		{% if textChannel.canTalk %}
-		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.canalJoinId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
-		{% endif %}
-		{% endfor %}
 	</select>
 	<hr>
     <div class="flavourText">{{ DASHBOARD_LEAVE_CHANNEL }}</div>
 	<select data-send-on-save="true" data-internal-name="canalLeaveId" id="canalLeaveId">
-		{% for textChannel in guild.getTextChannels %}
-		{% if textChannel.canTalk %}
-		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.canalLeaveId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
-		{% endif %}
-		{% endfor %}
 	</select>
 	<hr>
 <div class="flavourText">{{ DASHBOARD_JOIN_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="joinMessage" id="joinMessage" name="joinMessage">{{ serverConfig.joinLeaveConfig.joinMessage }}</textarea>
-<button onclick="sendMessage('joinMessage', 'canalJoinId')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 <hr>
 <div class="flavourText">{{ DASHBOARD_LEAVE_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="leaveMessage" id="leaveMessage" name="leaveMessage">{{ serverConfig.joinLeaveConfig.leaveMessage }}</textarea>
-<button onclick="sendMessage('leaveMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 <hr>
 <div class="flavourText">{{ DASHBOARD_PRIVATE_MESSAGE }}</div>
-<textarea data-send-on-save="true" data-internal-name="joinPrivateMessage" id="privateMessage" name="privateMessage">{{ serverConfig.joinLeaveConfig.joinPrivateMessage }}</textarea>
-<button onclick="sendMessage('privateMessage', 'privateChannel')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
+<textarea data-send-on-save="true" data-internal-name="joinPrivateMessage" id="joinPrivateMessage" name="privateMessage">{{ serverConfig.joinLeaveConfig.joinPrivateMessage }}</textarea>
 <hr>
 <div class="flavourText">{{ DASHBOARD_LEAVE_BAN_MESSAGE }}</div>
 <textarea data-send-on-save="true" data-internal-name="banMessage" id="banMessage" name="banMessage">{{ serverConfig.joinLeaveConfig.banMessage }}</textarea>
-<button onclick="sendMessage('banMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 <hr>
 <div class="flavourText">Mensagem quando alguém for expulso</div>
 <textarea data-send-on-save="true" data-internal-name="kickMessage" id="kickMessage" name="kickMessage">{{ serverConfig.joinLeaveConfig.kickMessage }}</textarea>
-<button onclick="sendMessage('kickMessage', 'canalLeaveId')" class="button-discord button-discord-info pure-button">{{ DASHBOARD_TestMessage }}</button>
 </div>
 <hr>
-<button onclick="prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<button onclick="LoriDashboard.ConfigureWelcomerView.prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
 <br style="clear: both" /> <!-- So dirty! -->
 <script>
-$("#cmn-toggle-1").click(function(e) {
-	applyBlur()
-});
-
-function applyBlur() {
-  var e = $("#hiddenIfDisabled");
-  if ($('#cmn-toggle-1').is(':checked')) {
-	e.removeClass();
-	e.addClass("noBlur");
-  } else {
-    e.removeClass();
-	e.addClass("blurSection");
-  }
-}
-
-applyBlur();
-
-function sendMessage(type, elementId) {
-	var payload = {}
-	
-	payload["type"] = type
-	payload["content"] = $("#" + type).val()
-	payload["textChannelId"] = $('#' + elementId + ' option:selected').val()
-	
-	console.log("Element ID: " + elementId);
-	
-	console.log(payload)
-	toastr.options = {
-		"closeButton": false,
-		 "debug": false,
-	    "newestOnTop": false,
-			  "progressBar": false,
-			  "positionClass": "toast-bottom-center",
-			  "preventDuplicates": true,
-			  "onclick": null,
-			  "showDuration": "300",
-			  "hideDuration": "1000",
-			  "timeOut": "1000",
-			  "extendedTimeOut": "1000",
-			  "showEasing": "swing",
-			  "hideEasing": "linear",
-			  "showMethod": "fadeIn",
-			  "hideMethod": "fadeOut"
-			}
-			
-	toastr.info('Enviando mensagem...', toastr)
-	
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "{{ websiteUrl }}dashboard/configure/{{ guild.getId }}/testmessage", true);
-	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');	
-	// send the collected data as JSON
-	xhr.send(JSON.stringify(payload));
-
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == XMLHttpRequest.DONE) {
-			toastr.clear()
-			var response = JSON.parse(xhr.responseText)
-
-			toastr.options = {
-			  "closeButton": false,
-			  "debug": false,
-			  "newestOnTop": false,
-			  "progressBar": true,
-			  "positionClass": "toast-bottom-center",
-			  "preventDuplicates": true,
-			  "onclick": null,
-			  "showDuration": "300",
-			  "hideDuration": "1000",
-			  "timeOut": "4000",
-			  "extendedTimeOut": "1000",
-			  "showEasing": "swing",
-			  "hideEasing": "linear",
-			  "showMethod": "fadeIn",
-			  "hideMethod": "fadeOut"
-			}
-
-			if (response.hasOwnProperty("error")) { // deprecated
-				toastr.error(response["error"], toastr)
-			} else if (response.hasOwnProperty("api:message")) {
-				toastr.error(response["api:message"], toastr)
-			} else {
-				toastr.success('Mensagem enviada!', toastr)
-			}
-		}
-	}
-}
+LoriDashboard.ConfigureWelcomerView.start();
 </script>
 {% endblock %}

@@ -129,7 +129,7 @@ height: 240px;">
 <div class="pure-u-1 pure-u-md-1-2">
 <div style="border-left: solid 1px rgba(0,0,0,.05);">
 <h2 class="sectionHeader">
-<i class="fas fa-chevron-up"></i> Servidores recentemente bumpeados
+<i class="fas fa-angle-double-up"></i> Recentemente promovidos
 </h2>
 <div class="recently-bumped-servers-sample"></div>
 <span class="button-discord button-discord-info pure-button view-more-recently-bumped-servers" style="transition: 0.3s; font-size: 1.1em;"><i class="fas fa-list-ul"></i> Ver mais servidores</span>
@@ -146,17 +146,16 @@ height: 240px;">
 <div class="random-servers-sample pure-g"></div>
 </div>
 </div>
-<span class="button-discord button-discord-info pure-button plz-dont-click" style="transition: 0.3s; font-size: 0.5em;">plz don't click</span>
+<a onclick="LoriUtils.testError()">don't click here</a>
 </div>
 <script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriUtils.js?v={{ epochMillis }}"></script>
 <script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriServerList.js?v={{ epochMillis }}"></script>
 <div class="totallyHidden">
 {% include 'entities/server-sample.html' %}
 {% include 'entities/guild-template.html' %}
+<div id="self-profile-json">{{ selfProfile|raw }}</div>
+<div id="server-samples-json">{{ serverSamples|raw }}</div>
 </div>
-<script>
-LoriServerList.LoriServerList.start()
-</script>
 {% endblock %}
 {% block afterScripts %}
 <script>
@@ -176,5 +175,10 @@ onViewport(".animate-on-scroll-right", "animated fadeInRight", 0, function(el) {
 onViewport(".fanclub-server-icon", "animated fadeInUp", 0, function(el) {
   el.removeClass("is-invisible");
 });
+</script>
+{% endblock %}
+{% block afterlocale %}
+<script>
+LoriServerList.LoriServerList.start()
 </script>
 {% endblock %}

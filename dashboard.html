@@ -26,6 +26,11 @@ Dashboard
 <div class="sectionHeader">
 {{ DASHBOARD_CHOOSE_A_SERVER }}
 </div>
+{% if userGuilds|length == 0 %}
+<h1>¯\_(ツ)_/¯</h1>
+<h2>{{ DASHBOARD_NoServerFound }}</h2>
+{{ DASHBOARD_TryLoggingIn|raw }}
+{% else %}
 <div id="choose-your-server" class="pure-g vertically-centered-content" style="text-align: center;">
     {% for guild in userGuilds %}
 	<div class="pure-u-1 pure-u-md-1-2">
@@ -49,6 +54,7 @@ Dashboard
 	</div>
 	{% endfor %}
 </div>
+{% endif %}
 </div>
 </div>
 <div class="evenWrapper">
@@ -102,7 +108,7 @@ function saveDashboardStuff() {
 		var hideSharedServers = $("#privacy-stuff #cmn-toggle-1").is(":checked")
 		var hidePreviousUsernames = $("#privacy-stuff #cmn-toggle-2").is(":checked")
 		
-		$.post("{{ websiteUrl }}dashboard", {
+		$.post("{{ loriUrl }}dashboard", {
 			"hideSharedServers" : hideSharedServers,
 			"hidePreviousUsernames" : hidePreviousUsernames
 		}, function(data) {

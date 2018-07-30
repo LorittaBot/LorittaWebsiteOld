@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block metaproperty %}
+<meta property="og:title" content="Fan Arts">
+{% endblock %}
 {% block subtitle %}
 Fan Arts
 {% endblock %}
@@ -55,149 +58,17 @@ Fan Arts
     {% for fanArt in fanArts %}
 	<div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
 	    <div class="fanArtWrapper">
-			<a href='https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}' target="_blank"><img alt="Fan Art da Loritta — Feita por {{ fanArtsUsers[fanArt.artistId].getName }}" src="https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}"></img></a>
+			<a href='https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}' target="_blank"><img alt="Fan Art da Loritta — Feita por {% if fanArt.fancyName != null %}{{ fanArt.fancyName }}{% else %}{{ fanArtsUsers[fanArt.artistId].getName }}{% endif %}" src="https://loritta.website/assets/img/fanarts/{{ fanArt.getFileName }}"></img></a>
 			<p><b>{{ DASHBOARD_FanArtBy }} {% if fanArt.fancyName != null %}{{ fanArt.fancyName }}{% else %}{{ fanArtsUsers[fanArt.artistId].getName }}{% endif %}</b></p>
-			<p>Discord: {{ fanArtsUsers[fanArt.artistId].getName }}#{{ fanArtsUsers[fanArt.artistId].getDiscriminator }}
+			{% if fanArt.artistId != null %}
+			<p><b>Discord:</b> {{ fanArtsUsers[fanArt.artistId].getName }}#{{ fanArtsUsers[fanArt.artistId].getDiscriminator }}</br>
+			{% endif %}
 			{% if fanArt.additionalInfo != null %}
-			</br>
 			{{ fanArt.additionalInfo | raw }}
 			{% endif %}</p>
 		</div>
 	</div>
 	{% endfor %}
-    {# <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-	    <div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/loritta_fixed_final_cropped.png' target="_blank"><img src="https://loritta.website/assets/img/loritta_fixed_final_cropped.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Gabriela Giulian</b></p>
-			<p>Discord: Giovanna_GGold#2454</br>YouTube: <a href="http://bit.ly/2udUNZG">Link</a></p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Poker.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Poker.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} _Poker_Face_</b></p>
-			<p>Discord: heh#6029</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Shadow_Kisha-tu.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Shadow_Kisha-tu.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Shadow Kisha-tu</b></p>
-			<p>Discord: Shadow Kisha-tu#1151</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_WaterFox_.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_WaterFox_.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} WaterFox_</b></p>
-			<p>Discord: WaterFox_#0878</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_pitssaguey.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_pitssaguey.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} pitssaguey</b></p>
-			<p>Discord: ╲⎝⧹ pitssaguey (•ω•)⧸⎠╱#2135</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_ERKS.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_ERKS.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} ERKS</b></p>
-			<p>Discord: ERKS#2790 </p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Mari_Kobayashi.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Mari_Kobayashi.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Mari Kobayashi</b></p>
-			<p>Discord: Mari Kobayashi#8967</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_N3GR3SC0.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_N3GR3SC0.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} N3GR3SC0</b></p>
-			<p>Discord: N3GR3SC0#8710</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_Headset_-_N3GR3SC0.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_Headset_-_N3GR3SC0.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} N3GR3SC0</b></p>
-			<p>Discord: N3GR3SC0#8710</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Aline.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Aline.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Aline</b></p>
-			<p>Discord: Aline#3495</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Deusa_Doce.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Deusa_Doce.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Mikaru</b></p>
-			<p>Discord: Ｓｔｏｃｋｉｎｇ#8083</br>YouTube: <a href="https://www.youtube.com/user/deusadocecartoon">Link</a></br>Twitter: <a href="https://twitter.com/DeusaDoce">Link</a></p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Ayano.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Ayano.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Ayano</b></p>
-			<p>Discord: Ayano#3600</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_CupHead_Girl.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_CupHead_Girl.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} CupHead_Girl</b></p>
-			<p>Discord: CupHead_Girl#4933</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Cormano.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Cormano.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Cormano</b></p>
-			<p>Discord: Cormano#2285</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_StarlineBR.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_StarlineBR.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} StarlineBR</b></p>
-			<p>Discord: StarlineBR#9748</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Katori.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Katori.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Katori</b></p>
-			<p>Discord: CielKatori#4037</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_2_-_Mari_Kobayashi.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_2_-_Mari_Kobayashi.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Mari Kobayashi</b></p>
-			<p>Discord: Mari Kobayashi#8967</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_Land.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_Land.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} Land</b></p>
-			<p>Discord: Land#9559</p>
-		</div>
-	</div>
-    <div class="pure-u-1 pure-u-md-1-4 is-invisible fan-art-box">
-		<div class="fanArtWrapper">
-			<a alt="Fan Art da Loritta" href='https://loritta.website/assets/img/fanarts/Loritta_-_ThirdOPPAI.png' target="_blank"><img src="https://loritta.website/assets/img/fanarts/Loritta_-_ThirdOPPAI.png"></img></a>
-			<p><b>{{ DASHBOARD_FanArtBy }} ThirdOPPAI</b></p>
-			<p>Discord: ThirdOPPAI#5135</p>
-		</div>
-	</div> #}
 </div>
 </div>
 </div>

@@ -77,7 +77,7 @@ Alguma coisa super topperson aqui
 {{ channels|raw }}
 </script>
 </div>
-<script>
+<script data-cfasync="false">
 function sendMessage(button) {
 	var payload = {}
 	
@@ -207,7 +207,7 @@ function addEntryWithModal() {
 		
     modal.addFooterBtn('Salvar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
 		var element = $("#editing-" + guid);
-		if (element.attr("data-is-ready") == "false") { return; }
+		/* if (element.attr("data-is-ready") == "false") { return; } */
 		var iconUrl = element.attr("data-entry-icon");
 		var channelId = element.attr("data-entry-channel-id");
 		var channelUrl = element.attr("data-entry-url");
@@ -247,7 +247,7 @@ function editEntry(guid) {
 		
     modal.addFooterBtn('Salvar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
 		var element = $("#editing-" + guid);
-		if (element.attr("data-is-ready") == "false") { return; }
+		/* if (element.attr("data-is-ready") == "false") { return; } */
 		var iconUrl = element.attr("data-entry-icon");
 		var channelId = element.attr("data-entry-channel-id");
 		var title = element.attr("data-entry-title");

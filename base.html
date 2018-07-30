@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53518408-9"></script>
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-53518408-9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -16,16 +16,21 @@
 <title>{% block title %}{% block subtitle %}{{ WEBSITE_DEFAULT_TITLE }}{% endblock %} • Loritta{% endblock %}</title>
 <meta name="description" content="{{ WEBSITE_MetaDescription }}">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-<script async src="{{ websiteUrl }}assets/js/countUp.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js?render=explicit'></script>
+<script src="{{ websiteUrl }}assets/js/countUp.min.js"></script>
 <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.6/dist/showdown.min.js"></script>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="{{ websiteUrl }}assets/js/tingle.min.js"></script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="{{ websiteUrl }}assets/js/autosize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="{{ websiteUrl }}assets/js/phaser.min.js"></script>
-<script type="text/javascript" src="{{ websiteUrl }}assets/js/kotlin.min.js"></script>
-<script type="text/javascript" src="{{ websiteUrl }}assets/js/kotlinx-html-js.min.js"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/kotlin.min.js?v=3"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/kotlinx-html-js.min.js?v=3"></script>
 <script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriJS.js"></script>
 <script type="text/javascript" src="{{ websiteUrl }}assets/js/moment-with-locales.min.js"></script>
+<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v={{ cssAssetVersion }}">
 <meta name="author" content="MrPowerGamerBR">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -41,14 +46,10 @@
 <meta property="twitter:title" content="Página inicial">
 <meta name="theme-color" content="#00c1df"> 
 {% endblock %}
-<script src='https://www.google.com/recaptcha/api.js?render=explicit'></script>
 <link rel="alternate" hreflang="en" href="https://loritta.website/us{{ pathNL }}" />
 <link rel="alternate" hreflang="pt" href="https://loritta.website/pt{{ pathNL }}" />
 <link rel="alternate" hreflang="pt-BR" href="https://loritta.website/br{{ pathNL }}" />
 <link rel="alternate" hreflang="es" href="https://loritta.website/es{{ pathNL }}" />
-<style> <!-- CRITICAL CSS -->
-html{background-color:rgb(243,243,244);font-family:Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;color:#4f545c;font-weight:500;overflow-x:hidden}@keyframes rotateflip{0%{transform:rotateY(0deg)}50%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}#loading-screen{font-family:Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;color:white;font-size:1.5em;font-weight:600;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000}#loading-screen img{animation-name:rotateflip;animation-duration:8s;animation-iteration-count:infinite;animation-timing-function:linear}body{z-index:0;position:relative;margin:0}a:visited{color:#00b0f4}a{color:#00b0f4;text-decoration:none}.arrowBottom{position:absolute;bottom:0;left:50%;margin-left:-20px}.arrowBounce{-webkit-animation-name:bounce;-moz-animation-name:bounce;-o-animation-name:bounce;animation-name:bounce}.arrowAnimated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-webkit-animation-iteration-count:infinite;animation-fill-mode:both;-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s}@-webkit-keyframes swinging{0%{-webkit-transform:rotate(0deg);animation-timing-function:ease-out}25%{-webkit-transform:rotate(2deg);animation-timing-function:ease-in}50%{-webkit-transform:rotate(0deg);animation-timing-function:ease-out}75%{-webkit-transform:rotate(-2deg);animation-timing-function:ease-in}100%{-webkit-transform:rotate(0deg);animation-timing-function:ease-out}}@keyframes swinging{0%{transform:rotate(0deg);animation-timing-function:ease-out}25%{transform:rotate(2deg);animation-timing-function:ease-in}50%{transform:rotate(0deg);animation-timing-function:ease-out}75%{transform:rotate(-2deg);animation-timing-function:ease-in}100%{transform:rotate(0deg);animation-timing-function:ease-out}}.swingimage{-webkit-animation:swinging 7s linear forwards infinite;animation:swinging 7s linear forwards infinite;margin:2%}.navbar-fixed-top{top:0;z-index:100;position:fixed;width:100%}.is-invisible{visibility:hidden}#loritta{position:absolute;bottom:0;left:3.5vw;height:92.5vh;z-index:1}.pure-button{position:relative;bottom:3px}.button-discord{font-family:Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;color:white;font-size:14px;font-weight:600;line-height:16px;font-size:14px}.button-discord:visited{color:white}.button-discord-info{background:rgb(114,137,218)}.button_normal{border:0px none;background:fuchsia;border-radius:4px;box-shadow:0px 5px 0px #bb009b;color:#FFF;font-family:Oswald;margin:3px;outline:0px none;padding:4px 12px;font-size:120%}.text{font-size:4em;color:white;text-shadow:0px 0.05em 0px #d4d4d4;font-family:'Pacifico',cursive;line-height:1.25em}#container{background:url("../assets/img/discord_bg.png") repeat;position:relative;animation:slide infinite linear 180s}@-webkit-keyframes slide{from{background-position:left 0%}to{background-position:left 100%}}#header{position:relative;min-height:100vh}#rightSideText{position:absolute;right:3.5vw;transform:translateY(-50%);top:50%;text-align:right}@media screen and (max-width:830px){ #loritta{visibility:hidden!important}#rightSideText{text-align:center!important;right:0!important;width:100%}}.category-name{font-family:Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;text-transform:uppercase;text-rendering:optimizeLegibility;color:#4f545c;margin-bottom:20px;font-weight:600;line-height:20px;font-size:16px;outline:0;padding:0;vertical-align:baseline}.totallyHidden{display:none}.topnav{background-color:rgb(114,137,218);overflow:hidden;z-index:2;text-transform:uppercase;text-shadow:0 1px #0000004d;font-family:"Oswald",Arial,sans-serif;font-size:20px;text-align:center;font-size:0px;box-shadow:0px 0px 15px #0006}.topnavWrapper{min-width:85%;margin:auto;display:inline-block}.topnavLeft{float:left}.topnavRight{float:right}.topnav a{display:inline-block;color:#f2f2f2;padding:15px 16px;text-decoration:none;font-size:17px;border-right:1px dashed #6b80ce}.topnav .left-border{border-left:1px dashed #6b80ce}.topnav .icon{display:none}@media screen and (max-width:600px){.topnav a:not(:first-child){display:none}.topnav a.icon{float:right;display:block}.rightEntries{display:none}}@font-face{font-family:Whitney;font-style:light;font-weight:300;src:url("https://discordapp.com/assets/16801bfdf51ed88e69bc90626a3ea436.woff") format("woff")}@font-face{font-family:Whitney;font-style:normal;font-weight:500;src:url("https://discordapp.com/assets/d153359b5d87601d2b9c708b7ae2db02.woff") format("woff")}@font-face{font-family:Whitney;font-style:medium;font-weight:600;src:url("https://discordapp.com/assets/a934ab008c7f6a2274ec441f6be0696a.woff") format("woff")}@font-face{font-family:Whitney;font-style:semibold;font-weight:650;src:url("https://discordapp.com/assets/877ef48bf9fcfee590f0ba64de101b59.woff") format("woff")}@font-face{font-family:Whitney;font-style:bold;font-weight:700;src:url("https://discordapp.com/assets/2e004dd717cdc58b9ccb361d286ebbce.woff") format("woff")} @keyframes rotateflip{0%{transform:rotateY(0)}50%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}#loading-screen{font-family:Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;color:#fff;font-size:1.5em;font-weight:600;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000}#loading-screen img{animation-name:rotateflip;animation-duration:8s;animation-iteration-count:infinite;animation-timing-function:linear}
-</style>
 </head>
 <body class="light">
 <div class="totallyHidden">
@@ -58,7 +59,7 @@ html{background-color:rgb(243,243,244);font-family:Whitney,Helvetica Neue,Helvet
    left: 50%;
    transform: translate(-50%, -50%);
 z-index: 100000; text-align: center; display: none; pointer-events: none;">
-<img src="{{ websiteUrl }}assets/img/loritta_loading.png">
+<img alt="Loading Spinner" src="{{ websiteUrl }}assets/img/loritta_loading.png">
 <div id="loading-screen-text">Salvando...</div>
 </div>
 {% block body %}
@@ -67,12 +68,11 @@ z-index: 100000; text-align: center; display: none; pointer-events: none;">
 <div class="topnav navbar-fixed-top" id="myTopnav">
 <div class="topnavWrapper">
 <div class="topnavLeft">
-  <a style="font-family: 'Pacifico', cursive; text-transform: none;" class="left-border">Loritta<sup style="font-family: 'Arial', cursive; text-transform: none;">beta</sup></a>
-  <a href="{{ loriUrl }}"><i class="fa fa-home" aria-hidden="true"></i></a>
+  <a href="{{ loriUrl }}" style="font-family: 'Pacifico', cursive; text-transform: none;" class="left-border">Loritta</a>
   <a href="{{ loriUrl }}support"><i class="fab fa-discord" aria-hidden="true"></i> {{ WEBSITE_MY_DISCORD }}</a>
   <a href="{{ loriUrl }}fanarts"><i class="fa fa-paint-brush" aria-hidden="true"></i> {{ WEBSITE_FAN_ARTS }}</a>
   <a href="{{ loriUrl }}donate"><i class="fa fa-gift" aria-hidden="true"></i> {{ WEBSITE_DONATE }}</a>
-  <a href="{{ loriUrl }}servers" style="position: relative;"><i class="fas fa-comments"></i> Servers<span style="background-color: rgb(223, 0, 241);
+  <a href="{{ loriUrl }}servers" style="position: relative;"><i class="fas fa-comments"></i> Servers{% if environment.name != "CANARY" %}<span style="background-color: rgb(223, 0, 241);
 color: white;
 font-weight: 600;
 text-transform: uppercase;
@@ -84,16 +84,20 @@ position: absolute;
 display: block;
 right: 0px;
 transform: rotate(-10deg);
-bottom: 5px;">beta</span></a>
+bottom: 5px;">beta</span></a>{% endif %}
+  <a href="{{ loriUrl }}extras"><i class="fa fa-star" aria-hidden="true"></i> Extras</a>
+{% if environment.name == "CANARY" %}
+  <a href="https://perfectdreams.net/"><i class="fas fa-gamepad" aria-hidden="true"></i> Minecraft</a>
+{% endif %}
 </div>
 <div class="topnavRight">
   <div class="rightEntries">
   <a id="themeChanger" class="left-border" onclick="changeTheme(this)"><i class="fas fa-moon" aria-hidden="true"></i></a>
-  <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
+  <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fas fa-language" aria-hidden="true"></i></a>
   {% if discordAuth != null %}
   <a href="{{ websiteUrl }}?logout"><i class="fa fa-sign-out-alt" aria-hidden="true"></i></a>
   <a href="{{ loriUrl }}dashboard">
-  <span style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</span>
+  <span style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img alt="Avatar do Usuário" src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img alt="Avatar do Usuário" src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</span>
   </a>
   {% else %}
   <a href="{{ loriUrl }}dashboard">
@@ -106,19 +110,7 @@ bottom: 5px;">beta</span></a>
 </div>
 {% block afterNavbar %}
 {% block header %}
-<div id="header" style="overflow: hidden; z-index: 0; position: relative;">
-<img class="is-invisible" id="loritta" src="{{ websiteUrl }}assets/img/loritta.png"></img>
-<img style="width: 0px; height: 0px;" src="{{ websiteUrl }}assets/img/loritta_blinking.png"></img>
-  <div id="rightSideText">
-  <div style="position: relative;" class="is-invisible" id="animate_myNameIs" style="text-align: center;"><span class="text">{{ WEBSITE_HELLO }}</span></div>
-  <div style="position: relative;" class="is-invisible" id="animate_myName" style="text-align: center;"><span style="font-size: 7.5em; color: #00d7ff; text-shadow: 0px 0.05em 0px #00b4d5;" class="text">Loritta</span></div>
-  <div id="animate_subtext" style="position: relative;" class="is-invisible"><span style="font-size: 2em" class="text">{{ WEBSITE_JUST_A_SIMPLE_DISCORD_BOT }}</span></div>
-  <div class="swingimage" style="text-align: center;"><a class="is-invisible" id="animate_textbutton" href="https://loritta.website/auth"><button class="button_normal autoSubmit">{{ WEBSITE_ADD_ME }}</button></div></a></div>
-
-<div class="arrowBottom arrowAnimated arrowBounce">
-  <img width="40" height="40" alt="" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyDQoJbDE4OS45OTktMTkwYzIwLjE3OC0yMC4xNzgsNTMuMTY0LTE5LjkxMyw3My42NzIsMC41OTVsMCwwYzIwLjUwOCwyMC41MDksMjAuNzcyLDUzLjQ5MiwwLjU5NSw3My42NzFMMjkzLjc1MSw0NTUuODY4eiIvPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIyMC4yNDksNDU1Ljg2OGMyMC4xOCwyMC4xNzksNTMuMTY0LDE5LjkxMyw3My42NzItMC41OTVsMCwwYzIwLjUwOS0yMC41MDgsMjAuNzc0LTUzLjQ5MywwLjU5Ni03My42NzINCglsLTE5MC0xOTBjLTIwLjE3OC0yMC4xNzgtNTMuMTY0LTE5LjkxMy03My42NzEsMC41OTVsMCwwYy0yMC41MDgsMjAuNTA5LTIwLjc3Miw1My40OTItMC41OTUsNzMuNjcxTDIyMC4yNDksNDU1Ljg2OHoiLz4NCjwvc3ZnPg0K" />
-</div>
-</div>
+<div style="height: 49.95px"></div>
 {% endblock %}
 <div id="belowHeader">
 <div id="wrapper" style="min-height: 100vh; background-color: rgb(243, 243, 243);">
@@ -127,10 +119,21 @@ bottom: 5px;">beta</span></a>
 {% endblock %}
 </div>
 </div>
+{% block footer %}
+<footer style="background-color: rgb(114, 137, 218); color: hsla(0,0%,100%,.6);">
+<div style="padding: 30px;">
+<div style="text-align: center; font-size: 18px; font-weight: 600;">© MrPowerGamerBR & PerfectDreams 2017-<script>document.write(new Date().getFullYear());</script> — Todos os direitos reservados</div>
+<div style="text-align: center; font-weight: 600;"><a style="color: hsla(0,0%,100%,.6);" href="https://mrpowergamerbr.com/">https://mrpowergamerbr.com/</a></div>
+<hr>
+<div style="text-align: center; font-size: 14px; padding-bottom: 8px;">A Loritta não está de forma alguma afiliado ao Discord. Nem deve ser considerada uma empresa endossada pelo Discord.</div>
+<div style="text-align: center; font-size: 10px;">Discord ®/™ &amp; © 2015-<script>document.write(new Date().getFullYear());</script> Discord Inc.</div>
+<div style="text-align: center; font-size: 14px; padding-bottom: 8px;">By using Loritta and/or this website, you agree to our <a href="{{ loriUrl }}privacy" style="color: hsla(0,0%,100%,.6);">Terms of Service & Privacy Policy</a></div>
+</div>
+</div>
 </div>
 {% endblock %}
 {% endblock %}
-</div>
+{% endblock %}
 <div class="totallyHidden">	
 <div class="tingle-demo locale-changer-modal">
 <div class="test">
@@ -138,7 +141,7 @@ bottom: 5px;">beta</span></a>
 <a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}br{{ pathNL }}">Português (Brasil)</a>
 <a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}pt{{ pathNL }}">Português (Portugal)</a>
 <a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}us{{ pathNL }}">English (United States)</a>
-<a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}es{{ pathNL }}">Espanõl</a>
+<a class="button-discord button-discord-info pure-button" href="{{ websiteUrl }}es{{ pathNL }}">Español</a>
 </div>
 </div>
 </div>
@@ -190,7 +193,6 @@ function blink() {
 }
 
 $(document).ready(function () {
-
   $('#loritta').click(function(e) {
     var offset = $(this).offset();
 	var x = (e.pageX - offset.left) / $(this).width()
@@ -205,7 +207,8 @@ applyChanges($("#animate_myNameIs"), "fadeInRight", 1000)
 applyChanges($("#animate_myName"), "fadeInRight", 1650)
 applyChanges($("#loritta"), "fadeInLeft", 2350)
 applyChanges($("#animate_subtext"), "fadeInRight", 3200)
-applyChanges($("#animate_textbutton"), "fadeInRight", 3300)
+applyChanges($("#animate_textbutton"), "fadeInRight", 3600)
+applyChanges($("#animate_textbutton2"), "fadeInRight", 4200)
 unblink();
 });
 
@@ -229,6 +232,27 @@ if($("html").hasClass('dark')) {
 	createCookie("darkTheme", true)
 	$("#themeChanger").html("<i class=\"fas fa-sun\" aria-hidden=\"true\"></i>");
 }
+}
+
+function openBadModal() {
+    var modal = new tingle.modal({
+        closeMethods: [],
+        footer: true
+		});
+		
+    modal.addFooterBtn('<i class="far fa-thumbs-up"></i> {{ LORITTA_DisabledAdblock }}!', "button-discord button-discord-info pure-button button-discord-modal", function(){	
+		modal.close();
+		location.reload(); 
+    });
+
+    modal.addFooterBtn('{{ LORITTA_MaybeLater }}', "button-discord button-discord-info pure-button button-discord-modal button-discord-modal-secondary-action", function(){	
+		modal.close();
+		createCookie("doNotShowAdblockPopup",true,3)
+    });
+	
+	var cloned = $(".please-disable-modal").clone()	
+    modal.setContent(cloned.html());
+	modal.open();
 }
 
 function openLocaleChanger() {
@@ -279,7 +303,7 @@ window.onclick = function(event) {
 
 function onViewport(el, elClass, offset, callback) {
   /*** Based on http://ejohn.org/blog/learning-from-twitter/ ***/
-  var didScroll = false;
+  var didScroll = true;
   var this_top;
   var height;
   var top;
@@ -313,15 +337,83 @@ function onViewport(el, elClass, offset, callback) {
 {% block afterScripts %}
 {% endblock %}
 {% endblock %}
-<script data-cfasync="false" defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+<div class="totallyHidden">	
+<div class="tingle-demo please-disable-modal">
+<div class="test">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-1-4" style="overflow: hidden;">
+		<img class="animated fadeInUp" src="https://loritta.website/assets/img/loritta_pobre.png" alt="Loritta Pobre" style="width: 100%;">
+	</div>
+    <div class="pure-u-1 pure-u-md-3-4">
+		<div class="sectionText">
+		<h2 class="sectionHeader">
+		{{ LORITTA_PleaseDisableAdblock }}
+		</h2>
+{{ LORITTA_WhyDisableAdblock | raw }}
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <script src="{{ websiteUrl }}adsbygoogle.js"></script>
 <script>
+function openBadModal() {
+    var modal = new tingle.modal({
+        closeMethods: [],
+        footer: true
+		});
+		
+    modal.addFooterBtn('<i class="far fa-thumbs-up"></i> {{ LORITTA_DisabledAdblock }}!', "button-discord button-discord-info pure-button button-discord-modal", function(){	
+		modal.close();
+		location.reload(); 
+    });
+
+    modal.addFooterBtn('{{ LORITTA_MaybeLater }}', "button-discord button-discord-info pure-button button-discord-modal button-discord-modal-secondary-action", function(){	
+		modal.close();
+		createCookie("doNotShowAdblockPopup",true,3)
+    });
+	
+	var cloned = $(".please-disable-modal").clone()	
+    modal.setContent(cloned.html());
+	modal.open();
+}
+
+function createCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name,"",-1);
+}
+
 if( window.canRunAds === undefined ){
     console.log("I'm sad... why are you blocking my ads? :(");
 	var rand = Math.random().toString().replace(".", "")
 	$(".adsbygoogle").each(function( index ) {
 		$("<div class='lori" + rand + "-helpplz'><img src='{{ websiteUrl }}assets/img/lori_helpplz.png'></img></div>").insertAfter(this);
 	})
+	if (!(readCookie("doNotShowAdblockPopup") == 'true')) {
+		openBadModal()
+	}
 	setTimeout(function(){ console.log("owo whats this???");
 	$(".lori" + rand + "-helpplz img").each(function( index ) {
 		if ($(this).css("display") == "none") {
@@ -335,14 +427,30 @@ if( window.canRunAds === undefined ){
 	console.log("Thanks for keeping my ads! You are helping me to stay online, i luv u ^-^");
 }
 </script>
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/normalize.css">
-<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
-<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/style.css?v=2.2.24">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-<link rel="stylesheet" href="{{ websiteUrl }}assets/css/tingle.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico"> 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald"> 
+<div id="locale-json" class="totallyHidden">{{ localeAsJson|raw }}</div>
+<script>
+LoriUtils.loadEmbeddedLocale()
+</script>
+{% block afterlocale %}
+{% endblock %}
+<style>
+/* latin */
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6Mk.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.gstatic.com/s/oswald/v16/TK3iWkUHHAIjg752GT8G.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
 </body>
 </html>

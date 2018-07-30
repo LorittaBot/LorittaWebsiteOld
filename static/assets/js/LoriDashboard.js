@@ -9,9 +9,7 @@ if (typeof this['kotlinx-html-js'] === 'undefined') {
 }
 var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html_js) {
   'use strict';
-  var throwUPAE = Kotlin.throwUPAE;
-  var BaseLocale = $module$LoriUtils.utils.BaseLocale;
-  var withIndex = Kotlin.kotlin.collections.withIndex_us0mfu$;
+  var anonymous = $module$LoriUtils;
   var equals = Kotlin.equals;
   var StringBuilder = Kotlin.kotlin.text.StringBuilder;
   var appendHTML = $module$kotlinx_html_js.kotlinx.html.stream.appendHTML_9kwp7w$;
@@ -29,13 +27,35 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   var println = Kotlin.kotlin.io.println_s8jyv4$;
   var jq = $module$LoriUtils.jq_61zpoe$;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
-  var toString = Kotlin.toString;
+  var throwUPAE = Kotlin.throwUPAE;
+  var Kind_CLASS = Kotlin.Kind.CLASS;
   var contains = Kotlin.kotlin.collections.contains_mjy6jw$;
+  var throwCCE = Kotlin.throwCCE;
+  var TingleOptions = $module$LoriUtils.utils.TingleOptions;
+  var TingleModal = tingle.modal;
+  var toString = Kotlin.toString;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
   var json = Kotlin.kotlin.js.json_pyyo18$;
-  var PropertyMetadata = Kotlin.PropertyMetadata;
   var lazy = Kotlin.kotlin.lazy_klfg04$;
-  var Kind_CLASS = Kotlin.Kind.CLASS;
+  var listOf = Kotlin.kotlin.collections.listOf_mh5how$;
+  var listOf_0 = Kotlin.kotlin.collections.listOf_i5x0yv$;
+  var hashCode = Kotlin.hashCode;
+  var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
+  var roundToInt = Kotlin.kotlin.math.roundToInt_yrwdxr$;
+  var last = Kotlin.kotlin.collections.last_2p1efm$;
+  var numberToInt = Kotlin.numberToInt;
+  var to = Kotlin.kotlin.to_ujzrz7$;
+  var ShowdownConverter = showdown.Converter;
+  var until = Kotlin.kotlin.ranges.until_dqglrj$;
+  var slice = Kotlin.kotlin.text.slice_fc3b62$;
+  var ensureNotNull = Kotlin.ensureNotNull;
+  var unsafe = $module$kotlinx_html_js.kotlinx.html.unsafe_vdrn79$;
+  var a = $module$kotlinx_html_js.kotlinx.html.a_gu26kr$;
+  var span = $module$kotlinx_html_js.kotlinx.html.span_6djfml$;
+  var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
+  var RegexOption = Kotlin.kotlin.text.RegexOption;
+  var Regex_init_0 = Kotlin.kotlin.text.Regex_init_sb3q2$;
+  var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
   ModerationConfig$PunishmentAction.prototype = Object.create(Enum.prototype);
@@ -50,238 +70,227 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   LorittaPartner$Type.prototype.constructor = LorittaPartner$Type;
   function CommandsView() {
     CommandsView_instance = this;
-    this.locale_nten5$_0 = this.locale_nten5$_0;
   }
-  Object.defineProperty(CommandsView.prototype, 'locale', {
-    get: function () {
-      if (this.locale_nten5$_0 == null)
-        return throwUPAE('locale');
-      return this.locale_nten5$_0;
-    },
-    set: function (locale) {
-      this.locale_nten5$_0 = locale;
-    }
-  });
-  function CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda$lambda(this$CommandsView, closure$category) {
+  function CommandsView$start$lambda$lambda$addCommandInformation$lambda$lambda(closure$category) {
     return function ($receiver) {
-      $receiver.unaryPlus_pdl1vz$(this$CommandsView.locale.get_25kzsl$(closure$category.fancyTitle, []));
+      $receiver.unaryPlus_pdl1vz$(anonymous.locale.get_25kzsl$(closure$category.fancyTitle, []));
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda$lambda_0(this$CommandsView, closure$category) {
+  function CommandsView$start$lambda$lambda$addCommandInformation$lambda$lambda_0(closure$category) {
     return function ($receiver) {
-      $receiver.unaryPlus_pdl1vz$(this$CommandsView.locale.get_25kzsl$(closure$category.description, []));
+      $receiver.unaryPlus_pdl1vz$(anonymous.locale.get_25kzsl$(closure$category.description, []));
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda(this$CommandsView, closure$category) {
+  function CommandsView$start$lambda$lambda$addCommandInformation$lambda(closure$category) {
     return function ($receiver) {
-      h2($receiver, 'sectionHeader', CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda$lambda(this$CommandsView, closure$category));
-      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda$lambda_0(this$CommandsView, closure$category));
+      h2($receiver, 'sectionHeader', CommandsView$start$lambda$lambda$addCommandInformation$lambda$lambda(closure$category));
+      p($receiver, void 0, CommandsView$start$lambda$lambda$addCommandInformation$lambda$lambda_0(closure$category));
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$addCommandInformation(this$CommandsView, closure$category, this$) {
+  function CommandsView$start$lambda$lambda$addCommandInformation(closure$category, this$) {
     return function () {
-      div(this$, 'sectionText', CommandsView$start$lambda$lambda$lambda$addCommandInformation$lambda(this$CommandsView, closure$category));
+      div(this$, 'sectionText', CommandsView$start$lambda$lambda$addCommandInformation$lambda(closure$category));
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda($receiver) {
+  function CommandsView$start$lambda$lambda$lambda$lambda($receiver) {
     set_style($receiver, 'display:block');
     $receiver.attributes.put_xwzc9p$('data-ad-client', 'ca-pub-9989170954243288');
     $receiver.attributes.put_xwzc9p$('data-ad-slot', '4611100335');
     $receiver.attributes.put_xwzc9p$('data-ad-format', 'auto');
     return Unit;
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_0($receiver) {
+  function CommandsView$start$lambda$lambda$lambda$lambda_0($receiver) {
     $receiver.unaryPlus_pdl1vz$('(adsbygoogle = window.adsbygoogle || []).push({});');
     return Unit;
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda($receiver) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda($receiver) {
     set_style($receiver, 'width: 100%;');
     return Unit;
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$image) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda(closure$image) {
     return function ($receiver) {
-      img($receiver, null, closure$image.v, 'animate-on-scroll-left is-invisible', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda);
+      img($receiver, null, closure$image.v, 'animate-on-scroll-left is-invisible', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda);
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$addCommandInformation) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$addCommandInformation) {
     return function ($receiver) {
       closure$addCommandInformation();
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$addCommandInformation) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$addCommandInformation) {
     return function ($receiver) {
       closure$addCommandInformation();
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0($receiver) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0($receiver) {
     set_style($receiver, 'width: 100%;');
     return Unit;
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$image) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$image) {
     return function ($receiver) {
-      img($receiver, null, closure$image.v, 'animate-on-scroll-right is-invisible', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0);
+      img($receiver, null, closure$image.v, 'animate-on-scroll-right is-invisible', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0);
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation) {
     return function ($receiver) {
       if (closure$index % 2 === 0) {
-        div($receiver, 'pure-u-1 pure-u-md-1-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$image));
-        div($receiver, 'pure-u-1 pure-u-md-3-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$addCommandInformation));
+        div($receiver, 'pure-u-1 pure-u-md-1-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda(closure$image));
+        div($receiver, 'pure-u-1 pure-u-md-3-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$addCommandInformation));
       }
        else {
-        div($receiver, 'pure-u-1 pure-u-md-3-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$addCommandInformation));
-        div($receiver, 'pure-u-1 pure-u-md-1-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$image));
+        div($receiver, 'pure-u-1 pure-u-md-3-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$addCommandInformation));
+        div($receiver, 'pure-u-1 pure-u-md-1-4', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$image));
       }
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_1(closure$index, closure$image, closure$addCommandInformation) {
+  function CommandsView$start$lambda$lambda$lambda$lambda_1(closure$index, closure$image, closure$addCommandInformation) {
     return function ($receiver) {
-      div($receiver, 'pure-g vertically-centered-content', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation));
+      div($receiver, 'pure-g vertically-centered-content', CommandsView$start$lambda$lambda$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation));
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_2($receiver) {
+  function CommandsView$start$lambda$lambda$lambda$lambda_2($receiver) {
     set_style($receiver, 'display:block');
     $receiver.attributes.put_xwzc9p$('data-ad-client', 'ca-pub-9989170954243288');
     $receiver.attributes.put_xwzc9p$('data-ad-slot', '4611100335');
     $receiver.attributes.put_xwzc9p$('data-ad-format', 'auto');
     return Unit;
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_3($receiver) {
+  function CommandsView$start$lambda$lambda$lambda$lambda_3($receiver) {
     $receiver.unaryPlus_pdl1vz$('(adsbygoogle = window.adsbygoogle || []).push({});');
     return Unit;
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_4($receiver) {
+  function CommandsView$start$lambda$lambda$lambda$lambda_4($receiver) {
     return Unit;
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$command, closure$usage) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$command, closure$usage) {
     return function ($receiver) {
       set_style($receiver, 'font-weight: bold; font-size: 1.1em;');
       $receiver.unaryPlus_pdl1vz$('+' + closure$command.label + ' ' + closure$usage.v);
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(it) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(it) {
     return '+' + it;
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$command) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$command) {
     return function ($receiver) {
       set_style($receiver, 'opacity: 0.6;');
-      $receiver.unaryPlus_pdl1vz$(joinToString(closure$command.aliases, ', ', void 0, void 0, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1));
+      $receiver.unaryPlus_pdl1vz$(joinToString(closure$command.aliases, ', ', void 0, void 0, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1));
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_5(closure$command) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_5(closure$command) {
     return function ($receiver) {
       $receiver.unaryPlus_pdl1vz$(closure$command.description);
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$command) {
+  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_0(closure$command) {
     return function ($receiver) {
       var tmp$;
       var usage = {v: (tmp$ = closure$command.usage) != null ? tmp$ : ''};
-      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$command, usage));
-      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$command));
-      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda$lambda_5(closure$command));
+      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$command, usage));
+      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$command));
+      p($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_5(closure$command));
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda$lambda_5(closure$filteredCommands) {
+  function CommandsView$start$lambda$lambda$lambda$lambda_5(closure$filteredCommands) {
     return function ($receiver) {
       var tmp$;
       tmp$ = closure$filteredCommands.iterator();
       while (tmp$.hasNext()) {
         var command = tmp$.next();
-        div($receiver, 'pure-u-1 pure-u-md-1-2', CommandsView$start$lambda$lambda$lambda$lambda$lambda$lambda_0(command));
+        div($receiver, 'pure-u-1 pure-u-md-1-2', CommandsView$start$lambda$lambda$lambda$lambda$lambda_0(command));
       }
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation, closure$filteredCommands) {
+  function CommandsView$start$lambda$lambda$lambda(closure$index, closure$image, closure$addCommandInformation, closure$filteredCommands) {
     return function ($receiver) {
-      ins($receiver, 'adsbygoogle', CommandsView$start$lambda$lambda$lambda$lambda$lambda);
-      script($receiver, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda_0);
-      div($receiver, 'vertically-centered-content', CommandsView$start$lambda$lambda$lambda$lambda$lambda_1(closure$index, closure$image, closure$addCommandInformation));
-      ins($receiver, 'adsbygoogle', CommandsView$start$lambda$lambda$lambda$lambda$lambda_2);
-      script($receiver, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda_3);
-      hr($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda$lambda_4);
-      div($receiver, 'pure-g', CommandsView$start$lambda$lambda$lambda$lambda$lambda_5(closure$filteredCommands));
+      ins($receiver, 'adsbygoogle', CommandsView$start$lambda$lambda$lambda$lambda);
+      script($receiver, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda_0);
+      div($receiver, 'vertically-centered-content', CommandsView$start$lambda$lambda$lambda$lambda_1(closure$index, closure$image, closure$addCommandInformation));
+      ins($receiver, 'adsbygoogle', CommandsView$start$lambda$lambda$lambda$lambda_2);
+      script($receiver, void 0, void 0, CommandsView$start$lambda$lambda$lambda$lambda_3);
+      hr($receiver, void 0, CommandsView$start$lambda$lambda$lambda$lambda_4);
+      div($receiver, 'pure-g', CommandsView$start$lambda$lambda$lambda$lambda_5(closure$filteredCommands));
       return Unit;
     };
   }
-  function CommandsView$start$lambda$lambda$lambda(this$CommandsView, closure$category, closure$index, closure$image, closure$filteredCommands) {
+  function CommandsView$start$lambda$lambda(closure$category, closure$index, closure$image, closure$filteredCommands) {
     return function ($receiver) {
-      var addCommandInformation = CommandsView$start$lambda$lambda$lambda$addCommandInformation(this$CommandsView, closure$category, $receiver);
-      div($receiver, 'contentWrapper', CommandsView$start$lambda$lambda$lambda$lambda(closure$index, closure$image, addCommandInformation, closure$filteredCommands));
+      var addCommandInformation = CommandsView$start$lambda$lambda$addCommandInformation(closure$category, $receiver);
+      div($receiver, 'contentWrapper', CommandsView$start$lambda$lambda$lambda(closure$index, closure$image, addCommandInformation, closure$filteredCommands));
       return Unit;
     };
   }
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
-  function CommandsView$start$lambda$lambda(this$CommandsView) {
-    return function (data, b, c) {
-      var tmp$, tmp$_0, tmp$_1;
-      LoriDashboard_getInstance().hideLoadingBar();
-      var commands = toJson(data);
-      tmp$ = withIndex(CommandCategory$values()).iterator();
-      while (tmp$.hasNext()) {
-        var tmp$_2 = tmp$.next();
-        var index = tmp$_2.component1()
-        , category = tmp$_2.component2();
-        var destination = ArrayList_init();
-        var tmp$_3;
-        for (tmp$_3 = 0; tmp$_3 !== commands.length; ++tmp$_3) {
-          var element = commands[tmp$_3];
-          if (equals(element.category.toString(), category.toString()))
-            destination.add_11rb$(element);
-        }
-        var filteredCommands = destination;
-        var stringBuilder = new StringBuilder();
-        if (equals(category, CommandCategory$SOCIAL_getInstance()))
-          tmp$_0 = 'https://loritta.website/assets/img/social.png';
-        else if (equals(category, CommandCategory$POKEMON_getInstance()))
-          tmp$_0 = 'https://loritta.website/assets/img/pokemon.png';
-        else if (equals(category, CommandCategory$MINECRAFT_getInstance()))
-          tmp$_0 = 'https://loritta.website/assets/img/loritta_pudim.png';
-        else if (equals(category, CommandCategory$FUN_getInstance()))
-          tmp$_0 = 'https://loritta.website/assets/img/vieirinha.png';
-        else if (equals(category, CommandCategory$UTILS_getInstance()))
-          tmp$_0 = 'https://loritta.website/assets/img/utils.png';
-        else if (equals(category, CommandCategory$MUSIC_getInstance()))
-          tmp$_0 = 'https://loritta.website/assets/img/loritta_headset.png';
-        else if (equals(category, CommandCategory$ANIME_getInstance()))
-          tmp$_0 = 'https://loritta.website/assets/img/loritta_anime.png';
-        else
-          tmp$_0 = 'https://loritta.website/assets/img/loritta_gabizinha_v1.png';
-        var image = {v: tmp$_0};
-        div_0(appendHTML(stringBuilder), index % 2 === 0 ? 'evenWrapper' : 'oddWrapper', CommandsView$start$lambda$lambda$lambda(this$CommandsView, category, index, image, filteredCommands));
-        tmp$_1 = filteredCommands.iterator();
-        while (tmp$_1.hasNext()) {
-          var cmd = tmp$_1.next();
-        }
-        println(category);
-        jq('#wrapper').append(stringBuilder.toString());
+  function CommandsView$start$lambda(data, b, c) {
+    var tmp$;
+    LoriDashboard_getInstance().hideLoadingBar();
+    var commands = toJson(data);
+    tmp$ = CommandCategory$values();
+    for (var index = 0; index !== tmp$.length; ++index) {
+      var category = tmp$[index];
+      var tmp$_0, tmp$_1;
+      var destination = ArrayList_init();
+      var tmp$_2;
+      for (tmp$_2 = 0; tmp$_2 !== commands.length; ++tmp$_2) {
+        var element = commands[tmp$_2];
+        if (equals(element.category.toString(), category.toString()))
+          destination.add_11rb$(element);
       }
-      return Unit;
-    };
-  }
-  function CommandsView$start$lambda(this$CommandsView) {
-    return function (data, b, c) {
-      this$CommandsView.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
-      return jQuery.post('https://loritta.website/api/v1/misc/get-commands', CommandsView$start$lambda$lambda(this$CommandsView));
-    };
+      var filteredCommands = destination;
+      var stringBuilder = new StringBuilder();
+      switch (category.name) {
+        case 'SOCIAL':
+          tmp$_0 = anonymous.loriUrl + 'assets/img/social.png';
+          break;
+        case 'POKEMON':
+          tmp$_0 = anonymous.loriUrl + 'assets/img/pokemon.png';
+          break;
+        case 'MINECRAFT':
+          tmp$_0 = anonymous.loriUrl + 'assets/img/loritta_pudim.png';
+          break;
+        case 'FUN':
+          tmp$_0 = anonymous.loriUrl + 'assets/img/vieirinha.png';
+          break;
+        case 'UTILS':
+          tmp$_0 = anonymous.loriUrl + 'assets/img/utils.png';
+          break;
+        case 'MUSIC':
+          tmp$_0 = anonymous.loriUrl + 'assets/img/loritta_headset.png';
+          break;
+        case 'ANIME':
+          tmp$_0 = anonymous.loriUrl + 'assets/img/loritta_anime.png';
+          break;
+        default:tmp$_0 = anonymous.loriUrl + 'assets/img/loritta_gabizinha_v1.png';
+          break;
+      }
+      var image = {v: tmp$_0};
+      div_0(appendHTML(stringBuilder), index % 2 === 0 ? 'evenWrapper' : 'oddWrapper', CommandsView$start$lambda$lambda(category, index, image, filteredCommands));
+      tmp$_1 = filteredCommands.iterator();
+      while (tmp$_1.hasNext()) {
+        var cmd = tmp$_1.next();
+      }
+      println(category);
+      jq('#wrapper').append(stringBuilder.toString());
+    }
+    return Unit;
   }
   CommandsView.prototype.start = function () {
     LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Carregando...');
-    jQuery.post('https://loritta.website/api/v1/misc/get-locale', CommandsView$start$lambda(this));
+    jQuery.post(anonymous.loriUrl + 'api/v1/misc/get-commands', CommandsView$start$lambda);
   };
   CommandsView.$metadata$ = {
     kind: Kind_OBJECT,
@@ -297,19 +306,8 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   }
   function ConfigureAutoroleView() {
     ConfigureAutoroleView_instance = this;
-    this.locale_o4f2f6$_0 = this.locale_o4f2f6$_0;
     this.serverConfig_jibg2x$_0 = this.serverConfig_jibg2x$_0;
   }
-  Object.defineProperty(ConfigureAutoroleView.prototype, 'locale', {
-    get: function () {
-      if (this.locale_o4f2f6$_0 == null)
-        return throwUPAE('locale');
-      return this.locale_o4f2f6$_0;
-    },
-    set: function (locale) {
-      this.locale_o4f2f6$_0 = locale;
-    }
-  });
   Object.defineProperty(ConfigureAutoroleView.prototype, 'serverConfig', {
     get: function () {
       if (this.serverConfig_jibg2x$_0 == null)
@@ -320,6 +318,22 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       this.serverConfig_jibg2x$_0 = serverConfig;
     }
   });
+  function ConfigureAutoroleView$start$lambda$ObjectLiteral() {
+  }
+  ConfigureAutoroleView$start$lambda$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: []
+  };
+  function ConfigureAutoroleView$start$lambda$ObjectLiteral_0() {
+  }
+  ConfigureAutoroleView$start$lambda$ObjectLiteral_0.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: []
+  };
+  function ConfigureAutoroleView$start$lambda$lambda(str) {
+    return str;
+  }
+  var copyToArray = Kotlin.kotlin.collections.copyToArray;
   var wrapFunction = Kotlin.wrapFunction;
   var mapNotNullTo$lambda = wrapFunction(function () {
     return function (closure$transform, closure$destination) {
@@ -332,44 +346,59 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       };
     };
   });
-  function ConfigureAutoroleView$start$lambda$lambda(this$ConfigureAutoroleView) {
+  function ConfigureAutoroleView$start$lambda(this$ConfigureAutoroleView) {
     return function (data, b, c) {
+      var tmp$;
       LoriDashboard_getInstance().hideLoadingBar();
-      println('Data: ' + toString(data));
-      this$ConfigureAutoroleView.serverConfig = JSON.parse(data);
+      println('Data: ' + stringify(data));
+      this$ConfigureAutoroleView.serverConfig = JSON.parse(stringify(data));
+      var optionData = ArrayList_init();
       var $receiver = this$ConfigureAutoroleView.serverConfig.roles;
       var destination = ArrayList_init();
-      var tmp$;
-      for (tmp$ = 0; tmp$ !== $receiver.length; ++tmp$) {
-        var element = $receiver[tmp$];
+      var tmp$_0;
+      for (tmp$_0 = 0; tmp$_0 !== $receiver.length; ++tmp$_0) {
+        var element = $receiver[tmp$_0];
         if (!element.isPublicRole)
           destination.add_11rb$(element);
       }
-      var tmp$_0;
-      tmp$_0 = destination.iterator();
-      while (tmp$_0.hasNext()) {
-        var element_0 = tmp$_0.next();
-        var this$ConfigureAutoroleView_0 = this$ConfigureAutoroleView;
-        var option = jq('<option>').attr('value', element_0.id).text(element_0.name);
-        if (!element_0.canInteract || element_0.isManaged || contains(this$ConfigureAutoroleView_0.serverConfig.autoroleConfig.roles, element_0.id)) {
-          option.attr('disabled', 'disabled');
+      tmp$ = destination.iterator();
+      while (tmp$.hasNext()) {
+        var it = tmp$.next();
+        var option = new ConfigureAutoroleView$start$lambda$ObjectLiteral();
+        option.id = it.id;
+        var text = '<span style=' + '"' + 'font-weight: 600;' + '"' + '>' + it.name + '<\/span>';
+        if (it.color != null) {
+          text = '<span style=' + '"' + 'font-weight: 600; color: rgb(' + it.color.red + ', ' + it.color.green + ', ' + it.color.blue + ')' + '"' + '>' + it.name + '<\/span>';
         }
-        jq('#chooseRole').append(option);
+        option.text = text;
+        if (!it.canInteract || it.isManaged) {
+          if (it.isManaged) {
+            option.text = text + ' <span class=' + '"' + 'keyword' + '"' + ' style=' + '"' + 'background-color: rgb(225, 149, 23);' + '"' + '>' + anonymous.locale.get_25kzsl$('DASHBOARD_RoleByIntegration', []) + '<\/span>';
+          }
+           else {
+            option.text = text + ' <span class=' + '"' + 'keyword' + '"' + ' style=' + '"' + 'background-color: rgb(231, 76, 60);' + '"' + '>' + anonymous.locale.get_25kzsl$('DASHBOARD_NoPermission', []) + '<\/span>';
+          }
+        }
+        optionData.add_11rb$(option);
       }
+      var options = new ConfigureAutoroleView$start$lambda$ObjectLiteral_0();
+      options.data = copyToArray(optionData);
+      options.escapeMarkup = ConfigureAutoroleView$start$lambda$lambda;
+      jq('#chooseRole').select2(options);
       var $receiver_0 = this$ConfigureAutoroleView.serverConfig.autoroleConfig.roles;
       var destination_0 = ArrayList_init();
       var tmp$_1;
-      for (tmp$_1 = 0; tmp$_1 !== $receiver_0.length; ++tmp$_1) {
-        var element_1 = $receiver_0[tmp$_1];
+      loop_label: for (tmp$_1 = 0; tmp$_1 !== $receiver_0.length; ++tmp$_1) {
+        var element_0 = $receiver_0[tmp$_1];
         var tmp$_0_0;
         var $receiver_1 = this$ConfigureAutoroleView.serverConfig.roles;
         var firstOrNull$result;
         firstOrNull$break: do {
           var tmp$_2;
           for (tmp$_2 = 0; tmp$_2 !== $receiver_1.length; ++tmp$_2) {
-            var element_2 = $receiver_1[tmp$_2];
-            if (equals(element_2.id, element_1)) {
-              firstOrNull$result = element_2;
+            var element_1 = $receiver_1[tmp$_2];
+            if (equals(element_1.id, element_0)) {
+              firstOrNull$result = element_1;
               break firstOrNull$break;
             }
           }
@@ -384,23 +413,20 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       var tmp$_3;
       tmp$_3 = roleList.iterator();
       while (tmp$_3.hasNext()) {
-        var element_3 = tmp$_3.next();
-        this$ConfigureAutoroleView.addRoleToAutoroleList_xat1sd$(element_3);
+        var element_2 = tmp$_3.next();
+        this$ConfigureAutoroleView.addRoleToAutoroleList_xat1sd$(element_2);
       }
       LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled', '#cmn-toggle-1');
+      if (!contains(this$ConfigureAutoroleView.serverConfig.permissions, 'ADMINISTRATOR') && !contains(this$ConfigureAutoroleView.serverConfig.permissions, 'MANAGE_ROLES')) {
+        LoriDashboard_getInstance().enableBlur_61zpoe$('#autoroleConfigurationWrapper');
+        jq('#requiresPermission').html(anonymous.locale.get_25kzsl$('DASHBOARD_HeyINeedPermission', ['<b>' + anonymous.locale.get_25kzsl$('PERMISSION_MANAGE_ROLES', []) + '<\/b>']));
+      }
       return Unit;
-    };
-  }
-  function ConfigureAutoroleView$start$lambda(this$ConfigureAutoroleView) {
-    return function (data, b, c) {
-      println('Received locale: ' + stringify(data));
-      this$ConfigureAutoroleView.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
-      return jQuery.post('https://loritta.website/api/v1/config/get-server-config?guildId=' + guildId, ConfigureAutoroleView$start$lambda$lambda(this$ConfigureAutoroleView));
     };
   }
   ConfigureAutoroleView.prototype.start = function () {
     LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Carregando...');
-    jQuery.post('https://loritta.website/api/v1/misc/get-locale', ConfigureAutoroleView$start$lambda(this));
+    jQuery.get(anonymous.loriUrl + 'api/v1/guild/' + guildId + '/config', ConfigureAutoroleView$start$lambda(this));
   };
   function ConfigureAutoroleView$addRoleToAutoroleList$lambda(closure$tr) {
     return function (it) {
@@ -409,18 +435,40 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     };
   }
   ConfigureAutoroleView.prototype.addRoleToAutoroleList_xat1sd$ = function (role) {
-    var tr = jq('<tr>').append(jq('<td>').text(role.name).attr('role-id', role.id).addClass('role-entry'));
+    var td = jq('<td>').attr('role-id', role.id).addClass('role-entry');
+    var roleSpan = jq('<span>').text('@' + role.name).addClass('discord-mention');
+    if (role.color != null) {
+      roleSpan.css('color', 'rgb(' + role.color.red + ', ' + role.color.green + ', ' + role.color.blue + ')');
+      roleSpan.css('background-color', 'rgba(' + role.color.red + ', ' + role.color.green + ', ' + role.color.blue + ', 0.298039)');
+    }
+    td.append(roleSpan);
+    var tr = jq('<tr>').append(td);
     tr.click(ConfigureAutoroleView$addRoleToAutoroleList$lambda(tr));
     jq('#roleTable').append(tr);
   };
+  function ConfigureAutoroleView$addRoleFromSelection$lambda(closure$modal) {
+    return function () {
+      closure$modal.close();
+      window.location.reload();
+      return Unit;
+    };
+  }
+  function ConfigureAutoroleView$addRoleFromSelection$lambda_0(closure$modal) {
+    return function () {
+      closure$modal.close();
+      return Unit;
+    };
+  }
   ConfigureAutoroleView.prototype.addRoleFromSelection = function () {
-    var roleId = jq('#chooseRole').val();
+    var tmp$;
+    var roleId = typeof (tmp$ = jq('#chooseRole option:selected').val()) === 'string' ? tmp$ : throwCCE();
+    println('Adding role ' + roleId + ' to the selection...');
     var $receiver = this.serverConfig.roles;
     var firstOrNull$result;
     firstOrNull$break: do {
-      var tmp$;
-      for (tmp$ = 0; tmp$ !== $receiver.length; ++tmp$) {
-        var element = $receiver[tmp$];
+      var tmp$_0;
+      for (tmp$_0 = 0; tmp$_0 !== $receiver.length; ++tmp$_0) {
+        var element = $receiver[tmp$_0];
         if (equals(element.id, roleId)) {
           firstOrNull$result = element;
           break firstOrNull$break;
@@ -431,6 +479,19 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
      while (false);
     var role = firstOrNull$result;
     if (role != null) {
+      if (role.isManaged || !role.canInteract) {
+        var modal = new TingleModal(new TingleOptions(true, void 0, void 0, void 0, ['tingle-modal--overflow']));
+        if (role.isManaged) {
+          modal.setContent(jq('<div>').append(jq('<div>').addClass('category-name').text(anonymous.locale.get_25kzsl$('DASHBOARD_RoleByIntegration', []))).append(jq('<div>').css('text-align', 'center').append(jq('<p>').text('Cargos criados por integra\xE7\xF5es (por exemplo: ao adicionar um bot) n\xE3o podem ser utilizados para dar cargos para outros membros!'))).html());
+        }
+         else {
+          modal.setContent(jq('<div>').append(jq('<div>').addClass('category-name').text(anonymous.locale.get_25kzsl$('DASHBOARD_NoPermission', []))).append(jq('<div>').css('text-align', 'center').append(jq('<img>').attr('src', 'https://mrpowergamerbr.com/uploads/2018-06-16_19-37-17.gif'))).append(jq('<div>').css('text-align', 'center').append(jq('<p>').text('Atualmente eu n\xE3o consigo dar o cargo que voc\xEA deseja porque eu n\xE3o tenho permiss\xE3o para isto... \uD83D\uDE2D')).append(jq('<p>').text('Para eu conseguir dar este cargo, mova o meu cargo para acima do cargo que voc\xEA deseja dar na lista de cargos do seu Discord!'))).html());
+          modal.addFooterBtn('<i class="far fa-thumbs-up"><\/i> J\xE1 arrumei!', 'button-discord button-discord-info pure-button button-discord-modal', ConfigureAutoroleView$addRoleFromSelection$lambda(modal));
+        }
+        modal.addFooterBtn('<i class="fas fa-times"><\/i> Fechar', 'button-discord pure-button button-discord-modal button-discord-modal-secondary-action', ConfigureAutoroleView$addRoleFromSelection$lambda_0(modal));
+        modal.open();
+        return;
+      }
       this.addRoleToAutoroleList_xat1sd$(role);
     }
   };
@@ -464,20 +525,74 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     }
     return ConfigureAutoroleView_instance;
   }
+  function ConfigureEconomyView() {
+    ConfigureEconomyView_instance = this;
+  }
+  function ConfigureEconomyView$start$lambda$lambda$lambda(closure$modal) {
+    return function () {
+      closure$modal.close();
+      return Unit;
+    };
+  }
+  function ConfigureEconomyView$start$lambda$lambda$lambda_0(closure$modal) {
+    return function () {
+      closure$modal.close();
+      return Unit;
+    };
+  }
+  function ConfigureEconomyView$start$lambda$lambda(it) {
+    var modal = new TingleModal(new TingleOptions(true, void 0, void 0, void 0, ['tingle-modal--overflow']));
+    modal.addFooterBtn('<i class="fas fa-plus"><\/i> Adicionar', 'button-discord button-discord-info pure-button button-discord-modal', ConfigureEconomyView$start$lambda$lambda$lambda(modal));
+    modal.addFooterBtn('<i class="fas fa-times"><\/i> Cancelar', 'button-discord pure-button button-discord-modal button-discord-modal-secondary-action', ConfigureEconomyView$start$lambda$lambda$lambda_0(modal));
+    var template = jq('#new-item-modal-template').clone();
+    template.find('.sectionHeader').text('Novo Item');
+    modal.setContent(template.html());
+    modal.open();
+    return Unit;
+  }
+  function ConfigureEconomyView$start$lambda(data, b, c) {
+    LoriDashboard_getInstance().hideLoadingBar();
+    println('Data: ' + toString(data));
+    var serverConfig = JSON.parse(stringify(data));
+    LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled', '#cmn-toggle-1');
+    LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled2', '#cmn-toggle-2');
+    var addShopItemObj = jq('#add-new-shop-item');
+    var customCurrencyNameObj = jq('#customCurrencyName');
+    var exchangeRateObj = jq('#exchangeRate');
+    exchangeRateObj.change();
+    addShopItemObj.click(ConfigureEconomyView$start$lambda$lambda);
+    return Unit;
+  }
+  ConfigureEconomyView.prototype.start = function () {
+    LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Carregando...');
+    jQuery.get(anonymous.loriUrl + 'api/v1/guild/' + guildId + '/config', ConfigureEconomyView$start$lambda);
+  };
+  function ConfigureEconomyView$prepareSave$lambda(it) {
+    var tmp$;
+    var enableDreamExchange = typeof (tmp$ = it['enableDreamExchange']) === 'boolean' ? tmp$ : throwCCE();
+    delete(it['enableDreamExchange']);
+    if (!enableDreamExchange)
+      it['exchangeRate'] = null;
+    return Unit;
+  }
+  ConfigureEconomyView.prototype.prepareSave = function () {
+    SaveStuff_getInstance().prepareSave('economy', ConfigureEconomyView$prepareSave$lambda);
+  };
+  ConfigureEconomyView.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'ConfigureEconomyView',
+    interfaces: []
+  };
+  var ConfigureEconomyView_instance = null;
+  function ConfigureEconomyView_getInstance() {
+    if (ConfigureEconomyView_instance === null) {
+      new ConfigureEconomyView();
+    }
+    return ConfigureEconomyView_instance;
+  }
   function ConfigureModerationView() {
     ConfigureModerationView_instance = this;
-    this.locale_wine6b$_0 = this.locale_wine6b$_0;
   }
-  Object.defineProperty(ConfigureModerationView.prototype, 'locale', {
-    get: function () {
-      if (this.locale_wine6b$_0 == null)
-        return throwUPAE('locale');
-      return this.locale_wine6b$_0;
-    },
-    set: function (locale) {
-      this.locale_wine6b$_0 = locale;
-    }
-  });
   function ConfigureModerationView$start$lambda$lambda$lambda(this$ConfigureModerationView) {
     return function (it) {
       this$ConfigureModerationView.addPunishment_a3smtl$(new ModerationConfig$WarnAction(1, ModerationConfig$PunishmentAction$BAN_getInstance(), null));
@@ -489,26 +604,28 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       var tmp$, tmp$_0;
       LoriDashboard_getInstance().hideLoadingBar();
       println('Data: ' + toString(data));
-      var serverConfig = JSON.parse(data);
+      var serverConfig = JSON.parse(stringify(data));
       tmp$ = serverConfig.moderationConfig.punishmentActions;
       for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
         var punishment = tmp$[tmp$_0];
         this$ConfigureModerationView.addPunishment_a3smtl$(punishment);
       }
       LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled', '#cmn-toggle-2');
-      return jq('.add-new-action').click(ConfigureModerationView$start$lambda$lambda$lambda(this$ConfigureModerationView));
+      LoriDashboard_getInstance().configureTextChannelSelect_mtmww3$(jq('#punishmentLogChannelId'), serverConfig, serverConfig.moderationConfig.punishmentLogChannelId);
+      jq('.add-new-action').click(ConfigureModerationView$start$lambda$lambda$lambda(this$ConfigureModerationView));
+      LoriDashboard_getInstance().configureTextArea_ntroki$(jq('#punishmentLogMessage'), true, serverConfig, true, jq('#punishmentLogChannelId'));
+      return Unit;
     };
   }
   function ConfigureModerationView$start$lambda(this$ConfigureModerationView) {
-    return function (data, b, c) {
-      println('Received locale: ' + stringify(data));
-      this$ConfigureModerationView.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
-      return jQuery.post('https://loritta.website/api/v1/config/get-server-config?guildId=' + guildId, ConfigureModerationView$start$lambda$lambda(this$ConfigureModerationView));
+    return function (it) {
+      jQuery.get(anonymous.loriUrl + 'api/v1/guild/' + guildId + '/config', ConfigureModerationView$start$lambda$lambda(this$ConfigureModerationView));
+      return Unit;
     };
   }
   ConfigureModerationView.prototype.start = function () {
     LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Carregando...');
-    jQuery.post('https://loritta.website/api/v1/misc/get-locale', ConfigureModerationView$start$lambda(this));
+    document.addEventListener('DOMContentLoaded', ConfigureModerationView$start$lambda(this));
   };
   function ConfigureModerationView$addPunishment$lambda(closure$action) {
     return function (it) {
@@ -540,7 +657,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     tmp$ = ModerationConfig$PunishmentAction$values();
     for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
       var punishment = tmp$[tmp$_0];
-      var option = jq('<option>').attr('name', this.locale.get_25kzsl$(replace(punishment.toString(), '_', '') + '_PunishName', [])).attr('value', punishment.toString()).text(this.locale.get_25kzsl$(replace(punishment.toString(), '_', '') + '_PunishName', []));
+      var option = jq('<option>').attr('name', anonymous.locale.get_25kzsl$(replace(punishment.toString(), '_', '') + '_PunishName', [])).attr('value', punishment.toString()).text(anonymous.locale.get_25kzsl$(replace(punishment.toString(), '_', '') + '_PunishName', []));
       if (equals(warnAction.punishmentAction.toString(), punishment.toString())) {
         option.attr('selected', 'selected');
       }
@@ -593,61 +710,38 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     this.keywordList_xlo49m$_0 = lazy(ConfigurePartnerView$keywordList$lambda);
     this.uploadBackground_valcxw$_0 = lazy(ConfigurePartnerView$uploadBackground$lambda);
     this.isPartner = false;
-    this.locale_w27tuv$_0 = this.locale_w27tuv$_0;
   }
   Object.defineProperty(ConfigurePartnerView.prototype, 'vanityUrlInput', {
     get: function () {
-      var $receiver = this.vanityUrlInput_jrj3bh$_0;
-      new PropertyMetadata('vanityUrlInput');
-      return $receiver.value;
+      return this.vanityUrlInput_jrj3bh$_0.value;
     }
   });
   Object.defineProperty(ConfigurePartnerView.prototype, 'vanityUrlExample', {
     get: function () {
-      var $receiver = this.vanityUrlExample_i46b83$_0;
-      new PropertyMetadata('vanityUrlExample');
-      return $receiver.value;
+      return this.vanityUrlExample_i46b83$_0.value;
     }
   });
   Object.defineProperty(ConfigurePartnerView.prototype, 'addKeyword', {
     get: function () {
-      var $receiver = this.addKeyword_7t6lhx$_0;
-      new PropertyMetadata('addKeyword');
-      return $receiver.value;
+      return this.addKeyword_7t6lhx$_0.value;
     }
   });
   Object.defineProperty(ConfigurePartnerView.prototype, 'keywords', {
     get: function () {
-      var $receiver = this.keywords_k89ksp$_0;
-      new PropertyMetadata('keywords');
-      return $receiver.value;
+      return this.keywords_k89ksp$_0.value;
     }
   });
   Object.defineProperty(ConfigurePartnerView.prototype, 'keywordList', {
     get: function () {
-      var $receiver = this.keywordList_xlo49m$_0;
-      new PropertyMetadata('keywordList');
-      return $receiver.value;
+      return this.keywordList_xlo49m$_0.value;
     }
   });
   Object.defineProperty(ConfigurePartnerView.prototype, 'uploadBackground', {
     get: function () {
-      var $receiver = this.uploadBackground_valcxw$_0;
-      new PropertyMetadata('uploadBackground');
-      return $receiver.value;
+      return this.uploadBackground_valcxw$_0.value;
     }
   });
-  Object.defineProperty(ConfigurePartnerView.prototype, 'locale', {
-    get: function () {
-      if (this.locale_w27tuv$_0 == null)
-        return throwUPAE('locale');
-      return this.locale_w27tuv$_0;
-    },
-    set: function (locale) {
-      this.locale_w27tuv$_0 = locale;
-    }
-  });
-  function ConfigurePartnerView$start$lambda$lambda$lambda(this$ConfigurePartnerView) {
+  function ConfigurePartnerView$start$lambda$lambda(this$ConfigurePartnerView) {
     return function (f, f_0) {
       var vanityUrl = this$ConfigurePartnerView.vanityUrlInput.val();
       vanityUrl = replace(vanityUrl, ' ', '-');
@@ -657,7 +751,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       return Unit;
     };
   }
-  function ConfigurePartnerView$start$lambda$lambda(this$ConfigurePartnerView) {
+  function ConfigurePartnerView$start$lambda(this$ConfigurePartnerView) {
     return function (data, b, c) {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
       LoriDashboard_getInstance().hideLoadingBar();
@@ -667,7 +761,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       this$ConfigurePartnerView.isPartner = serverListConfig.isPartner;
       println('Keywords: ' + joinToString(serverListConfig.keywords, ', '));
       tmp$ = LorittaPartner$Keyword$values();
-      for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
+      loop_label: for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
         var keyword = tmp$[tmp$_0];
         println('Adding keyword ' + keyword + '...');
         tmp$_5 = this$ConfigurePartnerView.keywords;
@@ -689,7 +783,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
         }
          while (false);
         tmp$_3 = tmp$_8.append(tmp$_9.prop('checked', firstOrNull$result != null));
-        tmp$_2 = jq('<span>').text(' ' + this$ConfigurePartnerView.locale.get_25kzsl$('KEYWORD_' + keyword.toString(), [])).addClass('keyword');
+        tmp$_2 = jq('<span>').text(' ' + anonymous.locale.get_25kzsl$('KEYWORD_' + keyword.toString(), [])).addClass('keyword');
         if (keyword === LorittaPartner$Keyword$NSFW_getInstance()) {
           tmp$_1 = 'background-color: rgb(163, 48, 48);';
         }
@@ -698,10 +792,11 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
         }
         tmp$_5.append(tmp$_4.append(tmp$_3.append(tmp$_2.attr('style', 'margin-left: 6px;' + tmp$_1))));
       }
-      this$ConfigurePartnerView.vanityUrlInput.on('input', ConfigurePartnerView$start$lambda$lambda$lambda(this$ConfigurePartnerView));
+      this$ConfigurePartnerView.vanityUrlInput.on('input', ConfigurePartnerView$start$lambda$lambda(this$ConfigurePartnerView));
       this$ConfigurePartnerView.changeVanityUrlText();
       LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled', '#cmn-toggle-1');
       LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled3', '#cmn-toggle-2');
+      LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled4', '#cmn-toggle-3');
       tmp$_6 = serverConfig.textChannels;
       for (tmp$_7 = 0; tmp$_7 !== tmp$_6.length; ++tmp$_7) {
         var textChannel = tmp$_6[tmp$_7];
@@ -709,10 +804,16 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
         if (!textChannel.canTalk) {
           option.attr('disabled', 'disabled');
         }
+        var voteSel = option.clone();
+        var promoteSel = option.clone();
         if (equals(serverConfig.serverListConfig.voteBroadcastChannelId, textChannel.id)) {
-          option.attr('selected', 'selected');
+          voteSel.attr('selected', 'selected');
         }
-        jq('#chooseChannel').append(option);
+        if (serverConfig.serverListConfig.promoteBroadcastChannelId == textChannel.id) {
+          promoteSel.attr('selected', 'selected');
+        }
+        jq('#chooseChannel').append(voteSel.clone());
+        jq('#chooseChannel2').append(promoteSel.clone());
       }
       if (!serverListConfig.isPartner && !serverListConfig.isSponsored) {
         jq('#hiddenIfDisabled2').addClass('blurSection');
@@ -721,21 +822,14 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       return Unit;
     };
   }
-  function ConfigurePartnerView$start$lambda(this$ConfigurePartnerView) {
-    return function (data, b, c) {
-      println('Received locale: ' + stringify(data));
-      this$ConfigurePartnerView.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
-      return jQuery.post('https://loritta.website/api/v1/config/get-server-config?guildId=' + guildId, ConfigurePartnerView$start$lambda$lambda(this$ConfigurePartnerView));
-    };
-  }
   ConfigurePartnerView.prototype.start = function () {
     LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Carregando...');
-    jQuery.post('https://loritta.website/api/v1/misc/get-locale', ConfigurePartnerView$start$lambda(this));
+    jQuery.post(anonymous.loriUrl + 'api/v1/config/get-server-config?guildId=' + guildId, ConfigurePartnerView$start$lambda(this));
   };
   ConfigurePartnerView.prototype.changeVanityUrlText = function () {
     var vanityUrl = this.vanityUrlInput.val();
-    this.vanityUrlExample.text('https://loritta.website/s/' + vanityUrl);
-    this.vanityUrlExample.attr('src', 'https://loritta.website/s/' + vanityUrl);
+    this.vanityUrlExample.text(anonymous.loriUrl + 's/' + vanityUrl);
+    this.vanityUrlExample.attr('src', anonymous.loriUrl + 's/' + vanityUrl);
   };
   function ConfigurePartnerView$prepareSave$lambda(closure$reader, this$ConfigurePartnerView) {
     return function (it) {
@@ -816,6 +910,183 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     }
     return ConfigurePartnerView_instance;
   }
+  function ConfigureProfileView() {
+    ConfigureProfileView_instance = this;
+  }
+  ConfigureProfileView.prototype.start = function () {
+  };
+  ConfigureProfileView.prototype.prepareSave = function () {
+    println('Preparing save... wow!');
+    SaveStuff_getInstance().prepareSave('profile', void 0, void 0, anonymous.loriUrl + 'api/v1/lori/save-self-profile');
+  };
+  ConfigureProfileView.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'ConfigureProfileView',
+    interfaces: []
+  };
+  var ConfigureProfileView_instance = null;
+  function ConfigureProfileView_getInstance() {
+    if (ConfigureProfileView_instance === null) {
+      new ConfigureProfileView();
+    }
+    return ConfigureProfileView_instance;
+  }
+  function ConfigureWelcomerView() {
+    ConfigureWelcomerView_instance = this;
+  }
+  function ConfigureWelcomerView$start$lambda(data, b, c) {
+    LoriDashboard_getInstance().hideLoadingBar();
+    println('Data: ' + toString(data));
+    var serverConfig = JSON.parse(stringify(data));
+    LoriDashboard_getInstance().applyBlur_puj7f4$('#hiddenIfDisabled', '#cmn-toggle-1');
+    LoriDashboard_getInstance().configureTextChannelSelect_mtmww3$(jq('#canalJoinId'), serverConfig, serverConfig.joinLeaveConfig.canalJoinId);
+    LoriDashboard_getInstance().configureTextChannelSelect_mtmww3$(jq('#canalLeaveId'), serverConfig, serverConfig.joinLeaveConfig.canalLeaveId);
+    LoriDashboard_getInstance().configureTextArea_ntroki$(jq('#joinMessage'), true, serverConfig, true, jq('#canalJoinId'));
+    LoriDashboard_getInstance().configureTextArea_ntroki$(jq('#leaveMessage'), true, serverConfig, true, jq('#canalLeaveId'));
+    LoriDashboard_getInstance().configureTextArea_ntroki$(jq('#joinPrivateMessage'), true, serverConfig, true, null);
+    LoriDashboard_getInstance().configureTextArea_ntroki$(jq('#banMessage'), true, serverConfig, true, jq('#canalLeaveId'));
+    LoriDashboard_getInstance().configureTextArea_ntroki$(jq('#kickMessage'), true, serverConfig, true, jq('#canalLeaveId'));
+    return Unit;
+  }
+  ConfigureWelcomerView.prototype.start = function () {
+    LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Carregando...');
+    jQuery.get(anonymous.loriUrl + 'api/v1/guild/' + guildId + '/config', ConfigureWelcomerView$start$lambda);
+  };
+  ConfigureWelcomerView.prototype.prepareSave = function () {
+    SaveStuff_getInstance().prepareSave('welcomer');
+  };
+  ConfigureWelcomerView.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'ConfigureWelcomerView',
+    interfaces: []
+  };
+  var ConfigureWelcomerView_instance = null;
+  function ConfigureWelcomerView_getInstance() {
+    if (ConfigureWelcomerView_instance === null) {
+      new ConfigureWelcomerView();
+    }
+    return ConfigureWelcomerView_instance;
+  }
+  function DonateView() {
+    DonateView_instance = this;
+  }
+  function DonateView$start$handleRangeChange$lambda(it) {
+    return it.minimum;
+  }
+  var sortedWith = Kotlin.kotlin.collections.sortedWith_eknfly$;
+  var compareBy$lambda = wrapFunction(function () {
+    var compareValues = Kotlin.kotlin.comparisons.compareValues_s00gnj$;
+    return function (closure$selector) {
+      return function (a, b) {
+        var selector = closure$selector;
+        return compareValues(selector(a), selector(b));
+      };
+    };
+  });
+  var Comparator = Kotlin.kotlin.Comparator;
+  function Comparator$ObjectLiteral(closure$comparison) {
+    this.closure$comparison = closure$comparison;
+  }
+  Comparator$ObjectLiteral.prototype.compare = function (a, b) {
+    return this.closure$comparison(a, b);
+  };
+  Comparator$ObjectLiteral.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
+  function DonateView$start$handleRangeChange(closure$tiers, closure$tierName, closure$tierIcon, closure$donationRewardsWrapper) {
+    return function () {
+      var tmp$;
+      var value = toInt(typeof (tmp$ = jq('#donation-range').val()) === 'string' ? tmp$ : throwCCE());
+      var price = value.toString();
+      price += '+';
+      jq('#donation-value').text(price);
+      var validTier = sortedWith(closure$tiers, new Comparator$ObjectLiteral(compareBy$lambda(DonateView$start$handleRangeChange$lambda))).get_za3lpa$(value);
+      if (validTier != null) {
+        closure$tierName.text(validTier.title);
+        closure$tierIcon.attr('src', validTier.icon);
+        jq('#donation-value').text(validTier.minimum.toString() + '+');
+        jq('#donation-value-2').text(validTier.minimum.toString());
+        jq('#donation-value-machine').text(validTier.minimum.toString());
+        var daysInAMonth = 730;
+        var percentage = validTier.minimum / 315;
+        var daysPaid = daysInAMonth * percentage;
+        jq('#donation-value-hours').text(roundToInt(daysPaid));
+        var lastHashCode = hashCode(last(validTier.rewards));
+        var lastReward = jq('#reward-' + hashCode(validTier) + '-' + lastHashCode);
+        var rewardPosition = lastReward.position().top;
+        var newHeight = rewardPosition;
+        println('New height is ' + newHeight + 'px');
+        closure$donationRewardsWrapper.css('height', (numberToInt(newHeight) + numberToInt(lastReward.height()) | 0).toString() + 'px');
+      }
+    };
+  }
+  function DonateView$start$lambda(closure$handleRangeChange) {
+    return function (event, any) {
+      closure$handleRangeChange();
+      return Unit;
+    };
+  }
+  DonateView.prototype.start = function () {
+    var tmp$, tmp$_0;
+    var tiers = ArrayList_init();
+    var reward1 = listOf('Obrigado por ajudar a Loritta a ficar online!');
+    var reward3 = listOf_0(['A sensa\xE7\xE3o de ser incr\xEDvel!', "Seu nome ser\xE1 adicionado ao comando de <code class='inline'>+contribuidores<\/code>!", "Voc\xEA ter\xE1 acesso a um canal de texto e voz exclusivo apenas para quem contribui para mim, com v\xE1rios assuntos exclusivos para contribuidores! <img src='https://cdn.discordapp.com/emojis/353898172923510784.png?v=1' class='inline-emoji'>", "Voc\xEA ir\xE1 ganhar um cargo exclusivo no <a href='" + anonymous.loriUrl + "support'>meu servidor<\/a>!", "Voc\xEA ir\xE1 receber uma badge exclusiva no <code class='inline'>+perfil<\/code>!", "Voc\xEA poder\xE1 deixar o seu servidor como patrocinado na <a href='" + anonymous.loriUrl + "servers'>Lori's Server List<\/a> por 30 dias! (Quanto mais voc\xEA doar, mais chance de voc\xEA aparecer no topo da lista de servidores patrocinados!)", "Voc\xEA poder\xE1 participar de sorteios que poder\xE3o acontecer no <a href='" + anonymous.loriUrl + "support'>meu servidor<\/a>!", 'Eu n\xE3o queria dizer nada, mas quem doa tem um b\xF4nus:<br><iframe width="280" height="157" src="https://www.youtube.com/embed/J8gWll4ItiU?start=334" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen><\/iframe>']);
+    var reward10 = listOf_0(["Voc\xEA poder\xE1 usar o <code class='inline'>+volume<\/code>, para controlar o som do seu batid\xE3o! <img src='https://cdn.discordapp.com/emojis/422448021016543232.gif?v=1' class='inline-emoji'>", "Voc\xEA poder\xE1 alterar a cor do seu nome no <a href='" + anonymous.loriUrl + "support'>meu servidor<\/a>! <img src='https://cdn.discordapp.com/emojis/446735085161545728.gif?v=1' class='inline-emoji'>", "Voc\xEA ter\xE1 o seu nome nos finais dos v\xEDdeos do <a href='https://www.youtube.com/c/MrPowerGamerBR'>meu canal<\/a>! (As vezes... quando ele lembrar de colocar... j\xE1 que ele quase nem grava v\xEDdeos <img src='https://cdn.discordapp.com/emojis/396521773178552331.png?v=1' class='inline-emoji'>)", 'Voc\xEA ter\xE1 prioridade nas sugest\xF5es, precisa de uma fun\xE7\xE3o na Loritta? Ent\xE3o vou fazer ela! (Desde que seja poss\xEDvel fazer, que n\xE3o seja in\xE9tico, que n\xE3o fuja do prop\xF3sito da Loritta e, \xE9 claro, se eu tenho tempo para fazer ela!)']);
+    tiers.add_11rb$(new DonateView$RewardTier('\xC9 pouco, mas espero que ajude!', 'https://cdn.discordapp.com/emojis/396521772691881987.png?v=1', 0.01, reward1));
+    tiers.add_11rb$(new DonateView$RewardTier('Eu quero ajudar a Loritta!', 'https://cdn.discordapp.com/emojis/425371746930262018.png?v=1', 4.99, reward3));
+    tiers.add_11rb$(new DonateView$RewardTier('Eu gosto da Loritta (Como amiga, \xE9 claro)', 'https://cdn.discordapp.com/emojis/414222275223617546.png?v=1', 9.99, reward10));
+    tiers.add_11rb$(new DonateView$RewardTier('Eu amo a Loritta! (Como amiga, \xE9 claro)', 'https://cdn.discordapp.com/emojis/417813932380520448.png?v=1', 19.99, listOf_0(['O limite m\xE1ximo de sonhos que voc\xEA pode ganhar no sonhos di\xE1rio ser\xE1 aumentado de 3600 sonhos para 3900 sonhos!', "Tempo de espera entre comandos reduzido na maioria dos comandos! <img src='https://discordemoji.com/assets/emoji/SonicWaiting.gif' class='inline-emoji'>", "Ao receber uma reputa\xE7\xE3o, voc\xEA ter\xE1 5% de chance de eu te dar uma reputa\xE7\xE3o tamb\xE9m! <img src='https://cdn.discordapp.com/emojis/393755269890310164.gif?v=1' class='inline-emoji'>", "Seu nome ficar\xE1 em negrito no <code class='inline'>+contribuidores<\/code>!"])));
+    tiers.add_11rb$(new DonateView$RewardTier('Eu adoro a Loritta! (Como amiga, \xE9 claro)', 'https://cdn.discordapp.com/emojis/331179879582269451.png?v=1', 29.99, listOf_0(["Voc\xEA ganhar\xE1 x1.25 XP global! <img src='https://cdn.discordapp.com/emojis/432531424671694849.png?v=1' class='inline-emoji'>", 'Voc\xEA ganhar\xE1 7500 sonhos!', "Caso voc\xEA queria virar um parceiro na Lori's Server List, o requisito de membros ser\xE1 abaixado de 850 membros para 500 membros! (Mas cuidado, voc\xEA ainda ter\xE1 que ter um servidor ativo!)", 'Voc\xEA poder\xE1 adicionar uma vers\xE3o premium minha no seu servidor! ...o que a vers\xE3o premium faz? Nada! Mas voc\xEA pode mostrar como voc\xEA \xE9 ostentador no seu servidor!'])));
+    tiers.add_11rb$(new DonateView$RewardTier('Eu venero a Loritta!', 'https://cdn.discordapp.com/emojis/338679059188023296.png?v=1', 39.99, listOf_0(['O limite m\xE1ximo de sonhos que voc\xEA pode ganhar no sonhos di\xE1rio ser\xE1 aumentado de 3600 sonhos para 4200 sonhos!', 'Como b\xF4nus pela sua generosidade, voc\xEA ir\xE1 ganhar +1 key da Loritta para voc\xEA dar para os seus amigos!', "Ao receber uma reputa\xE7\xE3o, voc\xEA ter\xE1 25% de chance de eu te dar uma reputa\xE7\xE3o tamb\xE9m! <img src='https://cdn.discordapp.com/emojis/393755269890310164.gif?v=1' class='inline-emoji'>"])));
+    tiers.add_11rb$(new DonateView$RewardTier('Eu cultuo a Loritta!', 'https://cdn.discordapp.com/emojis/357939361079230464.png?v=1', 49.99, listOf_0(["Voc\xEA ganhar\xE1 x1.5 XP global! <img src='https://cdn.discordapp.com/emojis/432531424671694849.png?v=1' class='inline-emoji'>", 'Voc\xEA ganhar\xE1 7500 sonhos!', "Voc\xEA poder\xE1 colocar uma resposta personalizada em todos os servidores ao falar \"@Loritta Morenitta \uD83D\uDE18 insira algo aqui\" e ela ir\xE1 responder algo que voc\xEA queria! (Desde que n\xE3o seja uma resposta inapropriada ou que seja divulga\xE7\xE3o) <a href='https://cdn.discordapp.com/emojis/396521401860751362.png?v=1' class='inline-emoji'>", "Voc\xEA poder\xE1 colocar um convite ao lado do seu nome no <code class='inline'>+contribuidores<\/code>!", "Voc\xEA ganhar\xE1 mais outro cargo exclusivo no <a href='" + anonymous.loriUrl + "support'>meu servidor<\/a>! A diferen\xE7a entre o antigo cargo e novo? O novo \xE9 <b>super<\/b>! <img src='https://cdn.discordapp.com/emojis/429715687317962772.png?v=1' class='inline-emoji'>"])));
+    tiers.add_11rb$(new DonateView$RewardTier('Eu idolatro a Loritta!', 'https://cdn.discordapp.com/emojis/432530033186308106.png?v=1', 59.99, listOf_0(['O limite m\xE1ximo de sonhos que voc\xEA pode ganhar no sonhos di\xE1rio ser\xE1 aumentado de 3600 sonhos para 4500 sonhos!', "Voc\xEA poder\xE1 colocar uma rea\xE7\xE3o personalizada em todos os servidores ao falar algo que voc\xEA escolher e ela ir\xE1 reagir com um emoji que voc\xEA escolher! (Existem exce\xE7\xF5es para quando ela vai fazer isto, mas desde que seja uma frase n\xE3o t\xE3o pequena, pode colocar!) <a href='https://cdn.discordapp.com/emojis/396521401860751362.png?v=1' class='inline-emoji'>"])));
+    tiers.add_11rb$(new DonateView$RewardTier('Jamais quero ver a Loritta offline!', 'https://cdn.discordapp.com/emojis/441355739307442186.png?v=1', 69.99, listOf_0(["Voc\xEA ganhar\xE1 x1.75 XP global! <img src='https://cdn.discordapp.com/emojis/432531424671694849.png?v=1' class='inline-emoji'>", 'Voc\xEA ganhar\xE1 7500 sonhos!', "Como b\xF4nus pela sua generosidade, voc\xEA ir\xE1 ganhar +1 key da Loritta para voc\xEA dar aos seus amigos! <img src='https://cdn.discordapp.com/emojis/330958171436744716.png?v=1' class='inline-emoji'>"])));
+    tiers.add_11rb$(new DonateView$RewardTier('A Loritta ir\xE1 dominar o mundo!', 'https://cdn.discordapp.com/emojis/391738326312550401.png?v=1', 79.99, listOf_0(["Voc\xEA poder\xE1 criar uma badge exclusiva para voc\xEA e para os seus amigos! Quer criar uma badge exclusiva que apenas os membros do seu servidor tem? Voc\xEA poder\xE1 ter isto! <img src='https://cdn.discordapp.com/emojis/430179755304943649.png?v=1' class='inline-emoji'>", 'O limite m\xE1ximo de sonhos que voc\xEA pode ganhar no sonhos di\xE1rio ser\xE1 aumentado de 3600 sonhos para 4800 sonhos!'])));
+    tiers.add_11rb$(new DonateView$RewardTier('A Loritta ir\xE1 dominar a gal\xE1xia!', 'https://cdn.discordapp.com/emojis/439868811190206495.png?v=1', 89.99, listOf_0(["Voc\xEA ganhar\xE1 x2.00 XP global! <img src='https://cdn.discordapp.com/emojis/432531424671694849.png?v=1' class='inline-emoji'>", 'Voc\xEA ganhar\xE1 7500 sonhos!', "Voc\xEA poder\xE1 fazer o seu pr\xF3prio design do jeito que voc\xEA quiser (desde que n\xE3o seja algo inapropriado) para o seu <code class='inline'>+perfil<\/code>!"])));
+    tiers.add_11rb$(new DonateView$RewardTier('A Loritta \xE9 a minha Deusa!', 'https://cdn.discordapp.com/emojis/412577132007653383.gif?v=1', 99.99, listOf_0(['Eu irei divulgar o seu servidor (desde que n\xE3o seja sobre conte\xFAdo NSFW) em todas as mensagens que eu fizer de @everyone ou para Notificar Novidades que tiverem no meu servidor!', "Voc\xEA ganhar\xE1 mais outro cargo exclusivo no <a href='" + anonymous.loriUrl + "support'>meu servidor<\/a> mostrando o quanto voc\xEA adora a nossa Deusa Loritta! <img src='https://cdn.discordapp.com/emojis/441390573501546497.png?v=1' class='inline-emoji'>"])));
+    tiers.add_11rb$(new DonateView$RewardTier('SimSimi > Gaybriela', 'https://cdn.discordapp.com/emojis/383742012559589387.png?v=1', 119.99, listOf_0(["Voc\xEA poder\xE1 usar o <code class='inline'>+simsimi<\/code> no seu servidor!", "Como b\xF4nus pela sua generosidade, voc\xEA ir\xE1 ganhar +1 key da Loritta para voc\xEA dar aos seus amigos e espalhar a maldade do SimSimi para outros servidores. <img src='https://cdn.discordapp.com/emojis/330958171436744716.png?v=1' class='inline-emoji'>", "O convite do seu servidor ser\xE1 mostrado para todos que utilizarem o comando <code class='inline'>+ajuda<\/code>!", 'Seu servidor ser\xE1 colocado em um de nossos banners de propaganda aqui no meu website!'])));
+    var donationRewards = jq('#donation-rewards');
+    var donationRewardsWrapper = jq('#donation-rewards-wrapper');
+    var tierName = jq('#tier-name');
+    var tierIcon = jq('#tier-icon');
+    tmp$ = tiers.iterator();
+    while (tmp$.hasNext()) {
+      var tier = tmp$.next();
+      donationRewards.append(jq('<div>').addClass('tier-reward-header').text(tier.title + ' (R' + '$' + ' ' + tier.minimum + '+)'));
+      donationRewards.append(jq('<img>').css('width', '64px').attr('src', tier.icon));
+      tmp$_0 = tier.rewards.iterator();
+      while (tmp$_0.hasNext()) {
+        var reward = tmp$_0.next();
+        donationRewards.append(jq('<li>').html(reward).attr('id', 'reward-' + hashCode(tier) + '-' + hashCode(reward)));
+      }
+    }
+    var donationRange = jq('#donation-range');
+    donationRange.attr('max', tiers.size - 1 | 0);
+    var handleRangeChange = DonateView$start$handleRangeChange(tiers, tierName, tierIcon, donationRewardsWrapper);
+    jq('#donation-range').on('input', DonateView$start$lambda(handleRangeChange));
+    handleRangeChange();
+  };
+  function DonateView$RewardTier(title, icon, minimum, rewards) {
+    this.title = title;
+    this.icon = icon;
+    this.minimum = minimum;
+    this.rewards = rewards;
+  }
+  DonateView$RewardTier.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'RewardTier',
+    interfaces: []
+  };
+  DonateView.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'DonateView',
+    interfaces: []
+  };
+  var DonateView_instance = null;
+  function DonateView_getInstance() {
+    if (DonateView_instance === null) {
+      new DonateView();
+    }
+    return DonateView_instance;
+  }
   function LoriDashboard() {
     LoriDashboard_instance = this;
     this.wrapper_e2dk2j$_0 = lazy(LoriDashboard$wrapper$lambda);
@@ -825,30 +1096,22 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   }
   Object.defineProperty(LoriDashboard.prototype, 'wrapper', {
     get: function () {
-      var $receiver = this.wrapper_e2dk2j$_0;
-      new PropertyMetadata('wrapper');
-      return $receiver.value;
+      return this.wrapper_e2dk2j$_0.value;
     }
   });
   Object.defineProperty(LoriDashboard.prototype, 'leftSidebar', {
     get: function () {
-      var $receiver = this.leftSidebar_bu0mf$_0;
-      new PropertyMetadata('leftSidebar');
-      return $receiver.value;
+      return this.leftSidebar_bu0mf$_0.value;
     }
   });
   Object.defineProperty(LoriDashboard.prototype, 'rightSidebar', {
     get: function () {
-      var $receiver = this.rightSidebar_6drdtm$_0;
-      new PropertyMetadata('rightSidebar');
-      return $receiver.value;
+      return this.rightSidebar_6drdtm$_0.value;
     }
   });
   Object.defineProperty(LoriDashboard.prototype, 'loadingScreen', {
     get: function () {
-      var $receiver = this.loadingScreen_dfu46y$_0;
-      new PropertyMetadata('loadingScreen');
-      return $receiver.value;
+      return this.loadingScreen_dfu46y$_0.value;
     }
   });
   LoriDashboard.prototype.showLoadingBar_pdl1vj$ = function (text) {
@@ -886,6 +1149,575 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       hide.addClass('blurSection');
     }
   };
+  LoriDashboard.prototype.enableBlur_61zpoe$ = function (toBeHidden) {
+    var hide = jq(toBeHidden);
+    hide.removeClass('noBlur');
+    hide.addClass('blurSection');
+  };
+  LoriDashboard.prototype.disableBlur_61zpoe$ = function (toBeUnhidden) {
+    var hide = jq(toBeUnhidden);
+    hide.removeClass('blurSection');
+    hide.addClass('noBlur');
+  };
+  function LoriDashboard$configureTextChannelSelect$ObjectLiteral() {
+  }
+  LoriDashboard$configureTextChannelSelect$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: []
+  };
+  function LoriDashboard$configureTextChannelSelect$ObjectLiteral_0() {
+  }
+  LoriDashboard$configureTextChannelSelect$ObjectLiteral_0.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: []
+  };
+  function LoriDashboard$configureTextChannelSelect$lambda(str) {
+    return str;
+  }
+  function LoriDashboard$configureTextChannelSelect$lambda$lambda(closure$modal) {
+    return function () {
+      closure$modal.close();
+      window.location.reload();
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextChannelSelect$lambda$lambda_0(closure$modal) {
+    return function () {
+      closure$modal.close();
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextChannelSelect$lambda_0(closure$selectChannelDropdown, closure$serverConfig) {
+    return function (event, a) {
+      var tmp$;
+      var channelId = typeof (tmp$ = closure$selectChannelDropdown.val()) === 'string' ? tmp$ : throwCCE();
+      var $receiver = closure$serverConfig.textChannels;
+      var firstOrNull$result;
+      firstOrNull$break: do {
+        var tmp$_0;
+        for (tmp$_0 = 0; tmp$_0 !== $receiver.length; ++tmp$_0) {
+          var element = $receiver[tmp$_0];
+          if (equals(element.id, channelId)) {
+            firstOrNull$result = element;
+            break firstOrNull$break;
+          }
+        }
+        firstOrNull$result = null;
+      }
+       while (false);
+      var channel = firstOrNull$result;
+      if (channel != null && !channel.canTalk) {
+        event.preventDefault();
+        closure$selectChannelDropdown.select2('close');
+        var modal = new TingleModal(new TingleOptions(true, void 0, void 0, void 0, ['tingle-modal--overflow']));
+        modal.setContent(jq('<div>').append(jq('<div>').addClass('category-name').text(anonymous.locale.get_25kzsl$('DASHBOARD_NoPermission', []))).append(jq('<div>').css('text-align', 'center').append(jq('<img>').attr('src', 'https://mrpowergamerbr.com/uploads/2018-06-17_11-19-43.gif').css('width', '100%'))).append(jq('<div>').css('text-align', 'center').append(jq('<p>').text('Atualmente eu n\xE3o consigo falar no canal que voc\xEA deseja porque eu n\xE3o tenho permiss\xE3o para isto... \uD83D\uDE2D')).append(jq('<p>').text('Para eu conseguir falar neste canal, clique com bot\xE3o direito no canal que voc\xEA deseja que eu possa falar, v\xE1 nas permiss\xF5es, adicione um permission override para mim e d\xEA permiss\xE3o para que eu possa ler mensagens e enviar mensagens!'))).html());
+        modal.addFooterBtn('<i class="far fa-thumbs-up"><\/i> J\xE1 arrumei!', 'button-discord button-discord-info pure-button button-discord-modal', LoriDashboard$configureTextChannelSelect$lambda$lambda(modal));
+        modal.addFooterBtn('<i class="fas fa-times"><\/i> Fechar', 'button-discord pure-button button-discord-modal button-discord-modal-secondary-action', LoriDashboard$configureTextChannelSelect$lambda$lambda_0(modal));
+        modal.open();
+      }
+      return Unit;
+    };
+  }
+  LoriDashboard.prototype.configureTextChannelSelect_mtmww3$ = function (selectChannelDropdown, serverConfig, selectedChannelId) {
+    var tmp$, tmp$_0;
+    var optionData = ArrayList_init();
+    tmp$ = serverConfig.textChannels;
+    for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
+      var it = tmp$[tmp$_0];
+      var option = new LoriDashboard$configureTextChannelSelect$ObjectLiteral();
+      option.id = it.id;
+      var text = '<span style=' + '"' + 'font-weight: 600;' + '"' + '>#' + it.name + '<\/span>';
+      option.text = text;
+      if (!it.canTalk) {
+        option.text = text + ' <span class=' + '"' + 'keyword' + '"' + ' style=' + '"' + 'background-color: rgb(231, 76, 60);' + '"' + '>' + replace(anonymous.locale.get_25kzsl$('DASHBOARD_NoPermission', []), '!', '') + '<\/span>';
+      }
+      if (equals(it.id, selectedChannelId))
+        option.selected = true;
+      optionData.add_11rb$(option);
+    }
+    var options = new LoriDashboard$configureTextChannelSelect$ObjectLiteral_0();
+    options.data = copyToArray(optionData);
+    options.escapeMarkup = LoriDashboard$configureTextChannelSelect$lambda;
+    selectChannelDropdown.select2(options);
+    selectChannelDropdown.on('select2:select', LoriDashboard$configureTextChannelSelect$lambda_0(selectChannelDropdown, serverConfig));
+  };
+  function LoriDashboard$configureTextArea$lambda$ObjectLiteral() {
+  }
+  LoriDashboard$configureTextArea$lambda$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: []
+  };
+  function LoriDashboard$configureTextArea$lambda$lambda(data, textStatus, event) {
+    println(data);
+    return Unit;
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda_0(event, textStatus, errorThrown) {
+    println('Status: ' + toString(event.status));
+    println(event.response);
+    return Unit;
+  }
+  function LoriDashboard$configureTextArea$lambda(closure$textChannelSelect, closure$jquery) {
+    return function (event, args) {
+      var tmp$, tmp$_0;
+      if (closure$textChannelSelect != null) {
+        tmp$_0 = typeof (tmp$ = closure$textChannelSelect.val()) === 'string' ? tmp$ : throwCCE();
+      }
+       else {
+        tmp$_0 = null;
+      }
+      var textChannelId = tmp$_0;
+      var json_0 = json([to('channelId', textChannelId), to('message', closure$jquery.val()), to('sources', ['user', 'member'])]);
+      var dynamic = new LoriDashboard$configureTextArea$lambda$ObjectLiteral();
+      dynamic.url = anonymous.loriUrl + 'api/v1/guild/' + guildId + '/send-message';
+      dynamic.type = 'POST';
+      dynamic.dataType = 'json';
+      dynamic.data = JSON.stringify(json_0);
+      dynamic.success = LoriDashboard$configureTextArea$lambda$lambda;
+      dynamic.error = LoriDashboard$configureTextArea$lambda$lambda_0;
+      jQuery.ajax(dynamic);
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$replaceAndConvert(closure$serverConfig, this$LoriDashboard, closure$converter) {
+    return function (text) {
+      var _text = this$LoriDashboard.replaceTokens_9iii47$(text, closure$serverConfig);
+      _text = closure$converter.makeHtml(_text);
+      return jq(_text).html();
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda(closure$color) {
+    return function ($receiver) {
+      if (closure$color != null) {
+        var aux = '000000' + toString_0(closure$color >>> 0, 16);
+        var hex = '#' + slice(aux, until(aux.length - 6 | 0, aux.length));
+        println('Hex: ' + hex);
+        set_style($receiver, 'background-color: ' + hex + ';');
+      }
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$name, closure$replaceAndConvert) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$replaceAndConvert(ensureNotNull(closure$name)));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$name, closure$replaceAndConvert) {
+    return function ($receiver) {
+      unsafe($receiver, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$name, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$name, closure$replaceAndConvert) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$replaceAndConvert(ensureNotNull(closure$name)));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$name, closure$replaceAndConvert) {
+    return function ($receiver) {
+      unsafe($receiver, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$name, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert) {
+    return function ($receiver) {
+      var tmp$, tmp$_0, tmp$_1;
+      var iconUrl = (tmp$ = closure$author['icon_url']) == null || typeof tmp$ === 'string' ? tmp$ : throwCCE();
+      if (iconUrl != null) {
+        img($receiver, void 0, this$LoriDashboard.replaceTokens_9iii47$(iconUrl, closure$serverConfig), 'embed-author-icon');
+      }
+      var url = (tmp$_0 = closure$author['url']) == null || typeof tmp$_0 === 'string' ? tmp$_0 : throwCCE();
+      var name = (tmp$_1 = closure$author['name']) == null || typeof tmp$_1 === 'string' ? tmp$_1 : throwCCE();
+      if (url != null) {
+        a($receiver, url, void 0, 'embed-author-name', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda(name, closure$replaceAndConvert));
+      }
+       else {
+        span($receiver, 'embed-author-name', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(name, closure$replaceAndConvert));
+      }
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$title, closure$replaceAndConvert) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$replaceAndConvert(closure$title));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$title, closure$replaceAndConvert) {
+    return function ($receiver) {
+      unsafe($receiver, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$title, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$title, closure$replaceAndConvert) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$replaceAndConvert(closure$title));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$title, closure$replaceAndConvert) {
+    return function ($receiver) {
+      unsafe($receiver, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$title, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$description, closure$replaceAndConvert) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$replaceAndConvert(closure$description));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$description, closure$replaceAndConvert) {
+    return function ($receiver) {
+      unsafe($receiver, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$description, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$name, closure$replaceAndConvert) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$replaceAndConvert(closure$name));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$name, closure$replaceAndConvert) {
+    return function ($receiver) {
+      unsafe($receiver, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$name, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$value, closure$replaceAndConvert) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$replaceAndConvert(closure$value));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$value, closure$replaceAndConvert) {
+    return function ($receiver) {
+      unsafe($receiver, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$value, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$name, closure$replaceAndConvert, closure$value) {
+    return function ($receiver) {
+      div($receiver, 'embed-field-name', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$name, closure$replaceAndConvert));
+      div($receiver, 'embed-field-value markup', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$value, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$fields, closure$replaceAndConvert) {
+    return function ($receiver) {
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
+      tmp$ = closure$fields;
+      for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
+        var field = tmp$[tmp$_0];
+        var name = (tmp$_1 = field['name']) == null || typeof tmp$_1 === 'string' ? tmp$_1 : throwCCE();
+        var value = (tmp$_2 = field['value']) == null || typeof tmp$_2 === 'string' ? tmp$_2 : throwCCE();
+        var inline = (tmp$_4 = (tmp$_3 = field['inline']) == null || typeof tmp$_3 === 'boolean' ? tmp$_3 : throwCCE()) != null ? tmp$_4 : false;
+        if (name != null && value != null) {
+          div($receiver, 'embed-field' + (inline ? ' embed-field-inline' : ''), LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda$lambda_4(name, closure$replaceAndConvert, value));
+        }
+      }
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda(closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields) {
+    return function ($receiver) {
+      if (closure$author != null) {
+        div($receiver, 'embed-author', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda(closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert));
+      }
+      if (closure$title != null) {
+        if (closure$url != null) {
+          a($receiver, void 0, closure$url, 'embed-title', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$title, closure$replaceAndConvert));
+        }
+         else {
+          span($receiver, 'embed-title', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_1(closure$title, closure$replaceAndConvert));
+        }
+      }
+      if (closure$description != null) {
+        div($receiver, 'embed-description markup', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$description, closure$replaceAndConvert));
+      }
+      if (closure$fields != null) {
+        div($receiver, 'embed-fields', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$fields, closure$replaceAndConvert));
+      }
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda_0($receiver) {
+    set_style($receiver, 'max-width: 80px; max-height: 80px;');
+    return Unit;
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda(closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields, closure$thumbnailUrl) {
+    return function ($receiver) {
+      div($receiver, 'embed-content-inner', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda(closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields));
+      if (closure$thumbnailUrl != null) {
+        img($receiver, void 0, this$LoriDashboard.replaceTokens_9iii47$(closure$thumbnailUrl, closure$serverConfig), void 0, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda_0);
+      }
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda_0(closure$imageUrl, closure$serverConfig, this$LoriDashboard) {
+    return function ($receiver) {
+      img($receiver, void 0, this$LoriDashboard.replaceTokens_9iii47$(closure$imageUrl, closure$serverConfig), 'image');
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda_1($receiver) {
+    $receiver.width = '20';
+    $receiver.height = '20';
+    return Unit;
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$text, closure$replaceAndConvert) {
+    return function ($receiver) {
+      $receiver.unaryPlus_pdl1vz$(closure$replaceAndConvert(closure$text));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda_2(closure$text, closure$replaceAndConvert) {
+    return function ($receiver) {
+      unsafe($receiver, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda$lambda_4(closure$text, closure$replaceAndConvert));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda_1(closure$footer, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert) {
+    return function ($receiver) {
+      var tmp$, tmp$_0;
+      var iconUrl = (tmp$ = closure$footer['icon_url']) == null || typeof tmp$ === 'string' ? tmp$ : throwCCE();
+      var text = (tmp$_0 = closure$footer['text']) == null || typeof tmp$_0 === 'string' ? tmp$_0 : throwCCE();
+      if (iconUrl != null) {
+        img($receiver, void 0, this$LoriDashboard.replaceTokens_9iii47$(iconUrl, closure$serverConfig), 'embed-footer-icon', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda_1);
+      }
+      if (text != null) {
+        span($receiver, 'embed-footer', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda$lambda_2(text, closure$replaceAndConvert));
+      }
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda_0(closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields, closure$thumbnailUrl, closure$imageUrl, closure$footer) {
+    return function ($receiver) {
+      div($receiver, 'embed-content', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda(closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields, closure$thumbnailUrl));
+      if (closure$imageUrl != null) {
+        a($receiver, void 0, void 0, 'embed-thumbnail embed-thumbnail-rich', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda_0(closure$imageUrl, closure$serverConfig, this$LoriDashboard));
+      }
+      if (closure$footer != null) {
+        div($receiver, void 0, LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda$lambda_1(closure$footer, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert));
+      }
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda$lambda(closure$color, closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields, closure$thumbnailUrl, closure$imageUrl, closure$footer) {
+    return function ($receiver) {
+      div($receiver, 'embed-color-pill', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda(closure$color));
+      div($receiver, 'embed embed-rich', LoriDashboard$configureTextArea$lambda$lambda$lambda$lambda_0(closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields, closure$thumbnailUrl, closure$imageUrl, closure$footer));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda$lambda_1(closure$color, closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields, closure$thumbnailUrl, closure$imageUrl, closure$footer) {
+    return function ($receiver) {
+      div($receiver, 'embed-wrapper', LoriDashboard$configureTextArea$lambda$lambda$lambda(closure$color, closure$author, closure$serverConfig, this$LoriDashboard, closure$replaceAndConvert, closure$title, closure$url, closure$description, closure$fields, closure$thumbnailUrl, closure$imageUrl, closure$footer));
+      return Unit;
+    };
+  }
+  function LoriDashboard$configureTextArea$lambda_0(closure$jquery, closure$extendedMode, closure$markdownPreview, closure$serverConfig, this$LoriDashboard, closure$converter) {
+    return function (event, args) {
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
+      var description = typeof (tmp$ = closure$jquery.val()) === 'string' ? tmp$ : throwCCE();
+      try {
+        var json = JSON.parse(replace(description, '\r', ''));
+        tmp$_0 = json['content'] != null || json['embed'] != null;
+      }
+       catch (e) {
+        tmp$_0 = false;
+      }
+      var isUsingExtendedMode = tmp$_0;
+      if (isUsingExtendedMode) {
+        closure$extendedMode.css('display', '');
+        var json_0 = JSON.parse(replace(description, '\r', ''));
+        closure$markdownPreview.empty();
+        var content = json_0['content'];
+        var embed = json_0['embed'];
+        if (content != null && typeof content === 'string') {
+          description = this$LoriDashboard.replaceTokens_9iii47$(content, closure$serverConfig);
+          description = closure$converter.makeHtml(description);
+          closure$markdownPreview.append(description);
+        }
+        if (embed != null) {
+          var markdownEmbedConverter = new ShowdownConverter();
+          markdownEmbedConverter.setOption('simpleLineBreaks', true);
+          var replaceAndConvert = LoriDashboard$configureTextArea$lambda$replaceAndConvert(closure$serverConfig, this$LoriDashboard, closure$converter);
+          var embed_0 = Kotlin.isType(tmp$_1 = embed, Object) ? tmp$_1 : throwCCE();
+          var color = (tmp$_2 = embed_0['color']) == null || typeof tmp$_2 === 'number' ? tmp$_2 : throwCCE();
+          var author = embed_0['author'];
+          var title = (tmp$_3 = embed_0['title']) == null || typeof tmp$_3 === 'string' ? tmp$_3 : throwCCE();
+          var url = (tmp$_4 = embed_0['url']) == null || typeof tmp$_4 === 'string' ? tmp$_4 : throwCCE();
+          var description_0 = (tmp$_5 = embed_0['description']) == null || typeof tmp$_5 === 'string' ? tmp$_5 : throwCCE();
+          var fields = (tmp$_6 = embed_0['fields']) == null || Kotlin.isArray(tmp$_6) ? tmp$_6 : throwCCE();
+          var thumbnailObj = embed_0['thumbnail'];
+          var thumbnailUrl = (tmp$_7 = thumbnailObj != null ? thumbnailObj['url'] : null) == null || typeof tmp$_7 === 'string' ? tmp$_7 : throwCCE();
+          var imageObj = embed_0['image'];
+          var imageUrl = (tmp$_8 = imageObj != null ? imageObj['url'] : null) == null || typeof tmp$_8 === 'string' ? tmp$_8 : throwCCE();
+          var footer = embed_0['footer'];
+          var stringBuilder = new StringBuilder();
+          div_0(appendHTML(stringBuilder, false), 'accessory', LoriDashboard$configureTextArea$lambda$lambda_1(color, author, closure$serverConfig, this$LoriDashboard, replaceAndConvert, title, url, description_0, fields, thumbnailUrl, imageUrl, footer));
+          closure$markdownPreview.append(stringBuilder.toString());
+        }
+      }
+       else {
+        closure$extendedMode.css('display', 'none');
+        description = this$LoriDashboard.replaceTokens_9iii47$(description, closure$serverConfig);
+        description = closure$converter.makeHtml(description);
+        closure$markdownPreview.html(description);
+      }
+      return Unit;
+    };
+  }
+  LoriDashboard.prototype.configureTextArea_ntroki$ = function (jquery, markdownPreview, serverConfig, sendTestMessages, textChannelSelect) {
+    if (markdownPreview === void 0)
+      markdownPreview = false;
+    if (sendTestMessages === void 0)
+      sendTestMessages = false;
+    if (textChannelSelect === void 0)
+      textChannelSelect = null;
+    var div = jq('<div>').css('position', 'relative');
+    div.insertBefore(jquery);
+    jquery.appendTo(div);
+    var extendedMode = jq('<div>').html('<i class="fas fa-code"><\/i> Extended Mode').css('background-color', 'green').css('top', '0px').css('right', '0px').css('position', 'absolute').css('color', 'white').css('opacity', '0.75').css('padding', '3px').css('border-radius', '0px 3px 0px 8px').css('display', 'none').css('margin-top', '8px');
+    div.append(extendedMode);
+    autosize(jquery);
+    if (sendTestMessages) {
+      var button = jq('<button>').addClass('button-discord button-discord-info pure-button').html('<i class=' + '"' + 'fas fa-paper-plane' + '"' + '><\/i> ' + anonymous.locale.get_25kzsl$('DASHBOARD_TestMessage', []));
+      button.on('click', LoriDashboard$configureTextArea$lambda(textChannelSelect, jquery));
+      button.insertAfter(jquery);
+    }
+    if (markdownPreview) {
+      var markdownPreview_0 = jq('<div>').attr('id', jquery.attr('id') + '-markdownpreview');
+      var converter = new ShowdownConverter();
+      converter.setOption('simpleLineBreaks', true);
+      jquery.on('input', LoriDashboard$configureTextArea$lambda_0(jquery, extendedMode, markdownPreview_0, serverConfig, this, converter));
+      markdownPreview_0.insertAfter(jquery);
+    }
+    jquery.trigger('input', null);
+  };
+  var LinkedHashMap_init = Kotlin.kotlin.collections.LinkedHashMap_init_q3lmfv$;
+  var StringBuilder_init = Kotlin.kotlin.text.StringBuilder_init_za3lpa$;
+  LoriDashboard.prototype.replaceTokens_9iii47$ = function (text, serverConfig, customTokens) {
+    if (customTokens === void 0) {
+      customTokens = LinkedHashMap_init();
+    }
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
+    var selfUser = (tmp$ = serverConfig != null ? serverConfig.selfUser : null) != null ? tmp$ : new Member('123170274651668480', 'Loritta', '0219', anonymous.loriUrl + 'assets/img/unknown.png');
+    var message = text;
+    var mentionUser = '<span class=' + '"' + 'discord-mention' + '"' + '>@' + selfUser.name + '<\/span>';
+    var user = selfUser.name;
+    var userDiscriminator = selfUser.discriminator;
+    var userId = selfUser.id;
+    var nickname = selfUser.name;
+    var avatarUrl = selfUser.avatar;
+    var guildName = '';
+    var guildSize = '';
+    var mentionOwner = '';
+    var owner = '';
+    if (serverConfig != null) {
+      guildName = serverConfig.guildName;
+      guildSize = serverConfig.members.length.toString();
+    }
+    tmp$_0 = customTokens.entries.iterator();
+    while (tmp$_0.hasNext()) {
+      var tmp$_8 = tmp$_0.next();
+      var token = tmp$_8.key;
+      var value = tmp$_8.value;
+      message = replace(message, '{' + token + '}', value != null ? value : '\uD83E\uDD37');
+    }
+    message = replace(message, '{@user}', mentionUser);
+    message = replace(message, '{user}', user);
+    message = replace(message, '{user-id}', userId);
+    message = replace(message, '{user-avatar-url}', avatarUrl);
+    message = replace(message, '{user-discriminator}', userDiscriminator);
+    message = replace(message, '{nickname}', nickname);
+    message = replace(message, '{guild}', guildName);
+    message = replace(message, '{guild-size}', guildSize);
+    message = replace(message, '{@owner}', mentionOwner);
+    message = replace(message, '{owner}', owner);
+    if (serverConfig != null) {
+      tmp$_1 = serverConfig.textChannels;
+      for (tmp$_2 = 0; tmp$_2 !== tmp$_1.length; ++tmp$_2) {
+        var textChannel = tmp$_1[tmp$_2];
+        message = replace(message, '#' + textChannel.name, '<#' + textChannel.id + '>');
+        message = replace(message, '<#' + textChannel.id + '>', '<span class=' + '"' + 'discord-mention' + '"' + '>#' + textChannel.name + '<\/span>');
+      }
+      tmp$_3 = serverConfig.roles;
+      for (tmp$_4 = 0; tmp$_4 !== tmp$_3.length; ++tmp$_4) {
+        var role = tmp$_3[tmp$_4];
+        message = replace(message, '@' + role.name, '<@&' + role.id + '>');
+        var roleSpan = jq('<span>').text('@' + role.name).addClass('discord-mention');
+        if (role.color != null) {
+          roleSpan.css('color', 'rgb(' + role.color.red + ', ' + role.color.green + ', ' + role.color.blue + ')');
+          roleSpan.css('background-color', 'rgba(' + role.color.red + ', ' + role.color.green + ', ' + role.color.blue + ', 0.298039)');
+        }
+        message = replace(message, '<@&' + role.id + '>', typeof (tmp$_5 = roleSpan.prop('outerHTML')) === 'string' ? tmp$_5 : throwCCE());
+      }
+      var memberRegex = Regex_init('<@([0-9]+)>');
+      var input = message;
+      var replace_20wsma$result;
+      replace_20wsma$break: do {
+        var match = memberRegex.find_905azu$(input);
+        if (match == null) {
+          replace_20wsma$result = input.toString();
+          break replace_20wsma$break;
+        }
+        var lastStart = 0;
+        var length = input.length;
+        var sb = StringBuilder_init(length);
+        loop_label: do {
+          var foundMatch = ensureNotNull(match);
+          sb.append_ezbsdh$(input, lastStart, foundMatch.range.start);
+          var tmp$_9 = sb.append_gw00v9$;
+          var transform$result;
+          var id = foundMatch.groupValues.get_za3lpa$(1);
+          var $receiver = serverConfig.members;
+          var firstOrNull$result;
+          firstOrNull$break: do {
+            var tmp$_10;
+            for (tmp$_10 = 0; tmp$_10 !== $receiver.length; ++tmp$_10) {
+              var element = $receiver[tmp$_10];
+              if (equals(element.id, id)) {
+                firstOrNull$result = element;
+                break firstOrNull$break;
+              }
+            }
+            firstOrNull$result = null;
+          }
+           while (false);
+          var memberResult = firstOrNull$result;
+          if (memberResult != null) {
+            transform$result = '<span class=' + '"' + 'discord-mention' + '"' + '>@' + memberResult.name + '<\/span>';
+          }
+           else {
+            transform$result = foundMatch.value;
+          }
+          tmp$_9.call(sb, transform$result);
+          lastStart = foundMatch.range.endInclusive + 1 | 0;
+          match = foundMatch.next();
+        }
+         while (lastStart < length && match != null);
+        if (lastStart < length) {
+          sb.append_ezbsdh$(input, lastStart, length);
+        }
+        replace_20wsma$result = sb.toString();
+      }
+       while (false);
+      message = replace_20wsma$result;
+      var regex = Regex_init_0('<:([A-z0-9_-]+):([0-9]+)>', RegexOption.MULTILINE);
+      message = regex.replace_x2uqeu$(message, '<img class="inline-emoji" src="https://cdn.discordapp.com/emojis/$2.png?v=1">');
+      tmp$_6 = serverConfig.emotes;
+      for (tmp$_7 = 0; tmp$_7 !== tmp$_6.length; ++tmp$_7) {
+        var emote = tmp$_6[tmp$_7];
+        message = replace(message, ':' + emote.name + ':', '<:' + emote.name + ':' + emote.id + '>');
+      }
+      message = regex.replace_x2uqeu$(message, '<img class="inline-emoji" src="https://cdn.discordapp.com/emojis/$2.png?v=1">');
+    }
+    return message;
+  };
   function LoriDashboard$wrapper$lambda() {
     return jq('#server-configuration');
   }
@@ -919,6 +1751,10 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   function stringify($receiver) {
     return JSON.stringify($receiver);
   }
+  function toString_0($receiver, radix) {
+    var value = $receiver;
+    return value.toString(radix);
+  }
   function SaveStuff() {
     SaveStuff_instance = this;
   }
@@ -926,26 +1762,43 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     return function (index, _elem) {
       var elem = jQuery(_elem);
       println(elem.attr('type') + ' - ' + elem.attr('id') + ' - ' + toString(elem.val()));
-      if (equals(elem.attr('type'), 'checkbox')) {
-        println('Handling as checkbox...');
-        closure$config[elem.attr('data-internal-name')] = elem.is(':checked');
-      }
-       else {
-        closure$config[elem.attr('data-internal-name')] = elem.val();
+      var type = elem.attr('type');
+      switch (type) {
+        case 'checkbox':
+          closure$config[elem.attr('data-internal-name')] = elem.is(':checked');
+          break;
+        case 'number':
+          closure$config[elem.attr('data-internal-name')] = toDoubleOrNull(elem.val().toString());
+          break;
+        default:closure$config[elem.attr('data-internal-name')] = elem.val();
+          break;
       }
       return Unit;
     };
   }
-  function SaveStuff$prepareSave$lambda_0(a, b, c) {
-    println('Received from server: ' + toString(a));
+  function SaveStuff$prepareSave$ObjectLiteral() {
+  }
+  SaveStuff$prepareSave$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: []
+  };
+  function SaveStuff$prepareSave$lambda_0() {
+    println('Done!');
     LoriDashboard_getInstance().hideLoadingBar();
     return Unit;
   }
-  SaveStuff.prototype.prepareSave = function (type, extras, showSaveScreen) {
+  function SaveStuff$prepareSave$lambda_1() {
+    println('Error!');
+    LoriDashboard_getInstance().hideLoadingBar();
+    return Unit;
+  }
+  SaveStuff.prototype.prepareSave = function (type, extras, showSaveScreen, endpoint) {
     if (extras === void 0)
       extras = null;
     if (showSaveScreen === void 0)
       showSaveScreen = true;
+    if (endpoint === void 0)
+      endpoint = anonymous.loriUrl + 'api/v1/guild/' + guildId + '/config/';
     println('Preparing saving stuff...');
     var json_0 = json([]);
     var config = json([]);
@@ -959,7 +1812,14 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
       LoriDashboard_getInstance().showLoadingBar_pdl1vj$('Salvando...');
     println('Sending save stuff... kthxbye!');
     println('Sending: ' + JSON.stringify(json_0));
-    jQuery.post('https://loritta.website/api/v1/config/update-server-config/?guildId=' + guildId, JSON.stringify(json_0), SaveStuff$prepareSave$lambda_0);
+    var dynamic = new SaveStuff$prepareSave$ObjectLiteral();
+    dynamic.url = endpoint;
+    dynamic.type = 'PATCH';
+    dynamic.dataType = 'json';
+    dynamic.data = JSON.stringify(json_0);
+    dynamic.success = SaveStuff$prepareSave$lambda_0;
+    dynamic.error = SaveStuff$prepareSave$lambda_1;
+    jQuery.ajax(dynamic);
   };
   SaveStuff.$metadata$ = {
     kind: Kind_OBJECT,
@@ -990,6 +1850,17 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   AutoroleConfig.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'AutoroleConfig',
+    interfaces: []
+  };
+  function EconomyConfig() {
+    this.isEnabled = false;
+    this.economyName = null;
+    this.economyNamePlural = null;
+    this.exchangeRate = null;
+  }
+  EconomyConfig.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'EconomyConfig',
     interfaces: []
   };
   function ModerationConfig() {
@@ -1096,6 +1967,38 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   PartnerConfig.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'PartnerConfig',
+    interfaces: []
+  };
+  function StoreItem(name, price, code, description, imageUrl) {
+    this.name = name;
+    this.price = price;
+    this.code = code;
+    this.description = description;
+    this.imageUrl = imageUrl;
+  }
+  StoreItem.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'StoreItem',
+    interfaces: []
+  };
+  function WelcomerConfig() {
+    this.isEnabled = false;
+    this.tellOnJoin = true;
+    this.tellOnLeave = true;
+    this.joinMessage = '\uD83D\uDC49 {@user} entrou no servidor!';
+    this.leaveMessage = '\uD83D\uDC48 {nickname} saiu do servidor!';
+    this.canalJoinId = null;
+    this.canalLeaveId = null;
+    this.tellOnPrivate = false;
+    this.joinPrivateMessage = 'Obrigado por entrar na {guild} {@user}! Espero que voc\xEA curta o nosso servidor!';
+    this.tellOnBan = false;
+    this.banMessage = '';
+    this.tellOnKick = false;
+    this.kickMessage = '';
+  }
+  WelcomerConfig.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'WelcomerConfig',
     interfaces: []
   };
   function AbstractCommand(name, label, aliases, category, description, usage, detailedUsage, example, extendedExamples, requiredUserPermissions, requiredBotPermissions) {
@@ -1262,6 +2165,25 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     }
   }
   CommandCategory.valueOf_61zpoe$ = CommandCategory$valueOf;
+  function Emote(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+  Emote.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Emote',
+    interfaces: []
+  };
+  function LoriColor(red, green, blue) {
+    this.red = red;
+    this.green = green;
+    this.blue = blue;
+  }
+  LoriColor.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'LoriColor',
+    interfaces: []
+  };
   function LorittaPartner() {
     LorittaPartner_instance = this;
   }
@@ -1667,24 +2589,42 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     }
     return LorittaPartner_instance;
   }
-  function Role(id, name, isPublicRole, isManaged, canInteract) {
+  function Member(id, name, discriminator, avatar) {
+    this.id = id;
+    this.name = name;
+    this.discriminator = discriminator;
+    this.avatar = avatar;
+  }
+  Member.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Member',
+    interfaces: []
+  };
+  function Role(id, name, isPublicRole, isManaged, canInteract, color) {
     this.id = id;
     this.name = name;
     this.isPublicRole = isPublicRole;
     this.isManaged = isManaged;
     this.canInteract = canInteract;
+    this.color = color;
   }
   Role.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Role',
     interfaces: []
   };
-  function ServerConfig(serverListConfig, moderationConfig, autoroleConfig, textChannels, roles) {
+  function ServerConfig(serverListConfig, moderationConfig, autoroleConfig, joinLeaveConfig, textChannels, roles, members, emotes, permissions, selfUser, guildName) {
     this.serverListConfig = serverListConfig;
     this.moderationConfig = moderationConfig;
     this.autoroleConfig = autoroleConfig;
+    this.joinLeaveConfig = joinLeaveConfig;
     this.textChannels = textChannels;
     this.roles = roles;
+    this.members = members;
+    this.emotes = emotes;
+    this.permissions = permissions;
+    this.selfUser = selfUser;
+    this.guildName = guildName;
   }
   ServerConfig.$metadata$ = {
     kind: Kind_CLASS,
@@ -1707,11 +2647,24 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   Object.defineProperty(_, 'ConfigureAutoroleView', {
     get: ConfigureAutoroleView_getInstance
   });
+  Object.defineProperty(_, 'ConfigureEconomyView', {
+    get: ConfigureEconomyView_getInstance
+  });
   Object.defineProperty(_, 'ConfigureModerationView', {
     get: ConfigureModerationView_getInstance
   });
   Object.defineProperty(_, 'ConfigurePartnerView', {
     get: ConfigurePartnerView_getInstance
+  });
+  Object.defineProperty(_, 'ConfigureProfileView', {
+    get: ConfigureProfileView_getInstance
+  });
+  Object.defineProperty(_, 'ConfigureWelcomerView', {
+    get: ConfigureWelcomerView_getInstance
+  });
+  DonateView.prototype.RewardTier = DonateView$RewardTier;
+  Object.defineProperty(_, 'DonateView', {
+    get: DonateView_getInstance
   });
   Object.defineProperty(_, 'LoriDashboard', {
     get: LoriDashboard_getInstance
@@ -1719,12 +2672,14 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   _.toJson_th5c7u$ = toJson;
   _.toJson_s8jyvk$ = toJson_0;
   _.stringify_s8jyvk$ = stringify;
+  _.toString_dqglrj$ = toString_0;
   Object.defineProperty(_, 'SaveStuff', {
     get: SaveStuff_getInstance
   });
   AutoroleConfig.RoleVoteReward = AutoroleConfig$RoleVoteReward;
   var package$userdata = _.userdata || (_.userdata = {});
   package$userdata.AutoroleConfig = AutoroleConfig;
+  package$userdata.EconomyConfig = EconomyConfig;
   ModerationConfig.WarnAction = ModerationConfig$WarnAction;
   ModerationConfig.Warn = ModerationConfig$Warn;
   Object.defineProperty(ModerationConfig$PunishmentAction, 'BAN', {
@@ -1742,6 +2697,8 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   ModerationConfig.PunishmentAction = ModerationConfig$PunishmentAction;
   package$userdata.ModerationConfig = ModerationConfig;
   package$userdata.PartnerConfig = PartnerConfig;
+  package$userdata.StoreItem = StoreItem;
+  package$userdata.WelcomerConfig = WelcomerConfig;
   var package$utils = _.utils || (_.utils = {});
   package$utils.AbstractCommand = AbstractCommand;
   Object.defineProperty(CommandCategory, 'FUN', {
@@ -1790,6 +2747,8 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
     get: CommandCategory$MAGIC_getInstance
   });
   package$utils.CommandCategory = CommandCategory;
+  package$utils.Emote = Emote;
+  package$utils.LoriColor = LoriColor;
   Object.defineProperty(LorittaPartner$Keyword, 'GAMING', {
     get: LorittaPartner$Keyword$GAMING_getInstance
   });
@@ -1916,6 +2875,7 @@ var LoriDashboard = function (_, Kotlin, $module$LoriUtils, $module$kotlinx_html
   Object.defineProperty(package$utils, 'LorittaPartner', {
     get: LorittaPartner_getInstance
   });
+  package$utils.Member = Member;
   package$utils.Role = Role;
   package$utils.ServerConfig = ServerConfig;
   package$utils.TextChannel = TextChannel;

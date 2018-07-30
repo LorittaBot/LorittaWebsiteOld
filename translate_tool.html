@@ -27,12 +27,19 @@ var converter = new showdown.Converter()
 </div>
 <div class="topnavRight">
   <div class="rightEntries">
+  <a id="themeChanger" class="left-border" onclick="changeTheme(this)"><i class="fas fa-moon" aria-hidden="true"></i></a>
+  <a id="localeChanger" onclick="openLocaleChanger(this)"><i class="fa fa-globe" aria-hidden="true"></i></a>
   {% if discordAuth != null %}
-  <a style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</a>
+  <a href="{{ websiteUrl }}?logout"><i class="fa fa-sign-out-alt" aria-hidden="true"></i></a>
+  <a href="{{ loriUrl }}dashboard">
+  <span style="position: relative;"><span style="width: 0; height: 0; position: relative;"><img alt="Avatar do Usuário" src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 40px; border-radius: 99999px; bottom: -8px; position: absolute;"><img alt="Avatar do Usuário" src="https://cdn.discordapp.com/avatars/{{ userIdentification.id }}/{{ userIdentification.avatar }}.png" style="height: 0px; width: 40px; border-radius: 99999px; visibility: hidden;"></span> {{ userIdentification.username }}</span>
+  </a>
   {% else %}
-  <a href="{{ websiteUrl }}dashboard"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+  <a href="{{ loriUrl }}dashboard">
+  <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Login</a>
   {% endif %}
   </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 </div>
 </div>
@@ -302,5 +309,21 @@ function saveJsonInServer() {
 }
 
 $("#dummyNavbar").css("height", $("#myTopnav").height() + "px");
+
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function myFunction() {
+	var element = $("#myTopnav");
+	if (!element.hasClass("responsive")) {
+		element.addClass("responsive")
+	} else {
+	element.removeClass("responsive")
+	}
+}
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function toggleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
 </script>
 {% endblock %}

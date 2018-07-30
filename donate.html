@@ -58,13 +58,68 @@
 		<h2 class="sectionHeader">
 		{{ WEBSITE_DONATE_HowToHelp|raw }}
 		</h2>
-{{ WEBSITE_DONATE_HelpExplain|raw }}
+{{ WEBSITE_DONATE_HelpingExplain | raw }}
+<hr>
+<div style="text-align: center;">
+<img id="tier-icon" style="height: 128px; width: auto;">
+<h3><span id="tier-name">Eu quero ajudar a Loritta!</span> (R$ <span id="donation-value">3</span>)</h3>
+<input type="range" id="donation-range" step="1" value="1" min="0" max="120" style="width: 100%;">
+<h4>Ao doar R$ <span id="donation-value-machine">3</span>, você me ajuda a ficar <span id="donation-value-hours">0</span> horas online! <img src="https://cdn.discordapp.com/emojis/444281772319047698.gif?v=1" class="inline-emoji"></h4>
+<h4>Ao doar R$ <span id="donation-value-2">3</span>, você ganha...</h4>
+<div id="donation-rewards-wrapper" style="transition: 1s; transition-timing-function: ease; overflow: hidden; position: relative;">
+<ul id="donation-rewards">
+</ul>
+</div>
+<style>
+.tier-reward-header {
+ overflow: hidden;
+ text-align: center;
+color: #7289da;
+font-weight: 600;
+ font-size: 1.5em;
+ line-height: 1.5em;
+ color: #7289da;
+}
+.tier-reward-header:before,
+.tier-reward-header:after {
+ background: rgba(0,0,0,.05);
+ content: "";
+ display: inline-block;
+ height: 1px;
+ position: relative;
+ vertical-align: middle;
+ width: 50%;
+}
+.tier-reward-header:before {
+ right: 0.5em;
+ margin-left: -50%;
+}
+.tier-reward-header:after {
+ left: 0.5em;
+ margin-right: -50%;
+}
+</style>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/jquery.actual.min.js"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriUtils.js?v={{ epochMillis }}"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriDashboard.js?v={{ epochMillis }}"></script>
+<script>
+LoriDashboard.DonateView.start()
+</script>
+</div>
+<hr>
+{{ WEBSITE_DONATE_LikedRewards | raw }}
+<p>{{ WEBSITE_DONATE_ApoiaSe | raw }}</p>
+<p>{{ WEBSITE_DONATE_Patreon | raw }}</p>
+<p>{{ WEBSITE_DONATE_PayPal | raw }}</p>
+<p>{{ WEBSITE_DONATE_MercadoPago | raw }}</p>
+<p>{{ WEBSITE_DONATE_PicPay | raw }}</p>
+<p>{{ WEBSITE_DONATE_Bitcoin | raw }}</p>
 <a href="https://apoia.se/mrpowergamerbr" target="_blank"><div class="button-discord button-discord-info pure-button">APOIA.se</div></a>
 <a href="https://patreon.com/mrpowergamerbr" target="_blank"><div class="button-discord button-discord-info pure-button">Patreon</div></a>
 <a><div class="button-discord button-discord-info pure-button" onclick="openMercadoPagoModal()">MercadoPago</div></a>
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JMDNYD8X3UXVS" target="_blank"><div class="button-discord button-discord-info pure-button">PayPal</div></a>
+<div class="button-discord button-discord-info pure-button" onclick="openPicPayUsernameModal()">PicPay</div>
 <div class="button-discord button-discord-info pure-button" onclick="openBitcoinModal()">Bitcoin & Dogecoin</div>
-{{ WEBSITE_DONATE_Rewards|raw }}
 		</div>
 	</div>
     <div class="pure-u-1 pure-u-md-1-4">
@@ -76,20 +131,40 @@
 </div>
 <div class="oddWrapper">
 <div class="contentWrapper">
+<!-- Donate View 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="1255967811"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <div class="vertically-centered-content">
-<div class="pure-g vertically-centered-content" style="text-align: center;">
-    <div class="pure-u-1 pure-u-md-4-4">
+<div class="pure-g vertically-centered-content" style="text-align: left;">
+    <div class="pure-u-1 pure-u-md-1-4">
+		<img src="https://loritta.website/assets/img/lori_megaphone.png" alt="Loritta gritando em um megafone" style="width: 100%;">
+	</div>
+    <div class="pure-u-1 pure-u-md-3-4">
 		<div class="sectionText">
 		<h2 class="sectionHeader">
-		Patreons
+		{{ WEBSITE_DONATE_ButIDontHaveMoney }}
 		</h2>
-		<p><span style="color: rgb(155, 89, 182); background-color: rgba(155, 89, 182, 0.298039);  font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">@💵🌆 Pagadores do Aluguel (Patreons)</span></p>
-		{% for member in patreons %}
-		<div class="pure-u-1 pure-u-md-1-4">
-			<img style="border-radius: 999999px; width: 75%; background-color: rgb(47, 49, 54);" src="{{ member.user.getEffectiveAvatarUrl }}?size=2048" class="fanclub-server-icon is-invisible"></img></a>
-			<p>{{ member.user.name }}#{{ member.user.discriminator }}</p>
-		</div>
-		{% endfor %}
+		<p>{{ WEBSITE_DONATE_ButIDontHaveMoney_Intro1|raw }} <img src="https://cdn.discordapp.com/emojis/370344565967814659.png?v=1" class="inline-emoji"></p>
+		<p>{{ WEBSITE_DONATE_ButIDontHaveMoney_Intro2|raw }} <img src="https://cdn.discordapp.com/emojis/451143444367409193.gif?v=1" class="inline-emoji"></p>
+		<p>{{ WEBSITE_DONATE_ButIDontHaveMoney_DisableAdBlock|raw }} <img src="https://cdn.discordapp.com/emojis/390665074009702402.png?v=1" class="inline-emoji"></p>
+		<p>{{ WEBSITE_DONATE_ButIDontHaveMoney_VoteDBL|raw }} <a href="https://discordbots.org/bot/loritta/vote">https://discordbots.org/bot/loritta/vote</a> <img src="https://cdn.discordapp.com/emojis/443146256869621787.gif?v=1" class="inline-emoji"></p>
+		<p>{{ WEBSITE_DONATE_ButIDontHaveMoney_Share|raw }} <img src="https://cdn.discordapp.com/emojis/417813932380520448.png?v=1" class="inline-emoji"></p>
+		<p>{{ WEBSITE_DONATE_ButIDontHaveMoney_GitHub|raw }} <img src="https://emojis.slackmojis.com/emojis/images/1467306116/626/github_octocat.png?1467306116" class="inline-emoji"></p>
+		<p>{{ WEBSITE_DONATE_ButIDontHaveMoney_Translate|raw }} <img src="https://cdn.discordapp.com/emojis/427137036252872734.gif?v=1" class="inline-emoji"></p>
+		<p>{{ WEBSITE_DONATE_ButIDontHaveMoney_Referrals|raw }} <img src="https://cdn.discordapp.com/emojis/396521774466203659.gif?v=1" class="inline-emoji"></p>
+		<h3>{{ WEBSITE_DONATE_ButIDontHaveMoney_MyReferrals }}</h3>
+		<a href="https://referral.mercadolivre.com.br/referred?referral_code=y19m0xg" target="_blank"><div class="button-discord button-discord-info pure-button" style="margin: 1px;">MercadoLivre (Comércio)</div></a>
+		<a href="https://www.coinbase.com/join/567a8e192bc9e973650001e9" target="_blank"><div class="button-discord button-discord-info pure-button" style="margin: 1px;">Coinbase (Carteira Virtual)</div></a>
+		<a href="https://payments.reliablesite.net/aff.php?aff=862" target="_blank"><div class="button-discord button-discord-info pure-button" style="margin: 1px;">ReliableSite (Hospedagem)</div></a>
+		<a onclick="openPicPayModal()"><div class="button-discord button-discord-info pure-button" style="margin: 1px;">PicPay (Pagamentos)</div></a>
+		<a href="https://www.celcoin.com.br/convite/6u2nz4ag"><div class="button-discord button-discord-info pure-button" style="margin: 1px;">Celcoin (Cashback)</div></a>
+		<a href="http://convite.beblue.com.br/0ae42dbcd9a745fb86fedae6131febeb"><div class="button-discord button-discord-info pure-button" style="margin: 1px;">Beblue (Cashback)</div></a>
 		</div>
 	</div>
 </div>
@@ -103,9 +178,31 @@
     <div class="pure-u-1 pure-u-md-4-4">
 		<div class="sectionText">
 		<h2 class="sectionHeader">
-		{{ WEBSITE_DONATE_Donators }}
+		Pagadores de Aluguel
 		</h2>
-		<p><span style="color: rgb(113, 54, 138); background-color: rgba(113, 54, 138, 0.298039); font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">@😎🆒 Super Fã Clube da Loritta (Doadores)</span></p>
+		<p><span style="color: rgb(155, 89, 182); background-color: rgba(155, 89, 182, 0.298039);  font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">@💵🌆 Pagadores do Aluguel</span></p>
+		{% for member in patreons %}
+		<div class="pure-u-1 pure-u-md-1-4">
+			<img style="border-radius: 999999px; width: 75%; background-color: rgb(47, 49, 54);" src="{{ member.user.getEffectiveAvatarUrl }}?size=2048" class="fanclub-server-icon is-invisible"></img></a>
+			<p>{{ member.user.name }}#{{ member.user.discriminator }}</p>
+		</div>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="oddWrapper">
+<div class="contentWrapper">
+<div class="vertically-centered-content">
+<div class="pure-g vertically-centered-content" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-4-4">
+		<div class="sectionText">
+		<h2 class="sectionHeader">
+		{{ WEBSITE_DONATE_InactiveContributors }}
+		</h2>
+		<p><span style="color: rgb(153, 170, 181); background-color: rgba(153, 170, 181, 0.298039); font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">😴💸 Contribuidor Inativo</span></p>
 		{% for member in donators %}
 		<div class="pure-u-1 pure-u-md-1-6">
 			<div>
@@ -145,6 +242,18 @@
 <code class="inline">D7gm4YYsMWuYWyuBxrbACfGdVgB9PH4RuY</code>
 </div>
 </div>
+<div class="tingle-demo picpay-modal">
+<div class="test">
+<div class="category-name">PicPay</div>
+<p>Ao criar a sua conta no PicPay, insira o código <code class="inline">29DUQM</code> para ganhar 10R$ de graça no seu primeiro pagamento!</p>
+</div>
+</div>
+<div class="tingle-demo picpay-username-modal">
+<div class="test">
+<div class="category-name">PicPay</div>
+<p>Envie a quantidade que você deseja doar para <code class="inline">@mrpowergamerbr</code> no PicPay</p>
+</div>
+</div>
 <div class="tingle-demo mercadopago-modal">
 <div class="test">
 <div class="category-name">MercadoPago</div>
@@ -164,6 +273,11 @@ Irineu, você não sabe e nem eu
 </div>
 {% endblock %}
 {% block afterScripts %}
+<style>
+.inline-emoji {
+height: 1.5em; vertical-align: -.4em;
+}
+</style>
 <script>
 function openBitcoinModal() {
     var modal = new tingle.modal({
@@ -176,6 +290,38 @@ function openBitcoinModal() {
     });
 	
 	var cloned = $(".bitcoin-modal").clone()
+	
+    modal.setContent(cloned.html());
+	modal.open();
+}
+
+function openPicPayModal() {
+    var modal = new tingle.modal({
+        closeMethods: [],
+        footer: true
+		});
+		
+    modal.addFooterBtn('Fechar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
+		modal.close();
+    });
+	
+	var cloned = $(".picpay-modal").clone()
+	
+    modal.setContent(cloned.html());
+	modal.open();
+}
+
+function openPicPayUsernameModal() {
+    var modal = new tingle.modal({
+        closeMethods: [],
+        footer: true
+		});
+		
+    modal.addFooterBtn('Fechar', "button-discord button-discord-info pure-button button-discord-modal", function(){	
+		modal.close();
+    });
+	
+	var cloned = $(".picpay-username-modal").clone()
 	
     modal.setContent(cloned.html());
 	modal.open();

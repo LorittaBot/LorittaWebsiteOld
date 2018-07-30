@@ -4,14 +4,10 @@
 <div class="category-name">
 Amino & Loritta
 </div>
-{{ generateCheckbox(1, "isEnabled", DASHBOARD_ACTIVATE_MODULE, "", config.isEnabled, true) }}
-<hr>
-<div id="hiddenIfDisabled">
 {{ generateCheckbox(2, "fixAminoImages", DASHBOARD_TransformAminoImages, "", config.fixAminoImages, true) }}
 <hr>
 {{ generateCheckbox(3, "syncAmino", DASHBOARD_SyncAminoCommunities, "", config.syncAmino, true) }}
 <hr>
-<div id="hiddenIfDisabled2">
 <div class="category-name">
 {{ DASHBOARD_AminoCommunities }}
 </div>
@@ -44,11 +40,9 @@ Alguma coisa super topperson aqui
 </div>
 </div>
 </div>
-</div>
 {% endfor %}
 </div>
 </hr>
-</div>
 </div>
 <hr>
 <button onclick="transformCommunitiesToJson()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
@@ -103,7 +97,7 @@ Alguma coisa super topperson aqui
 </div>
 </div>
 </div>
-<script>
+<script data-cfasync="false">
 var typingTimer;
 var editingId = 0;
 var currentId = 0;
@@ -348,40 +342,6 @@ function getCommunityInfo(url) {
 		}
 	}
 }
-
-$("#cmn-toggle-1").click(function(e) {
-	applyBlur()
-});
-
-$("#cmn-toggle-3").click(function(e) {
-	applyBlur2()
-});
-
-function applyBlur() {
-  var e = $("#hiddenIfDisabled");
-  if ($('#cmn-toggle-1').is(':checked')) {
-	e.removeClass();
-	e.addClass("noBlur");
-  } else {
-    e.removeClass();
-	e.addClass("blurSection");
-  }
-}
-
-function applyBlur2() {
-  var e = $("#hiddenIfDisabled2");
-  if ($('#cmn-toggle-3').is(':checked')) {
-	e.removeClass();
-	e.addClass("noBlur");
-  } else {
-    e.removeClass();
-	e.addClass("blurSection");
-  }
-}
-
-applyBlur();
-applyBlur2();
-
 {% for community in config.aminos %}
 downloadInfoAndApply("{{ community.inviteUrl }}", "#{{ guild.getTextChannelById(community.repostToChannelId) }}", $("#{{ community.communityId }}"));
 {% endfor %}

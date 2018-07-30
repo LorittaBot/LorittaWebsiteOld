@@ -10,16 +10,11 @@ Moderação
 <hr>
 <div id="hiddenIfDisabled">
 <div class="flavourText">Canal de punições</div>
-	<select data-send-on-save="true" data-internal-name="punishmentLogChannelId">
-		{% for textChannel in guild.getTextChannels %}
-		{% if textChannel.canTalk %}
-		<option value="{{ textChannel.getId }}" {% if textChannel.getId == config.punishmentLogChannelId %}selected="selected"{% endif %}>{{ textChannel.getName }}</option>
-		{% endif %}
-		{% endfor %}
+	<select data-send-on-save="true" data-internal-name="punishmentLogChannelId" id="punishmentLogChannelId" style="width: 320px;">
 	</select>
 <hr>
 <div class="flavourText">Mensagem que será mostrada ao ser punido</div>
-<textarea data-send-on-save="true" data-internal-name="punishmentLogMessage">{{ config.punishmentLogMessage }}</textarea>
+<textarea data-send-on-save="true" data-internal-name="punishmentLogMessage" id="punishmentLogMessage">{{ config.punishmentLogMessage }}</textarea>
 <hr>
 </div>
 <div class="flavourText">Avisos</div>

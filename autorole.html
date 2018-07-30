@@ -4,25 +4,66 @@
 <div class="category-name">
 Autorole
 </div>
+<div style="text-align: center;">
+<div style="height: 300px; position: relative; display: inline-block; overflow: hidden;">
+<img src="{{ websiteUrl }}assets/img/lori_autorole.png?v4" style="border-radius: 7px; height: 300px;">
+<img src="{{ websiteUrl }}assets/img/lori_autorole_hand.png" style="bottom: -30px; left: 0px; position: absolute;" class="hand-shake" style="border-radius: 7px; position: absolute;">
+</div>
+<style>
+@-webkit-keyframes spaceboots {
+	0% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+	60% { -webkit-transform: translate(0px, 4px) rotate(0deg); }
+	80% { -webkit-transform: translate(0px, -15px) rotate(0deg); }
+  100% { -webkit-transform: translate(0px, 0px); }
+}
+
+.hand-shake {
+	-webkit-animation-name: spaceboots;
+	-webkit-animation-duration: 1.6s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: ease;
+}
+</style>
+<h2>Autorole</h2>
+<p>Autorole serve para você dar cargos para novos membros do seu servidor automaticamente quando eles entrarem no servidor. Chega de dar cargos para novatos manualmente!</p>
+<div id="requiresPermission" class="entry-error flavourText" style="color: #f04747;"></div>
+<hr>
+<!-- Loritta Dashboard 1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="2080512288"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- Loritta Dashboard 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9989170954243288"
+     data-ad-slot="9739510458"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div id="autoroleConfigurationWrapper">
+<hr>
 {{ generateCheckbox(1, "isEnabled", DASHBOARD_ACTIVATE_MODULE, "", serverConfig.autoroleConfig.isEnabled, true) }}
 <hr>
 <div id="hiddenIfDisabled">
 <div class="flavourText">{{ WEBSITE_AUTOROLE_GIVE_ROLE_UPON_JOIN }}</div>
-<div class="toggleSubText">{{ WEBSITE_AUTOROLE_ROLE_ATTENTION }}</div>
-<select name="chooseRole" id="chooseRole">
-	{# {% for role in guild.getRoles %}
-	{% if role.isPublicRole() == false %}
-	{% if role.isManaged() == false %}
-	{% if guild.getSelfMember().canInteract(role) == true %}
-	<option value="{{ role.getId }}">{{ role.getName }}</option>
-	{% endif %}
-	{% endif %}
-	{% endif %}
-	{% endfor %} #}
+<select style="width: 320px;" name="chooseRole" id="chooseRole">
 </select>
 <style>
 option:disabled {
     color: #d4d4d4;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+background-color: rgba(79,84,92,.1);
+color: inherit;
 }
 </style>
 <button type="button" onclick="LoriDashboard.ConfigureAutoroleView.addRoleFromSelection()" class="button-success pure-button">{{ WEBSITE_ADD_IT }}</button>
@@ -35,6 +76,10 @@ option:disabled {
   </tr>
   {% endfor %} #}
 </table>
+{% if environment.name == "CANARY" %}
+<div class="flavourText">Dar cargos por reação</div>
+{% endif %}
+</div>
 </div>
 <hr>
 <script>

@@ -32,6 +32,17 @@ Loritta's Server List
 <textarea data-send-on-save="true" data-internal-name="voteBroadcastMessage" id="voteBroadcastMessage" name="voteBroadcastMessage">{{ config.voteBroadcastMessage }}</textarea>
 </div>
 <hr>
+{{ generateCheckbox(3, "sendOnPromote", "Enviar uma mensagem em um canal quando alguém promover o seu servidor", "", config.sendOnPromote, true) }}
+<hr>
+<div id="hiddenIfDisabled4">
+<div class="flavourText">Canal para anunciar quem promoveu</div>
+<select name="chooseChannel" id="chooseChannel2" data-internal-name="promoteBroadcastChannelId">
+</select>
+<hr>
+<div class="flavourText">Mensagem quando alguém promover</div>
+<textarea data-send-on-save="true" data-internal-name="promoteBroadcastMessage" id="promoteBroadcastMessage" name="promoteBroadcastMessage">{{ config.promoteBroadcastMessage }}</textarea>
+</div>
+<hr>
 <div id="hiddenInfo2" class="flavourText" style="color: #f04747;"></div>
 <div id="hiddenIfDisabled2">
 <div class="flavourText">Vanity URL</div>
@@ -41,22 +52,11 @@ Loritta's Server List
 <hr>
 <button onclick="LoriDashboard.ConfigurePartnerView.prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
 <br style="clear: both" /> <!-- So dirty! -->
-<style>
-.keyword {
-background-color: rgb(114, 137, 218);
-color: white;
-font-weight: 600;
-text-transform: uppercase;
-border-radius: 3px;
-padding: 3px;
-display: inline-block;
-font-size: 0.75em;
-margin: 1px;
-}
-</style>
 <script id="entry-hidden-data" type="text/template">
 {{ configAsJson|raw }}
 </script>
+{% endblock %}
+{% block afterlocale %}
 <script>
 LoriDashboard.ConfigurePartnerView.start()
 </script>

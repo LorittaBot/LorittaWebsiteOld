@@ -10,28 +10,29 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   var println = Kotlin.kotlin.io.println_s8jyv4$;
   var jq = $module$LoriUtils.jq_61zpoe$;
   var Unit = Kotlin.kotlin.Unit;
+  var anonymous = $module$LoriUtils;
   var BaseLocale = $module$LoriUtils.utils.BaseLocale;
   var json = Kotlin.kotlin.js.json_pyyo18$;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
   var ensureNotNull = Kotlin.ensureNotNull;
-  var anonymous = $module$LoriUtils;
+  var equals = Kotlin.equals;
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var getOrNull = Kotlin.kotlin.collections.getOrNull_yzln2o$;
-  var equals = Kotlin.equals;
   var toIntOrNull = Kotlin.kotlin.text.toIntOrNull_pdl1vz$;
   var toString = Kotlin.toString;
-  var withIndex = Kotlin.kotlin.collections.withIndex_us0mfu$;
   var numberToInt = Kotlin.numberToInt;
   var joinToString = Kotlin.kotlin.collections.joinToString_cgipc5$;
-  var PropertyMetadata = Kotlin.PropertyMetadata;
   var lazy = Kotlin.kotlin.lazy_klfg04$;
   var ShowdownConverter = showdown.Converter;
   var TingleOptions = $module$LoriUtils.utils.TingleOptions;
   var TingleModal = tingle.modal;
+  var toLong = Kotlin.kotlin.text.toLong_pdl1vz$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
+  var L0 = Kotlin.Long.ZERO;
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
+  var L_1 = Kotlin.Long.NEG_ONE;
   LorittaPartner$Keyword.prototype = Object.create(Enum.prototype);
   LorittaPartner$Keyword.prototype.constructor = LorittaPartner$Keyword;
   LorittaPartner$Language.prototype = Object.create(Enum.prototype);
@@ -61,7 +62,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   }
   function DailyView$start$lambda$lambda$lambda(it) {
     var json_0 = json([]);
-    json_0['redirectUrl'] = 'https://loritta.website/daily';
+    json_0['redirectUrl'] = anonymous.loriUrl + 'daily';
     window.location.href = 'https://discordapp.com/oauth2/authorize?redirect_uri=https://loritta.website%2Fdashboard&scope=identify%20guilds%20email%20guilds.join&response_type=code&client_id=297153970613387264&state=' + window.btoa(JSON.stringify(json_0));
     return Unit;
   }
@@ -79,18 +80,23 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     }
      else {
       moment.locale('pt-br');
-      if (code === 4)
-        tmp$ = 'Voc\xEA precisa entrar na sua conta do Discord antes de ganhar seu pr\xEAmio!';
-      else if (code === 5) {
-        var moment_0 = new moment(status['canPayoutAgain']);
-        tmp$ = replace('Voc\xEA j\xE1 recebeu seu pr\xEAmio hoje! Voc\xEA poder\xE1 votar novamente {0}!', '{0}', moment_0.fromNow());
+      switch (code) {
+        case 4:
+          tmp$ = 'Voc\xEA precisa entrar na sua conta do Discord antes de ganhar seu pr\xEAmio!';
+          break;
+        case 5:
+          var moment_0 = new moment(status['canPayoutAgain']);
+          tmp$ = replace('Voc\xEA j\xE1 recebeu seu pr\xEAmio hoje! Voc\xEA poder\xE1 votar novamente {0}!', '{0}', moment_0.fromNow());
+          break;
+        case 7:
+          tmp$ = 'reCAPTCHA inv\xE1lido!';
+          break;
+        case 9:
+          tmp$ = 'IP bloqueado!';
+          break;
+        default:tmp$ = 'Error: ' + code;
+          break;
       }
-       else if (code === 7)
-        tmp$ = 'reCAPTCHA inv\xE1lido!';
-      else if (code === 9)
-        tmp$ = 'IP bloqueado!';
-      else
-        tmp$ = 'Error: ' + code;
       var error = tmp$;
       jq('.daily-notification').text(error);
     }
@@ -101,7 +107,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     return function (data, b, c) {
       println('Received locale: ' + JSON.stringify(data));
       this$DailyView.locale = BaseLocale.Companion.create_qk3xy8$(data);
-      return jQuery.post('https://loritta.website/api/v1/economy/daily-reward-status', DailyView$start$lambda$lambda);
+      return jQuery.post(anonymous.loriUrl + 'api/v1/economy/daily-reward-status', DailyView$start$lambda$lambda);
     };
   }
   DailyView.prototype.start = function () {
@@ -109,7 +115,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     LoriServerList_getInstance().showLoadingBar_pdl1vj$('Carregando...');
     var backgroundY = {v: 0};
     window.setInterval(DailyView$start$lambda(backgroundY), 75);
-    jQuery.post('https://loritta.website/api/v1/misc/get-locale', DailyView$start$lambda_0(this));
+    jQuery.post(anonymous.loriUrl + 'api/v1/misc/get-locale', DailyView$start$lambda_0(this));
   };
   function DailyView$recaptchaCallback$lambda$lambda$lambda$lambda(closure$cash) {
     return function () {
@@ -118,7 +124,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       return Unit;
     };
   }
-  function DailyView$recaptchaCallback$lambda$lambda$lambda(closure$payload, closure$cash) {
+  function DailyView$recaptchaCallback$lambda$lambda$lambda(closure$payload, closure$ts1Promotion2, closure$cash) {
     return function () {
       jq('#daily-wrapper').css('position', 'absolute');
       var prepended = jq('#daily-prewrapper').prepend(jq('<div>'));
@@ -129,12 +135,13 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       prepended.append(jq('<img>').attr('width', 64).attr('height', 64).attr('src', 'https://cdn.discordapp.com/emojis/399743288673959947.gif?v=1'));
       prepended.append(jq('<p>').text('Volte sempre!'));
       prepended.fadeTo(500, 1);
-      var countUp = new CountUp('dailyPayout', 0.0, closure$payload.dailyPayout, 0, 5.5, new CountUpOptions(true, true, '', ''));
+      var countUp = new CountUp('dailyPayout', 0.0, closure$payload.dailyPayout, 0, 7.5, new CountUpOptions(true, true, '', ''));
+      closure$ts1Promotion2.play();
       countUp.start(DailyView$recaptchaCallback$lambda$lambda$lambda$lambda(closure$cash));
       return Unit;
     };
   }
-  function DailyView$recaptchaCallback$lambda$lambda(closure$cash) {
+  function DailyView$recaptchaCallback$lambda$lambda(closure$ts1Promotion2, closure$cash) {
     return function (data, b, c) {
       var tmp$;
       println('Daily Reward: ' + JSON.stringify(data));
@@ -142,39 +149,46 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       var apiCode = json['api:code'];
       if (apiCode === 0) {
         var payload = toJson(data);
-        return jq('#daily-wrapper').fadeTo(500, 0, DailyView$recaptchaCallback$lambda$lambda$lambda(payload, closure$cash));
+        return jq('#daily-wrapper').fadeTo(500, 0, DailyView$recaptchaCallback$lambda$lambda$lambda(payload, closure$ts1Promotion2, closure$cash));
       }
        else {
-        if (apiCode === 4)
-          tmp$ = 'Voc\xEA precisa entrar na sua conta do Discord antes de ganhar seu pr\xEAmio!';
-        else if (apiCode === 5)
-          tmp$ = 'Voc\xEA j\xE1 recebeu seu pr\xEAmio hoje!';
-        else if (apiCode === 7)
-          tmp$ = 'reCAPTCHA inv\xE1lido!';
-        else if (apiCode === 9)
-          tmp$ = 'IP bloqueado!';
-        else
-          tmp$ = 'Error: ' + apiCode;
+        switch (apiCode) {
+          case 4:
+            tmp$ = 'Voc\xEA precisa entrar na sua conta do Discord antes de ganhar seu pr\xEAmio!';
+            break;
+          case 5:
+            tmp$ = 'Voc\xEA j\xE1 recebeu seu pr\xEAmio hoje!';
+            break;
+          case 7:
+            tmp$ = 'reCAPTCHA inv\xE1lido!';
+            break;
+          case 9:
+            tmp$ = 'IP bloqueado!';
+            break;
+          default:tmp$ = 'Error: ' + apiCode;
+            break;
+        }
         var error = tmp$;
         return jq('.daily-notification').text(error);
       }
     };
   }
-  function DailyView$recaptchaCallback$lambda(closure$response, closure$cash) {
+  function DailyView$recaptchaCallback$lambda(closure$response, closure$ts1Promotion2, closure$cash) {
     return function (it) {
       if (jq('.daily-reward-button').hasClass('button-discord-disabled')) {
         return;
       }
       jq('.daily-reward-button').addClass('button-discord-disabled');
-      jQuery.post('https://loritta.website/api/v1/economy/daily-reward?recaptcha=' + closure$response, DailyView$recaptchaCallback$lambda$lambda(closure$cash));
+      jQuery.post(anonymous.loriUrl + 'api/v1/economy/daily-reward?recaptcha=' + closure$response, DailyView$recaptchaCallback$lambda$lambda(closure$ts1Promotion2, closure$cash));
       return Unit;
     };
   }
   DailyView.prototype.recaptchaCallback = function (response) {
-    var cash = new Audio('http://loritta.website/assets/snd/css1_cash.wav');
+    var ts1Promotion2 = new Audio(anonymous.loriUrl + 'assets/snd/ts1_promotion2.mp3');
+    var cash = new Audio(anonymous.loriUrl + 'assets/snd/css1_cash.wav');
     jq('.daily-notification').text('');
     println('owo recaptcha');
-    jq('.daily-reward-button').addClass('button-discord-success').removeClass('button-discord-disabled').click(DailyView$recaptchaCallback$lambda(response, cash));
+    jq('.daily-reward-button').addClass('button-discord-success').removeClass('button-discord-disabled').click(DailyView$recaptchaCallback$lambda(response, ts1Promotion2, cash));
   };
   DailyView.$metadata$ = {
     kind: Kind_OBJECT,
@@ -202,120 +216,101 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     this.wrapperBlur_nvkmkt$_0 = lazy(LoriServerList$wrapperBlur$lambda);
     this.loadingScreen_4g6md$_0 = lazy(LoriServerList$loadingScreen$lambda);
   }
-  function LoriServerList$start$lambda(it) {
-    var test = null;
-    ensureNotNull(test);
-    return Unit;
-  }
-  function LoriServerList$start$lambda_0(closure$backgroundY) {
+  function LoriServerList$start$lambda(closure$backgroundY) {
     return function () {
       jq('.serverListHeader').css('background-position-y', closure$backgroundY.v);
       closure$backgroundY.v = closure$backgroundY.v - 2 | 0;
       return Unit;
     };
   }
-  function LoriServerList$start$lambda$lambda$lambda(this$LoriServerList) {
+  function LoriServerList$start$lambda_0(this$LoriServerList) {
     return function (it) {
       this$LoriServerList.showTopRankServers_vux9f0$(50, 0);
       return Unit;
     };
   }
-  function LoriServerList$start$lambda$lambda$lambda_0(this$LoriServerList) {
+  function LoriServerList$start$lambda_1(this$LoriServerList) {
     return function (it) {
       this$LoriServerList.showRecentlyBumpedRankServers_vux9f0$(50, 0);
       return Unit;
     };
   }
-  function LoriServerList$start$lambda$lambda(this$LoriServerList) {
-    return function (payload, b, c) {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
-      println('owo payload: ' + toString(payload));
-      var payload_0 = toJson(payload);
-      println('Sponsored Count: ' + toString(payload_0.sponsoredCount));
-      println('Partners Count: ' + toString(payload_0.partnersCount));
-      println('Total Count: ' + toString(payload_0.totalCount));
+  LoriServerList.prototype.start = function () {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
+    println('LoriServerList - owo');
+    var backgroundY = {v: 0};
+    window.setInterval(LoriServerList$start$lambda(backgroundY), 75);
+    var selfProfileDiv = ensureNotNull(document.getElementById('self-profile-json')).innerHTML;
+    println(selfProfileDiv);
+    var serverSamplesDiv = ensureNotNull(document.getElementById('server-samples-json')).innerHTML;
+    println(serverSamplesDiv);
+    var data = JSON.parse(selfProfileDiv);
+    if (!equals(toJson_0(data)['api:code'], 4))
+      anonymous.selfProfile = toJson(data);
+    var pathName = window.location.pathname;
+    var args = split(pathName, ['/']);
+    var arg0 = getOrNull(args, 0);
+    var arg1 = getOrNull(args, 1);
+    var arg2 = getOrNull(args, 2);
+    var arg3 = getOrNull(args, 3);
+    var arg4 = getOrNull(args, 4);
+    if (equals(arg3, 'page') && arg4 != null) {
+      var skip = ((tmp$ = toIntOrNull(arg4)) != null ? tmp$ : 1) - 1 | 0;
+      skip = skip * 50 | 0;
+      this.showTopRankServers_vux9f0$(50, skip);
+    }
+     else if (equals(arg3, 'bumped') && arg4 != null) {
+      var skip_0 = ((tmp$_0 = toIntOrNull(arg4)) != null ? tmp$_0 : 1) - 1 | 0;
+      skip_0 = skip_0 * 50 | 0;
+      this.showRecentlyBumpedRankServers_vux9f0$(50, skip_0);
+    }
+     else {
+      println('owo payload: ' + serverSamplesDiv);
+      var payload = JSON.parse(serverSamplesDiv);
+      println('Sponsored Count: ' + toString(payload.sponsoredCount));
+      println('Partners Count: ' + toString(payload.partnersCount));
+      println('Total Count: ' + toString(payload.totalCount));
       var sponsorSampleDiv = jq('.sponsored-servers-sample');
       var partnerSampleDiv = jq('.partners-servers-sample');
       var allServersSampleDiv = jq('.all-servers-sample');
       var randomServersSampleDiv = jq('.random-servers-sample');
       var recentlyBumpedServersSampleDiv = jq('.recently-bumped-servers-sample');
-      tmp$ = payload_0.sponsored;
-      for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
-        var serverSample = tmp$[tmp$_0];
-        this$LoriServerList.addServerSample_bewp0m$(serverSample, sponsorSampleDiv, 'pure-u-1 pure-u-md-1-2');
-      }
-      tmp$_1 = payload_0.partners;
+      tmp$_1 = payload.sponsored;
       for (tmp$_2 = 0; tmp$_2 !== tmp$_1.length; ++tmp$_2) {
-        var serverSample_0 = tmp$_1[tmp$_2];
-        this$LoriServerList.addServerSample_bewp0m$(serverSample_0, partnerSampleDiv, 'pure-u-1 pure-u-md-1-2');
+        var serverSample = tmp$_1[tmp$_2];
+        this.addServerSample_bewp0m$(serverSample, sponsorSampleDiv, 'pure-u-1 pure-u-md-1-2');
       }
-      tmp$_3 = withIndex(payload_0.top).iterator();
-      while (tmp$_3.hasNext()) {
-        var tmp$_7 = tmp$_3.next();
-        var index = tmp$_7.component1()
-        , serverSample_1 = tmp$_7.component2();
+      tmp$_3 = payload.partners;
+      for (tmp$_4 = 0; tmp$_4 !== tmp$_3.length; ++tmp$_4) {
+        var serverSample_0 = tmp$_3[tmp$_4];
+        this.addServerSample_bewp0m$(serverSample_0, partnerSampleDiv, 'pure-u-1 pure-u-md-1-2');
+      }
+      tmp$_5 = payload.top;
+      for (var index = 0; index !== tmp$_5.length; ++index) {
+        var serverSample_1 = tmp$_5[index];
         if (index % 5 === 0) {
-          this$LoriServerList.addAdvertisement_yp3tk2$(allServersSampleDiv);
-          this$LoriServerList.injectAdvertisements_yp3tk2$(allServersSampleDiv);
+          this.addAdvertisement_yp3tk2$(allServersSampleDiv);
+          this.injectAdvertisements_yp3tk2$(allServersSampleDiv);
         }
-        this$LoriServerList.addServerSample_bewp0m$(serverSample_1, allServersSampleDiv);
+        this.addServerSample_bewp0m$(serverSample_1, allServersSampleDiv);
       }
-      tmp$_4 = withIndex(payload_0.recentlyBumped).iterator();
-      while (tmp$_4.hasNext()) {
-        var tmp$_8 = tmp$_4.next();
-        var index_0 = tmp$_8.component1()
-        , serverSample_2 = tmp$_8.component2();
+      tmp$_6 = payload.recentlyBumped;
+      for (var index_0 = 0; index_0 !== tmp$_6.length; ++index_0) {
+        var serverSample_2 = tmp$_6[index_0];
         if (index_0 % 5 === 0) {
-          this$LoriServerList.addAdvertisement_yp3tk2$(recentlyBumpedServersSampleDiv);
-          this$LoriServerList.injectAdvertisements_yp3tk2$(recentlyBumpedServersSampleDiv);
+          this.addAdvertisement_yp3tk2$(recentlyBumpedServersSampleDiv);
+          this.injectAdvertisements_yp3tk2$(recentlyBumpedServersSampleDiv);
         }
-        this$LoriServerList.addServerSample_bewp0m$(serverSample_2, recentlyBumpedServersSampleDiv);
+        this.addServerSample_bewp0m$(serverSample_2, recentlyBumpedServersSampleDiv);
       }
-      tmp$_5 = payload_0.random;
-      for (tmp$_6 = 0; tmp$_6 !== tmp$_5.length; ++tmp$_6) {
-        var serverSample_3 = tmp$_5[tmp$_6];
-        this$LoriServerList.addServerSample_bewp0m$(serverSample_3, randomServersSampleDiv, 'pure-u-1 pure-u-md-1-2');
+      tmp$_7 = payload.random;
+      for (tmp$_8 = 0; tmp$_8 !== tmp$_7.length; ++tmp$_8) {
+        var serverSample_3 = tmp$_7[tmp$_8];
+        this.addServerSample_bewp0m$(serverSample_3, randomServersSampleDiv, 'pure-u-1 pure-u-md-1-2');
       }
-      jq('.view-more-servers').click(LoriServerList$start$lambda$lambda$lambda(this$LoriServerList));
-      jq('.view-more-recently-bumped-servers').click(LoriServerList$start$lambda$lambda$lambda_0(this$LoriServerList));
-      this$LoriServerList.hideLoadingBar();
-      return Unit;
-    };
-  }
-  function LoriServerList$start$lambda_1(this$LoriServerList) {
-    return function (data, b, c) {
-      var tmp$, tmp$_0;
-      println('Received locale... ' + JSON.stringify(data));
-      anonymous.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
-      var pathName = window.location.pathname;
-      var args = split(pathName, ['/']);
-      var arg0 = getOrNull(args, 0);
-      var arg1 = getOrNull(args, 1);
-      var arg2 = getOrNull(args, 2);
-      var arg3 = getOrNull(args, 3);
-      var arg4 = getOrNull(args, 4);
-      if (equals(arg3, 'page') && arg4 != null) {
-        var skip = ((tmp$ = toIntOrNull(arg4)) != null ? tmp$ : 1) - 1 | 0;
-        skip = skip * 50 | 0;
-        return this$LoriServerList.showTopRankServers_vux9f0$(50, skip), Unit;
-      }
-       else if (equals(arg3, 'bumped') && arg4 != null) {
-        var skip_0 = ((tmp$_0 = toIntOrNull(arg4)) != null ? tmp$_0 : 1) - 1 | 0;
-        skip_0 = skip_0 * 50 | 0;
-        return this$LoriServerList.showRecentlyBumpedRankServers_vux9f0$(50, skip_0), Unit;
-      }
-       else {
-        return jQuery.post('https://loritta.website/api/v1/server-list/get-sample', LoriServerList$start$lambda$lambda(this$LoriServerList));
-      }
-    };
-  }
-  LoriServerList.prototype.start = function () {
-    println('LoriServerList - owo');
-    this.showLoadingBar_pdl1vj$('Carregando...');
-    var backgroundY = {v: 0};
-    jq('.plz-dont-click').click(LoriServerList$start$lambda);
-    window.setInterval(LoriServerList$start$lambda_0(backgroundY), 75);
-    jQuery.post('https://loritta.website/api/v1/misc/get-locale', LoriServerList$start$lambda_1(this));
+      jq('.view-more-servers').click(LoriServerList$start$lambda_0(this));
+      jq('.view-more-recently-bumped-servers').click(LoriServerList$start$lambda_1(this));
+    }
   };
   function LoriServerList$showTopRankServers$lambda$lambda(closure$size, closure$skip, this$LoriServerList) {
     return function (it) {
@@ -362,7 +357,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     var x = skip / 50 | 0;
     var page = {v: Math_0.floor(x) + 1};
     window.history.pushState(null, 'owo whats this', '/servers/page/' + page.v);
-    jQuery.post('https://loritta.website/api/v1/server-list/get-servers?size=' + size + '&skip=' + skip + '&serverType=top', LoriServerList$showTopRankServers$lambda(this, page, size, skip));
+    jQuery.post(anonymous.loriUrl + 'api/v1/server-list/get-servers?size=' + size + '&skip=' + skip + '&serverType=top', LoriServerList$showTopRankServers$lambda(this, page, size, skip));
   };
   function LoriServerList$showRecentlyBumpedRankServers$lambda(this$LoriServerList) {
     return function (data, b, c) {
@@ -385,7 +380,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     var x = skip / 50 | 0;
     var page = Math_0.floor(x) + 1;
     window.history.pushState(null, 'owo whats this', '/servers/bumped/' + page);
-    jQuery.post('https://loritta.website/api/v1/server-list/get-servers?size=' + size + '&skip=' + skip + '&serverType=recentlyBumped', LoriServerList$showRecentlyBumpedRankServers$lambda(this));
+    jQuery.post(anonymous.loriUrl + 'api/v1/server-list/get-servers?size=' + size + '&skip=' + skip + '&serverType=recentlyBumped', LoriServerList$showRecentlyBumpedRankServers$lambda(this));
   };
   function LoriServerList$addServerSample$lambda(it) {
     return '<span class=' + '"' + 'sample-keyword' + '"' + '>' + anonymous.locale.get_25kzsl$('KEYWORD_' + toString(it), []) + '<\/span>';
@@ -417,23 +412,28 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       tagline.v = replace(tagline.v, ':' + element.name + ':', '<img class=' + '"' + 'discord-emote' + '"' + ' src=' + '"' + element.imageUrl + '"' + '>');
     }
     var type = getType(serverSample);
-    if (equals(type, LorittaPartner$Type$SPONSOR_getInstance()))
-      tmp$_1 = 'server-sponsor';
-    else if (equals(type, LorittaPartner$Type$PARTNER_getInstance()))
-      tmp$_1 = 'server-partner';
-    else if (equals(type, LorittaPartner$Type$NORMAL_getInstance()))
-      tmp$_1 = 'server-normal';
-    else
-      tmp$_1 = Kotlin.noWhenBranchMatched();
+    switch (type.name) {
+      case 'SPONSOR':
+        tmp$_1 = 'server-sponsor';
+        break;
+      case 'PARTNER':
+        tmp$_1 = 'server-partner';
+        break;
+      case 'NORMAL':
+        tmp$_1 = 'server-normal';
+        break;
+      default:tmp$_1 = Kotlin.noWhenBranchMatched();
+        break;
+    }
     template.addClass(tmp$_1);
-    template.find('.server-sample-icon').attr('src', (tmp$_3 = (tmp$_2 = serverSample.iconUrl) != null ? replace(tmp$_2, 'jpg', 'png') : null) != null ? tmp$_3 : 'aaa');
+    template.find('.server-sample-icon').attr('src', (tmp$_3 = replace((tmp$_2 = serverSample.iconUrl) != null ? tmp$_2 : anonymous.loriUrl + 'assets/img/unknown.png', 'jpg', 'png')) != null ? tmp$_3 : 'aaa');
     template.find('.server-name').text(serverSample.name);
     template.find('.server-author').text(serverSample.ownerName + '#' + serverSample.ownerDiscriminator);
     template.find('.server-tagline').html((tmp$_4 = tagline.v) != null ? tmp$_4 : ':shrug:');
-    template.find('.server-upvotes').html(serverSample.voteCount.toString());
+    template.find('.server-upvotes').html(serverSample.validVoteCount.toString());
     var keywords = joinToString(serverSample.serverListConfig.keywords, ' ', void 0, void 0, void 0, void 0, LoriServerList$addServerSample$lambda);
     template.find('.server-keywords').html(keywords);
-    var serverIcon = (tmp$_6 = (tmp$_5 = serverSample.iconUrl) != null ? replace(tmp$_5, 'jpg', 'png') : null) != null ? tmp$_6 : 'https://loritta.website/assets/img/unknown.png';
+    var serverIcon = (tmp$_6 = (tmp$_5 = serverSample.iconUrl) != null ? replace(tmp$_5, 'jpg', 'png') : null) != null ? tmp$_6 : anonymous.loriUrl + 'assets/img/unknown.png';
     PartnerView_getInstance();
     var partnerInformation = new PartnerView$PartnerInformation(serverSample.id, serverIcon, serverSample.invite, serverSample.name, (tmp$_7 = serverSample.serverListConfig.tagline) != null ? tmp$_7 : ':shrug:', (tmp$_8 = serverSample.serverListConfig.description) != null ? tmp$_8 : ':shrug:', serverSample.serverListConfig.keywords, serverSample.ownerId, serverSample.ownerName, serverSample.ownerDiscriminator, '???', serverSample.memberCount, serverSample.onlineCount, serverSample.serverEmotes, serverSample.canVote, serverSample.cantVoteReason, serverSample.canVoteNext, serverSample.joinedServer);
     template.find('.server-button').click(LoriServerList$addServerSample$lambda_0(serverSample));
@@ -445,16 +445,12 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   };
   Object.defineProperty(LoriServerList.prototype, 'wrapperBlur', {
     get: function () {
-      var $receiver = this.wrapperBlur_nvkmkt$_0;
-      new PropertyMetadata('wrapperBlur');
-      return $receiver.value;
+      return this.wrapperBlur_nvkmkt$_0.value;
     }
   });
   Object.defineProperty(LoriServerList.prototype, 'loadingScreen', {
     get: function () {
-      var $receiver = this.loadingScreen_4g6md$_0;
-      new PropertyMetadata('loadingScreen');
-      return $receiver.value;
+      return this.loadingScreen_4g6md$_0.value;
     }
   });
   LoriServerList.prototype.showLoadingBar_pdl1vj$ = function (text) {
@@ -506,44 +502,40 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       return jq('.tingle-modal--visible');
     }
   });
-  function PartnerView$start$lambda$lambda(this$PartnerView) {
-    return function (data, b, c) {
-      var json = toJson_0(data);
-      if (equals(json['api:code'], 3)) {
-        window.location.href = 'https://loritta.website/servers';
-      }
-       else {
-        LoriServerList_getInstance().hideLoadingBar();
-        this$PartnerView.openServerModal_8zqtbw$(toJson(data), true, anonymous.locale);
-      }
-      return Unit;
-    };
-  }
-  function PartnerView$start$lambda(this$PartnerView) {
-    return function (data, b, c) {
-      println('Received locale: ' + toString(data));
-      anonymous.locale = BaseLocale.Companion.create_qk3xy8$(toJson_0(data));
-      return jQuery.post('https://loritta.website/api/v1/server-list/information?guildId=' + guildId, PartnerView$start$lambda$lambda(this$PartnerView));
-    };
-  }
   PartnerView.prototype.start = function () {
     println('Starting partner view... ^-^ Pulling partner information from Loritta owo');
-    LoriServerList_getInstance().showLoadingBar_pdl1vj$('Carregando...');
-    jQuery.post('https://loritta.website/api/v1/misc/get-locale', PartnerView$start$lambda(this));
+    var selfProfileDiv = ensureNotNull(document.getElementById('self-profile-json')).innerHTML;
+    println(selfProfileDiv);
+    var serverInformationDiv = ensureNotNull(document.getElementById('server-information-json')).innerHTML;
+    println(serverInformationDiv);
+    var data = JSON.parse(selfProfileDiv);
+    if (!equals(toJson_0(data)['api:code'], 4))
+      anonymous.selfProfile = toJson(data);
+    var json = JSON.parse(serverInformationDiv);
+    if (equals(json['api:code'], 3)) {
+      window.location.href = anonymous.loriUrl + 'servers';
+    }
+     else {
+      this.openServerModal_8zqtbw$(toJson(json), true, anonymous.locale);
+    }
   };
   function PartnerView$openServerModal$lambda$lambda(closure$information) {
     return function (data, b, c) {
       println(stringify(data));
       var payload = toJson_0(data);
       var apiCode = payload['api:code'];
-      if (apiCode === LoriWebCodes_getInstance().SUCCESS)
-        println('Success!');
-      else if (apiCode === LoriWebCodes_getInstance().UNKNOWN_GUILD)
-        println('wat');
-      else if (apiCode === LoriWebCodes_getInstance().UNAUTHORIZED) {
-        var json_0 = json([]);
-        json_0['redirectUrl'] = 'https://loritta.website/s/' + closure$information.id + '?force';
-        window.location.href = 'https://discordapp.com/oauth2/authorize?redirect_uri=https://loritta.website%2Fdashboard&scope=identify%20guilds%20email%20guilds.join&response_type=code&client_id=297153970613387264&state=' + window.btoa(stringify(json_0));
+      switch (apiCode) {
+        case 0:
+          println('Success!');
+          break;
+        case 3:
+          println('wat');
+          break;
+        case 4:
+          var json_0 = json([]);
+          json_0['redirectUrl'] = anonymous.loriUrl + 's/' + closure$information.id + '?force';
+          window.location.href = 'https://discordapp.com/oauth2/authorize?redirect_uri=https://loritta.website%2Fdashboard&scope=identify%20guilds%20email%20guilds.join&response_type=code&client_id=297153970613387264&state=' + window.btoa(stringify(json_0));
+          break;
       }
       return Unit;
     };
@@ -551,7 +543,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   function PartnerView$openServerModal$lambda(closure$information, closure$modal) {
     return function () {
       println('Adding user to guild...');
-      jQuery.get('https://loritta.website/api/v1/server-list/join/?guildId=' + closure$information.id, PartnerView$openServerModal$lambda$lambda(closure$information));
+      jQuery.get(anonymous.loriUrl + 'api/v1/server-list/join/?guildId=' + closure$information.id, PartnerView$openServerModal$lambda$lambda(closure$information));
       closure$modal.close();
       return Unit;
     };
@@ -572,8 +564,71 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       return Unit;
     };
   }
+  function PartnerView$openServerModal$lambda_3(closure$json) {
+    return function (it) {
+      window.location.href = 'https://discordapp.com/oauth2/authorize?redirect_uri=https://loritta.website%2Fdashboard&scope=identify%20guilds%20email%20guilds.join&response_type=code&client_id=297153970613387264&state=' + window.btoa(JSON.stringify(closure$json));
+      return Unit;
+    };
+  }
+  function PartnerView$openServerModal$lambda$lambda_0(closure$hypeButton, this$PartnerView, closure$ts1Promotion, closure$locale, closure$information) {
+    return function (data, b, c) {
+      var tmp$;
+      println(stringify(data));
+      var vote = toJson_0(data);
+      var codeResponse = vote['api:code'];
+      if (codeResponse === 0) {
+        closure$hypeButton.addClass('button-discord-disabled').removeClass('button-discord-success');
+        this$PartnerView.visibleModal.find('.promote-notification').text('Obrigado por promover! ^-^');
+        return closure$ts1Promotion.play(), Unit;
+      }
+       else {
+        switch (codeResponse) {
+          case 4:
+            tmp$ = closure$locale.get_25kzsl$('UPVOTE_LogInDiscord', []);
+            break;
+          case 3:
+            tmp$ = closure$locale.get_25kzsl$('UPVOTE_UnknownGuild', []);
+            break;
+          case 6:
+            tmp$ = closure$locale.get_25kzsl$('UPVOTE_NeedsToBeMember', []);
+            break;
+          case 7:
+            tmp$ = closure$locale.get_25kzsl$('UPVOTE_InvalidCaptchaResponse', []);
+            break;
+          case 5:
+            var moment_0 = new moment(ensureNotNull(closure$information.canVoteNext));
+            tmp$ = closure$locale.get_25kzsl$('PROMOTE_CanPromoteAgain', [moment_0.fromNow()]);
+            break;
+          case 10:
+            tmp$ = closure$locale.get_25kzsl$('UPVOTE_NotVerified', []);
+            break;
+          case 11:
+            tmp$ = closure$locale.get_25kzsl$('UPVOTE_BadEmail', []);
+            break;
+          case 9:
+            tmp$ = closure$locale.get_25kzsl$('UPVOTE_BadIp', []);
+            break;
+          case 14:
+            tmp$ = 'Sonhos insuficientes!';
+            break;
+          default:tmp$ = 'Error: ' + codeResponse;
+            break;
+        }
+        var error = tmp$;
+        closure$hypeButton.addClass('button-discord-disabled').removeClass('button-discord-success');
+        return this$PartnerView.visibleModal.find('.promote-notification').text(error);
+      }
+    };
+  }
+  function PartnerView$openServerModal$lambda_4(closure$hypeButton, closure$information, this$PartnerView, closure$ts1Promotion, closure$locale) {
+    return function (it) {
+      closure$hypeButton.removeClass('button-discord-success').addClass('button-discord-disabled');
+      jQuery.post(anonymous.loriUrl + 'api/v1/server-list/bump?guildId=' + closure$information.id, PartnerView$openServerModal$lambda$lambda_0(closure$hypeButton, this$PartnerView, closure$ts1Promotion, closure$locale, closure$information));
+      return Unit;
+    };
+  }
   PartnerView.prototype.openServerModal_8zqtbw$ = function (information, direct, locale) {
-    var tmp$, tmp$_0;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
     println('Opening server modal... ' + JSON.stringify(information));
     println('Is direct? ' + direct);
     println('---');
@@ -581,31 +636,43 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     println("Can't vote reason: " + toString(information.cantVoteReason));
     println('Can vote in... ' + toString(information.canVoteNext));
     println('---');
+    var ts1Promotion = new Audio(anonymous.loriUrl + 'assets/snd/ts1_promotion.mp3');
+    moment.locale('pt-br');
     this.activeInformation = information;
     var converter = new ShowdownConverter();
     var template = jq('#guild-template').clone();
     template.find('.guild-name').text(information.name);
     var description = {v: (tmp$ = information.serverListConfig.description) != null ? tmp$ : ''};
     var $receiver = information.serverEmotes;
-    var tmp$_1;
-    for (tmp$_1 = 0; tmp$_1 !== $receiver.length; ++tmp$_1) {
-      var element = $receiver[tmp$_1];
+    var tmp$_3;
+    for (tmp$_3 = 0; tmp$_3 !== $receiver.length; ++tmp$_3) {
+      var element = $receiver[tmp$_3];
       description.v = replace(description.v, ':' + element.name + ':', '<img class=' + '"' + 'discord-emote' + '"' + ' src=' + '"' + element.imageUrl + '"' + '>');
     }
     description.v = converter.makeHtml(description.v);
     template.find('.description').html(description.v);
-    template.find('.icon').attr('src', ensureNotNull(information.iconUrl) + '?size=1024');
+    template.find('.icon').attr('src', ((tmp$_0 = information.iconUrl) != null ? tmp$_0 : anonymous.loriUrl + 'assets/img/unknown.png') + '?size=1024');
     template.find('.member-count').text(information.memberCount);
     template.find('.online-count').text(information.onlineCount);
     template.find('.guild-owner').text(information.ownerName + '#' + information.ownerDiscriminator);
-    if (direct)
-      jq('html').css('background', 'url(' + '"' + 'https://loritta.website/assets/img/servers/backgrounds/' + information.id + '.png?v=' + (new Date()).getTime() + '"' + ') no-repeat center center fixed');
-    var $receiver_0 = information.serverListConfig.keywords;
-    var tmp$_2;
-    for (tmp$_2 = 0; tmp$_2 !== $receiver_0.length; ++tmp$_2) {
-      var element_0 = $receiver_0[tmp$_2];
-      if (element_0 != null) {
-        template.find('.keywords').append(jq('<span>').addClass('keyword').text(locale.get_25kzsl$('KEYWORD_' + element_0.toString(), [])));
+    if (direct) {
+      if (information.hasCustomBackground)
+        jq('html').css('background', 'url(' + '"' + anonymous.loriUrl + 'assets/img/servers/backgrounds/' + information.id + '.png?v=' + toString(information.backgroundKey) + '"' + ') no-repeat center center fixed');
+      else
+        jq('html').attr('style', 'background-size: initial !important;');
+    }
+    var $receiver_0 = information.serverEmotes;
+    var tmp$_4;
+    for (tmp$_4 = 0; tmp$_4 !== $receiver_0.length; ++tmp$_4) {
+      var element_0 = $receiver_0[tmp$_4];
+      template.find('.emotes').append(jq('<img>').attr('src', element_0.imageUrl).attr('alt', element_0.name).attr('title', ':' + element_0.name + ':').css('height', '24px').css('width', 'auto'));
+    }
+    var $receiver_1 = information.serverListConfig.keywords;
+    var tmp$_5;
+    for (tmp$_5 = 0; tmp$_5 !== $receiver_1.length; ++tmp$_5) {
+      var element_1 = $receiver_1[tmp$_5];
+      if (element_1 != null) {
+        template.find('.keywords').append(jq('<span>').addClass('keyword').text(locale.get_25kzsl$('KEYWORD_' + element_1.toString(), [])));
       }
     }
     var modal = new TingleModal(new TingleOptions(true, void 0, void 0, void 0, ['tingle-modal--overflow']));
@@ -621,25 +688,32 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     modal.setContent(template.html());
     modal.open();
     var visible = jq('.tingle-modal--visible');
+    var redirectUrl = anonymous.loriUrl + 's/' + information.id;
+    var json_0 = json([]);
+    json_0['redirectUrl'] = redirectUrl;
     if (information.canVote) {
       visible.find('.upvote-notification').text(locale.get_25kzsl$('UPVOTE_PleaseCompleteCaptcha', []));
     }
      else {
       var code = ensureNotNull(information.cantVoteReason);
-      moment.locale('pt-br');
-      if (code === 1)
-        tmp$_0 = locale.get_25kzsl$('UPVOTE_LogInDiscord', []);
-      else if (code === 2)
-        tmp$_0 = locale.get_25kzsl$('UPVOTE_NeedsToBeMember', []);
-      else if (code === 3)
-        tmp$_0 = locale.get_25kzsl$('UPVOTE_JoinedAtLeastOneHour', []);
-      else if (code === 4) {
-        var moment_0 = new moment(ensureNotNull(information.canVoteNext));
-        tmp$_0 = locale.get_25kzsl$('UPVOTE_CanVoteAgain', [moment_0.fromNow()]);
+      switch (code) {
+        case 1:
+          tmp$_1 = locale.get_25kzsl$('UPVOTE_LogInDiscord', []);
+          break;
+        case 2:
+          tmp$_1 = locale.get_25kzsl$('UPVOTE_NeedsToBeMember', []);
+          break;
+        case 3:
+          tmp$_1 = locale.get_25kzsl$('UPVOTE_JoinedAtLeastOneHour', []);
+          break;
+        case 4:
+          var moment_0 = new moment(ensureNotNull(information.canVoteNext));
+          tmp$_1 = locale.get_25kzsl$('UPVOTE_CanVoteAgain', [moment_0.fromNow()]);
+          break;
+        default:tmp$_1 = 'Error: ' + code;
+          break;
       }
-       else
-        tmp$_0 = 'Error: ' + code;
-      var reason = tmp$_0;
+      var reason = tmp$_1;
       println('Error code: ' + code);
       if (code !== 1) {
         visible.find('.upvote-notification').text(reason);
@@ -647,10 +721,53 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       }
        else {
         visible.find('.server-upvote-button').addClass('button-discord-success').removeClass('button-discord-disabled');
-        var redirectUrl = 'https://loritta.website/s/' + information.id;
-        var json_0 = json([]);
-        json_0['redirectUrl'] = redirectUrl;
         visible.find('.server-upvote-button').click(PartnerView$openServerModal$lambda_2(json_0));
+      }
+    }
+    var hypeButton = visible.find('.server-hype-button');
+    var currentTimeMillis = (new Date()).getTime();
+    var code_0 = information.cantVoteReason;
+    switch (code_0) {
+      case 1:
+        tmp$_2 = locale.get_25kzsl$('UPVOTE_LogInDiscord', []);
+        break;
+      case 2:
+        tmp$_2 = locale.get_25kzsl$('UPVOTE_NeedsToBeMember', []);
+        break;
+      case 3:
+        tmp$_2 = locale.get_25kzsl$('UPVOTE_JoinedAtLeastOneHour', []);
+        break;
+      default:tmp$_2 = null;
+        break;
+    }
+    var promoteError = tmp$_2;
+    if (promoteError != null) {
+      visible.find('.promote-notification').text(promoteError);
+    }
+     else {
+      if (currentTimeMillis >= toLong(information.lastBump.toString()).add(Kotlin.Long.fromInt(14400000)).toNumber()) {
+        println('Yes, can hype!');
+        hypeButton.addClass('button-discord-success').removeClass('button-discord-disabled');
+        var profile = anonymous.selfProfile;
+        if (profile == null) {
+          hypeButton.click(PartnerView$openServerModal$lambda_3(json_0));
+        }
+         else {
+          if (profile.dreams >= 750) {
+            hypeButton.click(PartnerView$openServerModal$lambda_4(hypeButton, information, this, ts1Promotion, locale));
+          }
+           else {
+            hypeButton.addClass('button-discord-disabled').removeClass('button-discord-success');
+            visible.find('.promote-notification').html('Voc\xEA n\xE3o possui Sonhos suficientes para promover! Que tal ganhar alguns sonhos <a href=' + '"' + anonymous.loriUrl + 'daily' + '"' + '>clicando aqui<\/a>?');
+          }
+        }
+      }
+       else {
+        println("Nah, can't hype!");
+        var canBumpAgain = information.lastBump;
+        var moment_1 = new moment(canBumpAgain);
+        moment_1.add(4, 'h');
+        visible.find('.promote-notification').text(locale.get_25kzsl$('PROMOTE_CanPromoteAgain', [moment_1.fromNow()]));
       }
     }
     jq('.tingle-modal--visible').addClass('tingle-modal--overflow');
@@ -660,7 +777,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     LoriServerList_getInstance().injectAdvertisements_yp3tk2$(this.visibleModal);
     LoriServerList_getInstance().injectAdvertisements_yp3tk2$(this.visibleModal);
   };
-  function PartnerView$recaptchaCallback$lambda$lambda(this$PartnerView, closure$information) {
+  function PartnerView$recaptchaCallback$lambda$lambda(this$PartnerView, closure$ts1SkillUp, closure$information) {
     return function (data, b, c) {
       var tmp$;
       println(stringify(data));
@@ -668,46 +785,57 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       var codeResponse = vote['api:code'];
       if (codeResponse === 0) {
         jq('.tingle-modal--visible').find('.server-upvote-button').addClass('button-discord-disabled').removeClass('button-discord-success');
-        return this$PartnerView.visibleModal.find('.upvote-notification').text('Obrigado por votar! ^-^');
+        this$PartnerView.visibleModal.find('.upvote-notification').text('Obrigado por votar! ^-^');
+        return closure$ts1SkillUp.play(), Unit;
       }
        else {
         grecaptcha.reset();
-        if (codeResponse === LoriWebCodes_getInstance().UNAUTHORIZED)
-          tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_LogInDiscord', []);
-        else if (codeResponse === LoriWebCodes_getInstance().UNKNOWN_GUILD)
-          tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_UnknownGuild', []);
-        else if (codeResponse === LoriWebCodes_getInstance().NOT_IN_GUILD)
-          tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_NeedsToBeMember', []);
-        else if (codeResponse === LoriWebCodes_getInstance().INVALID_CAPTCHA_RESPONSE)
-          tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_InvalidCaptchaResponse', []);
-        else if (codeResponse === LoriWebCodes_getInstance().ALREADY_VOTED_TODAY) {
-          var moment_0 = new moment(ensureNotNull(closure$information.canVoteNext));
-          tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_CanVoteAgain', [moment_0.fromNow()]);
+        switch (codeResponse) {
+          case 4:
+            tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_LogInDiscord', []);
+            break;
+          case 3:
+            tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_UnknownGuild', []);
+            break;
+          case 6:
+            tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_NeedsToBeMember', []);
+            break;
+          case 7:
+            tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_InvalidCaptchaResponse', []);
+            break;
+          case 5:
+            var moment_0 = new moment(ensureNotNull(closure$information.canVoteNext));
+            tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_CanVoteAgain', [moment_0.fromNow()]);
+            break;
+          case 10:
+            tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_NotVerified', []);
+            break;
+          case 11:
+            tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_BadEmail', []);
+            break;
+          case 9:
+            tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_BadIp', []);
+            break;
+          default:tmp$ = 'Error: ' + codeResponse;
+            break;
         }
-         else if (codeResponse === LoriWebCodes_getInstance().NOT_VERIFIED)
-          tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_NotVerified', []);
-        else if (codeResponse === LoriWebCodes_getInstance().BAD_EMAIL)
-          tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_BadEmail', []);
-        else if (codeResponse === LoriWebCodes_getInstance().BAD_IP)
-          tmp$ = anonymous.locale.get_25kzsl$('UPVOTE_BadIp', []);
-        else
-          tmp$ = 'Error: ' + codeResponse;
         var error = tmp$;
         jq('.tingle-modal--visible').find('.server-upvote-button').addClass('button-discord-disabled').removeClass('button-discord-success');
         return this$PartnerView.visibleModal.find('.upvote-notification').text(error);
       }
     };
   }
-  function PartnerView$recaptchaCallback$lambda(this$PartnerView, closure$information, closure$response) {
+  function PartnerView$recaptchaCallback$lambda(this$PartnerView, closure$information, closure$response, closure$ts1SkillUp) {
     return function (it) {
       if (this$PartnerView.visibleModal.find('.server-upvote-button').hasClass('button-discord-disabled'))
         return;
       this$PartnerView.visibleModal.find('.server-upvote-button').removeClass('button-discord-success').addClass('button-discord-disabled');
-      jQuery.post('https://loritta.website/api/v1/server-list/vote?guildId=' + closure$information.id + '&recaptcha=' + closure$response, PartnerView$recaptchaCallback$lambda$lambda(this$PartnerView, closure$information));
+      jQuery.post(anonymous.loriUrl + 'api/v1/server-list/vote?guildId=' + closure$information.id + '&recaptcha=' + closure$response, PartnerView$recaptchaCallback$lambda$lambda(this$PartnerView, closure$ts1SkillUp, closure$information));
       return Unit;
     };
   }
   PartnerView.prototype.recaptchaCallback = function (response) {
+    var ts1SkillUp = new Audio(anonymous.loriUrl + 'assets/snd/ts1_skill.mp3');
     println('reCAPTCHA completed! Activating upvote button...');
     var information = this.activeInformation;
     if (information == null) {
@@ -715,7 +843,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
       return;
     }
     this.visibleModal.find('.upvote-notification').text('');
-    this.visibleModal.find('.server-upvote-button').addClass('button-discord-success').removeClass('button-discord-disabled').click(PartnerView$recaptchaCallback$lambda(this, information, response));
+    this.visibleModal.find('.server-upvote-button').addClass('button-discord-success').removeClass('button-discord-disabled').click(PartnerView$recaptchaCallback$lambda(this, information, response, ts1SkillUp));
   };
   function PartnerView$PartnerInformation(id, iconUrl, invite, name, tagline, description, keywords, ownerId, ownerName, ownerDiscriminator, ownerAvatarUrl, memberCount, onlineCount, serverEmotes, canVote, cantVoteReason, canVoteNext, joinedServer) {
     this.id = id;
@@ -769,7 +897,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     this.tagline = tagline;
     this.isPartner = false;
     this.isSponsored = false;
-    this.sponsoredUntil = Kotlin.Long.ZERO;
+    this.sponsoredUntil = L0;
     this.vanityUrl = null;
     this.description = null;
   }
@@ -799,34 +927,16 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     simpleName: 'CountUpOptions',
     interfaces: []
   };
-  function LoriWebCodes() {
-    LoriWebCodes_instance = this;
-    this.SUCCESS = 0;
-    this.RATE_LIMITED = 1;
-    this.TRYING_TO_SAVE_PARTNER_CONFIG_WHILE_NOT_PARTNER = 2;
-    this.UNKNOWN_GUILD = 3;
-    this.UNAUTHORIZED = 4;
-    this.ALREADY_VOTED_TODAY = 5;
-    this.NOT_IN_GUILD = 6;
-    this.INVALID_CAPTCHA_RESPONSE = 7;
-    this.MISSING_PAYLOAD_HANDLER = 8;
-    this.BAD_IP = 9;
-    this.NOT_VERIFIED = 10;
-    this.BAD_EMAIL = 11;
-    this.MISSING_PERMISSION = 12;
+  function RecaptchaOptions(sitekey, callback, size) {
+    this.sitekey = sitekey;
+    this.callback = callback;
+    this.size = size;
   }
-  LoriWebCodes.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'LoriWebCodes',
+  RecaptchaOptions.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'RecaptchaOptions',
     interfaces: []
   };
-  var LoriWebCodes_instance = null;
-  function LoriWebCodes_getInstance() {
-    if (LoriWebCodes_instance === null) {
-      new LoriWebCodes();
-    }
-    return LoriWebCodes_instance;
-  }
   function LorittaDailyPayload(dailyPayout) {
     this.dailyPayout = dailyPayout;
   }
@@ -1264,7 +1374,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     simpleName: 'LorittaServerQueryPayload',
     interfaces: []
   };
-  function LorittaServerSample(id, iconUrl, invite, name, ownerId, ownerName, ownerDiscriminator, memberCount, onlineCount, serverEmotes, serverListConfig, voteCount, canVote, cantVoteReason, canVoteNext, joinedServer) {
+  function LorittaServerSample(id, iconUrl, invite, name, ownerId, ownerName, ownerDiscriminator, memberCount, onlineCount, hasCustomBackground, backgroundKey, serverEmotes, serverListConfig, voteCount, validVoteCount, canVote, cantVoteReason, canVoteNext, joinedServer, lastBump) {
     this.id = id;
     this.iconUrl = iconUrl;
     this.invite = invite;
@@ -1274,13 +1384,17 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     this.ownerDiscriminator = ownerDiscriminator;
     this.memberCount = memberCount;
     this.onlineCount = onlineCount;
+    this.hasCustomBackground = hasCustomBackground;
+    this.backgroundKey = backgroundKey;
     this.serverEmotes = serverEmotes;
     this.serverListConfig = serverListConfig;
     this.voteCount = voteCount;
+    this.validVoteCount = validVoteCount;
     this.canVote = canVote;
     this.cantVoteReason = cantVoteReason;
     this.canVoteNext = canVoteNext;
     this.joinedServer = joinedServer;
+    this.lastBump = lastBump;
   }
   LorittaServerSample.$metadata$ = {
     kind: Kind_CLASS,
@@ -1290,7 +1404,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   function getType($receiver) {
     if ($receiver.serverListConfig.isSponsored) {
       var sponsoredUntil = $receiver.serverListConfig.sponsoredUntil;
-      if (true || equals(sponsoredUntil, Kotlin.Long.NEG_ONE) || sponsoredUntil.toNumber() > (new Date()).getTime()) {
+      if (true || equals(sponsoredUntil, L_1) || sponsoredUntil.toNumber() > (new Date()).getTime()) {
         return LorittaPartner$Type$SPONSOR_getInstance();
       }
     }
@@ -1299,16 +1413,36 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
     }
     return LorittaPartner$Type$NORMAL_getInstance();
   }
-  function RecaptchaOptions(sitekey, callback, size) {
-    this.sitekey = sitekey;
-    this.callback = callback;
-    this.size = size;
+  function LoriWebCodes() {
+    LoriWebCodes_instance = this;
+    this.SUCCESS = 0;
+    this.RATE_LIMITED = 1;
+    this.TRYING_TO_SAVE_PARTNER_CONFIG_WHILE_NOT_PARTNER = 2;
+    this.UNKNOWN_GUILD = 3;
+    this.UNAUTHORIZED = 4;
+    this.ALREADY_VOTED_TODAY = 5;
+    this.NOT_IN_GUILD = 6;
+    this.INVALID_CAPTCHA_RESPONSE = 7;
+    this.MISSING_PAYLOAD_HANDLER = 8;
+    this.BAD_IP = 9;
+    this.NOT_VERIFIED = 10;
+    this.BAD_EMAIL = 11;
+    this.MISSING_PERMISSION = 12;
+    this.ALREADY_IN_GUILD = 13;
+    this.INSUFFICIENT_FUNDS = 14;
   }
-  RecaptchaOptions.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'RecaptchaOptions',
+  LoriWebCodes.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'LoriWebCodes',
     interfaces: []
   };
+  var LoriWebCodes_instance = null;
+  function LoriWebCodes_getInstance() {
+    if (LoriWebCodes_instance === null) {
+      new LoriWebCodes();
+    }
+    return LoriWebCodes_instance;
+  }
   Object.defineProperty(_, 'DailyView', {
     get: DailyView_getInstance
   });
@@ -1328,9 +1462,7 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   package$userdata.ServerListConfig = ServerListConfig;
   var package$utils = _.utils || (_.utils = {});
   package$utils.CountUpOptions = CountUpOptions;
-  Object.defineProperty(package$utils, 'LoriWebCodes', {
-    get: LoriWebCodes_getInstance
-  });
+  package$utils.RecaptchaOptions = RecaptchaOptions;
   package$utils.LorittaDailyPayload = LorittaDailyPayload;
   Object.defineProperty(LorittaPartner$Keyword, 'GAMING', {
     get: LorittaPartner$Keyword$GAMING_getInstance
@@ -1462,7 +1594,9 @@ var LoriServerList = function (_, Kotlin, $module$LoriUtils) {
   package$utils.LorittaServerQueryPayload = LorittaServerQueryPayload;
   package$utils.LorittaServerSample = LorittaServerSample;
   package$utils.getType_17hplk$ = getType;
-  package$utils.RecaptchaOptions = RecaptchaOptions;
+  Object.defineProperty(package$utils, 'LoriWebCodes', {
+    get: LoriWebCodes_getInstance
+  });
   Kotlin.defineModule('LoriServerList', _);
   return _;
 }(typeof LoriServerList === 'undefined' ? {} : LoriServerList, kotlin, LoriUtils);

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block subtitle %}
+Painel de Controle
+{% endblock %}
+{% block afterNavbar %}
+<style>
+#left-sidebar {
+transition: 0.3s;
+}
+
+#right-sidebar {
+transition: 0.3s;
+}
+</style>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriUtils.js?v={{ epochMillis }}"></script>
+<script type="text/javascript" src="{{ websiteUrl }}assets/js/LoriDashboard.js?v={{ epochMillis }}"></script>
+{% macro generateCheckbox(index, internalName, mainText, subText, isEnabled, needsToBeSaved) %}
+<div class="pure-g" style="text-align: center;">
+    <div class="pure-u-1 pure-u-md-7-8">
+		<p class="toggleMainText">{{ mainText }}</p>
+		{% if subText|length > 0 %}<div class="toggleSubText">{{ subText | raw }}</div>{% endif %}
+	</div>
+    <div class="pure-u-1 pure-u-md-1-8">
+		<div class="switch">
+		  <input type="checkbox" data-internal-name="{{ internalName }}" value="true" {% if needsToBeSaved == true %}data-send-on-save="true"{% endif %} {% if isEnabled == true %}checked{% endif %} id="cmn-toggle-{{ index }}" class="cmn-toggle cmn-toggle-round" type="checkbox">
+		  <label for="cmn-toggle-{{ index }}"></label>
+		</div>
+	</div>
+</div>
+<br style="clear: both" /> <!-- So dirty! -->
+{% endmacro %}
+
+<div style="height: 50.05px"></div>
+<div id="server-configuration">
+<div id="left-sidebar">
+<div class="discord-scroller" id="left-sidebar-contents"> 
+	<div class="server-name">
+	Configurações do Usuário
+	</div>
+	<div id="left-sidebar-entries">
+	<a {# href="{{ websiteUrl }}dashboard/configure/{{ guild.id }}" #}><div class="item selected-item">
+	<i class="fa fa-cogs" aria-hidden="true"></i> owo
+	</div></a>
+	</div>
+</div>
+</div>
+<div id="right-sidebar">
+<div id="right-sidebar-contents">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+{% block rightSidebarContents %}
+<div class="category-name">
+Minha Conta
+</div>
+<div class="flavourText">Sobre Mim</div>
+<textarea data-internal-name="aboutMe">{{ lorittaProfile.aboutMe }}</textarea>
+<hr>
+<button onclick="LoriDashboard.ConfigureProfileView.prepareSave()" style="float: right;" class="button-discord button-discord-success pure-button">{{ DASHBOARD_SAVE }}</button>
+<br style="clear: both" /> <!-- So dirty! -->
+{% endblock %}
+<hr>
+</div>
+</div>
+<br style="clear: both" />
+</div>
+</div>
+</div>
+{% endblock %}
